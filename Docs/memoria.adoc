@@ -1,1 +1,3 @@
-= hola
+= Introducción
+
+Grupo6: Andres Rojas, Guiu Puigantell y Diego Amador
