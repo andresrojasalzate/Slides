@@ -8,8 +8,8 @@ La paleta de colores que tendrá nuestra aplicación de slides será una paleta 
 |====================
 | Nombre del color |  Valor(hex) | Referencia Visual
 | Mint Green | D7FFF1 a| image::imagenes/D7FFF1.png[Mint Green D7FFF1 ]
-| Light Green | AAFCB8 a| imagenes::AAFCB8.png[Light Green AAFCB8]
-| Light Green | 8CD790 a| image::8CD790.png[Light Green 8CD790]
+| Light Green | AAFCB8 a| image::imagenes/AAFCB8.png[Light Green AAFCB8]
+| Light Green | 8CD790 a| image::imagenes/8CD790.png[Light Green 8CD790]
 |====================
 
 
