@@ -1,3 +1,6 @@
 = Introducción
 
-Grupo6: Andres Rojas, Guiu Puigantell y Diego Amador
+==Integrantes:
+*Andres Rojas
+*Guiu Puigantell
+*Diego Amador
