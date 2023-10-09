@@ -1,0 +1,15 @@
+= Sprint 1
+
+== R01: Guia de estilos de la aplicación
+=== Paleta de colores.
+La paleta de colores que tendrá nuestra aplicación de slides será una paleta monocromatica dentro del espectro del color verde, lo colores seleccionados son:
+.Paleta de colores
+[options="header"]
+|====================
+| Nombre del color |  Valor(hex) | Referencia Visual
+| Mint Green | D7FFF1 |
+| Light Green | AAFCB8 | 
+| Light Green | 8CD790 | 
+|====================
+
+
