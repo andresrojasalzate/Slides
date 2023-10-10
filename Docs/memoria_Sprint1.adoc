@@ -1,0 +1,43 @@
+= Sprint 1
+
+== R01: Guia de estilos de la aplicación.
+
+=== Paleta de colores.
+La paleta de colores que tendrá nuestra aplicación de slides será una paleta monocromatica dentro del espectro del color verde, lo colores seleccionados se describen a continuación más a detalle:
+
+[options="header"]
+|====================
+| Nombre del color |  Valor(hex) | Referencia Visual
+| Mint Green | D7FFF1 a| image::imagenes/D7FFF1.png[Mint Green D7FFF1 ]
+| Light Green | AAFCB8 a| image::imagenes/AAFCB8.png[Light Green AAFCB8]
+| Light Green | 8CD790 a| image::imagenes/8CD790.png[Light Green 8CD790]
+|====================
+
+El color de de la fuente que se utilizará en la aplicación, será en primera instancia el color negro.
+
+
+=== Tipografia.
+Las tipografia seleccionada para la aplicación será la siguiente:
+
+[options="header"]
+|====================
+| Nombre | Funcionalidad | Tamaño | Referencia Visual
+| Roboto Black 900 | Titulo principal | 18px a| image::imagenes/titulos.png[Titulos Roboto Black 900]
+| Roboto Medium 500| Subtitulos | 14px a| image::imagenes/subtitulos.png[Subtitulos Roboto Medium 500]
+| Lato Light 300 | Contenido a| 12px a| image::imagenes/contenido.png[Contenido Lato Light 300]
+|====================
+
+=== Iconos de la aplicación.
+
+== R02: Estructura de la base de datos.
+(...)
+== R03: Pantalla Home.
+(...)
+== R04: Pantalla _Crear_ Presenstación.
+(...)
+== R05: Almacenar la Presenstación.
+(...)
+== R06: #Refactor# Pantalla Home.
+(...)
+
+
