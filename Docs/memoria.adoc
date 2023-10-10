@@ -41,5 +41,9 @@ R01: Definir guía de estilos de la aplicación
 
 = Base de datos
 
-image::imagenes/BaseDeDatos.jpg[]
+image::imagenes/BaseDeDatos.jpg[Tablas de la base de datos]
+
+= Sketching y Mockups
+
+
 
