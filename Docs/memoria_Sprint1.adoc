@@ -29,10 +29,15 @@ Las tipografia seleccionada para la aplicación será la siguiente:
 
 === Iconos de la aplicación.
 
-==R02: Estructura de la base de datos.
-==R03: Pantalla Home.
-==R04: Pantalla _Crear_ Presenstación.
-==R05: Almacenar la Presenstación.
-==R06: #Refactor# Pantalla Home
+== R02: Estructura de la base de datos.
+(...)
+== R03: Pantalla Home.
+(...)
+== R04: Pantalla _Crear_ Presenstación.
+(...)
+== R05: Almacenar la Presenstación.
+(...)
+== R06: #Refactor# Pantalla Home.
+(...)
 
 
