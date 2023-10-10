@@ -1,0 +1,88 @@
+= Introducción
+
+=== Integrantes:
+* Andres Rojas
+* Guiu Puigantell
+* Diego Amador
+
+=== Objetivo de la aplicación:
+
+El objetivo es tener una página web capaz de crear presentaciones con diapositivas. Va dirigida sobre todo a estudiantes y profesores.
+Resolvería la necesidad de los alumnos y/o profesores a la hora de hacer presentaciones o apuntes de una forma más dinámica y entretenida, ya que no sería un solo documento con mucho texto.
+
+= Seguimiento semanal
+
+= Sprint 1
+
+== R01: Guia de estilos de la aplicación.
+
+=== Paleta de colores.
+La paleta de colores que tendrá nuestra aplicación de slides será una paleta monocromatica dentro del espectro del color verde, lo colores seleccionados se describen a continuación más a detalle:
+
+[options="header"]
+|====================
+| Nombre del color |  Valor(hex) | Referencia Visual
+| Mint Green | D7FFF1 a| image::imagenes/D7FFF1.png[Mint Green D7FFF1 ]
+| Light Green | AAFCB8 a| image::imagenes/AAFCB8.png[Light Green AAFCB8]
+| Light Green | 8CD790 a| image::imagenes/8CD790.png[Light Green 8CD790]
+|====================
+
+El color de de la fuente que se utilizará en la aplicación, será en primera instancia el color negro.
+
+
+=== Tipografia.
+Las tipografia seleccionada para la aplicación será la siguiente:
+
+[options="header"]
+|====================
+| Nombre | Funcionalidad | Tamaño | Referencia Visual
+| Roboto Black 900 | Titulo principal | 18px a| image::imagenes/titulos.png[Titulos Roboto Black 900]
+| Roboto Medium 500| Subtitulos | 14px a| image::imagenes/subtitulos.png[Subtitulos Roboto Medium 500]
+| Lato Light 300 | Contenido a| 12px a| image::imagenes/contenido.png[Contenido Lato Light 300]
+|====================
+
+=== Iconos de la aplicación.
+
+== R02: Estructura de la base de datos.
+image::imagenes/BaseDeDatos.jpg[Tablas de la base de datos width=400,height=300]
+
+== R03: Pantalla Home.
+image::imagenes/mockup_pantalla_home.PNG[Moqup pantalla home width=400,height=300]
+
+== R04: Pantalla _Crear_ Presenstación.
+image::imagenes/PantallaCreacionPresentaciones.png[Moqup pantalla creación de presentaciones width=400,height=300]
+
+
+== R05: Almacenar la Presenstación.
+(...)
+
+== R06: #Refactor# Pantalla Home.
+(...)
+
+= Base de datos
+
+image::imagenes/BaseDeDatos.jpg[Tablas de la base de datos width=400,height=300]
+
+= Sketching y Mockups
+
+=== Pantalla creación presentaciones
+
+image::imagenes/ScetchPantallaCreacionPresentaciones.jpg[Squetch pantalla creación presentaciones width=400,height=300]
+image::imagenes/PantallaCreacionPresentaciones.png[Moqup pantalla creación de presentaciones width=400,height=300]
+ 
+ 
+=== Pantalla creación diapositivas
+
+image::imagenes/ScetchPantallaCreacionDiapositivas.jpg[Squetch pantalla creación diaposotivas width=400,height=300]
+image::imagenes/PantallaCreacionDiapositivas.png[Moqup pantalla creación de diaposotivas width=400,height=300]
+
+=== Pantalla home
+
+image::imagenes/scketching-pantalla-home.jpeg[Squetch pantalla home width=400,height=300]
+image::imagenes/mockup_pantalla_home.PNG[Moqup pantalla home width=400,height=300]
+
+=== Pantalla diapositiva titulo
+
+
+=== Pantalla diapositiva titulo y contenido
+
