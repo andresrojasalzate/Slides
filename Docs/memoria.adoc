@@ -45,5 +45,8 @@ image::imagenes/BaseDeDatos.jpg[Tablas de la base de datos]
 
 = Sketching y Mockups
 
-image::imagenes/PantallaCreacionPresentaciones.png[]
+=== Pantalla creación presentaciones
+
+image::imagenes/ScetchPantallaCreacionPresentaciones.jpg[Squetch pantalla creación presentaciones]
+image::imagenes/PantallaCreacionPresentaciones.png[Moqup pantalla creación de presentaciones]
 
