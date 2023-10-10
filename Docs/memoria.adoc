@@ -48,5 +48,10 @@ image::imagenes/BaseDeDatos.jpg[Tablas de la base de datos]
 === Pantalla creación presentaciones
 
 image::imagenes/ScetchPantallaCreacionPresentaciones.jpg[Squetch pantalla creación presentaciones width=400,height=300]
-image::imagenes/PantallaCreacionPresentaciones.png[Moqup pantalla creación de presentaciones]
+image::imagenes/PantallaCreacionPresentaciones.png[Moqup pantalla creación de presentaciones width=400,height=300]
+
+=== Pantalla creación diapositivas
+
+image::imagenes/ScetchPantallaCreacionDiapositivas.jpg[Squetch pantalla creación diaposotivas width=400,height=300]
+image::imagenes/PantallaCreacionDiapositivas.png[Moqup pantalla creación de diaposotivas width=400,height=300]
 
