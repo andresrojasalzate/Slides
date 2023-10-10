@@ -45,5 +45,5 @@ image::imagenes/BaseDeDatos.jpg[Tablas de la base de datos]
 
 = Sketching y Mockups
 
-
+image::imagenes/PantallaCreacionPresentaciones.jpg[]
 
