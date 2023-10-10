@@ -39,5 +39,7 @@ R01: Definir guía de estilos de la aplicación
 ===== Diego:
 R01: Definir guía de estilos de la aplicación
 
-=Base de datos
+= Base de datos
+
+image::imagenes/BaseDeDatos.jpg[]
 
