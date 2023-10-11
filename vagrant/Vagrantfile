@@ -1,0 +1,19 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/mantic64"
+
+  usuario = "localhost"
+  contrasena = "1234"
+
+  config.vm.provision "shell", inline: <<-SHELL
+    # Actualiza la lista de paquetes (opcional)
+    sudo apt-get update
+
+    # Instala el servidor de base de datos (por ejemplo, MySQL)
+    sudo apt-get install -y mysql-server
+
+    # Configura la base de datos utilizando las variables definidas
+    sudo mysql -e "CREATE DATABASE bdGrupo6;"
+    sudo mysql -e "CREATE TABLE presentaciones(id primary key auto_increment, nombre varhcar(255), descripcion varchar(255));"
+    sudo mysql -e "CREATE TABLE diapositivas(id primary key auto_increment, nDiapositiva int,titulo varchar(255), contenido varchar(255), tipoDiapositiba boolean, foreign key (presentaciones_id) references presentaciones(id));"
+  SHELL
+end
