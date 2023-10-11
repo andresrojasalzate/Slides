@@ -1,38 +1,40 @@
+
 $install_requirements = <<SCRIPT
 echo ">>> Installing Base Requirements"
-
 #!/usr/bin/env bash
 
 DBHOST=localhost
-DBNAME=dbGrupo6
-ROOTPASSWD=1234
+nombreBD=dbGrupo6
+passRoot=1234
 
 # Usuario y contraseña
-USER="usuario"
-PASS="usuario"
+usuario="usuario"
+contrasena="usuario"
 
+# update de la maquina
 sudo apt update
 sudo apt install -y vim curl build-essential python3-software-properties git
 
-sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $ROOTPASSWD"
-sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $ROOTPASSWD"
+# establecer contraseña al root de mysql
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $passRoot"
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $passRoot"
 
-# Instalar MySQL
+# instalar MySQL
 sudo apt -y install mysql-server
 
-sudo mysql -uroot -p$ROOTPASSWD -e "CREATE DATABASE $DBNAME"
+# creacion de la base de datos
+sudo mysql -uroot -p$passRoot -e "CREATE DATABASE $nombreBD"
 
-# Crear un usuario y otorgar permisos
-sudo mysql -uroot -p$ROOTPASSWD -e "CREATE USER '$USER'@'%' IDENTIFIED BY '$PASS';"
-sudo mysql -uroot -p$ROOTPASSWD -e "GRANT ALL PRIVILEGES ON *.* TO '$USER'@'%';"
+# creacion de usuario con permisos
+sudo mysql -uroot -p$passRoot -e "CREATE usuario '$usuario'@'%' IDENTIFIED BY '$contrasena';"
+sudo mysql -uroot -p$passRoot -e "GRANT ALL PRIVILEGES ON *.* TO '$usuario'@'%';"
 
-# Actualizar el archivo de configuración de MySQL para permitir acceso remoto a la base de datos
+# Dar permisos de conexion remota al mysql
 sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
-
 sudo systemctl restart mysql
 
-# Crear tablas en la base de datos
-sudo mysql -uroot -p$ROOTPASSWD $DBNAME <<EOF
+# creacion de las tablas
+sudo mysql -uroot -p$passRoot $nombreBD <<EOF
 
 CREATE TABLE presentaciones(id INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(255), descripcion VARCHAR(255));
 
