@@ -1,3 +1,30 @@
+<?php
+    session_start();
+    
+    require_once '../modelo/Clases/Presentacion.php';
+    require_once '../modelo/Clases/DiapositivaTituloContenido.php';
+    require_once '../modelo/Clases/DiapositivaTitulo.php';
+
+    $presentacion = new Presentacion($_SESSION['nombre'],$_SESSION['descripcion']);
+    
+
+    if(isset($_GET['tituloDiapo']) &&($_GET['tituloDiapo']!=null && $_GET['tituloDiapo']!="")){
+        if($_GET['tipoDiapo']=='contenido'){
+            $titulo = $_GET['tituloDiapo'];
+            $tipo = $_GET['tipoDiapo'];
+            $contenido = $_GET['contenidoDiapo'];
+            $nuevaDiapositiva = new DiapositivaTituloContenido($titulo,$tipo,$contenido);
+        }
+        else{
+            $titulo = $_GET['tituloDiapo'];
+            $tipo = $_GET['tipoDiapo'];
+            $nuevaDiapositiva = new DiapositivaTitulo($titulo,$tipo);
+        }
+        $presentacion->setDiapositivas($nuevaDiapositiva );
+        var_dump($presentacion);
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,18 +43,18 @@
         <div class="divContenedor">
             <div class="divContenForm">
                 <label for="tituloDiapo">Titulo</label>
-                <input type="text" id=tituloDiapo placeholder="Titulo de tu Diapositiva" required>
+                <input type="text" id="tituloDiapo" name="tituloDiapo" placeholder="Titulo de tu Diapositiva" required>
                 <label for="contenidoDiapo">Contenido</label>
                 <textarea id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui..."></textarea>
             </div>
             <div class="divContenForm">
                 <p class="subtitulos">Tipo de diapositiva</p>
                 <div>
-                    <input type="radio" id="tipoTitulo" name="tipoDiapo" value="tipoTitulo">
+                    <input type="radio" id="tipoTitulo" name="tipoDiapo" value="titulo">
                     <label for="tipoTitulo">Titulo</label><br>
                 </div>
                 <div>
-                    <input type="radio" id="tipoTituloCont" name="tipoDiapo" value="tipoTituloCont">
+                    <input type="radio" id="tipoTituloCont" name="tipoDiapo" value="contenido">
                     <label for="tipoTituloCont">Titulo + contenido</label>
                 </div>
             </div>
