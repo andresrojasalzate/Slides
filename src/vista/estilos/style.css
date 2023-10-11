@@ -37,11 +37,27 @@ textarea{
 label{
     align-self: center;
     font-size: x-large;
-
+    font-family: 'Roboto', sans-serif;
 }
 
 .botonCrear {
     align-self: self-end;
     width: fit-content;
 
+}
+
+.divContenedor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.divContenForm{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.subtitulos{
+    font-family: 'Roboto', sans-serif;
 }
