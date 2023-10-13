@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Daipositiva.php';
+require_once 'Diapositiva.php';
 
 class DiapositivaTituloContenido extends Diapositiva{
     protected string $contenido;

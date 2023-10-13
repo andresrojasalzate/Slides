@@ -10,6 +10,7 @@ class Presentacion{
     public function __construct(string $titulo,string $descripcion){
         $this->titulo = $titulo;
         $this->descripcion = $descripcion;
+        $this->diapositivas = [];
     }
 
     //Getters
@@ -36,7 +37,7 @@ class Presentacion{
     }
 
     public function setDiapositivas(Diapositiva $nuevaDiapositiva){
-        $diapositivas = $nuevaDiapositiva;
+        array_push($this->diapositivas,$nuevaDiapositiva);
     }
 
 }
