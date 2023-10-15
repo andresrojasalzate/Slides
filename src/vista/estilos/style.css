@@ -5,7 +5,6 @@ body {
     padding: 20px;
     flex-direction: column;
     justify-content: space-around;
-
 }
 
 button {
@@ -15,9 +14,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 30%;
     align-self: center;
-
 }
 
 input[type="text"], textarea {
@@ -55,9 +52,27 @@ label{
 .divContenForm{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
 }
 
 .subtitulos{
     font-family: 'Roboto', sans-serif;
 }
+
+.containerCentre {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.containerDreta {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center; 
+    height: 10vh; 
+}
+
+
+
+
