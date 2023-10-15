@@ -8,7 +8,11 @@
 </head>
 <body>
     
-    <button>Crear presentación</button>
-
+    <div class="containerCentre">
+        <form action="crearPresentacion.php" method="post">
+            <button type="submit">Crear presentación</button>
+        </form>
+    </div>
+    
 </body>
 </html>
