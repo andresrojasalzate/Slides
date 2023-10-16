@@ -61,3 +61,14 @@ label{
 .subtitulos{
     font-family: 'Roboto', sans-serif;
 }
+
+.presentacion{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.presentaciones{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
