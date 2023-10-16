@@ -31,7 +31,7 @@ class DiapositivaTituloContenido extends Diapositiva{
             $sql = "INSERT INTO diapositivas (titulo, contenido, tipoDiapositiva, presentaciones_id, nDiapositiva) VALUES (:titulo, :contenido, :tipo, :id, :nDiapositiva)";
             $statement = $pdo->prepare($sql);
             $statement->bindValue(':titulo', $diapositivaTituloContenido->titulo);
-            $statement->bindValue(':contenido', $diapositivaTituloContenido->titulo);
+            $statement->bindValue(':contenido', $diapositivaTituloContenido->contenido);
             $statement->bindValue(':tipo', $diapositivaTituloContenido->tipo);
             $statement->bindValue(':id', $diapositivaTituloContenido->id_presentacion);
             $statement->bindValue(':nDiapositiva', $diapositivaTituloContenido->nDiapositiva);

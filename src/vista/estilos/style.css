@@ -59,20 +59,13 @@ label{
     font-family: 'Roboto', sans-serif;
 }
 
-.containerCentre {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
+.presentacion{
+    border: 1px solid black;
+    padding: 10px;
 }
 
-.containerDreta {
+.presentaciones{
     display: flex;
-    justify-content: flex-end; 
-    align-items: center; 
-    height: 10vh; 
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
-
-
-
-
