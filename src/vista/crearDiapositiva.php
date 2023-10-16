@@ -5,8 +5,7 @@
     require_once '../modelo/Clases/DiapositivaTituloContenido.php';
     require_once '../modelo/Clases/DiapositivaTitulo.php';
 
-    $presentacion = new Presentacion($_SESSION['nombre'],$_SESSION['descripcion']);
-    
+    $idUltimaPresentacion = $_GET['id'];
 
     if(isset($_GET['tituloDiapo']) &&($_GET['tituloDiapo']!=null && $_GET['tituloDiapo']!="")){
         if($_GET['tipoDiapo']=='contenido'){
@@ -39,7 +38,7 @@
 </head>
 
 <body>
-    <form>
+    <form action="../controllers/crearDiapositivaController.php?id=<?php echo $idUltimaPresentacion; ?>" method="post">
         <div class="divContenedor">
             <div class="divContenForm">
                 <label for="tituloDiapo">Titulo</label>
