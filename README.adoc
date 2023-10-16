@@ -9,5 +9,5 @@
 == Links a elementos externos del proyecto
 
 Trello: https://trello.com/b/kZctgkZO/grupo6rojaspuigantellamador +
-Figma: https://www.figma.com/files/team/1293222708229878277/Diego-Yesid-Amador-Hernandez's-team?fuid=1293224011031590583
+Figma: https://www.figma.com/files/team/1293222708229878277/Diego-Yesid-Amador-Hernandez's-team?fuid=1293224011031590583 +
 Git: https://git.copernic.cat/gpuigantell/grupo6rojaspuigantellamador
