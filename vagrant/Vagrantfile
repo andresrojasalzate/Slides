@@ -25,7 +25,7 @@ echo ">>> Installing Base Requirements"
     sudo mysql -uroot -p$passRoot -e "CREATE DATABASE $nombreBD"
 
   # creacion de usuario con permisos
-    sudo mysql -uroot -p$passRoot -e "CREATE usuario '$usuario'@'%' IDENTIFIED BY '$contrasena';"
+    sudo mysql -uroot -p$passRoot -e "CREATE user '$usuario'@'%' IDENTIFIED BY '$contrasena';"
     sudo mysql -uroot -p$passRoot -e "GRANT ALL PRIVILEGES ON *.* TO '$usuario'@'%';"
 
   # Dar permisos de conexion remota al mysql
@@ -37,9 +37,9 @@ echo ">>> Installing Base Requirements"
 
       CREATE TABLE presentaciones(id INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(255), descripcion VARCHAR(255));
 
-      CREATE TABLE diapositivas ( id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva BOOLEAN, presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
+      CREATE TABLE diapositivas (id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
 
-  EOF
+EOF
 SCRIPT
 
 Vagrant.configure("2") do |config|
