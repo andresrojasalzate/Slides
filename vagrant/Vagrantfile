@@ -39,7 +39,7 @@ echo ">>> Installing Base Requirements"
 
       CREATE TABLE diapositivas (id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
 
-EOF
+  EOF
 SCRIPT
 
 Vagrant.configure("2") do |config|
