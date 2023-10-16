@@ -5,24 +5,7 @@
     require_once '../modelo/Clases/DiapositivaTituloContenido.php';
     require_once '../modelo/Clases/DiapositivaTitulo.php';
 
-    $presentacion = new Presentacion($_SESSION['nombre'],$_SESSION['descripcion']);
-    
-
-    if(isset($_GET['tituloDiapo']) &&($_GET['tituloDiapo']!=null && $_GET['tituloDiapo']!="")){
-        if($_GET['tipoDiapo']=='contenido'){
-            $titulo = $_GET['tituloDiapo'];
-            $tipo = $_GET['tipoDiapo'];
-            $contenido = $_GET['contenidoDiapo'];
-            $nuevaDiapositiva = new DiapositivaTituloContenido($titulo,$tipo,$contenido);
-        }
-        else{
-            $titulo = $_GET['tituloDiapo'];
-            $tipo = $_GET['tipoDiapo'];
-            $nuevaDiapositiva = new DiapositivaTitulo($titulo,$tipo);
-        }
-        $presentacion->setDiapositivas($nuevaDiapositiva );
-        var_dump($presentacion);
-    }
+    $idUltimaPresentacion = $_GET['id'];
     
 ?>
 <!DOCTYPE html>
@@ -39,8 +22,8 @@
 </head>
 
 <body>
-    <form>
-        <h1>Nueva Diapositiva</h1>
+    <form action="../controllers/crearDiapositivaController.php?id=<?php echo $idUltimaPresentacion; ?>" method="post">
+    <h1>Nueva Diapositiva</h1>
         <div>
             <fieldset class="divFormRow">
                 <legend class="subtitulos">Tipo de diapositiva</legend>
@@ -60,13 +43,14 @@
                 </div>
                 <div class="divOculto divFormColumn">
                     <label for="contenidoDiapo">Contenido</label>
-                    <input class="inputCont" type="text" id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui..." required>
+                    <input class="inputCont" type="text" id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui...">
                 </div>
             </div>
             <div class="divBotonCrear">
                 <button class="botonCrear" type="submit">Crear Diapositiva</button>
             </div>
         </div>
+
     </form>
 </body>
 <script src="crearDiapositiva.js"></script>
