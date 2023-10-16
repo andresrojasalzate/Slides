@@ -2,6 +2,7 @@
 require_once 'Diapositiva.php';
 
 class Presentacion{
+    protected int $id;
     protected string $titulo;
     protected string $descripcion;
     protected array $diapositivas;
@@ -22,6 +23,10 @@ class Presentacion{
         return $this->descripcion;
     }
 
+    public function getId(): int{
+        return $this->id;
+    }
+
     public function getDiapositivas(): array{
         return $this->diapositivas;
     }
@@ -30,6 +35,10 @@ class Presentacion{
 
     public function setTitulo(string $nuevoTitulo){
         $this->titulo = $nuevoTitulo;
+    }
+
+    public function setId(string $id){
+        $this->titulo = $id;
     }
 
     public function setDescripcion(string $nuevaDescripcion){
@@ -66,5 +75,23 @@ class Presentacion{
 		}
     }
 
+    public static function idUltimaPresentacion(PDO $pdo):int{
+
+        try{
+            $sql = "SELECT MAX(id) FROM presentaciones;";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetch();
+            $maxId = $result[0]; 
+            return $maxId;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+
+    }
 
 }
