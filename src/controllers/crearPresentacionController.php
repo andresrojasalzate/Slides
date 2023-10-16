@@ -17,6 +17,8 @@ function procesarFormulario() {
             $conexion = $bdConexion->getConnection();
             Presentacion::insertPresentacion($conexion, $presentacion);
 
+            $idUltimaPresentacion = Presentacion::idUltimaPresentacion($conexion);
+            header("Location: ../vista/crearDiapositiva.php?id={$idUltimaPresentacion}");
         }
     }
 

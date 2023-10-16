@@ -3,6 +3,21 @@ session_start();
 
 require_once '../modelo/Clases/Presentacion.php';
 
+//Almacenar presentaciones desde la BD
+/*$presentaciones = [
+    ['nombre'=> "pres 1",'diapositivas'=>[1,2,3]],
+    ['nombre'=> "pres 2",'diapositivas'=>[1,2,3,4,5,6]],
+    ['nombre'=> "pres 3",'diapositivas'=>[1,2,3,4,5]],
+    ['nombre'=> "pres 4",'diapositivas'=>[1]],
+    ['nombre'=> "pres 5",'diapositivas'=>[1,2]],
+    ['nombre'=> "pres 6",'diapositivas'=>[1,2]],
+    ['nombre'=> "pres 7",'diapositivas'=>[1,2]],
+    ['nombre'=> "pres 8",'diapositivas'=>[1,2]],
+    ['nombre'=> "pres 9",'diapositivas'=>[1,2]],
+    ['nombre'=> "pres 10",'diapositivas'=>[1,2]],
+    ['nombre'=> "pres 11",'diapositivas'=>[1,2]]
+];*/
+
 if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")) {
     $nombre = $_GET['nombre'];
     $descripcion = $_GET['descripcion'];
@@ -22,7 +37,7 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
 </head>
 
 <body>
-    <form action="crearPresentacionController.php" method="post">
+    <form action="../controllers/crearPresentacionController.php" method="post">
     <div class="divContenForm">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br>
@@ -35,6 +50,16 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
         </div>
     </div>
     </form>
+    <?php if(count($presentaciones)>0): ?>
+        <div class="presentaciones">
+            <?php foreach ($presentaciones as $presentacion): ?>
+                <div class="presentacion">
+                    <div><span><?=$presentacion['nombre']?></span></div>
+                    <div><span>Nro. diapositivas: <?=count($presentacion['diapositivas'])?></span></div>
+                </div>
+            <?php endforeach; ?>  
+        </div>
+    <?php endif; ?>
 </body>
 
 </html>

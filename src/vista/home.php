@@ -9,7 +9,7 @@
 <body>
     
     <div class="containerCentre">
-        <form action="crearPresentacion.php" method="post">
+        <form action="crearPresentacion.php">
             <button type="submit">Crear presentación</button>
         </form>
     </div>
