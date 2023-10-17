@@ -24,7 +24,7 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
 </head>
 
 <body>
-    <form>
+    <form action="../controllers/crearPresentacionController.php" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br>
 
