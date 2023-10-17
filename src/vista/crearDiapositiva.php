@@ -1,11 +1,10 @@
 <?php
+namespace src\vista;
     session_start();
     
     require_once '../modelo/Clases/Presentacion.php';
     require_once '../modelo/Clases/DiapositivaTituloContenido.php';
     require_once '../modelo/Clases/DiapositivaTitulo.php';
-
-    $idUltimaPresentacion = $_GET['id'];
     
 ?>
 <!DOCTYPE html>
@@ -22,7 +21,7 @@
 </head>
 
 <body>
-    <form action="../controllers/crearDiapositivaController.php?id=<?php echo $idUltimaPresentacion; ?>" method="post">
+    <form action="../controllers/crearDiapositivaController.php" method="post">
     <h1>Nueva Diapositiva</h1>
         <div>
             <fieldset class="divFormRow">

@@ -1,7 +1,12 @@
 <?php
+namespace src\modelo\Clases;
 
+use PDO;
+use Exception;
+use PDOException;
+use src\modelo\Clases\Diapositiva;
 require_once 'Diapositiva.php';
-require_once 'Presentacion.php';
+
 
 class DiapositivaTitulo extends Diapositiva{
     

@@ -1,6 +1,5 @@
 $install_requirements = <<SCRIPT
 echo ">>> Installing Base Requirements"
-  #!/usr/bin/env bash
 
   # contraseña del root
     passRoot=1234
@@ -37,9 +36,9 @@ echo ">>> Installing Base Requirements"
 
       CREATE TABLE presentaciones(id INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(255), descripcion VARCHAR(255));
 
-      CREATE TABLE diapositivas (id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
+      CREATE TABLE diapositivas(id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
 
-  EOF
+EOF
 SCRIPT
 
 Vagrant.configure("2") do |config|

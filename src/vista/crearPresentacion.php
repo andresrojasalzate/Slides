@@ -1,4 +1,5 @@
 <?php
+namespace src\vista;
 session_start();
 
 require_once '../modelo/Clases/Presentacion.php';
@@ -50,16 +51,7 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
         </div>
     </div>
     </form>
-    <?php if(count($presentaciones)>0): ?>
-        <div class="presentaciones">
-            <?php foreach ($presentaciones as $presentacion): ?>
-                <div class="presentacion">
-                    <div><span><?=$presentacion['nombre']?></span></div>
-                    <div><span>Nro. diapositivas: <?=count($presentacion['diapositivas'])?></span></div>
-                </div>
-            <?php endforeach; ?>  
-        </div>
-    <?php endif; ?>
+    
 </body>
 
 </html>

@@ -1,4 +1,7 @@
 <?php
+namespace src\modelo\Clases;
+
+use PDO, Exception, PDOException;
 
  abstract class Diapositiva{
     protected string $titulo;

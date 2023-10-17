@@ -1,5 +1,9 @@
 <?php
-require_once 'Diapositiva.php';
+namespace src\modelo\Clases;
+
+use PDO;
+use Exception;
+use PDOException;
 
 class Presentacion{
     protected int $id;
