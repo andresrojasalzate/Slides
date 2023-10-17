@@ -12,8 +12,9 @@ function procesarFormulario() {
         $titulo = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
  
-        if (empty($titulo) || empty($descripcion)) {
-          
+        if (empty($titulo)) {
+            
+            header("Location: ../vista/crearPresentacion.php");
         } else {
             $presentacion = new Presentacion($titulo, $descripcion);
            
@@ -25,6 +26,8 @@ function procesarFormulario() {
             $conexion = null;
 
             setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
+
+            
             header("Location: ../vista/crearDiapositiva.php");
         }   
     }
