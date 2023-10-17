@@ -31,12 +31,14 @@ function procesarFormulario() {
                 $diapositiva = new DiapositivaTitulo($titulo, "titulo", $idUltimaPresentacion, $nDiapositiva);
 
                 DiapositivaTitulo::insertDiapositivaTitulo($conexion, $diapositiva);
+                $conexion = null;
                 header("Location: ../vista/home.php");
                 
             }elseif($tipo === 'contenido'){
                 $diapositiva = new DiapositivaTituloContenido($titulo,'tituloContenido', $descripcion, $idUltimaPresentacion, $nDiapositiva);
 
                 DiapositivaTituloContenido::insertDiapositivaTituloYContenido($conexion, $diapositiva);
+                $conexion = null;
                 header("Location: ../vista/home.php");
             }else{}
 
