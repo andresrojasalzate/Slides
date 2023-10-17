@@ -20,12 +20,13 @@ function procesarFormulario() {
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
             Presentacion::insertPresentacion($conexion, $presentacion);
-
+            
             $idUltimaPresentacion = Presentacion::idUltimaPresentacion($conexion);
+            $conexion = null;
 
             setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
             header("Location: ../vista/crearDiapositiva.php");
-        }
+        }   
     }
 
     
