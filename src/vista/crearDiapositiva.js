@@ -8,6 +8,7 @@ tipoDiapositiva.forEach(element => {
         }
         else{
             divContenido.style.display = 'none';
+            contenidoDiapo.value = "";
         }
     })
 });

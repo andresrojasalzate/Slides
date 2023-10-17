@@ -44,7 +44,7 @@ Las tipografia seleccionada para la aplicación será la siguiente:
 === Iconos de la aplicación.
 
 == R02: Estructura de la base de datos.
-image::imagenes/BaseDeDatos.jpg[Tablas de la base de datos width=400,height=300]
+image::imagenes/estructura_base_de_datos.PNG[Tablas de la base de datos width=400,height=300]
 
 == R03: Pantalla Home.
 image::imagenes/mockup_pantalla_home.PNG[Moqup pantalla home width=400,height=300]

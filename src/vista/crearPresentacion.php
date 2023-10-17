@@ -1,4 +1,5 @@
 <?php
+namespace src\vista;
 session_start();
 
 require_once '../modelo/Clases/Presentacion.php';
@@ -32,6 +33,7 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
 
         <button type="submit" class="botonCrear">Crear</button>
     </form>
+    
 </body>
 
 </html>
