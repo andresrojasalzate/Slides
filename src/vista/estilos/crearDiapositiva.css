@@ -126,6 +126,7 @@ input[type="text"], textarea{
     border:none;
     border-radius: 5px;
     border: 3px solid #4A4063;
+    background: #C8C6D7;
 }
 
 .inputCont{

@@ -39,7 +39,7 @@ if (isset($_COOKIE["nombrePresentacion"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/crearDiapositiva.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
-    <title>Home</title>
+    <title>Crear Diapositiva</title>
 </head>
 
 <body>
