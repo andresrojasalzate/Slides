@@ -25,6 +25,10 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
     $_SESSION = (['nombre' => $nombre, 'descripcion' => $descripcion]);
     header('Location:crearDiapositiva.php');
 }
+
+if (isset($_COOKIE["nombrePresentacion"])) {
+    $nombrePresentacion = $_COOKIE["nombrePresentacion"];
+}else{}
 ?>
 
 <!DOCTYPE html>
@@ -35,13 +39,16 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/crearDiapositiva.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
-    <title>Home</title>
+    <title>Crear Diapositiva</title>
 </head>
 
 <body>
     <div class="cabecera">
         <div class="bienvenida">
             <span>Hola Ususario</span>
+        </div>
+        <div class="bienvenida centrar">
+            <span>Presentación: <?= $nombrePresentacion ?></span>
         </div>
     </div>
     <div class="crearDiapositiva">
@@ -51,7 +58,7 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
             </div>
 
             <div class="contentCrearDiapositivas">
-                <form action="../controllers/crearDiapositivaController.php" method="post">
+                <form id="crearDiapositiva" action="../controllers/crearDiapositivaController.php" method="post">
                     <fieldset class="divFormRow">
                         <legend class="subtitulos">Tipo de diapositiva</legend>
                         <div>
@@ -66,13 +73,19 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
                     <div>
                         <div class="divFormColumn">
                             <label for="tituloDiapo">Titulo</label>
+                            <div id="errNombre" class="errores centrar">
+
+                            </div>
                             <input class="titulo" type="text" id="tituloDiapo" name="tituloDiapo"
                                 placeholder="Titulo de tu Diapositiva" required>
                         </div>
                         <div class="divOculto divFormColumn">
                             <label for="contenidoDiapo">Contenido</label>
-                            <input class="inputCont" type="text" id="contenidoDiapo" name="contenidoDiapo"
-                                placeholder="Empieza aqui...">
+                            <div id="errDescripcion" class="errores">
+
+                            </div>
+                            <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui..."></textarea>
+                            
                         </div>
                     </div>
                     <div class="botonNuevaDiapositiva">
@@ -87,6 +100,6 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
     </div>
 
 </body>
-<script src="crearDiapositiva.js"></script>
+<script src="/vista/javascript/crearDiapositiva.js"></script>
 
 </html>
