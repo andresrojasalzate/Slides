@@ -1,23 +1,28 @@
 <?php
+
+use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\Presentacion;
+
 session_start();
-
 require_once '../config/ConexionBD.php';
+require_once '../modelo/Clases/Presentacion.php';
+require_once '../modelo/Clases/Diapositiva.php';
 
-//Almacenar presentaciones desde la BD
-$presentaciones = [/*
-    ['nombre'=> "pres 1",'diapositivas'=>[1,2,3]],
-    ['nombre'=> "pres 2",'diapositivas'=>[1,2,3,4,5,6]],
-    ['nombre'=> "pres 3",'diapositivas'=>[1,2,3,4,5]],
-    ['nombre'=> "pres 4",'diapositivas'=>[1]],
-    ['nombre'=> "pres 5",'diapositivas'=>[1,2]],
-    ['nombre'=> "pres 6",'diapositivas'=>[1,2]],
-    ['nombre'=> "pres 7",'diapositivas'=>[1,2]],
-    ['nombre'=> "pres 8",'diapositivas'=>[1,2]],
-    ['nombre'=> "pres 9",'diapositivas'=>[1,2]],
-    ['nombre'=> "pres 10",'diapositivas'=>[1,2]],
-    ['nombre'=> "pres 11",'diapositivas'=>[1,2]]*/
-];
+//Almacenar presentaciones desde la BD para mostrarlas en la pantalla home
+$presentaciones = [];
+$bdConexion = ConexionBD::obtenerInstancia();
+$conexion = $bdConexion->getConnection();
+$presentaciones = Presentacion::devolverPresentaciones($conexion);
+
+$diapositivas=[];
+$diapositivas=Diapositiva::devolverDiapositivas($conexion);
+
+foreach ($presentaciones  as &$value) {
+    $i = array_search($value['id'],array_column($diapositivas,'id'));
+    if($i!==false){
+        $value+= ['nroDiapositivas'=>$diapositivas[$i]['totalDiapositivas']];
+    }
+}
 
 if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")) {
     $nombre = $_GET['nombre'];
@@ -56,7 +61,7 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
                         <?php foreach ($presentaciones as $presentacion): ?>
                             <div class="presentacionBD">
                                 <div class="titulo"><span><?=$presentacion['nombre']?></span></div>
-                                <!--<div class="nroDiapositivas"><span>Diapositivas: <?//=count($presentacion['diapositivas'])?></span></div>-->
+                                <div class="nroDiapositivas"><span>Diapositivas:<?=$presentacion['nroDiapositivas'];?></span></div>
                                 <div class="opciones">
                                     <button><span class="material-symbols-outlined">edit</span></button>
                                     <button><span class="material-symbols-outlined">delete</span></button>

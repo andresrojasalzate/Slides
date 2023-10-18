@@ -53,5 +53,21 @@ use PDO, Exception, PDOException;
 		}
     }
 
+    public static function devolverDiapositivas(PDO $pdo){
+        try{
+            $sql = "SELECT presentaciones_id AS id, COUNT(*) AS totalDiapositivas FROM diapositivas group by presentaciones_id ORDER BY id;";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $diapos = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $diapos;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
 
 }
