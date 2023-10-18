@@ -26,14 +26,18 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
 <body>
     <form action="../controllers/crearPresentacionController.php" method="post">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br>
+        <input type="text" id="nombre" name="nombre" ><br>
 
         <label for="descripcion">Descripción:</label>
         <textarea id="descripcion" name="descripcion"></textarea>
-
-        <button type="submit" class="botonCrear">Crear</button>
+        
+        <div class="containerDreta">
+            <button type="submit" class="botonCrear">Crear</button>
+        </div>
+        
+    </div>
     </form>
-    
+
 </body>
 
 </html>

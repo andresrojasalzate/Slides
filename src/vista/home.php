@@ -1,7 +1,8 @@
 <?php
+use src\modelo\Clases\Presentacion;
 session_start();
 
-require_once '../modelo/Clases/Presentacion.php';
+require_once '../config/ConexionBD.php';
 
 //Almacenar presentaciones desde la BD
 $presentaciones = [/*
@@ -55,7 +56,7 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
                         <?php foreach ($presentaciones as $presentacion): ?>
                             <div class="presentacionBD">
                                 <div class="titulo"><span><?=$presentacion['nombre']?></span></div>
-                                <div class="nroDiapositivas"><span>Diapositivas: <?=count($presentacion['diapositivas'])?></span></div>
+                                <!--<div class="nroDiapositivas"><span>Diapositivas: <?//=count($presentacion['diapositivas'])?></span></div>-->
                                 <div class="opciones">
                                     <button><span class="material-symbols-outlined">edit</span></button>
                                     <button><span class="material-symbols-outlined">delete</span></button>
