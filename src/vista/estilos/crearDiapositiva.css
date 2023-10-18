@@ -121,10 +121,11 @@ body{
     margin: auto;
 }
 
-input[type="text"]{
+input[type="text"], textarea{
     padding: 5px 10px;
     border:none;
     border-radius: 5px;
+    border: 3px solid #4A4063;
 }
 
 .inputCont{
@@ -147,4 +148,19 @@ h1{
     text-align: center;
     font-size: 40px;
     font-family: 'Roboto', sans-serif;
+}
+
+
+.centrar{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+textarea{
+    resize: none;
+}
+
+.errores > p{
+    color: red;
+    justify-self: center;
 }
