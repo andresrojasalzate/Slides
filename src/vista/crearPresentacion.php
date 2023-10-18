@@ -11,6 +11,7 @@
     <title>Crear Presentación</title>
 </head>
 <body>
+<<<<<<< HEAD
     <div class="cabecera">
         <div class="bienvenida">
             <span>Hola Ususario</span>
@@ -42,5 +43,21 @@
         </div>
     </div>
     <script src="/vista/javascript/crearPresentacion.js"></script>
+=======
+    <form action="../controllers/crearPresentacionController.php" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" ><br>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion"></textarea>
+        
+        <div class="containerDreta">
+            <button type="submit" class="botonCrear">Crear</button>
+        </div>
+        
+    </div>
+    </form>
+
+>>>>>>> fe268b00022594f54843b8b924cf94e034dc6d28
 </body>
 </html>
