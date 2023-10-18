@@ -27,19 +27,19 @@ formularioPresentacion.addEventListener('submit', function (e) {
 
     if(nombre === ""){
 
-        errores["nombre"] = "El campo nombre no puede estar vacío";
+        errores["nombre"] = "El campo \"Titulo\" no puede estar vacío";
        
     }
 
     if(nombre.length > 255){
-        errores["nombre"] = "El campo nombre no puede tener más de 255 caracteres";
+        errores["nombre"] = "El campo \"Titulo\" no puede tener más de 255 caracteres";
         
     }
     
 
     if(descripcion.length > 255){
 
-        errores["descripcion"] = "El campo descripcion no puede tener más de 255 caracteres";
+        errores["descripcion"] = "El campo \"Descripción\"  no puede tener más de 255 caracteres";
         
     }
 
