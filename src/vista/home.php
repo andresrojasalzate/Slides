@@ -23,13 +23,6 @@ foreach ($presentaciones  as &$value) {
         $value+= ['nroDiapositivas'=>$diapositivas[$i]['totalDiapositivas']];
     }
 }
-
-if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")) {
-    $nombre = $_GET['nombre'];
-    $descripcion = $_GET['descripcion'];
-    $_SESSION = (['nombre' => $nombre, 'descripcion' => $descripcion]);
-    header('Location:crearDiapositiva.php');
-}
 ?>
 
 <!DOCTYPE html>
