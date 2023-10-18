@@ -3,6 +3,10 @@ namespace src\controllers;
 
 use ConexionBD;
 use src\modelo\Clases\Presentacion;
+namespace src\controllers;
+
+use ConexionBD;
+use src\modelo\Clases\Presentacion;
 require_once '../modelo/Clases/Presentacion.php';
 require_once '../config/ConexionBD.php';
 
@@ -22,6 +26,7 @@ function procesarFormulario() {
             $conexion = $bdConexion->getConnection();
             Presentacion::insertPresentacion($conexion, $presentacion);
             
+            
             $idUltimaPresentacion = Presentacion::idUltimaPresentacion($conexion);
             $conexion = null;
 
@@ -29,6 +34,7 @@ function procesarFormulario() {
 
             
             header("Location: ../vista/crearDiapositiva.php");
+
         }   
     }
 
