@@ -3,7 +3,6 @@
 use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\Presentacion;
 
-session_start();
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Presentacion.php';
 require_once '../modelo/Clases/Diapositiva.php';

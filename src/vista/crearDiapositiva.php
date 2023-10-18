@@ -1,30 +1,7 @@
 <?php
-session_start();
 
 require_once '../modelo/Clases/Presentacion.php';
 
-//Almacenar presentaciones desde la BD
-$presentaciones = [
-    /*
-['nombre'=> "pres 1",'diapositivas'=>[1,2,3]],
-['nombre'=> "pres 2",'diapositivas'=>[1,2,3,4,5,6]],
-['nombre'=> "pres 3",'diapositivas'=>[1,2,3,4,5]],
-['nombre'=> "pres 4",'diapositivas'=>[1]],
-['nombre'=> "pres 5",'diapositivas'=>[1,2]],
-['nombre'=> "pres 6",'diapositivas'=>[1,2]],
-['nombre'=> "pres 7",'diapositivas'=>[1,2]],
-['nombre'=> "pres 8",'diapositivas'=>[1,2]],
-['nombre'=> "pres 9",'diapositivas'=>[1,2]],
-['nombre'=> "pres 10",'diapositivas'=>[1,2]],
-['nombre'=> "pres 11",'diapositivas'=>[1,2]]*/
-];
-
-if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")) {
-    $nombre = $_GET['nombre'];
-    $descripcion = $_GET['descripcion'];
-    $_SESSION = (['nombre' => $nombre, 'descripcion' => $descripcion]);
-    header('Location:crearDiapositiva.php');
-}
 
 if (isset($_COOKIE["nombrePresentacion"])) {
     $nombrePresentacion = $_COOKIE["nombrePresentacion"];
@@ -39,7 +16,7 @@ if (isset($_COOKIE["nombrePresentacion"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/crearDiapositiva.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
-    <title>Home</title>
+    <title>Crear Diapositiva</title>
 </head>
 
 <body>
@@ -100,6 +77,6 @@ if (isset($_COOKIE["nombrePresentacion"])) {
     </div>
 
 </body>
-<script src="/vista/javascript/crearDiapositiva.js"></script>
+<script src="javascript/crearDiapositiva.js"></script>
 
 </html>
