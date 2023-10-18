@@ -98,4 +98,20 @@ class Presentacion{
 
     }
 
+    public static function devolverPresentaciones(PDO $pdo){
+        try{
+            $sql = "SELECT id, nombre, descripcion FROM presentaciones ORDER BY id;";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
 }

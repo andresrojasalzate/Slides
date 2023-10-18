@@ -12,7 +12,7 @@ function procesarFormulario() {
         $titulo = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
  
-        if (empty($titulo) || empty($descripcion)) {
+        if (empty($titulo)) {
           
         } else {
             $presentacion = new Presentacion($titulo, $descripcion);
