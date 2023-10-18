@@ -1,4 +1,8 @@
 <?php
+namespace src\controllers;
+
+use ConexionBD;
+use src\modelo\Clases\Presentacion;
 require_once '../modelo/Clases/Presentacion.php';
 require_once '../config/ConexionBD.php';
 
@@ -16,10 +20,13 @@ function procesarFormulario() {
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
             Presentacion::insertPresentacion($conexion, $presentacion);
-
+            
             $idUltimaPresentacion = Presentacion::idUltimaPresentacion($conexion);
-            header("Location: ../vista/crearDiapositiva.php?id={$idUltimaPresentacion}");
-        }
+            $conexion = null;
+
+            setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
+            header("Location: ../vista/crearDiapositiva.php");
+        }   
     }
 
     
