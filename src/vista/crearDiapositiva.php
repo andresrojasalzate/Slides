@@ -17,12 +17,16 @@ if (isset($_COOKIE["nombrePresentacion"])) {
     <link rel="stylesheet" href="estilos/crearDiapositiva.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
     <title>Crear Diapositiva</title>
+    <title>Crear Diapositiva</title>
 </head>
 
 <body>
     <div class="cabecera">
         <div class="bienvenida">
             <span>Hola Ususario</span>
+        </div>
+        <div class="bienvenida centrar">
+            <span>Presentación: <?= $nombrePresentacion ?></span>
         </div>
         <div class="bienvenida centrar">
             <span>Presentación: <?= $nombrePresentacion ?></span>
@@ -35,6 +39,7 @@ if (isset($_COOKIE["nombrePresentacion"])) {
             </div>
 
             <div class="contentCrearDiapositivas">
+                <form id="crearDiapositiva" action="../controllers/crearDiapositivaController.php" method="post">
                 <form id="crearDiapositiva" action="../controllers/crearDiapositivaController.php" method="post">
                     <fieldset class="divFormRow">
                         <legend class="subtitulos">Tipo de diapositiva</legend>
@@ -53,11 +58,19 @@ if (isset($_COOKIE["nombrePresentacion"])) {
                             <div id="errNombre" class="errores centrar">
 
                             </div>
+                            <div id="errNombre" class="errores centrar">
+
+                            </div>
                             <input class="titulo" type="text" id="tituloDiapo" name="tituloDiapo"
                                 placeholder="Titulo de tu Diapositiva" required>
                         </div>
                         <div class="divOculto divFormColumn">
                             <label for="contenidoDiapo">Contenido</label>
+                            <div id="errDescripcion" class="errores">
+
+                            </div>
+                            <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui..."></textarea>
+                            
                             <div id="errDescripcion" class="errores">
 
                             </div>
