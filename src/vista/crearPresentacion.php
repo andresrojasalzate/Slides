@@ -1,3 +1,26 @@
+<?php
+session_start(); 
+
+$titulo = "";
+$descripcion = "";
+if (isset($_SESSION['errores'])) {
+
+    $errores = $_SESSION['errores'];
+    unset($_SESSION['errores']);
+
+    $titulo = $_SESSION['titulo'];
+    unset($_SESSION['titulo']);
+
+    $descripcion = $_SESSION['descripcion'];
+    unset($_SESSION['descripcion']);
+
+}
+/*$errores = [];
+if (isset($_GET['errores'])) {
+    parse_str($_GET['errores'], $errores);
+}*/
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,14 +49,18 @@
                     <form id="crearPresentacion" action="../controllers/crearPresentacionController.php" method="post">
                     <label for="nombre">Titulo</label>
                     <div id="errNombre" class="errores">
-
+                        <?php if (isset($errores["titulo"])): ?>
+                            <p><?= $errores["titulo"]; ?></p>      
+                        <?php endif; ?>
                     </div>
-                     <input type="text" class="introducirTexto"id="nombre" name="nombre" placeholder="Dale nombre a tu presentación" required><br>
+                     <input type="text" id="nombre" name="nombre" placeholder="Dale nombre a tu presentación" value="<?= $titulo; ?>" required><br>
                     <label for="descripcion">Descripción</label>
                     <div id="errDescripcion" class="errores">
-
+                         <?php if (isset($errores["descripcion"])): ?>
+                            <p><?= $errores["descripcion"]; ?></p>     
+                        <?php endif; ?>
                     </div>
-                    <textarea class="introducirTexto" id="descripcion" name="descripcion" placeholder="¿De que será tu presentacion?"></textarea><br>
+                    <textarea id="descripcion" name="descripcion" placeholder="¿De que será tu presentacion?" value="<?= $descripcion; ?>"></textarea><br>
 
                     <button type="submit" class="botonCrear">Crear Presentación</button>
                     </form>
