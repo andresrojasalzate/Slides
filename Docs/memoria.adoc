@@ -76,3 +76,11 @@ Para ver los detalles de los Sketching y Mockups, puede dirigirse al siguiente e
 - [*] Definir guía de estilos de la aplicación.
 - [*] Creación y actualización de la memoria.
 
+=== Andrés:
+- [*] Estructura base de datos.
+- [*] Sigleton para hacer conexión con base de datos.
+- [*] HTML página creación de presentaciones.
+- [*] CSS página creación de presentaciones.
+- [*] Validación de datos de creación de presentaciones en JavaScript.
+- [*] Validación de datos de creación de presentaciones en PHP.
+
