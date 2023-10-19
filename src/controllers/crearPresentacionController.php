@@ -27,14 +27,13 @@ function procesarFormulario() {
             Presentacion::insertPresentacion($conexion, $presentacion);
             
             
-            $idUltimaPresentacion = Presentacion::idUltimaPresentacion($conexion);
+            //$idUltimaPresentacion = Presentacion::idUltimaPresentacion($conexion);
             $conexion = null;
 
-            setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
-            setcookie("nombrePresentacion", $titulo, time() + 3600, "/");
+            //setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
 
             
-            header("Location: ../vista/crearDiapositiva.php");
+            header("Location: ../vista/home.php");
 
         }   
     }
