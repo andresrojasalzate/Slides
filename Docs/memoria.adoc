@@ -84,3 +84,11 @@ Para ver los detalles de los Sketching y Mockups, puede dirigirse al siguiente e
 - [*] Validación de datos de creación de presentaciones en JavaScript.
 - [*] Validación de datos de creación de presentaciones en PHP.
 
+=== Guiu:
+- [*] Estructura base de datos.
+- [*] Vagrant file para crear el servidor y la base de datos.
+- [*] HTML página creación de diapositivas.
+- [*] CSS página creación de diapositivas.
+- [*] JavaScript para saber que diapositiva seleccionamos en el home al añadir diapositiva.
+- [*] Php Controlador pantalla crear diapositivas.
+- [*] Inserts a la base de datos.
