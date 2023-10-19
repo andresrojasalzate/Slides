@@ -1,5 +1,8 @@
 const formularioPresentacion = document.getElementById("crearPresentacion");
-
+/**
+ * Funcion que muestra los errores que se han encontrado al validar el formulario de Crear Presentacion
+ * @param {Array} errores 
+ */
 function mostrarErrores(errores){
 
     for (let clave in errores) {
@@ -10,14 +13,20 @@ function mostrarErrores(errores){
         }else{
             contenedorError = document.getElementById("errDescripcion");
         }
-         
-        contenedorError.removeChild(contenedorError.firstChild);
+
+        while (contenedorError.firstChild) {
+            contenedorError.removeChild(contenedorError.firstChild);  
+        } 
+
         let errorAMostar = document.createElement("p");
         errorAMostar.textContent = errores[clave];
         contenedorError.appendChild(errorAMostar);
        }
     }
 
+ /**
+ * Funcion que valida los datos del formulario de crear Presentacion
+ */
 formularioPresentacion.addEventListener('submit', function (e) {
     e.preventDefault();
 

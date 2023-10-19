@@ -115,4 +115,21 @@ class Presentacion{
 		}
     }
 
+    public static function devolverPresentacion(PDO $pdo, int $id){
+        try{
+            $sql = "SELECT id, nombre, descripcion FROM presentaciones where id = :id;";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
 }

@@ -27,6 +27,15 @@ foreach ($presentaciones as &$value) {
     }
 }
 
+function buscarElementoEnArray($posicion, $miArray) {
+    if (isset($miArray[$posicion])) {
+        $valorColumna = $miArray[$posicion]['id'];
+        return $valorColumna;
+    } else {
+        return "La posición especificada no existe en el array";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -57,24 +66,21 @@ foreach ($presentaciones as &$value) {
             </div>
             <div class="contentPresentaciones">
                 <div class="mostrarPresentaciones">
-                    <?php if (count($presentaciones) > 0): ?>
-                        <?php foreach ($presentaciones as $presentacion): ?>
-                            <div class="presentacionBD">
-                                <div class="titulo"><span>
-                                        <?= $presentacion['nombre'] ?>
-                                    </span></div>
-                                <div class="nroDiapositivas"><span>Diapositivas:
-                                        <?= $presentacion['nroDiapositivas']; ?>
-                                    </span></div>
-                                <div class="opciones">
-                                    <button><span class="material-symbols-outlined">edit</span></button>
-                                    <button><span class="material-symbols-outlined">delete</span></button>
-                                    <button><span class="material-symbols-outlined">content_copy</span></button>
-                                    <button class="botonOpc"><span class="material-symbols-outlined">visibility</span></button>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                <?php if (count($presentaciones) > 0): ?>
+    <?php foreach ($presentaciones as $posicion => $presentacion): ?>
+        <div class="presentacionBD">
+            <div class="titulo"><span><?= $presentacion['nombre'] ?></span></div>
+            <div class="nroDiapositivas"><span>Diapositivas: <?= $presentacion['nroDiapositivas']; ?></span></div>
+            <div class="opciones">
+                <button><span class="material-symbols-outlined">edit</span></button>
+                <button><span class="material-symbols-outlined">delete</span></button>
+                <button><span class="material-symbols-outlined">content_copy</span></button>
+                <button class="botonOpc"><span class="material-symbols-outlined">visibility</span></button>
+                <button class="boton library-add-button" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="material-symbols-outlined">library_add</span></button>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
                 </div>
                 <div class="botonNuevaPresentacion">
                     <form action="crearPresentacion.php">
@@ -84,6 +90,7 @@ foreach ($presentaciones as &$value) {
             </div>
         </div>
     </div>
+    <script src="javascript/homejavascript.js"></script>
 </body>
 
 </html>
