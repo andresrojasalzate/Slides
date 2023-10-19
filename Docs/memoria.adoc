@@ -64,9 +64,9 @@ image::imagenes/estructura_base_de_datos.PNG[Tablas de la base de datos width=40
 Para ver los detalles de los Sketching y Mockups, puede dirigirse al siguiente enlace https://www.figma.com/file/Q052khG2YlsnMfOP3QerrB/Slides-Grupo-%236?type=design&node-id=0-1&mode=design&t=8SmZv0ChilCKd7s0-0[Sketching y Mockups]
 ====
 
-==Tareas realizadas.
+== Tareas realizadas.
 
-===Diego:
+=== Diego:
 - [*] Revisión de la configuración del GIT.
 - [*] Estructura base de datos.
 - [*] configuración del figma.
