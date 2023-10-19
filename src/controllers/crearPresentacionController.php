@@ -18,24 +18,24 @@ session_start();
 function isertarPresentacion($titulo, $descripcion){
 
     $presentacion = new Presentacion($titulo, $descripcion);
+session_start();
+
+function isertarPresentacion($titulo, $descripcion){
+
+    $presentacion = new Presentacion($titulo, $descripcion);
            
-    $bdConexion = ConexionBD::obtenerInstancia();
-    $conexion = $bdConexion->getConnection();
-    Presentacion::insertPresentacion($conexion, $presentacion);
-    
-    
-    $idUltimaPresentacion = Presentacion::idUltimaPresentacion($conexion);
-    $conexion = null;
+            $bdConexion = ConexionBD::obtenerInstancia();
+            $conexion = $bdConexion->getConnection();
+            Presentacion::insertPresentacion($conexion, $presentacion);
+            
+            
+            $conexion = null;
 
-    setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
-    setcookie("nombrePresentacion", $titulo, time() + 3600, "/");
 
     
-    header("Location: ../vista/crearDiapositiva.php");
+    header("Location: ../vista/home.php");
 }
-/**
- * Funcion que valida los datos recibidos por formulario de crear presentación.
- */
+
 function procesarFormulario() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        
@@ -56,7 +56,7 @@ function procesarFormulario() {
         }
 
         if(count($errores) > 0){
-
+            
             $_SESSION['errores'] = $errores;
             $_SESSION['titulo'] = $titulo;
             $_SESSION['descripcion'] = $descripcion;

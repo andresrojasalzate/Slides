@@ -1,7 +1,10 @@
 <?php
+use src\modelo\Clases\Presentacion;
 session_start();
 
 require_once '../modelo/Clases/Presentacion.php';
+require_once '../config/ConexionBD.php';
+
 
 //Almacenar presentaciones desde la BD
 $presentaciones = [
@@ -26,9 +29,20 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
     header('Location:crearDiapositiva.php');
 }
 
-if (isset($_COOKIE["nombrePresentacion"])) {
-    $nombrePresentacion = $_COOKIE["nombrePresentacion"];
+
+if (isset($_COOKIE["id_ultima_presentacion"])) {
+    $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
 }else{}
+
+$bdConexion = ConexionBD::obtenerInstancia();
+$conexion = $bdConexion->getConnection();
+
+$resultado = Presentacion::devolverPresentacion($conexion,$idUltimaPresentacion);
+
+$nombrePresentacion = $resultado[0]['nombre'];
+
+setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
+
 ?>
 
 <!DOCTYPE html>
