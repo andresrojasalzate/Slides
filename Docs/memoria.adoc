@@ -7,14 +7,13 @@
 
 === Objetivo de la aplicación:
 
-El objetivo es tener una página web capaz de crear presentaciones con diapositivas. Va dirigida sobre todo a estudiantes y profesores.
-Resolvería la necesidad de los alumnos y/o profesores a la hora de hacer presentaciones o apuntes de una forma más dinámica y entretenida, ya que no sería un solo documento con mucho texto.
+El objetivo es tener una aplicación web capaz de crear presentaciones con diapositivas. Va dirigida sobre todo a estudiantes y profesores.
+Resolvería la necesidad de los alumnos y/o profesores a la hora de hacer presentaciones o apuntes de una forma más rapida, dinámica, intuitiva y entretenida, ahorrandole al usuario tiempo y esfuerzo y asi mismo haciendo su trabajo mas eficiente.
 
-= Seguimiento semanal
 
 = Sprint 1
 
-== R01: Guia de estilos de la aplicación.
+== Guia de estilos de la aplicación.
 
 === Paleta de colores.
 La paleta de colores que tendrá nuestra aplicación de slides será una paleta monocromatica dentro del espectro del color purpura en diferentes tonalidades, el nombre de los colores, su valor hexadecimal y una muestra visual de cada color, se podrán ver en el siguiente enlace:
@@ -27,6 +26,7 @@ El color de de la fuente que se utilizará en la aplicación, será en primera i
 === Tipografia.
 Las tipografia seleccionada para la aplicación será la siguiente:
 
+.Tipografia de la aplicación
 [options="header"]
 |====================
 | Nombre | Funcionalidad | Tamaño | Referencia Visual
@@ -37,49 +37,25 @@ Las tipografia seleccionada para la aplicación será la siguiente:
 La iconografía que se implementará dentro de la aplicación, se tomará del paquete de iconos que ofrece google de manera gratuita, ya que dispone de diversas maneras posibles para aplicar los iconos a una aplicación personalizada.
 algunos de los iconos con los que dispondrá la aplicación y su respectivo nombre dentro del paquete de google son:
 
+.Iconos iniciales:
 image::imagenes/iconos.png[iconos de la aplicación]
 
+.Consejo:
+[TIP]
+====
+Para más detalle de la iconografía, puede encontrarla en el siguiente enlace https://fonts.google.com/icons[google Icons]
+====
 
-== R02: Estructura de la base de datos.
+
+== Estructura de la base de datos.
 image::imagenes/estructura_base_de_datos.PNG[Tablas de la base de datos width=400,height=300]
 
-== R03: Pantalla Home.
-image::imagenes/mockup_pantalla_home.PNG[Moqup pantalla home width=400,height=300]
+== Pantallas Home, crearPresenstación y crearDiapositiva.
 
-== R04: Pantalla _Crear_ Presenstación.
-image::imagenes/PantallaCreacionPresentaciones.png[Moqup pantalla creación de presentaciones width=400,height=300]
+.Consejo:
+[TIP]
+====
+Para ver los detalles de los Sketching y Mockups, puede dirigirse al siguiente enlace https://www.figma.com/file/Q052khG2YlsnMfOP3QerrB/Slides-Grupo-%236?type=design&node-id=0-1&mode=design&t=8SmZv0ChilCKd7s0-0 [Sketching y Mockups]
+====
 
-
-== R05: Almacenar la Presenstación.
-(...)
-
-== R06: #Refactor# Pantalla Home.
-(...)
-
-= Base de datos
-
-image::imagenes/BaseDeDatos.jpg[Tablas de la base de datos width=400,height=300]
-
-= Sketching y Mockups
-
-=== Pantalla creación presentaciones
-
-image::imagenes/ScetchPantallaCreacionPresentaciones.jpg[Squetch pantalla creación presentaciones width=400,height=300]
-image::imagenes/PantallaCreacionPresentaciones.png[Moqup pantalla creación de presentaciones width=400,height=300]
- 
- 
-=== Pantalla creación diapositivas
-
-image::imagenes/ScetchPantallaCreacionDiapositivas.jpg[Squetch pantalla creación diaposotivas width=400,height=300]
-image::imagenes/PantallaCreacionDiapositivas.png[Moqup pantalla creación de diaposotivas width=400,height=300]
-
-=== Pantalla home
-
-image::imagenes/scketching-pantalla-home.jpeg[Squetch pantalla home width=400,height=300]
-image::imagenes/mockup_pantalla_home.PNG[Moqup pantalla home width=400,height=300]
-
-=== Pantalla diapositiva titulo
-
-
-=== Pantalla diapositiva titulo y contenido
 
