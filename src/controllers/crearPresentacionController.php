@@ -24,6 +24,7 @@ function isertarPresentacion($titulo, $descripcion){
     $conexion = null;
 
     setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
+    setcookie("nombrePresentacion", $titulo, time() + 3600, "/");
 
     
     header("Location: ../vista/crearDiapositiva.php");
@@ -49,9 +50,7 @@ function procesarFormulario() {
         }
 
         if(count($errores) > 0){
-
-            /*$erroresUrl = http_build_query($errores);
-            header("Location: ../vista/crearPresentacion.php?errores=$erroresUrl");*/
+            
             $_SESSION['errores'] = $errores;
             $_SESSION['titulo'] = $titulo;
             $_SESSION['descripcion'] = $descripcion;

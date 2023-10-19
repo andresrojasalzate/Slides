@@ -15,11 +15,6 @@ if (isset($_SESSION['errores'])) {
     unset($_SESSION['descripcion']);
 
 }
-/*$errores = [];
-if (isset($_GET['errores'])) {
-    parse_str($_GET['errores'], $errores);
-}*/
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

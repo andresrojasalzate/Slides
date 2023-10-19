@@ -12,8 +12,7 @@ function mostrarErrores(errores){
         }
 
         while (contenedorError.firstChild) {
-            contenedorError.removeChild(contenedorError.firstChild);
-            
+            contenedorError.removeChild(contenedorError.firstChild);  
         } 
 
         let errorAMostar = document.createElement("p");
