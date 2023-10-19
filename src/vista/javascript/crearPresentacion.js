@@ -10,8 +10,11 @@ function mostrarErrores(errores){
         }else{
             contenedorError = document.getElementById("errDescripcion");
         }
-         
-        contenedorError.removeChild(contenedorError.firstChild);
+
+        while (contenedorError.firstChild) {
+            contenedorError.removeChild(contenedorError.firstChild);  
+        } 
+
         let errorAMostar = document.createElement("p");
         errorAMostar.textContent = errores[clave];
         contenedorError.appendChild(errorAMostar);
