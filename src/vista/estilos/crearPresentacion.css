@@ -29,17 +29,6 @@ body{
     align-items: center;
 }
 
-.bienvenida{
-    background-color: #C8C6D7;
-    width: 17.5%;
-    height: 15%;
-    border-radius: 10px;
-    margin: 15px;
-    text-align: center;
-    padding: 5px 0px;
-    font-size: 14px;
-}
-
 .tituloCrearPresentacion{
     background-color: #C8C6D7;
     width: 95%;
@@ -80,15 +69,6 @@ body{
     
     
 }
-
-.botonNuevaPresentacion{
-    display: flex;
-    justify-content: end;
-    width: 100%;
-    min-height: 10%;
-    align-items: end;
-}
-
 .botonCrear{
     background-color: #C8C6D7;
     border-radius: 10px;
@@ -108,15 +88,6 @@ body{
     border-color: #4A4063;
 }
 
-.presentacionBD{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: 10px;
-    background-color: #783F8E;
-    border-radius: 5px;
-}
-
 .titulo{
     background-color:white;
     padding: 3px;
@@ -125,28 +96,16 @@ body{
     text-align: center;
 }
 
-.nroDiapositivas{
-    background-color: white;
-    padding: 3px;
-    margin: 0px 5px;
-    border-radius: 5px;
-    text-align: left;
-}
-
-.opciones{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: #783F8E;
-    margin: 5px;
-}
-
 input{
     
     border-radius: 10px;
     border-width: 3px;
     border-color: #4A4063;
     background: #C8C6D7;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 35em;
+    height: 1.75em;
 }
 
 textarea{
@@ -155,6 +114,11 @@ textarea{
     border-width: 3px;
     border-color: #4A4063;
     background: #C8C6D7;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    width: 35em;
+    height: 10em;
+    resize: none;
 }
 
 form{
@@ -162,26 +126,11 @@ form{
     text-align: center;
 }
 
-input{
-    margin-top: 5%;
-    margin-bottom: 5%;
-    width: 35em;
-    height: 1.75em;
-}
-
 input::placeholder{
     text-align: center;
     vertical-align: middle;
 }
 
-textarea{
-
-    margin-top: 5%;
-    margin-bottom: 2%;
-    width: 35em;
-    height: 10em;
-    resize: none;
-}
 
 textarea::placeholder{
 
