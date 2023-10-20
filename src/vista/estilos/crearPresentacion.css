@@ -40,6 +40,7 @@ body{
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 24px;
+    color:black;
 }
 
 .contentFormulario{
@@ -70,16 +71,21 @@ body{
     
 }
 .botonCrear{
-    background-color: #C8C6D7;
-    border-radius: 10px;
+    background-color: #BFACC8;
+    border-radius: 20px;
     border-color: #4A4063;
     border-style: solid;
-    border-width: 3px;
-    padding: 5px;
+    border-width: 7px;
+    
     margin: 10px;
-    color:#4A4063;
+    color:black;
     font-weight: bold;
     font-size: 18px;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 15px;
 }
 
 .botonCrear:hover{
@@ -101,7 +107,6 @@ input{
     border-radius: 10px;
     border-width: 3px;
     border-color: #4A4063;
-    background: #C8C6D7;
     margin-top: 5%;
     margin-bottom: 5%;
     width: 35em;
@@ -112,8 +117,7 @@ textarea{
 
     border-radius: 10px;
     border-width: 3px;
-    border-color: #4A4063;
-    background: #C8C6D7;
+    border-color: #4A4063;  
     margin-top: 5%;
     margin-bottom: 2%;
     width: 35em;
@@ -124,6 +128,10 @@ textarea{
 form{
     position: relative;
     text-align: center;
+}
+
+label{
+    color:black;
 }
 
 input::placeholder{
