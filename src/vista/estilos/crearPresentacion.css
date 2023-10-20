@@ -150,11 +150,11 @@ input{
 }
 
 textarea{
-
     border-radius: 10px;
     border-width: 3px;
     border-color: #4A4063;
     background: #C8C6D7;
+    font-family: 'Roboto', sans-serif;
 }
 
 form{

@@ -6,30 +6,6 @@ require_once '../modelo/Clases/Presentacion.php';
 require_once '../config/ConexionBD.php';
 
 
-//Almacenar presentaciones desde la BD
-$presentaciones = [
-    /*
-['nombre'=> "pres 1",'diapositivas'=>[1,2,3]],
-['nombre'=> "pres 2",'diapositivas'=>[1,2,3,4,5,6]],
-['nombre'=> "pres 3",'diapositivas'=>[1,2,3,4,5]],
-['nombre'=> "pres 4",'diapositivas'=>[1]],
-['nombre'=> "pres 5",'diapositivas'=>[1,2]],
-['nombre'=> "pres 6",'diapositivas'=>[1,2]],
-['nombre'=> "pres 7",'diapositivas'=>[1,2]],
-['nombre'=> "pres 8",'diapositivas'=>[1,2]],
-['nombre'=> "pres 9",'diapositivas'=>[1,2]],
-['nombre'=> "pres 10",'diapositivas'=>[1,2]],
-['nombre'=> "pres 11",'diapositivas'=>[1,2]]*/
-];
-
-if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")) {
-    $nombre = $_GET['nombre'];
-    $descripcion = $_GET['descripcion'];
-    $_SESSION = (['nombre' => $nombre, 'descripcion' => $descripcion]);
-    header('Location:crearDiapositiva.php');
-}
-
-
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
 }else{}
@@ -61,9 +37,6 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
     <div class="cabecera">
         <div class="bienvenida">
             <span>Hola Ususario</span>
-        </div>
-        <div class="bienvenida centrar">
-            <span>Presentación: <?= $nombrePresentacion ?></span>
         </div>
         <div class="bienvenida centrar">
             <span>Presentación: <?= $nombrePresentacion ?></span>
@@ -103,16 +76,8 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
                         </div>
                         <div class="divOculto divFormColumn">
                             <label for="contenidoDiapo">Contenido</label>
-                            <div id="errDescripcion" class="errores">
-
-                            </div>
+                            <div id="errDescripcion" class="errores"></div>
                             <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui..."></textarea>
-                            
-                            <div id="errDescripcion" class="errores">
-
-                            </div>
-                            <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui..."></textarea>
-                            
                         </div>
                     </div>
                     <div class="botonNuevaDiapositiva">
