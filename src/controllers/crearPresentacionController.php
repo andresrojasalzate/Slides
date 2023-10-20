@@ -11,6 +11,11 @@ require_once '../modelo/Clases/Presentacion.php';
 require_once '../config/ConexionBD.php';
 session_start();
 
+/**
+ * Funcion que llama a la funcion de insertar de la clase Prersentacion
+ * @param $titulo titulo de la prsentación
+ * @param $descripcion descripcion
+ */
 function isertarPresentacion($titulo, $descripcion){
 
     $presentacion = new Presentacion($titulo, $descripcion);
@@ -27,6 +32,9 @@ function isertarPresentacion($titulo, $descripcion){
     header("Location: ../vista/home.php");
 }
 
+/**
+ * Funcion que valida los datos recibidos por formulario de crear presentación.
+ */
 function procesarFormulario() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        
