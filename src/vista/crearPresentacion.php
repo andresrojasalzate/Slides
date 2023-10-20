@@ -29,9 +29,6 @@ if (isset($_SESSION['errores'])) {
     <title>Crear Presentación</title>
 </head>
 <body>
-    <div class="cabecera">
-        
-    </div>
     <div class="crearPresentacion">
         <div class="contenido">
             <div class="tituloCrearPresentacion">

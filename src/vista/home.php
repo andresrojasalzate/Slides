@@ -55,11 +55,6 @@ function buscarElementoEnArray($posicion, $miArray) {
 </head>
 
 <body>
-    <div class="cabecera">
-        <div class="bienvenida">
-            <span>Hola Ususario</span>
-        </div>
-    </div>
     <div class="home">
         <div class="presentaciones">
             <div class="tituloContentPresentaciones">

@@ -58,21 +58,19 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
 
 <body>
     <div class="cabecera">
-        <div class="bienvenida">
-            <span>Hola Ususario</span>
-        </div>
+        
         <div class="bienvenida centrar">
-            <span>Presentación: <?= $nombrePresentacion ?></span>
+        <span class="tituloNuevaDiapositiva">Nueva Diapositiva</span>
         </div>
     </div>
     <div class="crearDiapositiva">
         <div class="fondoLila">
-            <div class="tiutlo">
-                <span>Nueva Diapositiva</span>
+            <div class="tiutlo nPresentacion">
+            <span>Presentación: <?= $nombrePresentacion ?></span>
             </div>
 
             <div class="contentCrearDiapositivas">
-                <form id="crearDiapositiva" action="../controllers/crearDiapositivaController.php" method="post">
+                <form id="crearDiapositiva" action="../controllers/crearDiapositivaController.php" method="post" class="form">
                     <fieldset class="divFormRow">
                         <legend class="subtitulos">Tipo de diapositiva</legend>
                         <div>
@@ -102,12 +100,17 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
                             
                         </div>
                     </div>
+                    
                     <div class="botonNuevaDiapositiva">
                         <form action="crearPresentacion.php">
                             <button class="botonCrear" type="submit">Crear</button>
+                            
                         </form>
+                        <button class="botonSalir" onclick="window.location.href='/vista/home.php'">Salir</button>
                     </div>
+                    
                 </form>
+                
             </div>
 
         </div>

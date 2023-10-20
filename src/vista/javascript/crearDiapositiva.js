@@ -13,6 +13,7 @@ tipoDiapositiva.forEach(element => {
     })
 });
 
+
 const formularioDiapositiva = document.getElementById("crearDiapositiva");
 
 function mostrarErrores(errores){
@@ -32,6 +33,8 @@ function mostrarErrores(errores){
         contenedorError.appendChild(errorAMostar);
        }
     }
+
+    
 
 formularioDiapositiva.addEventListener('submit', function (e) {
     e.preventDefault();
