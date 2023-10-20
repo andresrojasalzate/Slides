@@ -30,9 +30,7 @@ if (isset($_SESSION['errores'])) {
 </head>
 <body>
     <div class="cabecera">
-        <div class="bienvenida">
-            <span>Hola Ususario</span>
-        </div>
+        
     </div>
     <div class="crearPresentacion">
         <div class="contenido">
