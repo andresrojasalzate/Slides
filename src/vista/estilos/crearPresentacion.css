@@ -29,17 +29,6 @@ body{
     align-items: center;
 }
 
-.bienvenida{
-    background-color: #C8C6D7;
-    width: 17.5%;
-    height: 15%;
-    border-radius: 10px;
-    margin: 15px;
-    text-align: center;
-    padding: 5px 0px;
-    font-size: 14px;
-}
-
 .tituloCrearPresentacion{
     background-color: #C8C6D7;
     width: 95%;
@@ -51,6 +40,7 @@ body{
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 24px;
+    color:black;
 }
 
 .contentFormulario{
@@ -80,41 +70,28 @@ body{
     
     
 }
-
-.botonNuevaPresentacion{
-    display: flex;
-    justify-content: end;
-    width: 100%;
-    min-height: 10%;
-    align-items: end;
-}
-
 .botonCrear{
-    background-color: #C8C6D7;
-    border-radius: 10px;
+    background-color: #BFACC8;
+    border-radius: 20px;
     border-color: #4A4063;
     border-style: solid;
-    border-width: 3px;
-    padding: 5px;
+    border-width: 7px;
+    
     margin: 10px;
-    color:#4A4063;
+    color:black;
     font-weight: bold;
     font-size: 18px;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 15px;
 }
 
 .botonCrear:hover{
     background-color: #4A4063;
     color: white;
     border-color: #4A4063;
-}
-
-.presentacionBD{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: 10px;
-    background-color: #783F8E;
-    border-radius: 5px;
 }
 
 .titulo{
@@ -125,36 +102,27 @@ body{
     text-align: center;
 }
 
-.nroDiapositivas{
-    background-color: white;
-    padding: 3px;
-    margin: 0px 5px;
-    border-radius: 5px;
-    text-align: left;
-}
-
-.opciones{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: #783F8E;
-    margin: 5px;
-}
-
 input{
     
     border-radius: 10px;
     border-width: 3px;
     border-color: #4A4063;
-    background: #C8C6D7;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 35em;
+    height: 1.75em;
 }
 
 textarea{
 
     border-radius: 10px;
     border-width: 3px;
-    border-color: #4A4063;
-    background: #C8C6D7;
+    border-color: #4A4063;  
+    margin-top: 5%;
+    margin-bottom: 2%;
+    width: 35em;
+    height: 10em;
+    resize: none;
 }
 
 form{
@@ -162,11 +130,8 @@ form{
     text-align: center;
 }
 
-input{
-    margin-top: 5%;
-    margin-bottom: 5%;
-    width: 35em;
-    height: 1.75em;
+label{
+    color:black;
 }
 
 input::placeholder{
@@ -174,14 +139,6 @@ input::placeholder{
     vertical-align: middle;
 }
 
-textarea{
-
-    margin-top: 5%;
-    margin-bottom: 2%;
-    width: 35em;
-    height: 10em;
-    resize: none;
-}
 
 textarea::placeholder{
 
