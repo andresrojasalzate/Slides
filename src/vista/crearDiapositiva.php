@@ -6,29 +6,12 @@ require_once '../modelo/Clases/Presentacion.php';
 require_once '../config/ConexionBD.php';
 
 
-//Almacenar presentaciones desde la BD
-$presentaciones = [
-    /*
-['nombre'=> "pres 1",'diapositivas'=>[1,2,3]],
-['nombre'=> "pres 2",'diapositivas'=>[1,2,3,4,5,6]],
-['nombre'=> "pres 3",'diapositivas'=>[1,2,3,4,5]],
-['nombre'=> "pres 4",'diapositivas'=>[1]],
-['nombre'=> "pres 5",'diapositivas'=>[1,2]],
-['nombre'=> "pres 6",'diapositivas'=>[1,2]],
-['nombre'=> "pres 7",'diapositivas'=>[1,2]],
-['nombre'=> "pres 8",'diapositivas'=>[1,2]],
-['nombre'=> "pres 9",'diapositivas'=>[1,2]],
-['nombre'=> "pres 10",'diapositivas'=>[1,2]],
-['nombre'=> "pres 11",'diapositivas'=>[1,2]]*/
-];
-
 if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")) {
     $nombre = $_GET['nombre'];
     $descripcion = $_GET['descripcion'];
     $_SESSION = (['nombre' => $nombre, 'descripcion' => $descripcion]);
     header('Location:crearDiapositiva.php');
 }
-
 
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
@@ -54,6 +37,7 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/crearDiapositiva.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
+    <title>Crear Diapositiva</title>
     <title>Crear Diapositiva</title>
 </head>
 
@@ -89,16 +73,16 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
                             <div id="errNombre" class="errores centrar">
 
                             </div>
+                            <div id="errNombre" class="errores centrar">
+
+                            </div>
                             <input class="titulo" type="text" id="tituloDiapo" name="tituloDiapo"
                                 placeholder="Titulo de tu Diapositiva" required>
                         </div>
                         <div class="divOculto divFormColumn">
                             <label for="contenidoDiapo">Contenido</label>
-                            <div id="errDescripcion" class="errores">
-
-                            </div>
+                            <div id="errDescripcion" class="errores"></div>
                             <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui..."></textarea>
-                            
                         </div>
                     </div>
                     
@@ -118,6 +102,6 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
     </div>
 
 </body>
-<script src="/vista/javascript/crearDiapositiva.js"></script>
+<script src="javascript/crearDiapositiva.js"></script>
 
 </html>
