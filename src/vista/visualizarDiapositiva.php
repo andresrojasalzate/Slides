@@ -1,28 +1,9 @@
 <?php
 if (isset($_COOKIE['arrayDiapositivas'])) {
     $arrayCookie = $_COOKIE['arrayDiapositivas'];
-    $arrayDiapositivas = unserialize($arrayCookie);
+    $arrayDiapositivas = json_decode($arrayCookie, true);    
 } else {
-    $arrayDiapositivas = array(
-        array(
-            'idPresentacio' => 1,
-            'numDiapositiva' => 1,
-            'tipo' => 'A',
-            'contenido' => 'hola'
-        ),
-        array(
-            'idPresentacio' => 2,
-            'numDiapositiva' => 2,
-            'tipo' => 'B',
-            'contenido' => 'aaaa'
-        ),
-        array(
-            'idPresentacio' => 3,
-            'numDiapositiva' => 3,
-            'tipo' => 'A',
-            'contenido' => 'adeu'
-        )
-    );
+    echo 'no';
 }
 
 $posicion = isset($_POST['posicion']) ? $_POST['posicion'] : 0;
@@ -34,7 +15,7 @@ if (isset($_POST['sumar'])) {
 }
 
 // Guardar la posición actual en una cookie para recordarla
-setcookie('arrayDiapositivas', serialize($arrayDiapositivas), time() + 3600);
+setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
 
 ?>
 
@@ -59,20 +40,20 @@ setcookie('arrayDiapositivas', serialize($arrayDiapositivas), time() + 3600);
             <div class="titulo">
                 <form method="post" class="formTitulo">
                     <div class="esquerra">
-                <?php if ($arrayDiapositivas[$posicion]['numDiapositiva']!== 1) { ?>
+                <?php if ($arrayDiapositivas[$posicion]['nDiapositiva']!== 1) { ?>
                     <input class="btn" type="submit" name="restar" value="<">
                     <?php } ?>
                     </div>
-                    <span>Titulo diapositiva</span>
+                    <span><?php echo $arrayDiapositivas[$posicion]['titulo']; ?></span>
                     <input type="hidden" name="posicion" value="<?php echo $posicion; ?>">
                     <div class="dreta">
-                    <?php if ($arrayDiapositivas[$posicion]['numDiapositiva'] !== count($arrayDiapositivas)) { ?>
+                    <?php if ($arrayDiapositivas[$posicion]['nDiapositiva'] !== count($arrayDiapositivas)) { ?>
                         <input class="btn" type="submit" name="sumar" value=">">
                     <?php } ?>
                     </div>
                 </form>
             </div>
-            <?php if ($arrayDiapositivas[$posicion]['tipo'] !== 'B') { ?>
+            <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] !== 'titulo') { ?>
                 <div class="contentDiapositiva">
 
                     <div class="mostrarDiapositiva">

@@ -38,9 +38,24 @@ function buscarElementoEnArray($posicion, $miArray)
     }
 }
 
+function arrayDiapos($posicion, $miArray){
+    $bdConexion = ConexionBD::obtenerInstancia();
+    $conexion = $bdConexion->getConnection();
+
+    $id=buscarElementoEnArray($posicion, $miArray);
+    $diapos=Diapositiva::arrayDiapositivas($conexion,$id);
+    
+    $conexion = null;
+    
+    return $diapos;
+}
+
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     setcookie("id_ultima_presentacion", "", time()-3600);
 }else{}
+//if (isset($_COOKIE["arrayDiapositivas"])) {
+//    setcookie("arrayDiapositivas", "", time()-3600);
+//}else{}
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -82,8 +97,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <button class="material-symbols-outlined">edit</button>
                                     <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
                                     <button class="material-symbols-outlined">content_copy</button>
-                                    <button class="material-symbols-outlined">visibility</button>
-                                    <button class="boton library-add-button" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="material-symbols-outlined">library_add</span></button>
+                                    <button class="vDiapo material-symbols-outlined" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>">visibility</button>
+                                    <button class="nDiapo library-add-button" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="material-symbols-outlined">library_add</span></button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
