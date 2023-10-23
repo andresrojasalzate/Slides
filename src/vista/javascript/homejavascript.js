@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const botones = document.querySelectorAll('.boton');
+    const botones = document.querySelectorAll('.nDiapo');
     
     botones.forEach(function(boton) {
         boton.addEventListener('click', function() {
@@ -9,6 +9,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const botones = document.querySelectorAll('.vDiapo');
+    
+    botones.forEach(function(boton) {
+        boton.addEventListener('click', function() {
+            let diapos = boton.getAttribute('data-position');
+            console.log(diapos);
+            if (diapos.length > 2) {
+                console.log(diapos);
+                document.cookie = "arrayDiapositivas=" + diapos;
+                window.location.href = "visualizarDiapositiva.php";
+            } else {
+                console.error('El valor de diapos es null');
+            }
+        });
+    });
+});
+
 
 
 //mostrar modal de confirmación antes de eliminar una presentación

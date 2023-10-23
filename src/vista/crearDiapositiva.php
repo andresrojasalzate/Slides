@@ -6,6 +6,14 @@ require_once '../modelo/Clases/Presentacion.php';
 require_once '../config/ConexionBD.php';
 
 
+if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")) {
+    $nombre = $_GET['nombre'];
+    $descripcion = $_GET['descripcion'];
+    $_SESSION = (['nombre' => $nombre, 'descripcion' => $descripcion]);
+    header('Location:crearDiapositiva.php');
+}
+
+
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
 }else{}
