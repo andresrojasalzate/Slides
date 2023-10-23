@@ -37,6 +37,9 @@ function buscarElementoEnArray($posicion, $miArray) {
     }
 }
 
+if (isset($_COOKIE["id_ultima_presentacion"])) {
+    setcookie("id_ultima_presentacion", "", time()-3600);
+}else{}
 ?>
 
 <!DOCTYPE html>

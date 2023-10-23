@@ -25,11 +25,15 @@ function isertarPresentacion($titulo, $descripcion){
             Presentacion::insertPresentacion($conexion, $presentacion);
             
             
+            $pres = Presentacion::idUltimaPresentacion($conexion);
+            setcookie('id_ultima_presentacion', $pres, time() + 3600, '/');
+
+
             $conexion = null;
 
 
     
-    header("Location: ../vista/home.php");
+    header("Location: ../vista/crearDiapositiva.php");
 }
 
 /**
