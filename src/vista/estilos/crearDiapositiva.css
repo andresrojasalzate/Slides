@@ -1,6 +1,9 @@
-body{
+html,body{
     font-family: 'Roboto', sans-serif;
     color: #4A4063;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .cabecera{
@@ -15,6 +18,8 @@ body{
 
 .crearDiapositiva{
     display: flex;
+    width: 100%;
+    height: 87%;
 }
 
 
@@ -30,20 +35,20 @@ body{
 }
 
 .bienvenida{
-    background-color: #C8C6D7;
-    width: 17.5%;
-    height: 15%;
+    background-color: #DFDDF0;
+    width: auto;
+    height: auto;
     border-radius: 10px;
     margin: 15px;
     text-align: center;
-    padding: 5px 0px;
+    padding: 5px 40px;
     font-size: 14px;
 }
 
 .tiutlo{
-    background-color: #C8C6D7;
+    background-color: #DFDDF0;
     width: 95%;
-    height: 15%;
+    height: auto;
     border-radius: 10px;
     margin: 20px 15px;
     text-align: center;
@@ -52,30 +57,56 @@ body{
     font-weight: bold;
     font-size: 24px;
 }
+form{
+    height: 100%;
+}
 
 .contentCrearDiapositivas{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: #C8C6D7;
+    background-color: #DFDDF0;
     width: 95%;
+    height: 95%;
     min-height: 400px;
     border-radius: 10px;
     margin: 0 15px 30px 15px;
 }
 
 .botonCrear{
-    background-color: #C8C6D7;
+    background-color: #DFDDF0;
     border-radius: 10px;
     border-color: #4A4063;
     border-style: solid;
     border-width: 3px;
-    padding: 5px;
+    padding: 10px 40px;
     margin: 10px;
     color:#4A4063;
     font-weight: bold;
     font-size: 21px;
+    width: fit-content;
+    align-self: center;
     
+}
+
+.botonSalir{
+    background-color: #f52f2f;
+    border-radius: 10px;
+    border-color: #4A4063;
+    border-style: solid;
+    border-width: 3px;
+    padding: 10px 40px;
+    margin: 10px,0px,0px,10px;
+    color:#4A4063;
+    font-weight: bold;
+    font-size: 21px;    
+    width: fit-content;
+    align-self: center;
+}
+
+.botonSalir:hover{
+    background-color: #e61616;
+    color: white;
 }
 
 .botonCrear:hover{
@@ -89,7 +120,8 @@ body{
     justify-content: center;
     width: 100%;
     min-height: 10%;
-    align-items: end;
+    flex-direction: column;
+    
 }
 
 .subtitulos{
@@ -115,18 +147,15 @@ body{
     display: none;
 }
 
-.titulo{
-    min-width: 75%;
-    text-align: center;
-    margin: auto;
-}
-
 input[type="text"], textarea{
     padding: 5px 10px;
     border:none;
     border-radius: 5px;
     border: 3px solid #4A4063;
-    background: #C8C6D7;
+    width: 75%;
+    text-align: center;
+    margin: auto;
+
 }
 
 .inputCont{
@@ -164,4 +193,8 @@ textarea{
 .errores > p{
     color: red;
     justify-self: center;
+}
+
+.tituloNuevaDiapositiva{
+    font-size: 35px;
 }
