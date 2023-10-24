@@ -118,7 +118,6 @@ form{
 .botonNuevaDiapositiva{
     display: flex;
     justify-content: center;
-    width: 100%;
     min-height: 10%;
     flex-direction: column;
     
@@ -197,4 +196,25 @@ textarea{
 
 .tituloNuevaDiapositiva{
     font-size: 35px;
+}
+
+.botonVer{
+    background-color: #DFDDF0;
+    border-radius: 10px;
+    border-color: #4A4063;
+    border-style: solid;
+    border-width: 3px;
+    padding: 10px 40px;
+    margin: 10px;
+    color:#4A4063;
+    font-weight: bold;
+    font-size: 21px;
+    width: fit-content;
+    align-self: center;
+}
+
+.botonVer:hover{
+    background-color: #4A4063;
+    color: white;
+    border-color: #4A4063;
 }
