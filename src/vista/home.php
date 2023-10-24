@@ -38,7 +38,29 @@ function buscarElementoEnArray($posicion, $miArray)
     }
 }
 
-// eliminar presentaciones
+function arrayDiapos($posicion, $miArray){
+    $bdConexion = ConexionBD::obtenerInstancia();
+    $conexion = $bdConexion->getConnection();
+
+    $id=buscarElementoEnArray($posicion, $miArray);
+    $diapos=Diapositiva::arrayDiapositivas($conexion,$id);
+    
+    $conexion = null;
+    
+    return $diapos;
+}
+
+if (isset($_COOKIE["id_ultima_presentacion"])) {
+    setcookie("id_ultima_presentacion", "", time()-3600);
+}
+if (isset($_COOKIE["arrayDiapositivas"])) {
+   setcookie("arrayDiapositivas", "", time()-3600);
+}
+if (isset($_COOKIE["1diapo"])) {
+    setcookie("1diapo", false, time()-3600);
+ }
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);

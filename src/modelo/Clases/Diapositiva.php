@@ -69,4 +69,22 @@ use PDO, Exception, PDOException;
 		}
     }
 
+    public static function arrayDiapositivas(PDO $pdo, $presentacionId){
+        try {
+            $sql = "SELECT id, titulo, contenido, tipoDiapositiva, nDiapositiva FROM diapositivas WHERE presentaciones_id = :presentacionId";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':presentacionId', $presentacionId, PDO::PARAM_INT);
+            $statement->execute();
+            $diapos = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $diapos;
+        } catch(PDOException $ex) {
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+            echo $ex;
+            return false;
+        }
+    }
+
+
 }

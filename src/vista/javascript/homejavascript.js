@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const botones = document.querySelectorAll('.boton');
+    const botones = document.querySelectorAll('.nDiapo');
     
     botones.forEach(function(boton) {
         boton.addEventListener('click', function() {
