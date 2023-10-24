@@ -38,6 +38,7 @@ function buscarElementoEnArray($posicion, $miArray)
     }
 }
 
+// eliminar presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);
@@ -74,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <div class="titulo"><span><?= $presentacion['nombre'] ?></span></div>
                                 <div class="nroDiapositivas"><span>Diapositivas: <?= $presentacion['nroDiapositivas']; ?></span></div>
                                 <div class="opciones">
-                                    <button class="material-symbols-outlined">edit</button>
+                                    <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">edit</button>
                                     <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
                                     <button class="material-symbols-outlined">content_copy</button>
                                     <button class="material-symbols-outlined">visibility</button>

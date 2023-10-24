@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 //mostrar modal de confirmación antes de eliminar una presentación
-const eventoClicEliminar = document.querySelector('.contentPresentaciones');
+const eventoClicBotonesPresentacion = document.querySelector('.contentPresentaciones');
 const confirmacionEliminar = document.querySelector('.fondoModalEliminarPresentacion');
 const feedback = document.querySelector('.fondoModalFeedBackEliminarPresentacion');
 const btnAceptar = document.querySelector('[name="btnAceptar"]');
@@ -21,14 +21,14 @@ const modalEliminarPresentacion = document.querySelector('.modalEliminarPresenta
 const modalFeedBackEliminarPresentacion = document.querySelector('.modalFeedBackEliminarPresentacion');
 
 
-eventoClicEliminar.addEventListener('click',function(e){
+eventoClicBotonesPresentacion.addEventListener('click',function(e){
     if(e.target.name === "btnDelPresentacion"){
         confirmacionEliminar.style.display = "block";
         btnAceptar.value = e.target.value;
     }
 })
 
-//ocultar modal 
+//ocultar modal de confirmacion de la eliminacion de presentaciones
 const ocultarModales = () =>{
     confirmacionEliminar.style.display = "none";
     feedback.style.display = "none";
@@ -48,11 +48,22 @@ modalEliminarPresentacion.addEventListener('click', function(e){
     }
 })
 
-modalFeedBackEliminarPresentacion.addEventListener('click', function(e){
-    if(e.target.name === "btnCerrar"){
-        ocultarModales();
-        window.location.href = "home.php";
-    }
-})
+if(modalFeedBackEliminarPresentacion!=null){
+    modalFeedBackEliminarPresentacion.addEventListener('click', function(e){
+        if(e.target.name === "btnCerrar"){
+            ocultarModales();
+            window.location.href = "home.php";
+        }
+    })
+}
 
+// redireccion a la pantalla editar presentaciones
+eventoClicBotonesPresentacion.addEventListener('click',function(e){
+    if(e.target.name === "btnEditPresentacion"){
+        console.log('hola');
+        const posicion = e.target.value;
+        document.cookie = "id_ultima_presentacion=" + posicion;
+        window.location.href = "editarPresentacion.php";
+    }
+})  
 
