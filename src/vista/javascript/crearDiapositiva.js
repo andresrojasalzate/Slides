@@ -13,6 +13,16 @@ tipoDiapositiva.forEach(element => {
     })
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+
+    const contDiapo = document.querySelector('.contDiapo');
+
+    if (contDiapo && contDiapo.checked) {
+    divContenido.style.display = 'flex';
+    console.log("funciona");
+}
+
+});
 
 const formularioDiapositiva = document.getElementById("crearDiapositiva");
 
@@ -74,3 +84,33 @@ formularioDiapositiva.addEventListener('submit', function (e) {
 
 
 
+function verDiapositiva() {
+    let a;
+    const tituloDiapo = document.getElementById("tituloDiapo").value;
+    const contenidoDiapo = document.getElementById("contenidoDiapo").value;
+    const tipoDiapo = document.querySelector('input[type="radio"]:checked').value;
+
+    if (tipoDiapo === 'contenido') {
+        a = [
+            {
+            "titulo": tituloDiapo,
+            "contenido": contenidoDiapo,
+            "tipoDiapositiva": tipoDiapo,
+            "nDiapositiva": 1
+        }
+    ];
+    } else {
+        a = [
+            {
+            "titulo": tituloDiapo,
+            "contenido": null,
+            "tipoDiapositiva": "titulo",
+            "nDiapositiva": 1
+            }
+        ];
+    }
+
+    document.cookie = "1diapo=" + true;
+    document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
+    window.location.href = "visualizarDiapositiva.php";
+}
