@@ -103,7 +103,7 @@ function verDiapositiva() {
         a = [
             {
             "titulo": tituloDiapo,
-            "contenido": null,
+            "contenido": "",
             "tipoDiapositiva": "titulo",
             "nDiapositiva": 1
             }
