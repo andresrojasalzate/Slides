@@ -143,4 +143,25 @@ class Presentacion{
 		}
     }
 
+    public static function eliminarPresentacion(PDO $pdo, int $id){
+        try{
+            $sql = "START TRANSACTION;
+                    DELETE FROM diapositivas WHERE presentaciones_id = :id;
+                    DELETE FROM presentaciones WHERE id = :id;
+                    COMMIT;";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = "¡Presentación eliminada!";
+            return $result;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
+
 }

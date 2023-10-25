@@ -25,7 +25,7 @@ if (isset($_SESSION['errores'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/vista/estilos/crearPresentacion.css">
+    <link rel="stylesheet" href="estilos/crearPresentacion.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,6 +79,6 @@ if (isset($_SESSION['errores'])) {
             </div>
         </div>
     </div>
-    <script src="/vista/javascript/crearPresentacion.js"></script>
+    <script src="javascript/crearPresentacion.js"></script>
 </body>
 </html>

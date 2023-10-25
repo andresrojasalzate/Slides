@@ -39,11 +39,15 @@ function isertarPresentacion($titulo, $descripcion, $idEstilo){
             Presentacion::insertPresentacion($conexion, $presentacion);
             
             
+            $pres = Presentacion::idUltimaPresentacion($conexion);
+            $_SESSION["id_ultima_presentacion"] = $pres;
+
+
             $conexion = null;
 
 
     
-    header("Location: ../vista/home.php");
+    header("Location: ../vista/crearDiapositiva.php");
 }
 
 /**
