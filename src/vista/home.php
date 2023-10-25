@@ -56,14 +56,14 @@ function arrayDiapos($posicion, $miArray)
 }
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
-    setcookie("id_ultima_presentacion", "", time() - 3600);
+    setcookie("id_ultima_presentacion", "", time()-3600);
 }
 if (isset($_COOKIE["arrayDiapositivas"])) {
-    setcookie("arrayDiapositivas", "", time() - 3600);
+   setcookie("arrayDiapositivas", "", time()-3600);
 }
 if (isset($_COOKIE["1diapo"])) {
-    setcookie("1diapo", false, time() - 3600);
-}
+    setcookie("1diapo", false, time()-3600);
+ }
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
