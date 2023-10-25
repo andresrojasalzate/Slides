@@ -114,3 +114,14 @@ function verDiapositiva() {
     document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
     window.location.href = "visualizarDiapositiva.php";
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Este código se ejecuta cuando la página se carga
+    const toast = document.getElementById('toast');
+    if (toast) {
+        toast.style.display = 'block'; // Muestra el toast
+        setTimeout(function() {
+            toast.style.display = 'none'; // Oculta el toast después de 3 segundos
+        }, 3000);
+    }
+});
