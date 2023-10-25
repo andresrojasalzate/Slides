@@ -12,6 +12,7 @@ require_once '../modelo\Clases\DiapositivaTitulo.php';
 require_once '../modelo\Clases\DiapositivaTituloContenido.php';
 
 function procesarFormulario() {
+    session_start();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        
         $titulo = $_POST['tituloDiapo'];
@@ -32,13 +33,18 @@ function procesarFormulario() {
 
                 DiapositivaTitulo::insertDiapositivaTitulo($conexion, $diapositiva);
                 $conexion = null;
+                
+                $_SESSION['toast'] = true;
                 header("Location: ../vista/crearDiapositiva.php");
                 
             }elseif($tipo === 'contenido'){
                 $diapositiva = new DiapositivaTituloContenido($titulo,'tituloContenido', $descripcion, $idUltimaPresentacion, $nDiapositiva);
 
-                DiapositivaTituloContenido::insertDiapositivaTituloYContenido($conexion, $diapositiva);
+                $mostrarFeedback = DiapositivaTituloContenido::insertDiapositivaTituloYContenido($conexion, $diapositiva);
                 $conexion = null;
+                $_SESSION['toast'] = true;
+                setcookie("crearDiapo", $mostrarFeedback, time() + 3600, '/');
+                
                 header("Location: ../vista/crearDiapositiva.php");
             }else{}
 

@@ -23,6 +23,7 @@ if (isset($_POST['sumar'])) {
 // Guardar la posición actual en una cookie para recordarla
 setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
 
+var_dump($arrayDiapositivas);
 ?>
 
 <!DOCTYPE html>
