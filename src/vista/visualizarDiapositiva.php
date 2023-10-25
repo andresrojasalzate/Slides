@@ -3,7 +3,6 @@ if (isset($_COOKIE['arrayDiapositivas'])) {
     $arrayCookie = $_COOKIE['arrayDiapositivas'];
     $arrayDiapositivas = json_decode($arrayCookie, true);
 } else {
-    echo 'no';
 }
 
 if (isset($_COOKIE['1diapo'])) {
@@ -23,7 +22,6 @@ if (isset($_POST['sumar'])) {
 // Guardar la posición actual en una cookie para recordarla
 setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
 
-var_dump($arrayDiapositivas);
 ?>
 
 <!DOCTYPE html>

@@ -115,17 +115,6 @@ function verDiapositiva() {
     window.location.href = "visualizarDiapositiva.php";
 }
 
-const confirmacionEliminar = document.querySelector('.fondoModalFeedBackEliminarPresentacion');
-
-document.addEventListener('click', function(e){
-    if(e.target.name === "btnCerrar"){
-        confirmacionEliminar.style.display = "none";
-        document.cookie = "crearDiapo=" + 2;
-        window.location.href = "../vista/crearDiapositiva.php";
-        
-    }
-})
-
 document.addEventListener('DOMContentLoaded', function() {
     // Este código se ejecuta cuando la página se carga
     const toast = document.getElementById('toast');

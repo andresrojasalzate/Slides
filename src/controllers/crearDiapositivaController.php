@@ -18,10 +18,7 @@ function procesarFormulario() {
         $titulo = $_POST['tituloDiapo'];
         $descripcion = $_POST['contenidoDiapo'];
         $tipo = $_POST['tipoDiapo'];
-        if (isset($_COOKIE["id_ultima_presentacion"])) {
-            $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
-        }else{}
-
+        $idUltimaPresentacion = $_SESSION["id_ultima_presentacion"];
         if (empty($titulo)) {
           
         } else {
