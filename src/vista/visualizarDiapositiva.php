@@ -3,7 +3,6 @@ if (isset($_COOKIE['arrayDiapositivas'])) {
     $arrayCookie = $_COOKIE['arrayDiapositivas'];
     $arrayDiapositivas = json_decode($arrayCookie, true);
 } else {
-    echo 'no';
 }
 
 if (isset($_COOKIE['1diapo'])) {
