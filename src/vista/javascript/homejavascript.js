@@ -75,6 +75,7 @@ if(modalFeedBackEliminarPresentacion!=null){
 // redireccion a la pantalla editar presentaciones
 eventoClicBotonesPresentacion.addEventListener('click',function(e){
     if(e.target.name === "btnEditPresentacion"){
+        console.log('hola');
         const posicion = e.target.value;
         document.cookie = "id_ultima_presentacion=" + posicion;
         window.location.href = "editarPresentacion.php";
