@@ -91,11 +91,15 @@ if (isset($_COOKIE["1diapo"])) {
     setcookie("1diapo", false, time()-3600);
  }
 
+ if (isset($_COOKIE["idEstilo"])) {
+    setcookie("idEstilo", false, time()-3600);
+ }
+
 //Eliminar las presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);
-        $presentaciones = Presentacion::devolverPresentaciones($conexion);
+        //$presentaciones = Presentacion::devolverPresentaciones($conexion);
     }
 }
 ?>
