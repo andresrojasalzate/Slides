@@ -14,9 +14,13 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
     header('Location:crearDiapositiva.php');
 }
 
-
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
+} else {
+}
+$_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
+if (isset($_COOKIE["crearDiapo"])) {
+    $mostrarFeedback = $_COOKIE["crearDiapo"];
 } else {
 }
 
@@ -78,7 +82,8 @@ if (isset($_POST['titulo'])) {
                             <label for="tipoTitulo">Titulo</label><br>
                         </div>
                         <div>
-                            <input class="contDiapo" type="radio" id="tipoTituloCont" name="tipoDiapo" value="contenido" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'contenido') ? 'checked' : ''; ?>>
+                            <input class="contDiapo" type="radio" id="tipoTituloCont" name="tipoDiapo" value="contenido"
+                                <?php echo (isset($tipoDiapo) && $tipoDiapo === 'contenido') ? 'checked' : ''; ?>>
                             <label for="tipoTituloCont">Titulo y contenido</label>
                         </div>
                     </fieldset>
@@ -98,8 +103,8 @@ if (isset($_POST['titulo'])) {
                         <div class="divOculto divFormColumn">
                             <label for="contenidoDiapo">Contenido</label>
                             <div id="errDescripcion" class="errores"></div>
-                            <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo" 
-                            placeholder="Empieza aqui..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
+                            <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo"
+                                placeholder="Empieza aqui..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
                         </div>
                     </div>
 
@@ -110,15 +115,21 @@ if (isset($_POST['titulo'])) {
                                 onclick="window.location.href='/vista/home.php'">Salir</button>
                             <button type="button" class="botonVer" onclick="verDiapositiva()">Ver</button>
                         </div>
-
                     </div>
-
                 </form>
+                <?php
 
+
+                $mostrarToast = $_SESSION['toast'];
+                if ($mostrarToast) {
+                    echo '<div id="toast" class="toast">¡Diapositiva creada con éxito!</div>';
+                }
+                $_SESSION['toast'] = false;
+                ?>
             </div>
-
         </div>
     </div>
+
 
 </body>
 <script src="javascript/crearDiapositiva.js"></script>

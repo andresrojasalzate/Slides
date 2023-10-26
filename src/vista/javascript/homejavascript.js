@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     botones.forEach(function(boton) {
         boton.addEventListener('click', function() {
             let diapos = boton.getAttribute('data-position');
-            console.log(diapos);
             if (diapos.length > 2) {
                 console.log(diapos);
                 document.cookie = "arrayDiapositivas=" + diapos;
