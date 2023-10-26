@@ -20,13 +20,6 @@ if (isset($_COOKIE["id_ultima_presentacion"])) {
 }
 $_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
 
-if (isset($_COOKIE["crearDiapo"])) {
-    $mostrarFeedback = $_COOKIE["crearDiapo"];
-} else {
-}
-$_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
-
-
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
 
@@ -120,6 +113,7 @@ if (isset($_POST['titulo'])) {
                         </div>
                     </div>
                 </form>
+                <?php
                 $mostrarToast = $_SESSION['toast'];
                 if ($mostrarToast) {
                     echo '<div id="toast" class="toast">¡Diapositiva creada con éxito!</div>';

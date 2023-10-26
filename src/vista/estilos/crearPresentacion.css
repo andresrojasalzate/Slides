@@ -1,6 +1,7 @@
-body{
+html,body{
     font-family: 'Roboto', sans-serif;
     color: #4A4063;
+    height: 99%;
    
 }
 .cabecera{
@@ -15,6 +16,7 @@ body{
 
 .crearPresentacion{
     display: flex;
+    height: 100%;
     
 }
 
@@ -29,19 +31,23 @@ body{
     align-items: center;
 }
 
-.tituloCrearPresentacion{
+.tituloCrearPresentacion {
     background-color: #C8C6D7;
     width: 95%;
     height: 15%;
     border-radius: 10px;
     margin: 20px 15px;
-    text-align: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
     padding: 5px 0px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 24px;
-    color:black;
+    color: black;
 }
+
 
 .contentFormulario{
     display: flex;
@@ -49,6 +55,7 @@ body{
     flex-wrap: wrap;
     background-color: #C8C6D7;
     width: 95%;
+    height: 100%;
     min-height: 400px;
     border-radius: 10px;
     margin: 0 15px 30px 15px;
@@ -149,6 +156,9 @@ textarea::placeholder{
     color: red;
 }
 
+span{
+    font-size: 35px;
+}
 
 
 
