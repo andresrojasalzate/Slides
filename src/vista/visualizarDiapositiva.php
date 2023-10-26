@@ -1,10 +1,15 @@
 <?php
+use src\modelo\Clases\Estilo;
+
 if (isset($_COOKIE['arrayDiapositivas'])) {
     $arrayCookie = $_COOKIE['arrayDiapositivas'];
     $arrayDiapositivas = json_decode($arrayCookie, true);
 } else {
 }
 
+if(isset($_COOKIE['idEstilo'])) {
+    $estilo = $_COOKIE['idEstilo'];
+}
 if (isset($_COOKIE['1diapo'])) {
     $diapoSola = $_COOKIE['1diapo'];
 } else {
@@ -31,6 +36,7 @@ setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/vista/estilos/visualizarDiapositiva.css">
+    <link rel="stylesheet" href="/vista/estilos/<?= $estilo; ?>">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +47,7 @@ setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
 
 <body>
     <div class="visualizarDiapositiva">
-        <div class="contenido">
+        <div class="contenedor">
             <div class="titulo">
                 <form method="post" class="formTitulo">
                     <div class="esquerra">
@@ -61,7 +67,7 @@ setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
                 </form>
             </div>
             <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] !== 'titulo') { ?>
-                <div class="contentDiapositiva">
+                <div class="contenido">
 
                     <div class="mostrarDiapositiva">
                         <label for="contenido" id="contenidoLabel">
