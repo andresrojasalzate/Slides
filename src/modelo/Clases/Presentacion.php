@@ -152,5 +152,24 @@ class Presentacion{
 		}
     }
 
+    public static function actualizarPresentacion(PDO $pdo, int $id, string $titulo, string $descripcion){
+        try{
+            $sql = "UPDATE presentaciones SET nombre = :titulo, descripcion = :descripcion WHERE id = :id";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+            $statement->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = "¡Presentación actualizada!";
+            return $result;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
 
 }

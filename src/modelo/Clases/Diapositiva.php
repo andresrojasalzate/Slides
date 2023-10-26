@@ -71,7 +71,7 @@ use PDO, Exception, PDOException;
 
     public static function arrayDiapositivas(PDO $pdo, $presentacionId){
         try {
-            $sql = "SELECT id, titulo, contenido, tipoDiapositiva, nDiapositiva FROM diapositivas WHERE presentaciones_id = :presentacionId";
+            $sql = "SELECT id, titulo, contenido, tipoDiapositiva, nDiapositiva FROM diapositivas WHERE presentaciones_id = :presentacionId ORDER BY nDiapositiva";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':presentacionId', $presentacionId, PDO::PARAM_INT);
             $statement->execute();
@@ -85,6 +85,40 @@ use PDO, Exception, PDOException;
             return false;
         }
     }
+
+    public static function eliminarDiapositiva(PDO $pdo, $id){
+        try {
+            $sql = "DELETE FROM diapositivas WHERE id = :id";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $confirmacion = "¡Diapositiva eliminada!";
+            return $confirmacion;
+        } catch(PDOException $ex) {
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+            echo $ex;
+            return false;
+        }
+    }
+
+    public static function reordenarDiapositivas(PDO $pdo, $id, $nDiapositiva){
+        try {
+            $sql = "UPDATE diapositivas SET nDiapositiva = :nDiapositiva WHERE id = :id";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':nDiapositiva', $nDiapositiva, PDO::PARAM_INT);
+            $statement->execute();
+        } catch(PDOException $ex) {
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+            echo $ex;
+            return false;
+        }
+    }
+
 
 
 }
