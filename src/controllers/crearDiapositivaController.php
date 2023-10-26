@@ -37,6 +37,7 @@ function procesarFormulario() {
             }elseif($tipo === 'contenido'){
                 $diapositiva = new DiapositivaTituloContenido($titulo,'tituloContenido', $descripcion, $idUltimaPresentacion, $nDiapositiva);
 
+                DiapositivaTituloContenido::insertDiapositivaTituloYContenido($conexion, $diapositiva);
                 $conexion = null;
                 $_SESSION['toast'] = true;
                 

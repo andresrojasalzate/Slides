@@ -119,6 +119,22 @@ use PDO, Exception, PDOException;
         }
     }
 
+    public static function getDiapo($pdo, $id){
+        try {
+            $sql = "SELECT * from diapositivas where id = :id;";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $diapo = $statement->fetch(PDO::FETCH_ASSOC);
+            return $diapo;
+        } catch(PDOException $ex) {
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+            echo $ex;
+            return false;
+        }
+    }
 
 
 }

@@ -71,11 +71,11 @@ setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
 
                 </div>
             <?php } ?>
-            <?php if (!$diapoSola) { ?>
+            <?php if ($diapoSola == 'home') { ?>
                 <form action="home.php">
                     <button class="btnSalir">Salir</button>
                 </form>
-            <?php } else { ?>
+            <?php } elseif($diapoSola == 'crearDiapo') { ?>
                 <form action="crearDiapositiva.php" method="post">
                     <input type="hidden" name="titulo"
                         value="<?= htmlspecialchars($arrayDiapositivas[$posicion]['titulo']); ?>">
@@ -83,6 +83,10 @@ setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
                         value="<?= htmlspecialchars($arrayDiapositivas[$posicion]['contenido']); ?>">
                     <input type="hidden" name="tipoDiapo"
                         value=<?= htmlspecialchars($arrayDiapositivas[$posicion]['tipoDiapositiva']); ?>>
+                    <button class="btnSalir">Salir</button>
+                </form>
+            <?php }elseif($diapoSola == 'editarPres'){ ?>
+                <form action="editarPresentacion.php">
                     <button class="btnSalir">Salir</button>
                 </form>
             <?php } ?>
