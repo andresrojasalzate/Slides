@@ -20,10 +20,10 @@ if (isset($_SESSION['errores'])) {
 
     $descripcion = $_SESSION['descripcion'];
     unset($_SESSION['descripcion']);
-
-    
-
 }
+
+setcookie("nDiapo", "home", time() + 3600, "/");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

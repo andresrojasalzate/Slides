@@ -29,7 +29,6 @@ function isertarPresentacion($titulo, $descripcion, $idEstilo){
             
             $pres = Presentacion::idUltimaPresentacion($conexion);
             setcookie("id_ultima_presentacion", $pres, time() + 3600, "/");
-
             $estilo = Estilo::getEstilo($conexion,$idEstilo);
             foreach ($estilo as $fila) {
                 $cssResource = $fila['css_resource'];

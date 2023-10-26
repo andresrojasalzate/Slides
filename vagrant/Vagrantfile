@@ -40,6 +40,9 @@ echo ">>> Installing Base Requirements"
 
       CREATE TABLE diapositivas(id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
 
+      insert into estilos(nombre, css_resource, img_resource) values("estilo1", "estilo1.css", "estilo1.PNG");
+      insert into estilos(nombre, css_resource, img_resource) values("estilo1", "estilo2.css", "estilo2.PNG");
+      
 EOF
 SCRIPT
 

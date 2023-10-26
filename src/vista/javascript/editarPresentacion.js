@@ -3,6 +3,7 @@ const btnNuevaDiapositiva = document.querySelector('[name="btnNuevaDiapositiva"]
 
 btnNuevaDiapositiva.addEventListener('click', function () {
     const posicion = btnNuevaDiapositiva.value;
+    document.cookie = "nDiapo=" + "editarPres";
     document.cookie = "id_ultima_presentacion=" + posicion;
     window.location.href = "crearDiapositiva.php";
 });

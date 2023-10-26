@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     botones.forEach(function(boton) {
         boton.addEventListener('click', function() {
             const posicion = boton.getAttribute('data-position');
+            document.cookie = "nDiapo=" + "home";
             document.cookie = "id_ultima_presentacion=" + posicion;
             window.location.href = "crearDiapositiva.php";
         });

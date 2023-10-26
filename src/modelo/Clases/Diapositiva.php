@@ -136,5 +136,21 @@ use PDO, Exception, PDOException;
         }
     }
 
+    
 
+    public static function restar1nDiapos($pdo, $id, $nDiapo){
+        try {
+            $sql = "UPDATE diapositivas SET nDiapositiva = nDiapositiva - 1 WHERE nDiapositiva > :nDiapo and presentaciones_id = :id;";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':nDiapo', $nDiapo, PDO::PARAM_INT);
+            $statement->execute();
+        } catch(PDOException $ex) {
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+            echo $ex;
+            return false;
+        }
+    }
 }

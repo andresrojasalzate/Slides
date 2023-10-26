@@ -16,6 +16,7 @@ html,body{
 .crearPresentacion {
     display: flex;
     height: 100%;  
+
 }
 
 .contenido {
@@ -45,7 +46,6 @@ html,body{
     font-size: 24px;
     color: black;
 }
-
 
 .contentFormulario {
     display: flex;
@@ -180,6 +180,29 @@ span{
     flex: 0 0 100%;
 }
 
+.slider {
+    width: 100%;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.slider ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    transition: transform 0.5s;
+}
+
+.slider li {
+    flex: 0 0 100%;
+}
+
+.slider ul li:not(:first-child) {
+    display: none;
+}
 
 .slider ul li:not(:first-child) {
     display: none;

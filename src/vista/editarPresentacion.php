@@ -28,8 +28,10 @@ $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 //Funcion para eliminar presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
+        $a = returnDiapo($conexion, $_POST["btnAceptar"])["nDiapositiva"];
+        Diapositiva::restar1nDiapos($conexion,$id,$a);
         $mostrarFeedback = Diapositiva::eliminarDiapositiva($conexion, $_POST["btnAceptar"]);
-        $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
+        $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);   
     }
 }
 
