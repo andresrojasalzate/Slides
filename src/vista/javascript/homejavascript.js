@@ -69,7 +69,6 @@ if(modalFeedBackEliminarPresentacion!=null){
     modalFeedBackEliminarPresentacion.addEventListener('click', function(e){
         if(e.target.name === "btnCerrar"){
             ocultarModales();
-            window.location.href = "home.php";
         }
     })
 }

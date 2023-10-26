@@ -18,7 +18,7 @@ body{
 
 .presentaciones{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: #4A4063;
     border-radius: 20px;
     border: 10 px solid white;
@@ -57,7 +57,7 @@ body{
     flex-wrap: wrap;
     background-color: #C8C6D7;
     width: 95%;
-    min-height: 400px;
+    height: 100vh;
     border-radius: 10px;
     margin: 0 15px 30px 15px;
 }
