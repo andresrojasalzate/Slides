@@ -91,10 +91,11 @@ if (isset($_COOKIE["1diapo"])) {
     setcookie("1diapo", false, time()-3600);
  }
 
-
+//Eliminar las presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);
+        $presentaciones = Presentacion::devolverPresentaciones($conexion);
     }
 }
 ?>
@@ -133,16 +134,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <?= $presentacion['nroDiapositivas']; ?>
                                     </span></div>
                                 <div class="opciones">
-                                    <button class="material-symbols-outlined">edit</button>
-                                    <button name="btnDelPresentacion"
-                                        value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"
-                                        class="material-symbols-outlined">delete</button>
+                                    <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">edit</button>
+                                    <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
                                     <button class="material-symbols-outlined">content_copy</button>
-                                    <button class="vDiapo material-symbols-outlined"
-                                        data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>">visibility</button>
-                                    <button class="nDiapo library-add-button"
-                                        data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span
-                                            class="material-symbols-outlined">library_add</span></button>
+                                    <button class="vDiapo material-symbols-outlined" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>">visibility</button>
+                                    <button class="nDiapo library-add-button" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="material-symbols-outlined">library_add</span></button>
                                 </div>
                             </div>
                         <?php endforeach; ?>

@@ -2,23 +2,15 @@ body{
     font-family: 'Roboto', sans-serif;
     color: #4A4063;
 }
-.cabecera{
-    display: flex;
-    width: 100%;
-    min-height: 60px;
-    background-color: #4A4063;
-    border-radius: 20px;
-    border: 10 px solid white;
-    margin-bottom: 10px;
-}
 
 .home{
     display: flex;
+    height: 100vh;
 }
 
-.presentaciones{
+.pantallaEditar{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #4A4063;
     border-radius: 20px;
     border: 10 px solid white;
@@ -27,39 +19,99 @@ body{
     align-items: center;
 }
 
-.bienvenida{
-    background-color: #C8C6D7;
-    width: 17.5%;
-    height: 15%;
-    border-radius: 10px;
-    margin: 15px;
-    text-align: center;
-    padding: 5px 0px;
-    font-size: 14px;
-}
-
-.tituloContentPresentaciones{
+.tituloEditarPresentaciones{
     background-color: #C8C6D7;
     width: 95%;
-    height: 15%;
+    height: 5%;
     border-radius: 10px;
     margin: 20px 15px;
     text-align: center;
-    padding: 5px 0px;
+    padding: 10px 0px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 24px;
 }
 
-.contentPresentaciones{
+.edicion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    margin: 0 15px 20px 15px;
+}
+
+.datosPresentacion{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #C8C6D7;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    margin: 0px 30px;
+}
+form{
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.contentForm{
+    display: flex;
+}
+
+label{
+    padding-top: 15px;
+}
+
+input{
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    height: auto;
+}
+
+.titulo{
+    text-align: center;
+}
+.tituloDiapo{
+    background-color:white;
+    padding: 3px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.botonesEdicionPresentacion{
+    margin: 40px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.contenedorDiapositivas{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 70%;
     background-color: #C8C6D7;
-    width: 95%;
-    height: 100vh;
     border-radius: 10px;
-    margin: 0 15px 30px 15px;
+    align-content: start;
+    margin-right: 30px;
+}
+
+.mensajeCeroDiapositivas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    background-color: #C8C6D7;
+    border-radius: 10px;
+    align-content: center;
+    margin-right: 30px;
 }
 
 .mostrarPresentaciones{
@@ -96,6 +148,7 @@ body{
     border-color: #4A4063;
 }
 
+
 .presentacionBD{
     display: flex;
     flex-direction: column;
@@ -103,22 +156,6 @@ body{
     margin: 10px;
     background-color: #783F8E;
     border-radius: 5px;
-}
-
-.titulo{
-    background-color:white;
-    padding: 3px;
-    margin: 5px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.nroDiapositivas{
-    background-color: white;
-    padding: 3px;
-    margin: 0px 5px;
-    border-radius: 5px;
-    text-align: left;
 }
 
 .opciones{
@@ -129,7 +166,7 @@ body{
     margin: 5px;
 }
 
-.fondoModalEliminarPresentacion{
+.fondoModalEliminarDiapositiva{
     display: none;
     background-color: rgba(128, 128, 128,0.5);
     width: 100%;
@@ -139,7 +176,7 @@ body{
     left: 0;
 }
 
-.fondoModalFeedBackEliminarPresentacion{
+.fondoModalFeedBackEliminarDiapositiva{
     display: block;
     background-color: rgba(128, 128, 128,0.5);
     width: 100%;
@@ -149,7 +186,7 @@ body{
     left: 0;
 }
 
-.modalEliminarPresentacion , .modalFeedBackEliminarPresentacion{
+.modalEliminarDiapositiva , .modalFeedBackEliminarDiapositiva{
     position: fixed;
     background-color: #C8C6D7;
     border: 3px solid #783F8E;
@@ -179,10 +216,6 @@ body{
     margin: 10px;
 }
 
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+.invisible {
+    display: none;
 }
