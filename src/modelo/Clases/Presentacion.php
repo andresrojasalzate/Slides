@@ -10,12 +10,14 @@ class Presentacion{
     protected string $titulo;
     protected string $descripcion;
     protected array $diapositivas;
+    protected int $estilo_id;
 
     //Constructor
-    public function __construct(string $titulo,string $descripcion){
-        $this->titulo = $titulo;
+    public function __construct(string $titulo, $descripcion, int $estilo_id){
+        $this->titulo = $titulo; 
         $this->descripcion = $descripcion;
         $this->diapositivas = [];
+        $this->estilo_id = $estilo_id;
     }
 
     //Getters
@@ -33,6 +35,10 @@ class Presentacion{
 
     public function getDiapositivas(): array{
         return $this->diapositivas;
+    }
+
+    public function getEstiloId(): int{
+        return $this->estilo_id;
     }
 
     //Setters
@@ -53,6 +59,10 @@ class Presentacion{
         array_push($this->diapositivas,$nuevaDiapositiva);
     }
 
+    public function setEstiloId(int $nuevaEstiloId){
+        $this->estilo_id = $$nuevaEstiloId;
+    }
+
     /**
      * Funcion para hacer un inserte de una presentacion en la base de datos
      * 
@@ -63,20 +73,21 @@ class Presentacion{
      */
     public static function insertPresentacion(PDO $pdo, Presentacion $presentacion){
 
-        try{
-            $sql = "INSERT INTO presentaciones (nombre, descripcion) VALUES (:nombre, :descripcion)";
+       // try{
+            $sql = "INSERT INTO presentaciones (nombre, descripcion, estilo_id) VALUES (:nombre, :descripcion, :estilo_id)";
             $statement = $pdo->prepare($sql);
             $statement->bindValue(':nombre', $presentacion->titulo);
             $statement->bindValue(':descripcion', $presentacion->descripcion);
+            $statement->bindValue(':estilo_id', $presentacion->estilo_id);
             $statement->execute();
-            return true;
-        } catch(PDOException $ex){
+            
+       /* } catch(PDOException $ex){
             echo $ex;
             return false;
         } catch (Exception $ex) {
 			echo $ex;
             return false;
-		}
+		}*/
     }
 
     public static function idUltimaPresentacion(PDO $pdo):int{
@@ -101,7 +112,7 @@ class Presentacion{
 
     public static function devolverPresentaciones(PDO $pdo){
         try{
-            $sql = "SELECT id, nombre, descripcion FROM presentaciones ORDER BY id;";
+            $sql = "SELECT id, nombre, descripcion, estilo_id FROM presentaciones ORDER BY id;";
             $statement = $pdo->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);
