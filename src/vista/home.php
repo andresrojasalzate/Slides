@@ -2,10 +2,12 @@
 
 use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\Presentacion;
+use src\modelo\Clases\Estilo;
 
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Presentacion.php';
 require_once '../modelo/Clases/Diapositiva.php';
+require_once '../modelo/Clases/Estilo.php';
 
 session_start();
 
@@ -53,6 +55,30 @@ function arrayDiapos($posicion, $miArray)
     $conexion = null;
 
     return $diapos;
+}
+function buscarIdEstilo($posicion, $miArray)
+{
+    if (isset($miArray[$posicion])) {
+        $valorColumna = $miArray[$posicion]['estilo_id'];
+        return $valorColumna;
+    } else {
+        return "La posición especificada no existe en el array";
+    }
+}
+
+function devolverEstilo($posicion, $miArray){
+    $bdConexion = ConexionBD::obtenerInstancia();
+    $conexion = $bdConexion->getConnection();
+
+    $idEstilo = buscarIdestilo($posicion, $miArray);
+
+    $estilo = Estilo::getEstilo($conexion, $idEstilo);
+    
+    foreach ($estilo as $fila) {
+        $cssResource = $fila['css_resource'];
+        
+    }
+    return $cssResource;
 }
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
@@ -113,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         class="material-symbols-outlined">delete</button>
                                     <button class="material-symbols-outlined">content_copy</button>
                                     <button class="vDiapo material-symbols-outlined"
-                                        data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>">visibility</button>
+                                        data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>">visibility</button>
                                     <button class="nDiapo library-add-button"
                                         data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span
                                             class="material-symbols-outlined">library_add</span></button>

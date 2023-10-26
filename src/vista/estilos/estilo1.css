@@ -1,13 +1,6 @@
 
-html, body{
-    height:100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-#contenedor{
+
+.contenedor{
     height:100%;
     width: 100%;
     display: flex;
@@ -16,7 +9,7 @@ html, body{
     background-color: #4A4063;
 }
 
-#titulo{
+.titulo{
     height: 13%;
     width: 95%;
     margin-top: 4%;
@@ -24,18 +17,17 @@ html, body{
     background: #C8c6D7;
     margin-bottom: 3%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#titulo > p{
+.titulo span{
     font-weight: bold;
     font-size: 48px;
     
 }
 
-#contenido{
+.contenido{
     width: 95%;
     height: 70%;
     background: #C8c6D7;
@@ -45,8 +37,21 @@ html, body{
     align-items: center;
 }
 
-#contenido > p{
+.contenido label{
     margin-top: 3%;
     margin-left: 3%;
     margin-right: 3%;
+}
+
+.btn{
+    background-color: #DFDDF0;
+    border-radius: 10px;
+    border-color: #4A4063;
+    border-style: solid;
+    border-width: 3px;
+    padding: 10px 40px;
+    margin: 10px;
+    color:#4A4063;
+    font-weight: bold;
+    font-size: 21px;
 }

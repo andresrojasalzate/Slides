@@ -158,6 +158,7 @@ textarea::placeholder {
     overflow: hidden;
     display: inline-flex;
     justify-content: center;
+    margin-top: 3%;
 }
 
 .slider ul {
@@ -199,11 +200,32 @@ textarea::placeholder {
     height: 6em;
     width: 5em;
     border-radius: 10px;
-    border-width: 7px;
-    border-style: solid;
     background-color: #BFACC8;
     border-color: #4A4063;
-    position: relative;
-    
+    position: relative; 
+} 
+
+#siguiente::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent transparent transparent #4F1271;
+  z-index: 1;
 }
 
+#anterior::before{
+
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent #4F1271 transparent transparent ;
+    z-index: 1;
+}

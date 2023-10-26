@@ -7,7 +7,7 @@ html, body{
     justify-content: center;
     align-items: center;
   }
-#contenedor{
+.contenedor{
     height:100%;
     width: 100%;
     display: flex;
@@ -16,7 +16,7 @@ html, body{
     background-color: #FF7EA8;
 }
 
-#titulo{
+.titulo{
     height: 13%;
     width: 95%;
     margin-top: 4%;
@@ -29,14 +29,14 @@ html, body{
     align-items: center;
 }
 
-#titulo > p{
+.titulo  span{
     font-weight: bold;
     font-size: 48px;
     color: #FF7EA8;
     
 }
 
-#contenido{
+.contenido{
     width: 95%;
     height: 70%;
     background: #FFFF;
@@ -46,10 +46,23 @@ html, body{
     align-items: center;
 }
 
-#contenido > p{
+.contenido label{
     color: #FF7EA8;
     margin-top: 3%;
     margin-left: 3%;
     margin-right: 3%;
     font-weight: bold;
+}
+
+.btn{
+    background-color: #FF7EA8;
+    border-radius: 50px;
+    /*border-color: #4A4063;
+    border-style: solid;
+    border-width: 3px;*/
+    padding: 10px 40px;
+    margin: 10px;
+    color:#FFFF;
+    font-weight: bold;
+    font-size: 21px;
 }

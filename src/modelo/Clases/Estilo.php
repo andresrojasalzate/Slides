@@ -48,4 +48,20 @@ class Estilo{
         return $ret;
     }
 
+    public static function getEstilo(PDO $pdo, int $id){
+        try{
+            $sql = "SELECT css_resource FROM estilos WHERE id = $id;";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $ret = $statement->fetchAll(PDO::FETCH_ASSOC);
+            
+        } catch(PDOException $ex){
+            echo $ex;
+        } catch (Exception $ex){
+            echo $ex;
+        }
+       
+        return $ret;
+    }
+
 }

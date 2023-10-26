@@ -1,7 +1,12 @@
 <?php
+use src\modelo\Clases\Estilo;
+require_once '../config/ConexionBD.php';
+require_once '../modelo/Clases/Estilo.php';
 session_start();
 
-$estilos = $_SESSION['estilos'];
+$bdConexion = ConexionBD::obtenerInstancia();
+$conexion = $bdConexion->getConnection();
+$estilos = Estilo::getAllEstilos($conexion);
 
 $titulo = "";
 $descripcion = "";
@@ -62,7 +67,7 @@ if (isset($_SESSION['errores'])) {
                         <?php endif; ?>
                     </div>
                     <div class="slider">
-                        <button type="button" id="anterior" class="botones-estilos">Anterior</button>
+                        <button type="button" id="anterior" class="botones-estilos"><div class="Triangulo"></div></button>
                         <ul>
                             <?php foreach ($estilos as $estilo): ?>
                                 <li data="<?= $estilo['id']; ?>">
@@ -70,7 +75,7 @@ if (isset($_SESSION['errores'])) {
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                        <button type="button" id="siguiente" class="botones-estilos">Siguiente</button>
+                        <button type="button" id="siguiente" class="botones-estilos"></button>
                     </div>
                     <input type="hidden" id="id_estilo" name="id_estilo">
                     <button type="submit" class="botonCrear">Crear Presentación</button>
