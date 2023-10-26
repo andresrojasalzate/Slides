@@ -21,6 +21,7 @@ $diapositivas = Diapositiva::devolverDiapositivas($conexion);
 
 $_SESSION['toast'] = false;
 
+// Insertar el numero de diapositivas según cada presesntación
 foreach ($presentaciones as &$value) {
     $value['nroDiapositivas'] = 0;
 }
@@ -101,31 +102,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php if (count($presentaciones) > 0): ?>
                         <?php foreach ($presentaciones as $posicion => $presentacion): ?>
                             <div class="presentacionBD">
-                                <div class="titulo"><span>
-                                        <?= $presentacion['nombre'] ?>
-                                    </span></div>
-                                <div class="nroDiapositivas"><span>Diapositivas:
-                                        <?= $presentacion['nroDiapositivas']; ?>
-                                    </span></div>
+                                <div class="titulo"><span><?= $presentacion['nombre'] ?></span></div>
+                                <div class="nroDiapositivas"><span>Diapositivas:<?= $presentacion['nroDiapositivas']; ?></span></div>
                                 <div class="opciones">
-<<<<<<< HEAD
                                     <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">edit</button>
                                     <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
                                     <button class="material-symbols-outlined">content_copy</button>
                                     <button class="vDiapo material-symbols-outlined" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>">visibility</button>
                                     <button class="nDiapo library-add-button" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="material-symbols-outlined">library_add</span></button>
-=======
-                                    <button class="material-symbols-outlined">edit</button>
-                                    <button name="btnDelPresentacion"
-                                        value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"
-                                        class="material-symbols-outlined">delete</button>
-                                    <button class="material-symbols-outlined">content_copy</button>
-                                    <button class="vDiapo material-symbols-outlined"
-                                        data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>">visibility</button>
-                                    <button class="nDiapo library-add-button"
-                                        data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span
-                                            class="material-symbols-outlined">library_add</span></button>
->>>>>>> b1d667592dd290d420c1de577ddb0ee404f202ea
                                 </div>
                             </div>
                         <?php endforeach; ?>
