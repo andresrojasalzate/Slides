@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     botones.forEach(function(boton) {
         boton.addEventListener('click', function() {
             let diapos = boton.getAttribute('data-position');
+            let estilo = boton.getAttribute('estilo');
             if (diapos.length > 2) {
                 document.cookie = "arrayDiapositivas=" + diapos;
                 document.cookie = "1diapo=" + 'home';
+                document.cookie = "idEstilo=" + estilo;
                 window.location.href = "visualizarDiapositiva.php";
             } else {
                 console.error('El valor de diapos es null');

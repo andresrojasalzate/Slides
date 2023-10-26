@@ -18,6 +18,9 @@ if (isset($_COOKIE["id_ultima_presentacion"])) {
     $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
 } else {
 }
+if(isset($_COOKIE['idEstilo'])){
+    $estilo = $_COOKIE['idEstilo'];
+}
 $_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
 
 $bdConexion = ConexionBD::obtenerInstancia();
@@ -26,6 +29,8 @@ $conexion = $bdConexion->getConnection();
 $resultado = Presentacion::devolverPresentacion($conexion, $idUltimaPresentacion);
 
 $nombrePresentacion = $resultado[0]['nombre'];
+
+setcookie("idEstilo", $estilo, time() + 3600, "/");
 
 setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
 
