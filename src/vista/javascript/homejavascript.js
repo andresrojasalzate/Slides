@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
         boton.addEventListener('click', function() {
             let diapos = boton.getAttribute('data-position');
             if (diapos.length > 2) {
-                console.log(diapos);
                 document.cookie = "arrayDiapositivas=" + diapos;
                 window.location.href = "visualizarDiapositiva.php";
             } else {

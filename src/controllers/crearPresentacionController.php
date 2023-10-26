@@ -26,6 +26,8 @@ function isertarPresentacion($titulo, $descripcion){
             
             
             $pres = Presentacion::idUltimaPresentacion($conexion);
+            setcookie("id_ultima_presentacion", $pres, time() + 3600, "/");
+
             $_SESSION["id_ultima_presentacion"] = $pres;
 
 

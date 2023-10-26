@@ -7,9 +7,9 @@ use src\modelo\Clases\DiapositivaTitulo;
 use src\modelo\Clases\DiapositivaTituloContenido;
 
 require_once '../config/ConexionBD.php';
-require_once '../modelo\Clases\Diapositiva.php';
-require_once '../modelo\Clases\DiapositivaTitulo.php';
-require_once '../modelo\Clases\DiapositivaTituloContenido.php';
+require_once '../modelo/Clases/Diapositiva.php';
+require_once '../modelo/Clases/DiapositivaTitulo.php';
+require_once '../modelo/Clases/DiapositivaTituloContenido.php';
 
 function procesarFormulario() {
     session_start();
@@ -37,10 +37,8 @@ function procesarFormulario() {
             }elseif($tipo === 'contenido'){
                 $diapositiva = new DiapositivaTituloContenido($titulo,'tituloContenido', $descripcion, $idUltimaPresentacion, $nDiapositiva);
 
-                $mostrarFeedback = DiapositivaTituloContenido::insertDiapositivaTituloYContenido($conexion, $diapositiva);
                 $conexion = null;
                 $_SESSION['toast'] = true;
-                setcookie("crearDiapo", $mostrarFeedback, time() + 3600, '/');
                 
                 header("Location: ../vista/crearDiapositiva.php");
             }else{}

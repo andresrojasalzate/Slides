@@ -19,10 +19,7 @@ if (isset($_COOKIE["id_ultima_presentacion"])) {
 } else {
 }
 $_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
-if (isset($_COOKIE["crearDiapo"])) {
-    $mostrarFeedback = $_COOKIE["crearDiapo"];
-} else {
-}
+
 
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
