@@ -10,28 +10,15 @@ require_once '../modelo/Clases/Diapositiva.php';
 session_start();
 
 //Almacenar presentaciones desde la BD para mostrarlas en la pantalla home
-$presentaciones = [];
+//$presentaciones = [];
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
 $presentaciones = Presentacion::devolverPresentaciones($conexion);
 $mostrarFeedback = null;
 
-$diapositivas = [];
-$diapositivas = Diapositiva::devolverDiapositivas($conexion);
 
 $_SESSION['toast'] = false;
 
-// Insertar el numero de diapositivas según cada presesntación
-foreach ($presentaciones as &$value) {
-    $value['nroDiapositivas'] = 0;
-}
-
-foreach ($presentaciones as &$value) {
-    $i = array_search($value['id'], array_column($diapositivas, 'id'));
-    if ($i !== false) {
-        $value['nroDiapositivas'] = $diapositivas[$i]['totalDiapositivas'];
-    }
-}
 
 function buscarElementoEnArray($posicion, $miArray)
 {
@@ -66,6 +53,7 @@ if (isset($_COOKIE["1diapo"])) {
     setcookie("1diapo", false, time()-3600);
  }
 
+ 
 //Eliminar las presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {

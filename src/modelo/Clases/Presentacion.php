@@ -101,7 +101,8 @@ class Presentacion{
 
     public static function devolverPresentaciones(PDO $pdo){
         try{
-            $sql = "SELECT id, nombre, descripcion FROM presentaciones ORDER BY id;";
+            $sql = "SELECT p.id, p.nombre, p.descripcion, COUNT(d.id) as nroDiapositivas FROM presentaciones p
+            LEFT JOIN diapositivas d ON  d.presentaciones_id = p.id GROUP BY p.id;";
             $statement = $pdo->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);
