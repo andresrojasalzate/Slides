@@ -42,18 +42,14 @@ body{
 .tituloContentPresentaciones{
     background-color: #C8C6D7;
     width: 95%;
-    height: 15%;
     border-radius: 10px;
     margin: 20px 15px;
-    text-align: center;
     padding: 5px 0px;
-    font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 24px;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
+    justify-content: center;
+    align-items: center;
 }
 
 .contentPresentaciones{

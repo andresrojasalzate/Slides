@@ -12,27 +12,15 @@ require_once '../modelo/Clases/Estilo.php';
 session_start();
 
 //Almacenar presentaciones desde la BD para mostrarlas en la pantalla home
-$presentaciones = [];
+//$presentaciones = [];
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
 $presentaciones = Presentacion::devolverPresentaciones($conexion);
 $mostrarFeedback = null;
 
-$diapositivas = [];
-$diapositivas = Diapositiva::devolverDiapositivas($conexion);
 
 $_SESSION['toast'] = false;
 
-foreach ($presentaciones as &$value) {
-    $value['nroDiapositivas'] = 0;
-}
-
-foreach ($presentaciones as &$value) {
-    $i = array_search($value['id'], array_column($diapositivas, 'id'));
-    if ($i !== false) {
-        $value['nroDiapositivas'] = $diapositivas[$i]['totalDiapositivas'];
-    }
-}
 
 function buscarElementoEnArray($posicion, $miArray)
 {
@@ -72,7 +60,7 @@ function devolverEstilo($posicion, $miArray){
     $bdConexion = ConexionBD::obtenerInstancia();
     $conexion = $bdConexion->getConnection();
 
-    $idEstilo = buscarIdestilo($posicion, $miArray);
+    $idEstilo = buscarIdEstilo($posicion, $miArray);
 
     $estilo = Estilo::getEstilo($conexion, $idEstilo);
     
@@ -91,23 +79,17 @@ if (isset($_COOKIE["arrayDiapositivas"])) {
 }
 if (isset($_COOKIE["1diapo"])) {
     setcookie("1diapo", false, time()-3600);
- }
-
- if (isset($_COOKIE["idEstilo"])) {
+}
+if (isset($_COOKIE["idEstilo"])) {
     setcookie("idEstilo", false, time()-3600);
- }
- if (isset($_COOKIE["nDiapo"])) {
-    setcookie("nDiapo", "", time()-3600);
- }
+}
 
-
+ 
 //Eliminar las presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);
-        echo "<script>setTimeout(function(){ location.href = '/vista/home.php'; }, 2000);</script>";
-        //recargar();
-        //$presentaciones = Presentacion::devolverPresentaciones($conexion);
+        $presentaciones = Presentacion::devolverPresentaciones($conexion);
     }
 }
 ?>
@@ -139,12 +121,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php if (count($presentaciones) > 0): ?>
                         <?php foreach ($presentaciones as $posicion => $presentacion): ?>
                             <div class="presentacionBD">
-                                <div class="titulo"><span>
-                                        <?= $presentacion['nombre'] ?>
-                                    </span></div>
-                                <div class="nroDiapositivas"><span>Diapositivas:
-                                        <?= $presentacion['nroDiapositivas']; ?>
-                                    </span></div>
+                                <div class="titulo"><span><?= $presentacion['nombre'] ?></span></div>
+                                <div class="nroDiapositivas"><span>Diapositivas:<?= $presentacion['nroDiapositivas']; ?></span></div>
                                 <div class="opciones">
                                     <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">edit</button>
                                     <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
