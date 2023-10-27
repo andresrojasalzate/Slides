@@ -65,7 +65,9 @@ function buscarIdEstilo($posicion, $miArray)
         return "La posición especificada no existe en el array";
     }
 }
-
+function recargar(){
+    header("Location: /vista/home.php");
+}
 function devolverEstilo($posicion, $miArray){
     $bdConexion = ConexionBD::obtenerInstancia();
     $conexion = $bdConexion->getConnection();
@@ -94,11 +96,17 @@ if (isset($_COOKIE["1diapo"])) {
  if (isset($_COOKIE["idEstilo"])) {
     setcookie("idEstilo", false, time()-3600);
  }
+ if (isset($_COOKIE["nDiapo"])) {
+    setcookie("nDiapo", "", time()-3600);
+ }
+
 
 //Eliminar las presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);
+        echo "<script>setTimeout(function(){ location.href = '/vista/home.php'; }, 2000);</script>";
+        //recargar();
         //$presentaciones = Presentacion::devolverPresentaciones($conexion);
     }
 }

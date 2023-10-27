@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     botones.forEach(function(boton) {
         boton.addEventListener('click', function() {
             const posicion = boton.getAttribute('data-position');
+            document.cookie = "nDiapo=" + "home";
             document.cookie = "id_ultima_presentacion=" + posicion;
             window.location.href = "crearDiapositiva.php";
         });
@@ -18,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
             let diapos = boton.getAttribute('data-position');
             let estilo = boton.getAttribute('estilo');
             if (diapos.length > 2) {
-                console.log(diapos);
                 document.cookie = "arrayDiapositivas=" + diapos;
+                document.cookie = "1diapo=" + 'home';
                 document.cookie = "idEstilo=" + estilo;
                 window.location.href = "visualizarDiapositiva.php";
             } else {
