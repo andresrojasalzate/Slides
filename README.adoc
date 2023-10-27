@@ -14,7 +14,7 @@ Git: https://git.copernic.cat/gpuigantell/grupo6rojaspuigantellamador
 
 == Isardvdi
 
-Fer servir la maquina del Guiu Puigantell
+Fer servir la maquina del Guiu Puigantell. IP: 10.2.16.234
 
 == Preparació del servidor en Isardvdi
 
