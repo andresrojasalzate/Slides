@@ -53,8 +53,7 @@ html,body{
     flex-wrap: wrap;
     background-color: #C8C6D7;
     width: 95%;
-    height: 100%;
-    min-height: 400px;
+    height: 100vh;
     border-radius: 10px;
     margin: 0 15px 30px 15px;
     align-content: center;
