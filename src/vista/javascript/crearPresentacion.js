@@ -76,7 +76,7 @@ formularioPresentacion.addEventListener('submit', function (e) {
    
 });
 
-const slider = document.querySelector(".slider");
+
 const slides = document.querySelectorAll(".slider li");
 const inputIDEstilo = document.getElementById("id_estilo");
 let currentSlide = 0;
