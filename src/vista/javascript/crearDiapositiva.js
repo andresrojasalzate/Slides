@@ -110,7 +110,7 @@ function verDiapositiva() {
         ];
     }
 
-    document.cookie = "1diapo=" + true;
+    document.cookie = "1diapo=" + 'crearDiapo';
     document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
     window.location.href = "visualizarDiapositiva.php";
 }

@@ -1,5 +1,12 @@
 <?php
-session_start(); 
+use src\modelo\Clases\Estilo;
+require_once '../config/ConexionBD.php';
+require_once '../modelo/Clases/Estilo.php';
+session_start();
+
+$bdConexion = ConexionBD::obtenerInstancia();
+$conexion = $bdConexion->getConnection();
+$estilos = Estilo::getAllEstilos($conexion);
 
 $titulo = "";
 $descripcion = "";
@@ -13,8 +20,10 @@ if (isset($_SESSION['errores'])) {
 
     $descripcion = $_SESSION['descripcion'];
     unset($_SESSION['descripcion']);
-
 }
+
+setcookie("nDiapo", "home", time() + 3600, "/");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +41,7 @@ if (isset($_SESSION['errores'])) {
     <div class="crearPresentacion">
         <div class="contenido">
             <div class="tituloCrearPresentacion">
-                <span>Nueva Presentaciones</span>
+                <span>Nueva Presentacion</span>
             </div>
             <div class="contentFormulario">
                 <div class="mostrarFormulario">
@@ -43,7 +52,7 @@ if (isset($_SESSION['errores'])) {
                             <p><?= $errores["titulo"]; ?></p>      
                         <?php endif; ?>
                     </div>
-                     <input type="text" id="nombre" name="nombre" placeholder="Dale nombre a tu presentación" value="<?= $titulo; ?>" required><br>
+                    <input type="text" id="nombre" name="nombre" placeholder="Dale nombre a tu presentación" value="<?= $titulo; ?>" required><br>
                     <label for="descripcion">Descripción</label>
                     <div id="errDescripcion" class="errores">
                          <?php if (isset($errores["descripcion"])): ?>
@@ -51,7 +60,24 @@ if (isset($_SESSION['errores'])) {
                         <?php endif; ?>
                     </div>
                     <textarea id="descripcion" name="descripcion" placeholder="¿De que será tu presentacion?" value="<?= $descripcion; ?>"></textarea><br>
-
+                    <label for="estilo">Estilo</label>
+                    <div id="errEstilo" class="errores">
+                        <?php if (isset($errores["estilo"])): ?>
+                            <p><?= $errores["estilo"]; ?></p>      
+                        <?php endif; ?>
+                    </div>
+                    <div class="slider">
+                        <button type="button" id="anterior" class="botones-estilos"><div class="Triangulo"></div></button>
+                        <ul>
+                            <?php foreach ($estilos as $estilo): ?>
+                                <li data="<?= $estilo['id']; ?>">
+                                    <img src="img/estilosDipositivas/<?=$estilo["img_resource"]; ?>" alt="">
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <button type="button" id="siguiente" class="botones-estilos"></button>
+                    </div>
+                    <input type="hidden" id="id_estilo" name="id_estilo">
                     <button type="submit" class="botonCrear">Crear Presentación</button>
                     </form>
                 </div>

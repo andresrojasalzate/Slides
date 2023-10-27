@@ -2,10 +2,12 @@
 
 use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\Presentacion;
+use src\modelo\Clases\Estilo;
 
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Presentacion.php';
 require_once '../modelo/Clases/Diapositiva.php';
+require_once '../modelo/Clases/Estilo.php';
 
 session_start();
 
@@ -42,6 +44,32 @@ function arrayDiapos($posicion, $miArray)
 
     return $diapos;
 }
+function buscarIdEstilo($posicion, $miArray)
+{
+    if (isset($miArray[$posicion])) {
+        $valorColumna = $miArray[$posicion]['estilo_id'];
+        return $valorColumna;
+    } else {
+        return "La posición especificada no existe en el array";
+    }
+}
+function recargar(){
+    header("Location: /vista/home.php");
+}
+function devolverEstilo($posicion, $miArray){
+    $bdConexion = ConexionBD::obtenerInstancia();
+    $conexion = $bdConexion->getConnection();
+
+    $idEstilo = buscarIdestilo($posicion, $miArray);
+
+    $estilo = Estilo::getEstilo($conexion, $idEstilo);
+    
+    foreach ($estilo as $fila) {
+        $cssResource = $fila['css_resource'];
+        
+    }
+    return $cssResource;
+}
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     setcookie("id_ultima_presentacion", "", time()-3600);
@@ -58,7 +86,9 @@ if (isset($_COOKIE["1diapo"])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);
-        $presentaciones = Presentacion::devolverPresentaciones($conexion);
+        echo "<script>setTimeout(function(){ location.href = '/vista/home.php'; }, 2000);</script>";
+        //recargar();
+        //$presentaciones = Presentacion::devolverPresentaciones($conexion);
     }
 }
 ?>
@@ -96,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">edit</button>
                                     <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
                                     <button class="material-symbols-outlined">content_copy</button>
-                                    <button class="vDiapo material-symbols-outlined" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>">visibility</button>
+                                    <button class="vDiapo material-symbols-outlined" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>">visibility</button>
                                     <button class="nDiapo library-add-button" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="material-symbols-outlined">library_add</span></button>
                                 </div>
                             </div>

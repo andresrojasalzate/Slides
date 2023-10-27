@@ -7,7 +7,9 @@ namespace src\controllers;
 
 use ConexionBD;
 use src\modelo\Clases\Presentacion;
+use src\modelo\Clases\Estilo;
 require_once '../modelo/Clases/Presentacion.php';
+require_once '../modelo/Clases/Estilo.php';
 require_once '../config/ConexionBD.php';
 session_start();
 
@@ -16,9 +18,9 @@ session_start();
  * @param $titulo titulo de la prsentación
  * @param $descripcion descripcion
  */
-function isertarPresentacion($titulo, $descripcion){
-
-    $presentacion = new Presentacion($titulo, $descripcion);
+function isertarPresentacion($titulo, $descripcion, $idEstilo){
+    
+    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo);
            
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
@@ -27,7 +29,12 @@ function isertarPresentacion($titulo, $descripcion){
             
             $pres = Presentacion::idUltimaPresentacion($conexion);
             setcookie("id_ultima_presentacion", $pres, time() + 3600, "/");
-
+            $estilo = Estilo::getEstilo($conexion,$idEstilo);
+            foreach ($estilo as $fila) {
+                $cssResource = $fila['css_resource'];
+                
+            }
+            setcookie("idEstilo", $cssResource, time() + 3600, "/");
             $_SESSION["id_ultima_presentacion"] = $pres;
 
 
@@ -46,6 +53,7 @@ function procesarFormulario() {
        
         $titulo = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
+        $idEstilo = $_POST['id_estilo'];
         $errores = [];
  
         if (empty($titulo)) {
@@ -59,6 +67,9 @@ function procesarFormulario() {
         if(strlen($descripcion) > 255){
             $errores['descripcion'] = "El campo \"Descripción\"  no puede tener más de 255 caracteres";
         }
+        if((!is_numeric($idEstilo))){
+            $errores['estilo'] = "Ha habido un error al seleccionar el estilo. Vuelva a intentarlo";
+        }
 
         if(count($errores) > 0){
             
@@ -68,7 +79,10 @@ function procesarFormulario() {
             header("Location: ../vista/crearPresentacion.php");
             
         } else{
-            isertarPresentacion($titulo, $descripcion);
+
+            $numEstiloId = intval($idEstilo);
+            isertarPresentacion($titulo, $descripcion, $numEstiloId);
+
         }
     }
 }

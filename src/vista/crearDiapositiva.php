@@ -16,13 +16,19 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
-} else {
+} else {}
+if(isset($_COOKIE['idEstilo'])){
+    $estilo = $_COOKIE['idEstilo'];
 }
 $_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
 if (isset($_COOKIE["crearDiapo"])) {
     $mostrarFeedback = $_COOKIE["crearDiapo"];
-} else {
-}
+} else {}
+if (isset($_COOKIE["nDiapo"])) {
+    $nDiapo = $_COOKIE["nDiapo"];
+} else {}
+
+$_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
 
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
@@ -30,6 +36,10 @@ $conexion = $bdConexion->getConnection();
 $resultado = Presentacion::devolverPresentacion($conexion, $idUltimaPresentacion);
 
 $nombrePresentacion = $resultado[0]['nombre'];
+
+setcookie("nDiapo", $nDiapo, time() + 3600, "/");
+
+setcookie("idEstilo", $estilo, time() + 3600, "/");
 
 setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
 
@@ -111,8 +121,13 @@ if (isset($_POST['titulo'])) {
                     <div class="botonNuevaDiapositiva">
                         <button class="botonCrear" type="submit">Crear</button>
                         <div class="btnVerSalir">
+                            <?php if($nDiapo == "editarPres"){?>
                             <button type="button" class="botonSalir"
+                                onclick="window.location.href='/vista/editarPresentacion.php'">Salir</button>
+                                <?php }else{?>
+                                    <button type="button" class="botonSalir"
                                 onclick="window.location.href='/vista/home.php'">Salir</button>
+                                    <?php }?>
                             <button type="button" class="botonVer" onclick="verDiapositiva()">Ver</button>
                         </div>
                     </div>
