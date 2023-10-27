@@ -20,10 +20,10 @@ if (isset($_SESSION['errores'])) {
 
     $descripcion = $_SESSION['descripcion'];
     unset($_SESSION['descripcion']);
-
-    
-
 }
+
+setcookie("nDiapo", "home", time() + 3600, "/");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,7 @@ if (isset($_SESSION['errores'])) {
     <div class="crearPresentacion">
         <div class="contenido">
             <div class="tituloCrearPresentacion">
-                <span>Nueva Presentaciones</span>
+                <span>Nueva Presentacion</span>
             </div>
             <div class="contentFormulario">
                 <div class="mostrarFormulario">

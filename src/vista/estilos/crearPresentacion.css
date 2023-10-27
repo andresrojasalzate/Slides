@@ -1,7 +1,6 @@
-body {
+html,body{
     font-family: 'Roboto', sans-serif;
     color: #4A4063;
-
 }
 
 .cabecera {
@@ -16,6 +15,7 @@ body {
 
 .crearPresentacion {
     display: flex;
+    height: 100%;  
 
 }
 
@@ -36,7 +36,10 @@ body {
     height: 15%;
     border-radius: 10px;
     margin: 20px 15px;
-    text-align: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
     padding: 5px 0px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
@@ -50,6 +53,7 @@ body {
     flex-wrap: wrap;
     background-color: #C8C6D7;
     width: 95%;
+    height: 100%;
     min-height: 400px;
     border-radius: 10px;
     margin: 0 15px 30px 15px;
@@ -152,6 +156,9 @@ textarea::placeholder {
     color: red;
 }
 
+span{
+    font-size: 35px;
+}
 
 .slider {
     width: 100%;
@@ -173,6 +180,29 @@ textarea::placeholder {
     flex: 0 0 100%;
 }
 
+.slider {
+    width: 100%;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.slider ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    transition: transform 0.5s;
+}
+
+.slider li {
+    flex: 0 0 100%;
+}
+
+.slider ul li:not(:first-child) {
+    display: none;
+}
 
 .slider ul li:not(:first-child) {
     display: none;
