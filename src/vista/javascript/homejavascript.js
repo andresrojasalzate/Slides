@@ -1,3 +1,12 @@
+const eventoClicBotonesPresentacion = document.querySelector('.contentPresentaciones');
+const confirmacionEliminar = document.querySelector('.fondoModalEliminarPresentacion');
+const feedback = document.querySelector('.fondoModalFeedBackEliminarPresentacion');
+const btnAceptar = document.querySelector('[name="btnAceptar"]');
+const btnCancelar = document.querySelector('[name="btnCancelar"]');
+const modalEliminarPresentacion = document.querySelector('.modalEliminarPresentacion');
+const modalFeedBackEliminarPresentacion = document.querySelector('.modalFeedBackEliminarPresentacion');
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const botones = document.querySelectorAll('.nDiapo');
     
@@ -30,16 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//mostrar modal de confirmación antes de eliminar una presentación
-const eventoClicBotonesPresentacion = document.querySelector('.contentPresentaciones');
-const confirmacionEliminar = document.querySelector('.fondoModalEliminarPresentacion');
-const feedback = document.querySelector('.fondoModalFeedBackEliminarPresentacion');
-const btnAceptar = document.querySelector('[name="btnAceptar"]');
-const btnCancelar = document.querySelector('[name="btnCancelar"]');
-const modalEliminarPresentacion = document.querySelector('.modalEliminarPresentacion');
-const modalFeedBackEliminarPresentacion = document.querySelector('.modalFeedBackEliminarPresentacion');
 
-
+//evento que inica el proceso de eliminación según la presentación seleccionada
 eventoClicBotonesPresentacion.addEventListener('click',function(e){
     if(e.target.name === "btnDelPresentacion"){
         confirmacionEliminar.style.display = "block";
@@ -53,6 +54,7 @@ const ocultarModales = () =>{
     feedback.style.display = "none";
 }
 
+// cancelar el proceso de eliminación de una presentación
 modalEliminarPresentacion.addEventListener('click', function(e){
     if(e.target.name === "btnCancelar"){
         ocultarModales();
@@ -67,6 +69,7 @@ modalEliminarPresentacion.addEventListener('click', function(e){
     }
 })
 
+// Cierra el modal de confirmacion de que la presentación se eliminó correctamente.
 if(modalFeedBackEliminarPresentacion!=null){
     modalFeedBackEliminarPresentacion.addEventListener('click', function(e){
         if(e.target.name === "btnCerrar"){
@@ -78,9 +81,11 @@ if(modalFeedBackEliminarPresentacion!=null){
 // redireccion a la pantalla editar presentaciones
 eventoClicBotonesPresentacion.addEventListener('click',function(e){
     if(e.target.name === "btnEditPresentacion"){
+        console.log('hola');
         const posicion = e.target.value;
         document.cookie = "id_ultima_presentacion=" + posicion;
         window.location.href = "editarPresentacion.php";
     }
 })  
+
 
