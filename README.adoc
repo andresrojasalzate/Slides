@@ -13,4 +13,26 @@ Figma: https://www.figma.com/files/team/1293222708229878277/Diego-Yesid-Amador-H
 Git: https://git.copernic.cat/gpuigantell/grupo6rojaspuigantellamador
 
 == Isardvdi
+
 Fer servir la maquina del Guiu Puigantell
+
+== Preparació del servidor en Isardvdi
+
+=== Intalació mysql
+
+sudo apt install default-mysql-server
+
+=== Instalació Git
+sudo apt install git
+
+=== Mostrar errors en php
+
+Entrem a la ruta /etc/php/8.2/apache2 i modifiquem les següents dos lineas:
+
+display_errors = On
+
+error_reporting = E_ALL
+
+
+=== Configuració del projecte
+Per poder fer servir le projecte en la maquina virtual nomes em de crear el usuari i la base de dades com tenim en el vagrant i cambair la ip de la base de dades a la 127.0.0.1 per a ser le localhost
