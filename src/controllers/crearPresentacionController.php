@@ -18,9 +18,9 @@ session_start();
  * @param $titulo titulo de la prsentación
  * @param $descripcion descripcion
  */
-function isertarPresentacion($titulo, $descripcion, $idEstilo){
+function isertarPresentacion($titulo, $descripcion, $idEstilo, $pin){
     
-    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo);
+    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo, $pin);
            
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
@@ -54,6 +54,8 @@ function procesarFormulario() {
         $titulo = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $idEstilo = $_POST['id_estilo'];
+        $pin = $_POST['pin'];
+        $repPin = $_POST['rep_pin'];
         $errores = [];
  
         if (empty($titulo)) {
@@ -71,6 +73,15 @@ function procesarFormulario() {
             $errores['estilo'] = "Ha habido un error al seleccionar el estilo. Vuelva a intentarlo";
         }
 
+        if($pin != $repPin){
+
+            $errores['pin'] = "Los PINS no coinciden";;
+        }
+
+        if(strlen($pin) > 50){
+            $errores['pin'] = "El PIN no puede tener más de 50 caracteres";
+        }
+
         if(count($errores) > 0){
             
             $_SESSION['errores'] = $errores;
@@ -81,7 +92,7 @@ function procesarFormulario() {
         } else{
 
             $numEstiloId = intval($idEstilo);
-            isertarPresentacion($titulo, $descripcion, $numEstiloId);
+            isertarPresentacion($titulo, $descripcion, $numEstiloId, $pin);
 
         }
     }

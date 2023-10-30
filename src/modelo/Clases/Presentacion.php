@@ -11,13 +11,15 @@ class Presentacion{
     protected string $descripcion;
     protected array $diapositivas;
     protected int $estilo_id;
+    protected string $pin;
 
     //Constructor
-    public function __construct(string $titulo, $descripcion, int $estilo_id){
+    public function __construct(string $titulo, $descripcion, int $estilo_id, string $pin){
         $this->titulo = $titulo; 
         $this->descripcion = $descripcion;
         $this->diapositivas = [];
         $this->estilo_id = $estilo_id;
+        $this->pin = $pin;
     }
 
     //Getters
@@ -73,21 +75,22 @@ class Presentacion{
      */
     public static function insertPresentacion(PDO $pdo, Presentacion $presentacion){
 
-       // try{
-            $sql = "INSERT INTO presentaciones (nombre, descripcion, estilo_id) VALUES (:nombre, :descripcion, :estilo_id)";
+        try{
+            $sql = "INSERT INTO presentaciones (nombre, descripcion, estilo_id, pin) VALUES (:nombre, :descripcion, :estilo_id, :pin)";
             $statement = $pdo->prepare($sql);
             $statement->bindValue(':nombre', $presentacion->titulo);
             $statement->bindValue(':descripcion', $presentacion->descripcion);
             $statement->bindValue(':estilo_id', $presentacion->estilo_id);
+            $statement->bindValue(':pin', $presentacion->pin);
             $statement->execute();
             
-       /* } catch(PDOException $ex){
+        } catch(PDOException $ex){
             echo $ex;
             return false;
         } catch (Exception $ex) {
 			echo $ex;
             return false;
-		}*/
+		}
     }
 
     public static function idUltimaPresentacion(PDO $pdo):int{

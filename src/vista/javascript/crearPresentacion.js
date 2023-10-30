@@ -18,6 +18,9 @@ function mostrarErrores(errores){
             case "estilo":
                 contenedorError = document.getElementById("errEstilo");
                 break;
+            case "pin":
+                contenedorError = document.getElementById("errPin")
+                break;;
         }
         
         while (contenedorError.firstChild) {
@@ -39,6 +42,8 @@ formularioPresentacion.addEventListener('submit', function (e) {
     let nombre = document.getElementById("nombre").value;
     let descripcion = document.getElementById("descripcion").value;
     let idEstilo = document.getElementById("id_estilo").value;
+    let pin = document.getElementById("pin").value;
+    let repPin = document.getElementById("rep_pin").value;
     let errores = {}
 
     if(nombre === ""){
@@ -59,6 +64,15 @@ formularioPresentacion.addEventListener('submit', function (e) {
         
     }
 
+    if(pin !== repPin){
+
+        errores["pin"] = "Los PINS no coinciden";
+    }
+
+    if(pin.length > 50){
+        errores["pin"] = "El PIN no puede tener más de 50 caracteres";
+    }
+
     if(isNaN(idEstilo)){
 
         errores['estilo'] = "Ha habido un error al seleccionar el estilo. Vuelva a intentarlo"
@@ -76,7 +90,7 @@ formularioPresentacion.addEventListener('submit', function (e) {
    
 });
 
-
+const slider = document.querySelector(".slider");
 const slides = document.querySelectorAll(".slider li");
 const inputIDEstilo = document.getElementById("id_estilo");
 let currentSlide = 0;
@@ -88,6 +102,7 @@ inputIDEstilo.value = estiloId;
 function mostrarSlide(slideIndex) {
     slides[currentSlide].style.display = "none";
     currentSlide = (slideIndex + slides.length) % slides.length;
+    console.log(currentSlide)
     slides[currentSlide].style.display = "block";
 
     let estiloId = slides[currentSlide].getAttribute("data");
