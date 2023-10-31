@@ -112,6 +112,7 @@ $rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $
                         <button class="btnSalir">Salir</button>
                     </form>
                 <?php } ?>
+
             </div>
         </div>
     </div>

@@ -1,5 +1,16 @@
 const btnVolver = document.querySelector('[name="btnVolver"]');
 const btnNuevaDiapositiva = document.querySelector('[name="btnNuevaDiapositiva"]');
+const contenedorDiapositivas = document.querySelector('.contenedorDiapositivas');
+const confirmacionEliminar = document.querySelector('.fondoModalEliminarDiapositiva');
+const feedback = document.querySelector('.fondoModalFeedBackEliminarDiapositiva');
+const btnAceptar = document.querySelector('[name="btnAceptar"]');
+const btnCancelar = document.querySelector('[name="btnCancelar"]');
+const modalEliminarDiapositiva = document.querySelector('.modalEliminarDiapositiva');
+const modalFeedBackEliminarDiapositiva = document.querySelector('.modalFeedBackEliminarDiapositiva');
+const diapositivas = document.querySelectorAll('.presentacionBD');
+const formulario = document.querySelector('form');
+let ordenNuevoDiapositivas = null;
+let ordenOriginalDiapositivas = null;
 
 btnNuevaDiapositiva.addEventListener('click', function () {
     const posicion = btnNuevaDiapositiva.value;
@@ -20,17 +31,7 @@ btnNuevaDiapositiva.addEventListener("click", function (e) {
     window.location.href = "crearDiapositiva.php";
 })
 
-//mostrar modal de confirmación antes de eliminar una presentación
-const contenedorDiapositivas = document.querySelector('.contenedorDiapositivas');
-const confirmacionEliminar = document.querySelector('.fondoModalEliminarDiapositiva');
-const feedback = document.querySelector('.fondoModalFeedBackEliminarDiapositiva');
-const btnAceptar = document.querySelector('[name="btnAceptar"]');
-const btnCancelar = document.querySelector('[name="btnCancelar"]');
-const modalEliminarDiapositiva = document.querySelector('.modalEliminarDiapositiva');
-const modalFeedBackEliminarDiapositiva = document.querySelector('.modalFeedBackEliminarDiapositiva');
-
-
-
+//evento que inica el proceso de eliminación según la diapositiva seleccionada
 contenedorDiapositivas.addEventListener('click', function (e) {
     if (e.target.name === "btnDelDiapositiva") {
         console.log(e.target.value);
@@ -45,6 +46,7 @@ const ocultarModales = () => {
     feedback.style.display = "none";
 }
 
+// cancelar el proceso de eliminación de una presentación
 modalEliminarDiapositiva.addEventListener('click', function (e) {
     if (e.target.name === "btnCancelar") {
         ocultarModales();
@@ -59,6 +61,7 @@ modalEliminarDiapositiva.addEventListener('click', function (e) {
     }
 })
 
+// Cierra el modal de confirmacion de que la presentación se eliminó correctamente.
 if (modalFeedBackEliminarDiapositiva != null) {
     modalFeedBackEliminarDiapositiva.addEventListener('click', function (e) {
         if (e.target.name === "btnCerrar") {
@@ -69,23 +72,15 @@ if (modalFeedBackEliminarDiapositiva != null) {
 
 //Reordenamiento de diapositivas
 
-const diapositivas = document.querySelectorAll('.presentacionBD');
-const formulario = document.querySelector('form');
-let ordenNuevoDiapositivas = null;
-
-
-
-
-
-const idsDiapositivas = (arrayDiapositivas) =>{
-    const arrayValueDiapositivas =[];
+const idsDiapositivas = (arrayDiapositivas) => {
+    const arrayValueDiapositivas = [];
     arrayDiapositivas.forEach(element => {
         arrayValueDiapositivas.push(element.id);
     });
     return arrayValueDiapositivas;
 }
 
-const crearElemento = (ordenDiapositivas,nombre) =>{
+const crearElemento = (ordenDiapositivas, nombre) => {
     const input = document.createElement('input');
     const nuevoOrden = JSON.stringify(ordenDiapositivas);
     input.setAttribute("type", "hidden");
@@ -94,8 +89,8 @@ const crearElemento = (ordenDiapositivas,nombre) =>{
     formulario.appendChild(input);
 }
 
-let ordenOriginalDiapositivas = idsDiapositivas(diapositivas);
-crearElemento(ordenOriginalDiapositivas,"ordenOriginalDiapositivas");
+ordenOriginalDiapositivas = idsDiapositivas(diapositivas);
+crearElemento(ordenOriginalDiapositivas, "ordenOriginalDiapositivas");
 
 
 const dragStart = (e) => {
@@ -135,17 +130,11 @@ const drop = (e) => {
     const nuevoArray = document.querySelectorAll('.presentacionBD');
     //console.log(nuevoArray);
     ordenNuevoDiapositivas = idsDiapositivas(nuevoArray);
-    crearElemento(ordenNuevoDiapositivas,"ordenNuevoDiapositivas");
+    crearElemento(ordenNuevoDiapositivas, "ordenNuevoDiapositivas");
 };
 
 contenedorDiapositivas.addEventListener('dragover', dragOver);
 contenedorDiapositivas.addEventListener('drop', drop);
-
-
-
-
-
-
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -154,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
     botones.forEach(function(boton) {
         boton.addEventListener('click', function() {
             let diapos = boton.getAttribute('diapo');
-            console.log(diapos);
                 //document.cookie = "idDiapo=" + diapos;
                 //window.location.href = "visualizarDiapositiva.php";
                 //console.error('El valor de diapos es null');
@@ -188,4 +176,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-

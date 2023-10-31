@@ -72,13 +72,13 @@ if (isset($_POST['titulo'])) {
 <body>
     <div class="cabecera">
 
-        <div class="bienvenida centrar">
-            <span class="tituloNuevaDiapositiva">Nueva Diapositiva</span>
+        <div class="bienvenida">
+            <span>Nueva Diapositiva</span>
         </div>
     </div>
     <div class="crearDiapositiva">
         <div class="fondoLila">
-            <div class="tiutlo nPresentacion">
+            <div class="tiutlo">
                 <span>Presentación:
                     <?= $nombrePresentacion ?>
                 </span>
@@ -108,10 +108,10 @@ if (isset($_POST['titulo'])) {
                     <div>
                         <div class="divFormColumn">
                             <label for="tituloDiapo">Titulo</label>
-                            <div id="errNombre" class="errores centrar">
+                            <div id="errNombre" class="errores">
 
                             </div>
-                            <div id="errNombre" class="errores centrar">
+                            <div id="errNombre" class="errores">
 
                             </div>
                             <input class="titulo" type="text" id="tituloDiapo" name="tituloDiapo"
@@ -135,6 +135,8 @@ if (isset($_POST['titulo'])) {
                     <div class="botonNuevaDiapositiva">
                         <button class="botonCrear" type="submit">Crear</button>
                         <div class="centrar">
+
+                        <div class="btnVerSalir">
                             <?php if($nDiapo == "editarPres"){?>
                             <button type="button" class="botonSalir"
                                 onclick="window.location.href='/vista/editarPresentacion.php'">Salir</button>

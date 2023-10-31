@@ -112,6 +112,7 @@ input{
     border-radius: 10px;
     align-content: center;
     margin-right: 30px;
+    justify-content: center;
 }
 
 .mostrarPresentaciones{

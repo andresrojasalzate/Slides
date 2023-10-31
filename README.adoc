@@ -2,12 +2,37 @@
 
 == Miembros del grupo 
 
-* Guiu Puigantel 
+* Guiu Puigantell 
 * Diego Yesid Amador
 * Andres Rojas
 
 == Links a elementos externos del proyecto
 
 Trello: https://trello.com/b/kZctgkZO/grupo6rojaspuigantellamador +
-Figma: https://www.figma.com/files/team/1293222708229878277/Diego-Yesid-Amador-Hernandez's-team?fuid=1293224011031590583 +
+Figma: https://www.figma.com/team_invite/redeem/44RI6co5hDKzbLXxDJyQHi +
 Git: https://git.copernic.cat/gpuigantell/grupo6rojaspuigantellamador
+
+== Isardvdi
+
+Fer servir la maquina del Guiu Puigantell. IP: 10.2.16.234
+
+== Preparació del servidor en Isardvdi
+
+=== Intalació mysql
+
+sudo apt install default-mysql-server
+
+=== Instalació Git
+sudo apt install git
+
+=== Mostrar errors en php
+
+Entrem a la ruta /etc/php/8.2/apache2 i modifiquem les següents dos línies:
+
+display_errors = On
+
+error_reporting = E_ALL
+
+
+=== Configuració del projecte
+Per poder fer servir el projecte en la màquina virtual només hem de crear l'usuari i la base de dades com tenim en el vagrant i cambair la ip de la base de dades a la 127.0.0.1 per a ser el localhost.

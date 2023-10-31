@@ -41,13 +41,14 @@ function procesarFormulario()
 
             } elseif ($tipo === 'contenido') {
                 $diapositiva = new DiapositivaTituloContenido($titulo, 'tituloContenido', $descripcion, $idUltimaPresentacion, $nDiapositiva);
-
                 DiapositivaTituloContenido::insertDiapositivaTituloYContenido($conexion, $diapositiva);
                 $conexion = null;
                 $_SESSION['toast'] = true;
-
+                
                 header("Location: ../vista/crearDiapositiva.php");
-            } elseif ($tipo === 'imagen') {
+            }
+
+            elseif ($tipo === 'imagen') {
                 $nombreImagen = $_POST['nombreImagen'] . '.png';
                 $nombreImagen = str_replace(' ', '_', $nombreImagen);
                 //$imagen = $_FILES["imagen"]["name"];
