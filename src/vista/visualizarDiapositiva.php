@@ -7,7 +7,7 @@ if (isset($_COOKIE['arrayDiapositivas'])) {
 } else {
 }
 
-if(isset($_COOKIE['idEstilo'])) {
+if (isset($_COOKIE['idEstilo'])) {
     $estilo = $_COOKIE['idEstilo'];
 }
 if (isset($_COOKIE['1diapo'])) {
@@ -26,6 +26,8 @@ if (isset($_POST['sumar'])) {
 
 // Guardar la posición actual en una cookie para recordarla
 setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
+
+$rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $arrayDiapositivas[$posicion]['imagen'];
 
 ?>
 
@@ -66,37 +68,50 @@ setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
                     </div>
                 </form>
             </div>
-            <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] !== 'titulo') { ?>
+            <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'tituloContenido' || $arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'contenido') { ?>
                 <div class="contenido">
 
                     <div class="mostrarDiapositiva">
                         <label for="contenido" id="contenidoLabel">
+                            <!-- nl2br convierte los /n en <br> -->
                             <?php echo nl2br($arrayDiapositivas[$posicion]['contenido']); ?>
                         </label>
                     </div>
 
                 </div>
             <?php } ?>
-            <div class = "boton-salir-container">  
-            <?php if ($diapoSola == 'home') { ?>
-                <form action="home.php">
-                    <button class="btnSalir">Salir</button>
-                </form>
-            <?php } elseif($diapoSola == 'crearDiapo') { ?>
-                <form action="crearDiapositiva.php" method="post">
-                    <input type="hidden" name="titulo"
-                        value="<?= htmlspecialchars($arrayDiapositivas[$posicion]['titulo']); ?>">
-                    <input type="hidden" name="contenido"
-                        value="<?= htmlspecialchars($arrayDiapositivas[$posicion]['contenido']); ?>">
-                    <input type="hidden" name="tipoDiapo"
-                        value=<?= htmlspecialchars($arrayDiapositivas[$posicion]['tipoDiapositiva']); ?>>
-                    <button class="btnSalir">Salir</button>
-                </form>
-            <?php }elseif($diapoSola == 'editarPres'){ ?>
-                <form action="editarPresentacion.php">
-                    <button class="btnSalir">Salir</button>
-                </form>
+            <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'imagen') { ?>
+
+                <div class="mostrarDiapositiva">
+                    <label for="contenido" id="contenidoLabel">
+                        <!-- nl2br convierte los /n en <br> -->
+                        <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen">
+                    </label>
+                </div>
+
             <?php } ?>
+            <div class="boton-salir-container">
+                <?php if ($diapoSola == 'home') { ?>
+                    <form action="home.php">
+                        <button class="btnSalir">Salir</button>
+                    </form>
+                <?php } elseif ($diapoSola == 'crearDiapo') { ?>
+                    <form action="crearDiapositiva.php" method="post">
+                        <input type="hidden" name="titulo"
+                            value="<?= htmlspecialchars($arrayDiapositivas[$posicion]['titulo']); ?>">
+                        <input type="hidden" name="contenido"
+                            value="<?= htmlspecialchars($arrayDiapositivas[$posicion]['contenido']); ?>">
+                        <input type="hidden" name="tipoDiapo"
+                            value=<?= htmlspecialchars($arrayDiapositivas[$posicion]['tipoDiapositiva']); ?>>
+                        <input type="hidden" name="imagen"
+                            value=<?= htmlspecialchars($arrayDiapositivas[$posicion]['imagen']); ?>>
+                        <button class="btnSalir">Salir</button>
+                    </form>
+                <?php } elseif ($diapoSola == 'editarPres') { ?>
+                    <form action="editarPresentacion.php">
+                        <button class="btnSalir">Salir</button>
+                    </form>
+                <?php } ?>
             </div>
         </div>
     </div>

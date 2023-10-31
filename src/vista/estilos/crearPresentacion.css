@@ -60,8 +60,6 @@ html,body{
     align-content: center;
     align-items: start;
 
-
-
 }
 
 .mostrarFormulario {
@@ -72,7 +70,7 @@ html,body{
     align-items: center;
     margin: 5px;
     width: 100%;
-
+    padding: 50px;
 
 }
 
@@ -138,6 +136,7 @@ form {
 
 label {
     color: black;
+    font-size: 30px;
 }
 
 input::placeholder {

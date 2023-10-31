@@ -71,7 +71,7 @@ use PDO, Exception, PDOException;
 
     public static function arrayDiapositivas(PDO $pdo, $presentacionId){
         try {
-            $sql = "SELECT id, titulo, contenido, tipoDiapositiva, nDiapositiva FROM diapositivas WHERE presentaciones_id = :presentacionId ORDER BY nDiapositiva";
+            $sql = "SELECT id, titulo, contenido, tipoDiapositiva, nDiapositiva, imagen, presentaciones_id FROM diapositivas WHERE presentaciones_id = :presentacionId ORDER BY nDiapositiva";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':presentacionId', $presentacionId, PDO::PARAM_INT);
             $statement->execute();
