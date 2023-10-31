@@ -75,7 +75,7 @@ function procesarFormulario() {
 
         if($pin != $repPin){
 
-            $errores['pin'] = "Los PINS no coinciden";;
+            $errores['pin'] = "Los PINS no coinciden";
         }
 
         if(strlen($pin) > 50){
