@@ -137,18 +137,17 @@ contenedorDiapositivas.addEventListener('dragover', dragOver);
 contenedorDiapositivas.addEventListener('drop', drop);
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const botones = document.querySelectorAll('.vDiapo');
-
-    botones.forEach(function (boton) {
-        boton.addEventListener('click', function () {
+    
+    botones.forEach(function(boton) {
+        boton.addEventListener('click', function() {
             let diapos = boton.getAttribute('diapo');
-            console.log(diapos);
-            //document.cookie = "idDiapo=" + diapos;
-            //window.location.href = "visualizarDiapositiva.php";
-            //console.error('El valor de diapos es null');
-            let a;
-            let diaposObj = JSON.parse(diapos);
+                //document.cookie = "idDiapo=" + diapos;
+                //window.location.href = "visualizarDiapositiva.php";
+                //console.error('El valor de diapos es null');
+                let a;
+                let diaposObj = JSON.parse(diapos);
 
             if (diaposObj.tipoDiapositiva === 'contenido') {
                 a = [
@@ -169,11 +168,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 ];
             }
-            console.log(a);
-            document.cookie = "1diapo=" + 'editarPres';
-            document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
-            window.location.href = "visualizarDiapositiva.php";
-
+                console.log(a);
+                document.cookie = "1diapo=" + 'editarPres';
+                document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
+                window.location.href = "visualizarDiapositiva.php";
+            
         });
     });
 });

@@ -1,6 +1,7 @@
 <?php
 
 use src\modelo\Clases\Diapositiva;
+use src\modelo\Clases\DiapositivaImagen;
 use src\modelo\Clases\Presentacion;
 
 session_start();
@@ -8,6 +9,8 @@ session_start();
 require_once '../modelo/Clases/Presentacion.php';
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Diapositiva.php';
+require_once '../modelo/Clases/DiapositivaImagen.php';
+
 
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
@@ -28,14 +31,19 @@ $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 //Funcion para eliminar presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
-        $a = returnDiapo($conexion, $_POST["btnAceptar"])["nDiapositiva"];
-        Diapositiva::restar1nDiapos($conexion,$id,$a);
+        $diapo = returnDiapo($conexion, $_POST["btnAceptar"])["nDiapositiva"];
+        Diapositiva::restar1nDiapos($conexion,$id,$_POST["btnAceptar"]);
+        $nombre = DiapositivaImagen::getNombreImagen($conexion,$_POST["btnAceptar"]);
+        $rutaImagen = dirname(__FILE__) . '/img/'. $idUltimaPresentacion . '/' . $nombre;
+        if(!is_dir($rutaImagen)){
+            if(unlink($rutaImagen)){}
+        }else{}
         $mostrarFeedback = Diapositiva::eliminarDiapositiva($conexion, $_POST["btnAceptar"]);
         $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);   
     }
 }
 
-//
+
 if(isset($_SESSION['confirmacion'])){
     if($_SESSION['confirmacion']!=null){
         $mostrarFeedback = $_SESSION['confirmacion'];
