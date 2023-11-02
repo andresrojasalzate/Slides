@@ -11,13 +11,16 @@ class Presentacion{
     protected string $descripcion;
     protected array $diapositivas;
     protected int $estilo_id;
+    protected bool $vistaCliente;
+    protected string $nombreURL;
 
     //Constructor
-    public function __construct(string $titulo, $descripcion, int $estilo_id){
+    public function __construct(string $titulo, $descripcion, int $estilo_id, string $nombreURL){
         $this->titulo = $titulo; 
         $this->descripcion = $descripcion;
         $this->diapositivas = [];
         $this->estilo_id = $estilo_id;
+        $this->nombreURL = $nombreURL;
     }
 
     //Getters
@@ -39,6 +42,10 @@ class Presentacion{
 
     public function getEstiloId(): int{
         return $this->estilo_id;
+    }
+
+    public function getNombreURL(): string{
+        return $this->nombreURL;
     }
 
     //Setters
@@ -63,6 +70,10 @@ class Presentacion{
         $this->estilo_id = $$nuevaEstiloId;
     }
 
+    public function setVistaCliente(bool $vistaCliente){
+        $this->titulo = $vistaCliente;
+    }
+
     /**
      * Funcion para hacer un inserte de una presentacion en la base de datos
      * 
@@ -74,11 +85,12 @@ class Presentacion{
     public static function insertPresentacion(PDO $pdo, Presentacion $presentacion){
 
        // try{
-            $sql = "INSERT INTO presentaciones (nombre, descripcion, estilo_id) VALUES (:nombre, :descripcion, :estilo_id)";
+            $sql = "INSERT INTO presentaciones (nombre, descripcion, estilo_id, nombreURL) VALUES (:nombre, :descripcion, :estilo_id, :nombreURL)";
             $statement = $pdo->prepare($sql);
             $statement->bindValue(':nombre', $presentacion->titulo);
             $statement->bindValue(':descripcion', $presentacion->descripcion);
             $statement->bindValue(':estilo_id', $presentacion->estilo_id);
+            $statement->bindValue(':nombreURL', $presentacion->nombreURL);
             $statement->execute();
             
        /* } catch(PDOException $ex){
@@ -129,12 +141,30 @@ class Presentacion{
 
     public static function devolverPresentacion(PDO $pdo, int $id){
         try{
-            $sql = "SELECT id, nombre, descripcion FROM presentaciones where id = :id;";
+            $sql = "SELECT id, nombre, descripcion, estilo_id, vista_cliente FROM presentaciones where id = :id;";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $results;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
+    public static function devolverPresentacionByURL(PDO $pdo, string $url){
+        try{
+            $sql = "SELECT id FROM presentaciones WHERE nombreURL = :url;";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':url', $url, PDO::PARAM_STR);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $presId = $result[0]; 
+            return $presId;
         } catch(PDOException $ex){
             echo $ex;
             return false;
@@ -164,13 +194,14 @@ class Presentacion{
 		}
     }
 
-    public static function actualizarPresentacion(PDO $pdo, int $id, string $titulo, string $descripcion){
+    public static function actualizarPresentacion(PDO $pdo, int $id, string $titulo, string $descripcion, int $vistaCliente){
         try{
-            $sql = "UPDATE presentaciones SET nombre = :titulo, descripcion = :descripcion WHERE id = :id";
+            $sql = "UPDATE presentaciones SET nombre = :titulo, descripcion = :descripcion, vista_cliente = :vista_cliente WHERE id = :id";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':titulo', $titulo, PDO::PARAM_STR);
             $statement->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':vista_cliente', $vistaCliente, PDO::PARAM_INT);
             $statement->execute();
             $result = "¡Presentación actualizada!";
             return $result;
