@@ -15,7 +15,8 @@ require_once '../modelo/Clases/DiapositivaImagen.php';
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
-} else {}
+} else {
+}
 
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
@@ -25,6 +26,7 @@ $resultado = Presentacion::devolverPresentacion($conexion, $idUltimaPresentacion
 $nombrePresentacion = $resultado[0]['nombre'];
 $descripcion = $resultado[0]['descripcion'];
 $id = $resultado[0]['id'];
+$vista_cliente = $resultado[0]['vista_cliente'];
 $mostrarFeedback = null;
 $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 
@@ -39,13 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if(unlink($rutaImagen)){}
         }else{}
         $mostrarFeedback = Diapositiva::eliminarDiapositiva($conexion, $_POST["btnAceptar"]);
-        $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);   
+        $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
     }
 }
 
-
-if(isset($_SESSION['confirmacion'])){
-    if($_SESSION['confirmacion']!=null){
+//
+if (isset($_SESSION['confirmacion'])) {
+    if ($_SESSION['confirmacion'] != null) {
         $mostrarFeedback = $_SESSION['confirmacion'];
         unset($_SESSION['confirmacion']);
     }
@@ -53,7 +55,8 @@ if(isset($_SESSION['confirmacion'])){
 
 setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
 
-function returnDiapo($connexion, $id){
+function returnDiapo($connexion, $id)
+{
     $diapo = Diapositiva::getDiapo($connexion, $id);
     return $diapo;
 }
@@ -86,14 +89,18 @@ function returnDiapo($connexion, $id){
                     <div class="contentForm">
                         <form action="../controllers/editarPresentacionController.php" method="POST">
                             <label>Titulo</label>
-                            <input class="titulo" name ="nombre" type="text" value="<?= $nombrePresentacion ?>" required>
+                            <input class="titulo" name="nombre" type="text" value="<?= $nombrePresentacion ?>" required>
                             <label>Descripción</label>
                             <input class="descripcion" name="descripcion" type="text" value="<?= $descripcion ?>">
                             <div class="botonesEdicionPresentacion">
                                 <button class="botonCrear" name="btnNuevaDiapositiva" value="<?= $id ?>">Nueva Diapositiva</button>
                                 <button class="botonCrear">Cambiar Estilo</button>
                             </div>
-                            <input type="hidden" name = "id" value="<?= $id?>">
+                            <div class="vistaCliente">
+                                <input type="checkbox" id="vista_cliente" name="vista_cliente" value="<?= $vista_cliente ?>" <?php if($vista_cliente === 1) echo 'checked';?>>
+                                <label for="vista_cliente">Compartir presentación</label>
+                            </div>
+                            <input type="hidden" name="id" value="<?= $id ?>">
                             <button class="botonCrear" type="submit">Guardar Cambios</button>
                             <button class="botonCrear" name="btnVolver">Volver</button>
                         </form>
@@ -102,11 +109,11 @@ function returnDiapo($connexion, $id){
                 <div class="contenedorDiapositivas">
                     <?php if (count($diapositivas) > 0) : ?>
                         <?php foreach ($diapositivas as $diapositiva) : ?>
-                            <div class="presentacionBD" draggable="true" id="<?=$diapositiva['id'] ?>">
+                            <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>">
                                 <div class="tituloDiapo"><span><?= $diapositiva['titulo'] ?></span></div>
                                 <div class="opciones">
                                     <button name="btnDelDiapositiva" value="<?= $diapositiva['id'] ?>" class="material-symbols-outlined">delete</button>
-                                    <button class="vDiapo material-symbols-outlined" diapo="<?= htmlspecialchars(json_encode(returnDiapo($conexion,$diapositiva['id']))) ?>">visibility</button>
+                                    <button class="vDiapo material-symbols-outlined" diapo="<?= htmlspecialchars(json_encode(returnDiapo($conexion, $diapositiva['id']))) ?>">visibility</button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
