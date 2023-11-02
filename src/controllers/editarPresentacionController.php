@@ -1,5 +1,6 @@
 <?php
 
+
 namespace src\controllers;
 
 use ConexionBD;
@@ -42,7 +43,8 @@ function reordenarDiapositivas($ordenOriginal, $nuevoOrden)
 {
     if ($nuevoOrden === null) {
         $nuevoOrden = $ordenOriginal;
-    } else {
+    }
+    else{
         $arrayNuevoOrden = json_decode($nuevoOrden);
         $arrayOrdenOriginal = json_decode($ordenOriginal);
         if (array_values($arrayOrdenOriginal) !== array_values($arrayNuevoOrden)) {
@@ -72,12 +74,13 @@ function editarPresentacion($id, $titulo, $descripcion, $vistaCliente)
  */
 function procesarFormulario()
 {
-    var_dump($_POST);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
         $titulo = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $ordenOriginal = $_POST['ordenOriginalDiapositivas'];
+        $nuevoOrden = esNuevoOrdenVacio();
+        $vistaCliente = esVistaClienteVacio();
         $nuevoOrden = esNuevoOrdenVacio();
         $vistaCliente = esVistaClienteVacio();
         $errores = [];
@@ -88,7 +91,6 @@ function procesarFormulario()
         if (strlen($titulo) > 255) {
             $errores['titulo'] = "El campo \"Titulo\" no puede tener más de 255 caracteres";
         }
-
         if (strlen($descripcion) > 255) {
             $errores['descripcion'] = "El campo \"Descripción\"  no puede tener más de 255 caracteres";
         }
@@ -99,12 +101,14 @@ function procesarFormulario()
             $_SESSION['titulo'] = $titulo;
             $_SESSION['descripcion'] = $descripcion;
 
+
             //header("Location: ../vista/crearPresentacion.php");
 
         } else {
             $_SESSION['confirmacion'] = editarPresentacion($id, $titulo, $descripcion, $vistaCliente);
             reordenarDiapositivas($ordenOriginal, $nuevoOrden);
-        }
+
+        }  reordenarDiapositivas($ordenOriginal, $nuevoOrden);
         header("Location: ../vista/editarPresentacion.php");
     }
 }
