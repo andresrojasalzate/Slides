@@ -24,8 +24,7 @@ function esNuevoOrdenVacio()
     if (!isset($_POST['ordenNuevoDiapositivas'])) {
         return null;
     } else {
-       return $_POST['ordenNuevoDiapositivas'];
-       
+        return $_POST['ordenNuevoDiapositivas'];
     }
 }
 

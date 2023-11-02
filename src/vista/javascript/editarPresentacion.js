@@ -145,7 +145,7 @@ esVistaCliente.addEventListener('click',function(e){
     }else{
         esVistaCliente.value = 1;
     }
-});
+})
 
 
 document.addEventListener('DOMContentLoaded', function() {
