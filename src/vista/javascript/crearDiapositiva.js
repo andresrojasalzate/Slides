@@ -90,15 +90,14 @@ formularioDiapositiva.addEventListener('submit', function (e) {
 
 
 const verDiapositiva = () => {
-    let a;
+    let diapo;
     const tituloDiapo = document.getElementById("tituloDiapo").value;
     const contenidoDiapo = document.getElementById("contenidoDiapo").value;
     const tipoDiapo = document.querySelector('input[type="radio"]:checked').value;
-    const imagen = document.getElementById("nombreImagen").value;
     const presentaciones_id = document.getElementById("presentaciones_id").value;
 
     if (tipoDiapo === 'contenido') {
-        a = [
+        diapo = [
             {
                 "titulo": tituloDiapo,
                 "contenido": contenidoDiapo,
@@ -109,7 +108,7 @@ const verDiapositiva = () => {
             }
         ];
     } else if (tipoDiapo == 'titulo') {
-        a = [
+        diapo = [
             {
                 "titulo": tituloDiapo,
                 "contenido": "",
@@ -120,20 +119,20 @@ const verDiapositiva = () => {
             }
         ];
     } else {
-        a = [
+        diapo = [
             {
                 "titulo": tituloDiapo,
                 "contenido": "",
                 "tipoDiapositiva": tipoDiapo,
                 "presentaciones_id": presentaciones_id,
-                "imagen": imagen,
+                "imagen": "",
                 "nDiapositiva": 1
             }
         ];
     }
 
     document.cookie = "1diapo=" + 'crearDiapo';
-    document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
+    document.cookie = "arrayDiapositivas=" + JSON.stringify(diapo);
     window.location.href = "visualizarDiapositiva.php";
 }
 

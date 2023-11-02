@@ -127,8 +127,9 @@ if (isset($_POST['titulo'])) {
                         <div class="imgOculto divFormColumn">
                             <label for="contenidoDiapo">Imagen</label>
                             <div id="errDescripcion" class="errores"></div>
-                            <input id="fileTest" name="imagen" id="imagen" type="file">
-                            <input type="text" name="nombreImagen" id="nombreImagen" value="<?php echo empty($imagen) ? '' : htmlspecialchars($imagen); ?>">
+                            <div class ="imgcss">
+                            <input class="img" id="fileTest" name="imagen" id="imagen" type="file">
+                            </div>
                         </div>
                     </div>
 

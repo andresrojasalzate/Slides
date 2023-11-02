@@ -15,7 +15,8 @@ require_once '../modelo/Clases/DiapositivaImagen.php';
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
-} else {}
+} else {
+}
 
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
@@ -32,20 +33,25 @@ $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $diapo = returnDiapo($conexion, $_POST["btnAceptar"])["nDiapositiva"];
-        Diapositiva::restar1nDiapos($conexion,$id,$_POST["btnAceptar"]);
-        $nombre = DiapositivaImagen::getNombreImagen($conexion,$_POST["btnAceptar"]);
-        $rutaImagen = dirname(__FILE__) . '/img/'. $idUltimaPresentacion . '/' . $nombre;
-        if(!is_dir($rutaImagen)){
-            if(unlink($rutaImagen)){}
-        }else{}
+        Diapositiva::restar1nDiapos($conexion, $id, $_POST["btnAceptar"]);
+        $nombre = DiapositivaImagen::getNombreImagen($conexion, $_POST["btnAceptar"]);
+        $rutaImagen = dirname(__FILE__) . '/img/' . $idUltimaPresentacion . '/' . $nombre;
+        if (file_exists($rutaImagen)) {
+            if (!is_dir($rutaImagen) && $nombre !== null) {
+                if (unlink($rutaImagen)) {
+                }
+            } else {
+            }
+        } else {
+        }
         $mostrarFeedback = Diapositiva::eliminarDiapositiva($conexion, $_POST["btnAceptar"]);
-        $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);   
+        $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
     }
 }
 
 
-if(isset($_SESSION['confirmacion'])){
-    if($_SESSION['confirmacion']!=null){
+if (isset($_SESSION['confirmacion'])) {
+    if ($_SESSION['confirmacion'] != null) {
         $mostrarFeedback = $_SESSION['confirmacion'];
         unset($_SESSION['confirmacion']);
     }
@@ -53,7 +59,8 @@ if(isset($_SESSION['confirmacion'])){
 
 setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
 
-function returnDiapo($connexion, $id){
+function returnDiapo($connexion, $id)
+{
     $diapo = Diapositiva::getDiapo($connexion, $id);
     return $diapo;
 }
@@ -68,7 +75,8 @@ function returnDiapo($connexion, $id){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/editarPresentacion.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
@@ -86,31 +94,36 @@ function returnDiapo($connexion, $id){
                     <div class="contentForm">
                         <form action="../controllers/editarPresentacionController.php" method="POST">
                             <label>Titulo</label>
-                            <input class="titulo" name ="nombre" type="text" value="<?= $nombrePresentacion ?>" required>
+                            <input class="titulo" name="nombre" type="text" value="<?= $nombrePresentacion ?>" required>
                             <label>Descripción</label>
                             <input class="descripcion" name="descripcion" type="text" value="<?= $descripcion ?>">
                             <div class="botonesEdicionPresentacion">
-                                <button class="botonCrear" name="btnNuevaDiapositiva" value="<?= $id ?>">Nueva Diapositiva</button>
+                                <button class="botonCrear" name="btnNuevaDiapositiva" value="<?= $id ?>">Nueva
+                                    Diapositiva</button>
                                 <button class="botonCrear">Cambiar Estilo</button>
                             </div>
-                            <input type="hidden" name = "id" value="<?= $id?>">
+                            <input type="hidden" name="id" value="<?= $id ?>">
                             <button class="botonCrear" type="submit">Guardar Cambios</button>
                             <button class="botonCrear" name="btnVolver">Volver</button>
                         </form>
                     </div>
                 </div>
                 <div class="contenedorDiapositivas">
-                    <?php if (count($diapositivas) > 0) : ?>
-                        <?php foreach ($diapositivas as $diapositiva) : ?>
-                            <div class="presentacionBD" draggable="true" id="<?=$diapositiva['id'] ?>">
-                                <div class="tituloDiapo"><span><?= $diapositiva['titulo'] ?></span></div>
+                    <?php if (count($diapositivas) > 0): ?>
+                        <?php foreach ($diapositivas as $diapositiva): ?>
+                            <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>">
+                                <div class="tituloDiapo"><span>
+                                        <?= $diapositiva['titulo'] ?>
+                                    </span></div>
                                 <div class="opciones">
-                                    <button name="btnDelDiapositiva" value="<?= $diapositiva['id'] ?>" class="material-symbols-outlined">delete</button>
-                                    <button class="vDiapo material-symbols-outlined" diapo="<?= htmlspecialchars(json_encode(returnDiapo($conexion,$diapositiva['id']))) ?>">visibility</button>
+                                    <button name="btnDelDiapositiva" value="<?= $diapositiva['id'] ?>"
+                                        class="material-symbols-outlined">delete</button>
+                                    <button class="vDiapo material-symbols-outlined"
+                                        diapo="<?= htmlspecialchars(json_encode(returnDiapo($conexion, $diapositiva['id']))) ?>">visibility</button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="mensajeCeroDiapositivas">Aún no hay diapositivas</div>
                     <?php endif; ?>
                 </div>
@@ -129,11 +142,13 @@ function returnDiapo($connexion, $id){
             </div>
         </div>
     </div>
-    <?php if ($mostrarFeedback != null) : ?>
+    <?php if ($mostrarFeedback != null): ?>
         <div class="fondoModalFeedBackEliminarDiapositiva">
             <div class="modalFeedBackEliminarDiapositiva">
                 <div class="cabeceraModal"><span>Confirmación</span></div>
-                <div class="mensajeModal"><span><?= $mostrarFeedback ?></span></div>
+                <div class="mensajeModal"><span>
+                        <?= $mostrarFeedback ?>
+                    </span></div>
                 <div class="aceptarCancelar">
                     <button class="botonCrear" name="btnCerrar">Cerrar</button>
                 </div>
