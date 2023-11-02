@@ -30,6 +30,7 @@ setcookie("nDiapo", "home", time() + 3600, "/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +41,7 @@ setcookie("nDiapo", "home", time() + 3600, "/");
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
     <title>Crear Presentación</title>
 </head>
+
 <body>
     <div class="crearPresentacion">
         <div class="contenido">
@@ -98,4 +100,5 @@ setcookie("nDiapo", "home", time() + 3600, "/");
     </div>
     <script src="javascript/crearPresentacion.js"></script>
 </body>
+
 </html>
