@@ -47,6 +47,8 @@ if (isset($_POST['titulo'])) {
     $titulo = $_POST['titulo'];
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
+    $imagen = $_POST['imagen']; 
+    var_dump($tipoDiapo);
 
 } else {
     $titulo = '';
@@ -84,10 +86,11 @@ if (isset($_POST['titulo'])) {
 
             <div class="contentCrearDiapositivas">
                 <form id="crearDiapositiva" action="../controllers/crearDiapositivaController.php" method="post"
-                    class="form">
+                    class="form" enctype="multipart/form-data">
                     <fieldset class="divFormRow">
                         <legend class="subtitulos">Tipo de diapositiva</legend>
                         <div>
+                            <input type="hidden" id="presentaciones_id" value="<?php $idUltimaPresentacion ?>">
                             <input type="radio" id="tipoTitulo" name="tipoDiapo" value="titulo" <?php echo (!isset($tipoDiapo) || $tipoDiapo === 'titulo') ? 'checked' : ''; ?>>
                             <label for="tipoTitulo">Titulo</label><br>
                         </div>
@@ -95,6 +98,11 @@ if (isset($_POST['titulo'])) {
                             <input class="contDiapo" type="radio" id="tipoTituloCont" name="tipoDiapo" value="contenido"
                                 <?php echo (isset($tipoDiapo) && $tipoDiapo === 'contenido') ? 'checked' : ''; ?>>
                             <label for="tipoTituloCont">Titulo y contenido</label>
+                        </div>
+                        <div>
+                            <input  class ="imgDiapo" type="radio" id="tipoImg" name="tipoDiapo" value="imagen"
+                                <?php echo (isset($tipoDiapo) && $tipoDiapo === 'imagen') ? 'checked' : ''; ?>>
+                            <label for="tipoImg">Titulo e Imagen</label>
                         </div>
                     </fieldset>
                     <div>
@@ -116,10 +124,18 @@ if (isset($_POST['titulo'])) {
                             <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo"
                                 placeholder="Empieza aqui..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
                         </div>
+                        <div class="imgOculto divFormColumn">
+                            <label for="contenidoDiapo">Imagen</label>
+                            <div id="errDescripcion" class="errores"></div>
+                            <input id="fileTest" name="imagen" id="imagen" type="file">
+                            <input type="text" name="nombreImagen" id="nombreImagen" value="<?php echo empty($imagen) ? '' : htmlspecialchars($imagen); ?>">
+                        </div>
                     </div>
 
                     <div class="botonNuevaDiapositiva">
                         <button class="botonCrear" type="submit">Crear</button>
+                        <div class="centrar">
+
                         <div class="btnVerSalir">
                             <?php if($nDiapo == "editarPres"){?>
                             <button type="button" class="botonSalir"
