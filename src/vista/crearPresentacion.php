@@ -1,17 +1,17 @@
 <?php
-
+require_once '../modelo/Clases/Estilo.php';
+require_once '../config/ConexionBD.php';
 use src\modelo\Clases\Estilo;
 
-require_once '../config/ConexionBD.php';
-require_once '../modelo/Clases/Estilo.php';
-session_start();
+session_start(); 
+
+$titulo = "";
+$descripcion = "";
 
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
 $estilos = Estilo::getAllEstilos($conexion);
 
-$titulo = "";
-$descripcion = "";
 if (isset($_SESSION['errores'])) {
 
     $errores = $_SESSION['errores'];
@@ -22,6 +22,7 @@ if (isset($_SESSION['errores'])) {
 
     $descripcion = $_SESSION['descripcion'];
     unset($_SESSION['descripcion']);
+
 }
 
 setcookie("nDiapo", "home", time() + 3600, "/");
@@ -50,45 +51,48 @@ setcookie("nDiapo", "home", time() + 3600, "/");
             <div class="contentFormulario">
                 <div class="mostrarFormulario">
                     <form id="crearPresentacion" action="../controllers/crearPresentacionController.php" method="post">
-                        <label for="nombre">Titulo</label>
-                        <div id="errNombre" class="errores">
-                            <?php if (isset($errores["titulo"])) : ?>
-                                <p><?= $errores["titulo"]; ?></p>
-                            <?php endif; ?>
-                        </div>
-                        <input type="text" id="nombre" name="nombre" placeholder="Dale nombre a tu presentación" value="<?= $titulo; ?>" required><br>
-                        <label for="descripcion">Descripción</label>
-                        <div id="errDescripcion" class="errores">
-                            <?php if (isset($errores["descripcion"])) : ?>
-                                <p><?= $errores["descripcion"]; ?></p>
-                            <?php endif; ?>
-                        </div>
-                        <textarea id="descripcion" name="descripcion" placeholder="¿De que será tu presentacion?" value="<?= $descripcion; ?>"></textarea><br>
-                        <label for="estilo">Estilo</label>
-                        <div id="errEstilo" class="errores">
-                            <?php if (isset($errores["estilo"])) : ?>
-                                <p><?= $errores["estilo"]; ?></p>
-                            <?php endif; ?>
-                        </div>
-                        <div class="slider">
-                            <button type="button" id="anterior" class="botones-estilos">
-                                <div class="Triangulo"></div>
-                            </button>
-                            <ul>
-                                <?php foreach ($estilos as $estilo) : ?>
-                                    <li data="<?= $estilo['id']; ?>">
-                                        <img src="img/estilosDipositivas/<?= $estilo["img_resource"]; ?>" alt="">
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                            <button type="button" id="siguiente" class="botones-estilos"></button>
-                        </div>
-                        <div class="vistaCliente">
-                            <input type="checkbox" id="vista_cliente" name="vista_cliente" value="0">
-                            <label class="esVistaCliente" for="vista_cliente">Compartir presentación</label>
-                        </div>
-                        <input type="hidden" id="id_estilo" name="id_estilo">
-                        <button type="submit" class="botonCrear">Crear Presentación</button>
+                    <label for="nombre">Titulo</label>
+                    <div id="errNombre" class="errores">
+                        <?php if (isset($errores["titulo"])): ?>
+                            <p><?= $errores["titulo"]; ?></p>      
+                        <?php endif; ?>
+                    </div>
+                    <input type="text" id="nombre" name="nombre" placeholder="Dale nombre a tu presentación" value="<?= $titulo; ?>" required><br>
+                    <label for="descripcion">Descripción</label>
+                    <div id="errDescripcion" class="errores">
+                         <?php if (isset($errores["descripcion"])): ?>
+                            <p><?= $errores["descripcion"]; ?></p>     
+                        <?php endif; ?>
+                    </div>
+                    <textarea id="descripcion" name="descripcion" placeholder="¿De que será tu presentacion?" value="<?= $descripcion; ?>"></textarea><br>
+                    <label>PIN</label><br>
+                    <div id="errPin" class="errores">
+                        <?php if (isset($errores["pin"])): ?>
+                            <p><?= $errores["pin"]; ?></p>      
+                        <?php endif; ?>
+                    </div>
+                    <input type="password" id="pin" name="pin" placeholder="PIN"><br>
+                    <label>Repetir PIN</label><br>
+                    <input type="password" id="rep_pin" name="rep_pin" placeholder="Repite el PIN"><br>
+                    <label for="estilo">Estilo</label>
+                    <div id="errEstilo" class="errores">
+                        <?php if (isset($errores["estilo"])): ?>
+                            <p><?= $errores["estilo"]; ?></p>      
+                        <?php endif; ?>
+                    </div>
+                    <div class="slider">
+                        <button type="button" id="anterior" class="botones-estilos"><div class="Triangulo"></div></button>
+                        <ul>
+                            <?php foreach ($estilos as $estilo): ?>
+                                <li data="<?= $estilo['id']; ?>">
+                                    <img src="img/estilosDipositivas/<?=$estilo["img_resource"]; ?>" alt="">
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <button type="button" id="siguiente" class="botones-estilos"></button>
+                    </div>
+                    <input type="hidden" id="id_estilo" name="id_estilo">
+                    <button type="submit" class="botonCrear">Crear Presentación</button>
                     </form>
                 </div>
             </div>

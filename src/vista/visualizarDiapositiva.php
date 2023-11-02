@@ -36,7 +36,7 @@ if (isset($_POST['sumar'])) {
 }
 
 // Guardar la posición actual en una cookie para recordarla
-setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
+/*setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);*/
 
 $rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $arrayDiapositivas[$posicion]['imagen'];
 

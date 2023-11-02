@@ -1,5 +1,6 @@
 <?php
 
+
 namespace src\controllers;
 
 use ConexionBD;
@@ -23,7 +24,8 @@ function esNuevoOrdenVacio()
     if (!isset($_POST['ordenNuevoDiapositivas'])) {
         return null;
     } else {
-        $_POST['ordenNuevoDiapositivas'];
+       return $_POST['ordenNuevoDiapositivas'];
+       
     }
 }
 
@@ -43,11 +45,15 @@ function reordenarDiapositivas($ordenOriginal, $nuevoOrden)
     if ($nuevoOrden === null) {
         $nuevoOrden = $ordenOriginal;
     } else {
+    } else {
         $arrayNuevoOrden = json_decode($nuevoOrden);
         $arrayOrdenOriginal = json_decode($ordenOriginal);
         if (array_values($arrayOrdenOriginal) !== array_values($arrayNuevoOrden)) {
+        if (array_values($arrayOrdenOriginal) !== array_values($arrayNuevoOrden)) {
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
+            for ($i = 0; $i < count($arrayNuevoOrden); $i++) {
+                Diapositiva::reordenarDiapositivas($conexion, $arrayNuevoOrden[$i], (array_search($arrayNuevoOrden[$i], $arrayNuevoOrden) + 1));
             for ($i = 0; $i < count($arrayNuevoOrden); $i++) {
                 Diapositiva::reordenarDiapositivas($conexion, $arrayNuevoOrden[$i], (array_search($arrayNuevoOrden[$i], $arrayNuevoOrden) + 1));
             }
@@ -59,9 +65,12 @@ function reordenarDiapositivas($ordenOriginal, $nuevoOrden)
 // funcion que modifica el titulo y descripcion de la presentación
 function editarPresentacion($id, $titulo, $descripcion, $vistaCliente)
 {
+function editarPresentacion($id, $titulo, $descripcion, $vistaCliente)
+{
 
     $bdConexion = ConexionBD::obtenerInstancia();
     $conexion = $bdConexion->getConnection();
+    $respuesta = Presentacion::actualizarPresentacion($conexion, $id, $titulo, $descripcion, $vistaCliente);
     $respuesta = Presentacion::actualizarPresentacion($conexion, $id, $titulo, $descripcion, $vistaCliente);
     $conexion = null;
     return $respuesta;
@@ -79,18 +88,25 @@ function procesarFormulario()
         $ordenOriginal = $_POST['ordenOriginalDiapositivas'];
         $nuevoOrden = esNuevoOrdenVacio();
         $vistaCliente = esVistaClienteVacio();
+        $nuevoOrden = esNuevoOrdenVacio();
+        $vistaCliente = esVistaClienteVacio();
         $errores = [];
 
         if (empty($titulo)) {
             $errores['titulo'] = "El campo \"Titulo\" no puede estar vacío";
         }
         if (strlen($titulo) > 255) {
+        if (strlen($titulo) > 255) {
             $errores['titulo'] = "El campo \"Titulo\" no puede tener más de 255 caracteres";
+        }
         }
 
         if (strlen($descripcion) > 255) {
+        if (strlen($descripcion) > 255) {
             $errores['descripcion'] = "El campo \"Descripción\"  no puede tener más de 255 caracteres";
         }
+
+        if (count($errores) > 0) {
 
         if (count($errores) > 0) {
 
@@ -98,7 +114,12 @@ function procesarFormulario()
             $_SESSION['titulo'] = $titulo;
             $_SESSION['descripcion'] = $descripcion;
 
+
             //header("Location: ../vista/crearPresentacion.php");
+
+        } else {
+            $_SESSION['confirmacion'] = editarPresentacion($id, $titulo, $descripcion, $vistaCliente);
+            reordenarDiapositivas($ordenOriginal, $nuevoOrden);
 
         } else {
             $_SESSION['confirmacion'] = editarPresentacion($id, $titulo, $descripcion, $vistaCliente);
