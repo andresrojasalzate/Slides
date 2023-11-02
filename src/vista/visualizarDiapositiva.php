@@ -17,7 +17,6 @@ if (isset($_COOKIE['arrayDiapositivas'])) {
 }
 
 if (isset($_COOKIE['idEstilo'])) {
-if (isset($_COOKIE['idEstilo'])) {
     $estilo = $_COOKIE['idEstilo'];
 }
 if (isset($_COOKIE['1diapo'])) {
@@ -123,7 +122,6 @@ $rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $
                         <button class="btnSalir">Salir</button>
                     </form>
                 <?php } ?>
-
             </div>
         </div>
     </div>

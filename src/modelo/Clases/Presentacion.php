@@ -15,11 +15,12 @@ class Presentacion{
     protected string $nombreURL;
 
     //Constructor
-    public function __construct(string $titulo, $descripcion, int $estilo_id, string $nombreURL){
+    public function __construct(string $titulo, $descripcion, int $estilo_id, bool $vistaCliente, string $nombreURL){
         $this->titulo = $titulo; 
         $this->descripcion = $descripcion;
         $this->diapositivas = [];
         $this->estilo_id = $estilo_id;
+        $this->vistaCliente = $vistaCliente;
         $this->nombreURL = $nombreURL;
     }
 
@@ -85,11 +86,12 @@ class Presentacion{
     public static function insertPresentacion(PDO $pdo, Presentacion $presentacion){
 
        // try{
-            $sql = "INSERT INTO presentaciones (nombre, descripcion, estilo_id, nombreURL) VALUES (:nombre, :descripcion, :estilo_id, :nombreURL)";
+            $sql = "INSERT INTO presentaciones (nombre, descripcion, estilo_id, vista_cliente, nombreURL) VALUES (:nombre, :descripcion, :estilo_id, :vista_cliente, :nombreURL)";
             $statement = $pdo->prepare($sql);
             $statement->bindValue(':nombre', $presentacion->titulo);
             $statement->bindValue(':descripcion', $presentacion->descripcion);
             $statement->bindValue(':estilo_id', $presentacion->estilo_id);
+            $statement->bindValue(':vista_cliente', $presentacion->vistaCliente);
             $statement->bindValue(':nombreURL', $presentacion->nombreURL);
             $statement->execute();
             

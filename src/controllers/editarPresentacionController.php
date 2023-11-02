@@ -33,7 +33,7 @@ function esVistaClienteVacio()
     if (!isset($_POST['vista_cliente'])) {
         return 0;
     } else {
-        $_POST['vista_cliente'];
+        return $_POST['vista_cliente'];
     }
 }
 
@@ -72,7 +72,6 @@ function editarPresentacion($id, $titulo, $descripcion, $vistaCliente)
  */
 function procesarFormulario()
 {
-    var_dump($_POST);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
         $titulo = $_POST['nombre'];

@@ -2,6 +2,7 @@ const formularioPresentacion = document.getElementById("crearPresentacion");
 const slider = document.querySelector(".slider");
 const slides = document.querySelectorAll(".slider li");
 const inputIDEstilo = document.getElementById("id_estilo");
+const esVistaCliente = document.querySelector('#vista_cliente');
 let currentSlide = 0;
 
 let estiloId = slides[currentSlide].getAttribute("data");
@@ -103,3 +104,12 @@ const retrocederSlide = () => {
 
 document.getElementById("siguiente").addEventListener("click", avanzarSlide);
 document.getElementById("anterior").addEventListener("click", retrocederSlide);
+
+//Cambiar el valor del checkbox para habilitar o deshabilitar la vista cliente
+esVistaCliente.addEventListener('click',function(e){
+    if(!esVistaCliente.checked){
+        esVistaCliente.value = 0;
+    }else{
+        esVistaCliente.value = 1;
+    }
+})

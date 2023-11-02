@@ -27,9 +27,9 @@ function crearNombreURL($titulo){
  * @param $titulo titulo de la prsentación
  * @param $descripcion descripcion
  */
-function isertarPresentacion($titulo, $descripcion, $idEstilo, $nombreURL){
+function isertarPresentacion($titulo, $descripcion, $idEstilo, $vistaCliente, $nombreURL){
     
-    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo, $nombreURL);
+    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo, $vistaCliente, $nombreURL);
            
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
@@ -63,6 +63,7 @@ function procesarFormulario() {
         $descripcion = $_POST['descripcion'];
         $idEstilo = $_POST['id_estilo'];
         $nombreURL = crearNombreURL($titulo);
+        $vistaCliente = $_POST['vista_cliente'];
         $errores = [];
  
         if (empty($titulo)) {
@@ -90,7 +91,7 @@ function procesarFormulario() {
         } else{
 
             $numEstiloId = intval($idEstilo);
-            isertarPresentacion($titulo, $descripcion, $numEstiloId,$nombreURL);
+            isertarPresentacion($titulo, $descripcion, $numEstiloId, $vistaCliente, $nombreURL);
 
         }
     }
