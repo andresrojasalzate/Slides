@@ -145,7 +145,7 @@ form{
     margin: 20px;
 }
 
-.divOculto{
+.divOculto,.imgOculto{
     display: none;
 }
 

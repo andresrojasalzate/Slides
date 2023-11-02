@@ -1,12 +1,14 @@
 <?php
 
 use src\modelo\Clases\Diapositiva;
+use src\modelo\Clases\DiapositivaImagen;
 use src\modelo\Clases\Presentacion;
 use src\modelo\Clases\Estilo;
 
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Presentacion.php';
 require_once '../modelo/Clases/Diapositiva.php';
+require_once '../modelo/Clases/DiapositivaImagen.php';
 require_once '../modelo/Clases/Estilo.php';
 
 session_start();
@@ -81,14 +83,21 @@ if (isset($_COOKIE["1diapo"])) {
 }
 if (isset($_COOKIE["idEstilo"])) {
     setcookie("idEstilo", false, time()-3600);
-}
+ }
+ if (isset($_COOKIE["nDiapo"])) {
+    setcookie("nDiapo", "", time()-3600);
+ }
 
  
 //Eliminar las presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);
-        $presentaciones = Presentacion::devolverPresentaciones($conexion);
+        DiapositivaImagen::eliminarCarpeta($_POST["btnAceptar"]);
+        echo "<script>setTimeout(function(){ location.href = '/vista/home.php'; }, 2000);</script>";
+        //recargar();
+        //$presentaciones = Presentacion::devolverPresentaciones($conexion);
+
     }
 }
 ?>

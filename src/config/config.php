@@ -3,7 +3,7 @@
 //Ip de conexión
 $ip = "172.17.1.20";
 
-//pPuerto
+//Puerto
 $port = "3306";
 
 //Nombre de la base de datos
