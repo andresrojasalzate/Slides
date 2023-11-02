@@ -13,14 +13,23 @@ require_once '../modelo/Clases/Estilo.php';
 require_once '../config/ConexionBD.php';
 session_start();
 
+//Funcion que crea el nombreURL de cada presentacion
+
+function crearNombreURL($titulo){
+    $nameURL = "viewClient_" . str_replace(" ", "_", strtolower(trim($titulo)));
+    $length = strlen($nameURL);
+    $nameURL .= "_" . $length;
+    return $nameURL;
+}
+
 /**
  * Funcion que llama a la funcion de insertar de la clase Prersentacion
  * @param $titulo titulo de la prsentación
  * @param $descripcion descripcion
  */
-function isertarPresentacion($titulo, $descripcion, $idEstilo, $pin){
+function isertarPresentacion($titulo, $descripcion, $idEstilo, $nombreURL, $pin){
     
-    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo, $pin);
+    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo, $nombreURL, $pin);
            
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
@@ -50,10 +59,10 @@ function isertarPresentacion($titulo, $descripcion, $idEstilo, $pin){
  */
 function procesarFormulario() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-       
         $titulo = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $idEstilo = $_POST['id_estilo'];
+        $nombreURL = crearNombreURL($titulo);
         $pin = $_POST['pin'];
         $repPin = $_POST['rep_pin'];
         $errores = [];
@@ -92,7 +101,7 @@ function procesarFormulario() {
         } else{
 
             $numEstiloId = intval($idEstilo);
-            isertarPresentacion($titulo, $descripcion, $numEstiloId, $pin);
+            isertarPresentacion($titulo, $descripcion, $numEstiloId,$nombreURL, $pin);
 
         }
     }

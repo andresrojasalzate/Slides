@@ -8,8 +8,9 @@ html,body{
 
 .cabecera{
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    min-height: 60px;
     background-color: #4A4063;
     border-radius: 20px;
     border: 10 px solid white;
@@ -19,13 +20,11 @@ html,body{
 .crearDiapositiva{
     display: flex;
     width: 100%;
-    height: 87%;
 }
 
 
 .fondoLila{
     width: 100%;
-    height: 100%;
     background-color: #4A4063;
     border-radius: 20px;
     border: 10 px solid white;
@@ -36,13 +35,18 @@ html,body{
 
 .bienvenida{
     background-color: #DFDDF0;
-    width: auto;
-    height: auto;
+    width: 95%;
     border-radius: 10px;
     margin: 15px;
     text-align: center;
     padding: 5px 40px;
-    font-size: 14px;
+    font-size: 24px;
+}
+
+.btnVerSalir{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tiutlo{
@@ -67,8 +71,7 @@ form{
     flex-wrap: wrap;
     background-color: #DFDDF0;
     width: 95%;
-    height: 95%;
-    min-height: 400px;
+    height: 100vh;
     border-radius: 10px;
     margin: 0 15px 30px 15px;
 }
@@ -142,7 +145,7 @@ form{
     margin: 20px;
 }
 
-.divOculto{
+.divOculto,.imgOculto{
     display: none;
 }
 
@@ -180,11 +183,6 @@ h1{
 }
 
 
-.centrar{
-    margin-left: auto;
-    margin-right: auto;
-}
-
 textarea{
     resize: none;
 }
@@ -192,10 +190,6 @@ textarea{
 .errores > p{
     color: red;
     justify-self: center;
-}
-
-.tituloNuevaDiapositiva{
-    font-size: 35px;
 }
 
 .botonVer{
@@ -262,7 +256,7 @@ textarea{
 }
 
 .toast {
-    display: none;
+    display: block;
     position: fixed;
     bottom: 80px;
     left: 50%;

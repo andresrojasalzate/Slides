@@ -53,25 +53,9 @@ use PDO, Exception, PDOException;
 		}
     }
 
-    public static function devolverDiapositivas(PDO $pdo){
-        try{
-            $sql = "SELECT presentaciones_id AS id, COUNT(*) AS totalDiapositivas FROM diapositivas group by presentaciones_id ORDER BY id;";
-            $statement = $pdo->prepare($sql);
-            $statement->execute();
-            $diapos = $statement->fetchAll(PDO::FETCH_ASSOC);
-            return $diapos;
-        } catch(PDOException $ex){
-            echo $ex;
-            return false;
-        } catch (Exception $ex) {
-			echo $ex;
-            return false;
-		}
-    }
-
     public static function arrayDiapositivas(PDO $pdo, $presentacionId){
         try {
-            $sql = "SELECT id, titulo, contenido, tipoDiapositiva, nDiapositiva FROM diapositivas WHERE presentaciones_id = :presentacionId ORDER BY nDiapositiva";
+            $sql = "SELECT id, titulo, contenido, tipoDiapositiva, nDiapositiva, imagen, presentaciones_id FROM diapositivas WHERE presentaciones_id = :presentacionId ORDER BY nDiapositiva";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':presentacionId', $presentacionId, PDO::PARAM_INT);
             $statement->execute();
@@ -136,8 +120,6 @@ use PDO, Exception, PDOException;
         }
     }
 
-    
-
     public static function restar1nDiapos($pdo, $id, $nDiapo){
         try {
             $sql = "UPDATE diapositivas SET nDiapositiva = nDiapositiva - 1 WHERE nDiapositiva > :nDiapo and presentaciones_id = :id;";
@@ -152,5 +134,21 @@ use PDO, Exception, PDOException;
             echo $ex;
             return false;
         }
+    }
+
+    public static function devolverDiapositivas(PDO $pdo){
+        try{
+            $sql = "SELECT presentaciones_id AS id, COUNT(*) AS totalDiapositivas FROM diapositivas group by presentaciones_id ORDER BY id;";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $diapos = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $diapos;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
     }
 }
