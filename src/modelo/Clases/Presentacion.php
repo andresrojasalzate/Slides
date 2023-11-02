@@ -50,10 +50,6 @@ class Presentacion{
         return $this->nombreURL;
     }
 
-    public function getNombreURL(): string{
-        return $this->nombreURL;
-    }
-
     //Setters
 
     public function setTitulo(string $nuevoTitulo){
@@ -80,10 +76,6 @@ class Presentacion{
         $this->titulo = $vistaCliente;
     }
 
-    public function setVistaCliente(bool $vistaCliente){
-        $this->titulo = $vistaCliente;
-    }
-
     /**
      * Funcion para hacer un inserte de una presentacion en la base de datos
      * 
@@ -94,7 +86,7 @@ class Presentacion{
      */
     public static function insertPresentacion(PDO $pdo, Presentacion $presentacion){
 
-       // try{
+       try{
             $sql = "INSERT INTO presentaciones (nombre, descripcion, estilo_id, vista_cliente, nombreURL) VALUES (:nombre, :descripcion, :estilo_id, :vista_cliente, :nombreURL)";
             $statement = $pdo->prepare($sql);
             $statement->bindValue(':nombre', $presentacion->titulo);
@@ -131,24 +123,6 @@ class Presentacion{
 		}
 
     }
-    
-
-    public static function devolverPresentaciones(PDO $pdo){
-        try{
-            $sql = "SELECT p.id, p.nombre, p.descripcion, estilo_id, COUNT(d.id) as nroDiapositivas FROM presentaciones p
-            LEFT JOIN diapositivas d ON  d.presentaciones_id = p.id GROUP BY p.id;";
-            $statement = $pdo->prepare($sql);
-            $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-            return $results;
-        } catch(PDOException $ex){
-            echo $ex;
-            return false;
-        } catch (Exception $ex) {
-			echo $ex;
-            return false;
-		}
-    }
 
     public static function devolverPresentacion(PDO $pdo, int $id){
         try{
@@ -159,24 +133,6 @@ class Presentacion{
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $results;
-        } catch(PDOException $ex){
-            echo $ex;
-            return false;
-        } catch (Exception $ex) {
-			echo $ex;
-            return false;
-		}
-    }
-
-    public static function devolverPresentacionByURL(PDO $pdo, string $url){
-        try{
-            $sql = "SELECT id FROM presentaciones WHERE nombreURL = :url;";
-            $statement = $pdo->prepare($sql);
-            $statement->bindParam(':url', $url, PDO::PARAM_STR);
-            $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-            $presId = $result[0]; 
-            return $presId;
         } catch(PDOException $ex){
             echo $ex;
             return false;
@@ -225,7 +181,6 @@ class Presentacion{
     }
 
     public static function actualizarPresentacion(PDO $pdo, int $id, string $titulo, string $descripcion, int $vistaCliente){
-    public static function actualizarPresentacion(PDO $pdo, int $id, string $titulo, string $descripcion, int $vistaCliente){
         try{
             $sql = "UPDATE presentaciones SET nombre = :titulo, descripcion = :descripcion, vista_cliente = :vista_cliente WHERE id = :id";
             $sql = "UPDATE presentaciones SET nombre = :titulo, descripcion = :descripcion, vista_cliente = :vista_cliente WHERE id = :id";
@@ -263,6 +218,4 @@ class Presentacion{
             
 		}
     }
-
-
 }
