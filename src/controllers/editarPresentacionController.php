@@ -23,7 +23,8 @@ function esNuevoOrdenVacio()
     if (!isset($_POST['ordenNuevoDiapositivas'])) {
         return null;
     } else {
-        $_POST['ordenNuevoDiapositivas'];
+       return $_POST['ordenNuevoDiapositivas'];
+       
     }
 }
 
@@ -33,7 +34,7 @@ function esVistaClienteVacio()
     if (!isset($_POST['vista_cliente'])) {
         return 0;
     } else {
-        $_POST['vista_cliente'];
+        return $_POST['vista_cliente'];
     }
 }
 
@@ -72,7 +73,7 @@ function editarPresentacion($id, $titulo, $descripcion, $vistaCliente)
  */
 function procesarFormulario()
 {
-    var_dump($_POST);
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
         $titulo = $_POST['nombre'];
@@ -81,7 +82,7 @@ function procesarFormulario()
         $nuevoOrden = esNuevoOrdenVacio();
         $vistaCliente = esVistaClienteVacio();
         $errores = [];
-
+        var_dump($vistaCliente);
         if (empty($titulo)) {
             $errores['titulo'] = "El campo \"Titulo\" no puede estar vacío";
         }
