@@ -9,6 +9,7 @@ const modalEliminarDiapositiva = document.querySelector('.modalEliminarDiapositi
 const modalFeedBackEliminarDiapositiva = document.querySelector('.modalFeedBackEliminarDiapositiva');
 const diapositivas = document.querySelectorAll('.presentacionBD');
 const formulario = document.querySelector('form');
+const esVistaCliente = document.querySelector('#vista_cliente');
 let ordenNuevoDiapositivas = null;
 let ordenOriginalDiapositivas = null;
 
@@ -93,6 +94,7 @@ ordenOriginalDiapositivas = idsDiapositivas(diapositivas);
 crearElemento(ordenOriginalDiapositivas, "ordenOriginalDiapositivas");
 
 
+
 const dragStart = (e) => {
     console.log('dragstart');
     // Transferim l'id de l'element que arroseguem:
@@ -135,6 +137,15 @@ const drop = (e) => {
 
 contenedorDiapositivas.addEventListener('dragover', dragOver);
 contenedorDiapositivas.addEventListener('drop', drop);
+
+/*Cambiar el valor del checkbox para habilitar o deshabilitar la vista cliente
+esVistaCliente.addEventListener('click',function(e){
+    if(!esVistaCliente.checked){
+        esVistaCliente.value = 0;
+    }else{
+        esVistaCliente.value = 1;
+    }
+})*/
 
 
 document.addEventListener('DOMContentLoaded', function () {

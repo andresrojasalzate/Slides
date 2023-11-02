@@ -18,7 +18,6 @@ $conexion = $bdConexion->getConnection();
 $presentaciones = Presentacion::devolverPresentaciones($conexion);
 $mostrarFeedback = null;
 
-
 $_SESSION['toast'] = false;
 
 
