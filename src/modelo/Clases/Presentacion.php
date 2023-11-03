@@ -23,6 +23,7 @@ class Presentacion{
         $this->estilo_id = $estilo_id;
         $this->nombreURL = $nombreURL;
         $this->pin = $pin;
+        $this->pin = $pin;
     }
 
     //Getters
@@ -93,6 +94,7 @@ class Presentacion{
             $statement->bindValue(':descripcion', $presentacion->descripcion);
             $statement->bindValue(':estilo_id', $presentacion->estilo_id);
             $statement->bindValue(':nombreURL', $presentacion->nombreURL);
+            $statement->bindValue(':pin', $presentacion->pin);
             $statement->bindValue(':pin', $presentacion->pin);
             $statement->execute();
             
