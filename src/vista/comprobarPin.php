@@ -7,9 +7,9 @@ session_start();
 
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
-
-$_SESSION['url'] = $_GET['url'];
-
+if(isset($_GET['url'])){
+    $_SESSION['url'] = $_GET['url'];
+}
 
 if (isset($_SESSION['errores'])) {
     $errores = $_SESSION['errores'];

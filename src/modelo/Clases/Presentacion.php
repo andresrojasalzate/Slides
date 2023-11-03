@@ -225,7 +225,7 @@ class Presentacion{
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC); 
+            $result = $statement->fetchColumn(); 
             return $result;
         } catch(PDOException $ex){
             echo $ex;
@@ -235,4 +235,5 @@ class Presentacion{
             
 		}
     }
+
 }
