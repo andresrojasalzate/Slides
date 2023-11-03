@@ -49,7 +49,7 @@ function procesarFormulario()
             }
 
             elseif ($tipo === 'imagen') {
-                $nombreImagen = $_POST['nombreImagen'] . '.png';
+                $nombreImagen = 'a.png';
                 $nombreImagen = str_replace(' ', '_', $nombreImagen);
                 //$imagen = $_FILES["imagen"]["name"];
                 $url_temp = $_FILES["imagen"]["tmp_name"];
