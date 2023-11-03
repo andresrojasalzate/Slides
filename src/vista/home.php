@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <div class="opciones">
                                     <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">edit</button>
                                     <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
-                                    <button class="material-symbols-outlined">content_copy</button>
+                                    <button name="btnSharePresentacion" class="material-symbols-outlined" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>">share</button>
                                     <button class="vDiapo material-symbols-outlined" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>">visibility</button>
                                     <button class="nDiapo library-add-button" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="material-symbols-outlined">library_add</span></button>
                                 </div>

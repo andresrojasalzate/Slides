@@ -105,6 +105,7 @@ body{
     margin: 10px;
     background-color: #783F8E;
     border-radius: 5px;
+    box-shadow: 11px 12px 6px #4A4063;
 }
 
 .titulo{
