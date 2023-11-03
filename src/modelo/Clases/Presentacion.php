@@ -129,7 +129,7 @@ class Presentacion{
 
     public static function devolverPresentaciones(PDO $pdo){
         try{
-            $sql = "SELECT p.id, p.nombre, p.descripcion, estilo_id, COUNT(d.id) as nroDiapositivas FROM presentaciones p
+            $sql = "SELECT p.id, p.nombre, p.descripcion, estilo_id, vista_cliente, COUNT(d.id) as nroDiapositivas FROM presentaciones p
             LEFT JOIN diapositivas d ON  d.presentaciones_id = p.id GROUP BY p.id;";
             $statement = $pdo->prepare($sql);
             $statement->execute();
@@ -211,6 +211,23 @@ class Presentacion{
             $statement->bindParam(':vista_cliente', $vistaCliente, PDO::PARAM_INT);
             $statement->execute();
             $result = "¡Presentación actualizada!";
+            return $result;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
+    public static function compartirPresentacion(PDO $pdo, int $id){
+        try{
+            $sql = "UPDATE presentaciones SET vista_cliente = 1  WHERE id = :id";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = "¡Presentación compartida!";
             return $result;
         } catch(PDOException $ex){
             echo $ex;
