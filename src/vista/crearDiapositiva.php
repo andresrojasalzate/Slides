@@ -1,4 +1,5 @@
 <?php
+
 use src\modelo\Clases\Presentacion;
 
 session_start();
@@ -16,17 +17,20 @@ if (isset($_GET['nombre']) && ($_GET['nombre'] != null && $_GET['nombre'] != "")
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
     $idUltimaPresentacion = $_COOKIE["id_ultima_presentacion"];
-} else {}
-if(isset($_COOKIE['idEstilo'])){
+} else {
+}
+if (isset($_COOKIE['idEstilo'])) {
     $estilo = $_COOKIE['idEstilo'];
 }
 $_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
 if (isset($_COOKIE["crearDiapo"])) {
     $mostrarFeedback = $_COOKIE["crearDiapo"];
-} else {}
+} else {
+}
 if (isset($_COOKIE["nDiapo"])) {
     $nDiapo = $_COOKIE["nDiapo"];
-} else {}
+} else {
+}
 
 $_SESSION["id_ultima_presentacion"] = $idUltimaPresentacion;
 
@@ -47,9 +51,8 @@ if (isset($_POST['titulo'])) {
     $titulo = $_POST['titulo'];
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
-    $imagen = $_POST['imagen']; 
+    $imagen = $_POST['imagen'];
     var_dump($tipoDiapo);
-
 } else {
     $titulo = '';
 }
@@ -85,8 +88,7 @@ if (isset($_POST['titulo'])) {
             </div>
 
             <div class="contentCrearDiapositivas">
-                <form id="crearDiapositiva" action="../controllers/crearDiapositivaController.php" method="post"
-                    class="form" enctype="multipart/form-data">
+                <form id="crearDiapositiva" action="../controllers/crearDiapositivaController.php" method="post" class="form" enctype="multipart/form-data">
                     <fieldset class="divFormRow">
                         <legend class="subtitulos">Tipo de diapositiva</legend>
                         <div>
@@ -95,13 +97,11 @@ if (isset($_POST['titulo'])) {
                             <label for="tipoTitulo">Titulo</label><br>
                         </div>
                         <div>
-                            <input class="contDiapo" type="radio" id="tipoTituloCont" name="tipoDiapo" value="contenido"
-                                <?php echo (isset($tipoDiapo) && $tipoDiapo === 'contenido') ? 'checked' : ''; ?>>
+                            <input class="contDiapo" type="radio" id="tipoTituloCont" name="tipoDiapo" value="contenido" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'contenido') ? 'checked' : ''; ?>>
                             <label for="tipoTituloCont">Titulo y contenido</label>
                         </div>
                         <div>
-                            <input  class ="imgDiapo" type="radio" id="tipoImg" name="tipoDiapo" value="imagen"
-                                <?php echo (isset($tipoDiapo) && $tipoDiapo === 'imagen') ? 'checked' : ''; ?>>
+                            <input class="imgDiapo" type="radio" id="tipoImg" name="tipoDiapo" value="imagen" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'imagen') ? 'checked' : ''; ?>>
                             <label for="tipoImg">Titulo e Imagen</label>
                         </div>
                     </fieldset>
@@ -114,21 +114,19 @@ if (isset($_POST['titulo'])) {
                             <div id="errNombre" class="errores">
 
                             </div>
-                            <input class="titulo" type="text" id="tituloDiapo" name="tituloDiapo"
-                                placeholder="Titulo de tu Diapositiva" required
-                                value="<?php echo empty($titulo) ? '' : htmlspecialchars($titulo); ?>">
+                            <input class="titulo" type="text" id="tituloDiapo" name="tituloDiapo" placeholder="Titulo de tu Diapositiva" required value="<?php echo empty($titulo) ? '' : htmlspecialchars($titulo); ?>">
                         </div>
                         <div class="divOculto divFormColumn">
                             <label for="contenidoDiapo">Contenido</label>
                             <div id="errDescripcion" class="errores"></div>
-                            <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo"
-                                placeholder="Empieza aqui..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
+                            <textarea class="inputCont text" id="contenidoDiapo" name="contenidoDiapo" placeholder="Empieza aqui..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
                         </div>
                         <div class="imgOculto divFormColumn">
                             <label for="contenidoDiapo">Imagen</label>
                             <div id="errDescripcion" class="errores"></div>
-                            <input id="fileTest" name="imagen" id="imagen" type="file">
-                            <input type="text" name="nombreImagen" id="nombreImagen" value="<?php echo empty($imagen) ? '' : htmlspecialchars($imagen); ?>">
+                            <div class="imgcss">
+                                <input class="img" id="fileTest" name="imagen" id="imagen" type="file">
+                            </div>
                         </div>
                     </div>
 
@@ -136,17 +134,15 @@ if (isset($_POST['titulo'])) {
                         <button class="botonCrear" type="submit">Crear</button>
                         <div class="centrar">
 
-                        <div class="btnVerSalir">
-                            <?php if($nDiapo == "editarPres"){?>
-                            <button type="button" class="botonSalir"
-                                onclick="window.location.href='/vista/editarPresentacion.php'">Salir</button>
-                                <?php }else{?>
-                                    <button type="button" class="botonSalir"
-                                onclick="window.location.href='/vista/home.php'">Salir</button>
-                                    <?php }?>
-                            <button type="button" class="botonVer" onclick="verDiapositiva()">Ver</button>
+                            <div class="btnVerSalir">
+                                <?php if ($nDiapo == "editarPres") { ?>
+                                    <button type="button" class="botonSalir" onclick="window.location.href='/vista/editarPresentacion.php'">Salir</button>
+                                <?php } else { ?>
+                                    <button type="button" class="botonSalir" onclick="window.location.href='/vista/home.php'">Salir</button>
+                                <?php } ?>
+                                <button type="button" class="botonVer" onclick="verDiapositiva()">Ver</button>
+                            </div>
                         </div>
-                    </div>
                 </form>
                 <?php
                 $mostrarToast = $_SESSION['toast'];
