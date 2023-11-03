@@ -35,6 +35,7 @@ function esVistaClienteVacio()
         return 0;
     } else {
         return $_POST['vista_cliente'];
+        return $_POST['vista_cliente'];
     }
 }
 
@@ -84,7 +85,7 @@ function procesarFormulario()
         $nuevoOrden = esNuevoOrdenVacio();
         $vistaCliente = esVistaClienteVacio();
         $errores = [];
-
+        var_dump($vistaCliente);
         if (empty($titulo)) {
             $errores['titulo'] = "El campo \"Titulo\" no puede estar vacío";
         }

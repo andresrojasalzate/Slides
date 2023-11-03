@@ -13,9 +13,12 @@ function procesarFormulario()
     $bdConexion = ConexionBD::obtenerInstancia();
     $conexion = $bdConexion->getConnection();
     $idPres = Presentacion::devolverPresentacionByURL($conexion, $url);
-    $pinCorrecto = Presentacion::recuperarPinPresentacion($conexion, $idPres);
+    $pinCorrecto = Presentacion::recuperarPinPresentacion($conexion, $idPres['id']);
     $pinIntroducido = $_POST['pin'];
     $errores = [];
+
+    echo "pin correcto $pinCorrecto";
+    echo "pin introducio $pinIntroducido";
 
     if (empty($pinIntroducido)) {
         $errores['pin'] = "El PIN no puede estar vacio";
@@ -30,6 +33,7 @@ function procesarFormulario()
         header("Location: ../vista/comprobarPin.php");
         exit;
     } else {
+        $_SESSION['validado'] = true;
         header("Location: ../vista/vistaCliente.php?url=$url");
         exit;
     }

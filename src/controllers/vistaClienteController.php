@@ -28,11 +28,14 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){
     if(isset($_GET['url'])&& !empty($_GET['url'])){
         $idPres =Presentacion::devolverPresentacionByURL($conexion,$_GET['url']);
         if(!empty($idPres)){
-            /*$pinPresentacion = Presentacion::recuperarPinPresentacion($conexion, $idPres);
-            $url = $_GET['url'];
-            if($pinPresentacion != false){
-                header("Location: ../vista/comprobarPin.php?url=$url");
-            }*/
+            if(!isset($_SESSION['validado'])){
+                $pinPresentacion = Presentacion::recuperarPinPresentacion($conexion, $idPres['id']);
+                $url = $_GET['url'];
+                if($pinPresentacion != false){
+                    header("Location: ../vista/comprobarPin.php?url=$url");
+                }
+            }
+            unset($_SESSION['validado']);
             $presentacion = Presentacion::devolverPresentacion($conexion, $idPres['id']);
             if($presentacion[0]['vista_cliente'] !== 0){
                 $_SESSION['vistaDiapositivas'] = Diapositiva::arrayDiapositivas($conexion,$presentacion[0]['id']);
