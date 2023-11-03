@@ -16,7 +16,7 @@ session_start();
 //Funcion que crea el nombreURL de cada presentacion
 
 function crearNombreURL($titulo){
-    $nameURL = "viewClient_" . str_replace(" ", "_", strtolower(trim($titulo)));
+    $nameURL = /*"viewClient_" . */str_replace(" ", "_", strtolower(trim($titulo)));
     $length = strlen($nameURL);
     $nameURL .= "_" . $length;
     return $nameURL;
@@ -97,4 +97,3 @@ function procesarFormulario() {
 }
 
 procesarFormulario();
-
