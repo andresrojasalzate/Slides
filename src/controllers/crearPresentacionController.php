@@ -16,7 +16,7 @@ session_start();
 //Funcion que crea el nombreURL de cada presentacion
 
 function crearNombreURL($titulo){
-    $nameURL = "viewClient_" . str_replace(" ", "_", strtolower(trim($titulo)));
+    $nameURL = /*"viewClient_" . */str_replace(" ", "_", strtolower(trim($titulo)));
     $length = strlen($nameURL);
     $nameURL .= "_" . $length;
     return $nameURL;
@@ -27,9 +27,9 @@ function crearNombreURL($titulo){
  * @param $titulo titulo de la prsentación
  * @param $descripcion descripcion
  */
-function isertarPresentacion($titulo, $descripcion, $idEstilo, $nombreURL){
+function isertarPresentacion($titulo, $descripcion, $idEstilo, $nombreURL, $pin){
     
-    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo, $nombreURL);
+    $presentacion = new Presentacion($titulo, $descripcion, $idEstilo, $nombreURL, $pin);
            
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
@@ -63,6 +63,8 @@ function procesarFormulario() {
         $descripcion = $_POST['descripcion'];
         $idEstilo = $_POST['id_estilo'];
         $nombreURL = crearNombreURL($titulo);
+        $pin = $_POST['pin'];
+        $repPin = $_POST['rep_pin'];
         $errores = [];
  
         if (empty($titulo)) {
@@ -80,6 +82,15 @@ function procesarFormulario() {
             $errores['estilo'] = "Ha habido un error al seleccionar el estilo. Vuelva a intentarlo";
         }
 
+        if($pin != $repPin){
+
+            $errores['pin'] = "Los PINS no coinciden";
+        }
+
+        if(strlen($pin) > 50){
+            $errores['pin'] = "El PIN no puede tener más de 50 caracteres";
+        }
+
         if(count($errores) > 0){
             
             $_SESSION['errores'] = $errores;
@@ -90,11 +101,10 @@ function procesarFormulario() {
         } else{
 
             $numEstiloId = intval($idEstilo);
-            isertarPresentacion($titulo, $descripcion, $numEstiloId,$nombreURL);
+            isertarPresentacion($titulo, $descripcion, $numEstiloId,$nombreURL, $pin);
 
         }
     }
 }
 
 procesarFormulario();
-

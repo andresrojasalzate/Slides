@@ -97,6 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         DiapositivaImagen::eliminarCarpeta($_POST["btnAceptar"]);
     }
 }
+
 ?>
 
 

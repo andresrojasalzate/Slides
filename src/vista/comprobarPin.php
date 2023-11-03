@@ -5,15 +5,11 @@ require_once '../config/ConexionBD.php';
 
 session_start(); 
 
-$idPresentacion = 3; 
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
-$pin = Presentacion::recuperarPinPresentacion($conexion, $idPresentacion);
 
-if($pin == false){
-    header("Location: ../vista/visualizarDiapositiva.php");
-    exit;
-} 
+$_SESSION['url'] = $_GET['url'];
+
 
 if (isset($_SESSION['errores'])) {
     $errores = $_SESSION['errores'];
