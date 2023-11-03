@@ -108,18 +108,28 @@ body{
     box-shadow: 11px 12px 6px #4A4063;
 }
 
+.presentacionBDCompartida{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+    background-color: #1f9634;
+    border-radius: 5px;
+    box-shadow: 11px 12px 6px #4A4063;
+}
+
 .titulo{
     background-color:white;
-    padding: 3px;
-    margin: 5px;
+    padding: 3px 8px;
+    margin: 7px;
     border-radius: 5px;
     text-align: center;
 }
 
 .nroDiapositivas{
     background-color: white;
-    padding: 3px;
-    margin: 0px 5px;
+    padding: 3px 8px;
+    margin: 0px 7px;
     border-radius: 5px;
     text-align: left;
 }
@@ -128,8 +138,12 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #783F8E;
-    margin: 5px;
+    margin: 5px 3px 10px 3px;
+}
+
+button{
+    margin: 2px 5px;
+    padding: 2px;
 }
 
 .fondoModalEliminarPresentacion{
@@ -183,6 +197,7 @@ body{
 }
 
 .material-symbols-outlined {
+    height: 100%;
   font-variation-settings:
   'FILL' 0,
   'wght' 400,

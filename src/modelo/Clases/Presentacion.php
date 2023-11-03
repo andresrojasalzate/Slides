@@ -221,6 +221,23 @@ class Presentacion{
 		}
     }
 
+    public static function compartirPresentacion(PDO $pdo, int $id){
+        try{
+            $sql = "UPDATE presentaciones SET vista_cliente = 1  WHERE id = :id";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = "¡Presentación compartida!";
+            return $result;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
     public static function recuperarPinPresentacion(PDO $pdo, $id){
         try{
             $sql = "SELECT pin FROM presentaciones WHERE id = :id";

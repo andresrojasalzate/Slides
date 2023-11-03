@@ -98,6 +98,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
+//Eliminar las presentaciones
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST["btnSharePresentacion"])) {
+        $mostrarFeedback = Presentacion::compartirPresentacion($conexion,$_POST['btnSharePresentacion']);
+    }
+}
+
 ?>
 
 
@@ -126,15 +133,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="mostrarPresentaciones">
                     <?php if (count($presentaciones) > 0): ?>
                         <?php foreach ($presentaciones as $posicion => $presentacion): ?>
-                            <div class="presentacionBD">
+                            <div class="<?php echo ($presentacion['vista_cliente']===1) ? 'presentacionBDCompartida' : 'presentacionBD';?>">
                                 <div class="titulo"><span><?= $presentacion['nombre'] ?></span></div>
                                 <div class="nroDiapositivas"><span>Diapositivas:<?= $presentacion['nroDiapositivas']; ?></span></div>
                                 <div class="opciones">
                                     <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">edit</button>
                                     <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
-                                    <button name="btnSharePresentacion" class="material-symbols-outlined" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>">share</button>
+                                    <form action="home.php" method="POST">
+                                        <button name="btnSharePresentacion" class="material-symbols-outlined" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" <?php if($presentacion['vista_cliente']===1) echo 'disabled'?>>share</button>
+                                    </form>
                                     <button class="vDiapo material-symbols-outlined" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>">visibility</button>
-                                    <button class="nDiapo library-add-button" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="material-symbols-outlined">library_add</span></button>
+                                    <button class="nDiapo material-symbols-outlined" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span>library_add</span></button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
