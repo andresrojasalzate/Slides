@@ -139,6 +139,7 @@ contenedorDiapositivas.addEventListener('dragover', dragOver);
 contenedorDiapositivas.addEventListener('drop', drop);
 
 //Cambiar el valor del checkbox para habilitar o deshabilitar la vista cliente
+//Cambiar el valor del checkbox para habilitar o deshabilitar la vista cliente
 esVistaCliente.addEventListener('click',function(e){
     if(!esVistaCliente.checked){
         esVistaCliente.value = 0;
