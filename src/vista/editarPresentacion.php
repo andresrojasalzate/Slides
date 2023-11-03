@@ -26,6 +26,7 @@ $resultado = Presentacion::devolverPresentacion($conexion, $idUltimaPresentacion
 $nombrePresentacion = $resultado[0]['nombre'];
 $descripcion = $resultado[0]['descripcion'];
 $id = $resultado[0]['id'];
+$vista_cliente = $resultado[0]['vista_cliente'];
 $mostrarFeedback = null;
 $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 
@@ -48,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
     }
 }
-
 
 if (isset($_SESSION['confirmacion'])) {
     if ($_SESSION['confirmacion'] != null) {
@@ -101,6 +101,13 @@ function returnDiapo($connexion, $id)
                                 <button class="botonCrear" name="btnNuevaDiapositiva" value="<?= $id ?>">Nueva
                                     Diapositiva</button>
                                 <button class="botonCrear">Cambiar Estilo</button>
+                            </div>
+
+                            <div class="vistaCliente">
+                                <input type="checkbox" id="vista_cliente" name="vista_cliente"
+                                    value="<?= $vista_cliente ?>" <?php if ($vista_cliente === 1)
+                                          echo 'checked'; ?>>
+                                <label for="vista_cliente">Compartir presentación</label>
                             </div>
                             <input type="hidden" name="id" value="<?= $id ?>">
                             <button class="botonCrear" type="submit">Guardar Cambios</button>

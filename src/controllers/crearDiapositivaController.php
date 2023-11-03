@@ -63,11 +63,9 @@ function procesarFormulario()
                     $url_target = str_replace('\\', '/', $url_insert) . '/' . $cont . $nombreImagen;
                     $cont++;
                 }
-
                 if($cont>0){
                     $nombreImagen = $cont-1 . $nombreImagen;
                 }
-                var_dump($nombreImagen);
                 if (move_uploaded_file($url_temp, $url_target)) {
 
                 } else {
