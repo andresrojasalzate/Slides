@@ -13,14 +13,16 @@ class Presentacion{
     protected int $estilo_id;
     protected bool $vistaCliente;
     protected string $nombreURL;
+    protected string $pin;
 
     //Constructor
-    public function __construct(string $titulo, $descripcion, int $estilo_id, string $nombreURL){
+    public function __construct(string $titulo, $descripcion, int $estilo_id, string $nombreURL, string $pin){
         $this->titulo = $titulo; 
         $this->descripcion = $descripcion;
         $this->diapositivas = [];
         $this->estilo_id = $estilo_id;
         $this->nombreURL = $nombreURL;
+        $this->pin = $pin;
     }
 
     //Getters
@@ -91,6 +93,7 @@ class Presentacion{
             $statement->bindValue(':descripcion', $presentacion->descripcion);
             $statement->bindValue(':estilo_id', $presentacion->estilo_id);
             $statement->bindValue(':nombreURL', $presentacion->nombreURL);
+            $statement->bindValue(':pin', $presentacion->pin);
             $statement->execute();
             
         /*} catch(PDOException $ex){
