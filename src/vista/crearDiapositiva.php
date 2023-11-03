@@ -48,8 +48,6 @@ if (isset($_POST['titulo'])) {
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen']; 
-    var_dump($tipoDiapo);
-
 } else {
     $titulo = '';
 }
@@ -128,7 +126,7 @@ if (isset($_POST['titulo'])) {
                             <label for="contenidoDiapo">Imagen</label>
                             <div id="errDescripcion" class="errores"></div>
                             <div class ="imgcss">
-                            <input class="img" id="fileTest" name="imagen" id="imagen" type="file">
+                            <input class="img" id="fileTest" name="imagen" id="imagen" type="file" accept=".png, .jpg">
                             </div>
                         </div>
                     </div>

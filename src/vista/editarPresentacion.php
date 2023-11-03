@@ -118,7 +118,7 @@ function returnDiapo($connexion, $id)
                 <div class="contenedorDiapositivas">
                     <?php if (count($diapositivas) > 0): ?>
                         <?php foreach ($diapositivas as $diapositiva): ?>
-                            <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>">
+                            <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>" data-text="<?= ($diapositiva['contenido'] !== null) ? $diapositiva['contenido'] : 'no hay contenido' ?>">
                                 <div class="tituloDiapo"><span>
                                         <?= $diapositiva['titulo'] ?>
                                     </span></div>
