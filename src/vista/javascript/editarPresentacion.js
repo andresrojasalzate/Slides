@@ -10,6 +10,8 @@ const modalFeedBackEliminarDiapositiva = document.querySelector('.modalFeedBackE
 const diapositivas = document.querySelectorAll('.presentacionBD');
 const formulario = document.querySelector('form');
 const esVistaCliente = document.querySelector('#vista_cliente');
+const spans = document.querySelectorAll('span');
+const buttons = document.querySelectorAll('button');
 let ordenNuevoDiapositivas = null;
 let ordenOriginalDiapositivas = null;
 
@@ -96,17 +98,16 @@ crearElemento(ordenOriginalDiapositivas, "ordenOriginalDiapositivas");
 
 
 const dragStart = (e) => {
-    console.log('dragstart');
+    //console.log('dragstart');
     // Transferim l'id de l'element que arroseguem:
     e.dataTransfer.setData('text', e.target.id);
     e.dropEffect = 'linkMove';
     setTimeout(() => e.target.classList.add('invisible'), 0);
     e.target.opacity = .5;
-    console.log(diapositivas);
 }
 
 const dragEnd = (e) => {
-    console.log('dragend');
+    //console.log('dragend');
     e.target.classList.remove('invisible');
 }
 
@@ -122,7 +123,7 @@ const dragOver = (e) => {
 
 const drop = (e) => {
     e.preventDefault();
-    console.log('drop');
+    //console.log('drop');
     // Obtenim l'id de l'element arrossegat:
     const idDiapositiva = e.dataTransfer.getData("text");
     const nuevaUbicacion = document.getElementById(idDiapositiva);
@@ -138,7 +139,22 @@ const drop = (e) => {
 contenedorDiapositivas.addEventListener('dragover', dragOver);
 contenedorDiapositivas.addEventListener('drop', drop);
 
-//Cambiar el valor del checkbox para habilitar o deshabilitar la vista cliente
+
+diapositivas.forEach(diapositiva => {
+    diapositiva.addEventListener('dragover', dragOver);
+    diapositiva.addEventListener('drop', drop);
+});
+
+spans.forEach(span => {
+    span.addEventListener('dragover', dragOver);
+    span.addEventListener('drop', drop);
+});
+
+buttons.forEach(button => {
+    button.addEventListener('dragover', dragOver);
+    button.addEventListener('drop', drop);
+});
+
 //Cambiar el valor del checkbox para habilitar o deshabilitar la vista cliente
 esVistaCliente.addEventListener('click',function(e){
     if(!esVistaCliente.checked){
