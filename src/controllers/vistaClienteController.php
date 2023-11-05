@@ -15,10 +15,11 @@ $mostrarFeedback = null;
 $presentacion = null;
 
 function redireccionPaginaNoEncontrada(){
-    header('Location: ../vista/404.php');
+    //header('Location: ../vista/404.php');
     unset($_SESSION['vistaDiapositivas']);
     unset($_SESSION['estilo']);
     unset($_SESSION['posicion']);
+    header('Location: ../vista/404.php');
 }
 
 if($_SERVER['REQUEST_METHOD'] === "GET"){
@@ -27,6 +28,14 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){
     if(isset($_GET['url'])&& !empty($_GET['url'])){
         $idPres =Presentacion::devolverPresentacionByURL($conexion,$_GET['url']);
         if(!empty($idPres)){
+            if(!isset($_SESSION['validado'])){
+                $pinPresentacion = Presentacion::recuperarPinPresentacion($conexion, $idPres['id']);
+                $url = $_GET['url'];
+                if($pinPresentacion != false){
+                    header("Location: ../vista/comprobarPin.php?url=$url");
+                }
+            }
+            unset($_SESSION['validado']);
             $presentacion = Presentacion::devolverPresentacion($conexion, $idPres['id']);
             if($presentacion[0]['vista_cliente'] !== 0){
                 $_SESSION['vistaDiapositivas'] = Diapositiva::arrayDiapositivas($conexion,$presentacion[0]['id']);

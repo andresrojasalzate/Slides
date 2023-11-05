@@ -95,6 +95,7 @@ const verDiapositiva = () => {
     const contenidoDiapo = document.getElementById("contenidoDiapo").value;
     const tipoDiapo = document.querySelector('input[type="radio"]:checked').value;
     const presentaciones_id = document.getElementById("presentaciones_id").value;
+    const contenidoDiapoImg = document.getElementById("contenidoDiapoImg").value;
 
     if (tipoDiapo === 'contenido') {
         diapo = [
@@ -122,7 +123,7 @@ const verDiapositiva = () => {
         diapo = [
             {
                 "titulo": tituloDiapo,
-                "contenido": "",
+                "contenido": contenidoDiapoImg,
                 "tipoDiapositiva": tipoDiapo,
                 "presentaciones_id": presentaciones_id,
                 "imagen": "",

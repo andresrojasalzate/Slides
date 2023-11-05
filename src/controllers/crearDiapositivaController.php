@@ -49,6 +49,7 @@ function procesarFormulario()
             }
 
             elseif ($tipo === 'imagen') {
+                $descripcion = $_POST['contenidoDiapoImg'];
                 $nombreImagen = "a.png";
                 $nombreImagen = str_replace(' ', '_', $nombreImagen);
                 //$imagen = $_FILES["imagen"]["name"];
@@ -72,7 +73,7 @@ function procesarFormulario()
                 }
 
 
-                $diapositiva = new DiapositivaImagen($titulo, 'imagen', $idUltimaPresentacion, $nDiapositiva, $nombreImagen);
+                $diapositiva = new DiapositivaImagen($titulo, 'imagen', $idUltimaPresentacion, $nDiapositiva, $nombreImagen, $descripcion);
 
                 DiapositivaImagen::insertDiapositivaImagen($conexion, $diapositiva);
                 $conexion = null;
@@ -91,4 +92,3 @@ function procesarFormulario()
 }
 
 procesarFormulario();
-

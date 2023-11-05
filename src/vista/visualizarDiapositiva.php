@@ -36,9 +36,13 @@ if (isset($_POST['sumar'])) {
 }
 
 // Guardar la posición actual en una cookie para recordarla
-/*setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);*/
+setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
 
-$rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $arrayDiapositivas[$posicion]['imagen'];
+if(isset($arrayDiapositivas[$posicion]['imagen'])){
+    $rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $arrayDiapositivas[$posicion]['imagen'];
+}else{
+    $rutaImg = "a";
+}
 
 if(isset($arrayDiapositivas[$posicion]['imagen'])){
     $rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $arrayDiapositivas[$posicion]['imagen'];
@@ -97,13 +101,9 @@ if(isset($arrayDiapositivas[$posicion]['imagen'])){
                 </div>
             <?php } ?>
             <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'imagen') { ?>
-
-                <div class="mostrarDiapositiva">
-                    <label for="contenido" id="contenidoLabel">
-                        <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen">
-                    </label>
-                </div>
-
+                    <div class="cont">
+                        <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen"><div class="contenidoImg"><?php echo nl2br($arrayDiapositivas[$posicion]['contenido']); ?></div>
+                    </div>
             <?php } ?>
             <div class="boton-salir-container">
                 <?php if ($diapoSola == 'home') { ?>
@@ -127,7 +127,6 @@ if(isset($arrayDiapositivas[$posicion]['imagen'])){
                         <button class="btnSalir">Salir</button>
                     </form>
                 <?php } ?>
-
             </div>
         </div>
     </div>

@@ -93,13 +93,11 @@ if (isset($_COOKIE["idEstilo"])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $mostrarFeedback = Presentacion::eliminarPresentacion($conexion, $_POST["btnAceptar"]);
+        $presentaciones = Presentacion::devolverPresentaciones($conexion);
         DiapositivaImagen::eliminarCarpeta($_POST["btnAceptar"]);
-        echo "<script>setTimeout(function(){ location.href = '/vista/home.php'; }, 2000);</script>";
-        //recargar();
-        //$presentaciones = Presentacion::devolverPresentaciones($conexion);
-
     }
 }
+
 ?>
 
 

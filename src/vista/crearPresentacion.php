@@ -1,15 +1,17 @@
 <?php
-use src\modelo\Clases\Estilo;
-require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Estilo.php';
-session_start();
+require_once '../config/ConexionBD.php';
+use src\modelo\Clases\Estilo;
+
+session_start(); 
+
+$titulo = "";
+$descripcion = "";
 
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
 $estilos = Estilo::getAllEstilos($conexion);
 
-$titulo = "";
-$descripcion = "";
 if (isset($_SESSION['errores'])) {
 
     $errores = $_SESSION['errores'];
@@ -20,6 +22,7 @@ if (isset($_SESSION['errores'])) {
 
     $descripcion = $_SESSION['descripcion'];
     unset($_SESSION['descripcion']);
+
 }
 
 setcookie("nDiapo", "home", time() + 3600, "/");
@@ -27,6 +30,7 @@ setcookie("nDiapo", "home", time() + 3600, "/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +41,7 @@ setcookie("nDiapo", "home", time() + 3600, "/");
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
     <title>Crear Presentación</title>
 </head>
+
 <body>
     <div class="crearPresentacion">
         <div class="contenido">
@@ -60,6 +65,15 @@ setcookie("nDiapo", "home", time() + 3600, "/");
                         <?php endif; ?>
                     </div>
                     <textarea id="descripcion" name="descripcion" placeholder="¿De que será tu presentacion?" value="<?= $descripcion; ?>"></textarea><br>
+                    <label>PIN</label><br>
+                    <div id="errPin" class="errores">
+                        <?php if (isset($errores["pin"])): ?>
+                            <p><?= $errores["pin"]; ?></p>      
+                        <?php endif; ?>
+                    </div>
+                    <input type="password" id="pin" name="pin" placeholder="PIN"><br>
+                    <label>Repetir PIN</label><br>
+                    <input type="password" id="rep_pin" name="rep_pin" placeholder="Repite el PIN"><br>
                     <label for="estilo">Estilo</label>
                     <div id="errEstilo" class="errores">
                         <?php if (isset($errores["estilo"])): ?>
@@ -86,4 +100,5 @@ setcookie("nDiapo", "home", time() + 3600, "/");
     </div>
     <script src="javascript/crearPresentacion.js"></script>
 </body>
+
 </html>
