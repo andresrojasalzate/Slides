@@ -13,11 +13,13 @@ class DiapositivaImagen extends Diapositiva
 {
 
     protected string $img;
+    protected string $contenido;
 
-    public function __construct(string $titulo, string $tipo, int $id_presentacion, int $nDiapositiva, string $img)
+    public function __construct(string $titulo, string $tipo, int $id_presentacion, int $nDiapositiva, string $img, string $contenido)
     {
         parent::__construct($titulo, $tipo, $id_presentacion, $nDiapositiva);
         $this->img = $img;
+        $this->contenido = $contenido;
     }
 
 
@@ -25,13 +27,15 @@ class DiapositivaImagen extends Diapositiva
     {
 
         try {
-            $sql = "INSERT INTO diapositivas (titulo, imagen, tipoDiapositiva, presentaciones_id, nDiapositiva) VALUES (:titulo, :imagen, :tipo, :id, :nDiapositiva)";
+            $sql = "INSERT INTO diapositivas (titulo, imagen, tipoDiapositiva, presentaciones_id, nDiapositiva, contenido) VALUES (:titulo, :imagen, :tipo, :id, :nDiapositiva, :contenido)";
             $statement = $pdo->prepare($sql);
             $statement->bindValue(':titulo', $diapositivaImagen->titulo);
             $statement->bindValue(':imagen', $diapositivaImagen->img);
             $statement->bindValue(':tipo', $diapositivaImagen->tipo);
             $statement->bindValue(':id', $diapositivaImagen->id_presentacion);
             $statement->bindValue(':nDiapositiva', $diapositivaImagen->nDiapositiva);
+            $statement->bindValue(':contenido', $diapositivaImagen->contenido);
+
 
             $statement->execute();
             return true;

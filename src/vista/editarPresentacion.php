@@ -34,18 +34,22 @@ $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $diapo = returnDiapo($conexion, $_POST["btnAceptar"])["nDiapositiva"];
-        Diapositiva::restar1nDiapos($conexion,$id,$_POST["btnAceptar"]);
-        $nombre = DiapositivaImagen::getNombreImagen($conexion,$_POST["btnAceptar"]);
-        $rutaImagen = dirname(__FILE__) . '/img/'. $idUltimaPresentacion . '/' . $nombre;
-        if(!is_dir($rutaImagen)){
-            if(unlink($rutaImagen)){}
-        }else{}
+        Diapositiva::restar1nDiapos($conexion, $id, $_POST["btnAceptar"]);
+        $nombre = DiapositivaImagen::getNombreImagen($conexion, $_POST["btnAceptar"]);
+        $rutaImagen = dirname(__FILE__) . '/img/' . $idUltimaPresentacion . '/' . $nombre;
+        if (file_exists($rutaImagen)) {
+            if (!is_dir($rutaImagen) && $nombre !== null) {
+                if (unlink($rutaImagen)) {
+                }
+            } else {
+            }
+        } else {
+        }
         $mostrarFeedback = Diapositiva::eliminarDiapositiva($conexion, $_POST["btnAceptar"]);
         $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
     }
 }
 
-//
 if (isset($_SESSION['confirmacion'])) {
     if ($_SESSION['confirmacion'] != null) {
         $mostrarFeedback = $_SESSION['confirmacion'];
@@ -71,7 +75,8 @@ function returnDiapo($connexion, $id)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/editarPresentacion.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
@@ -93,11 +98,15 @@ function returnDiapo($connexion, $id)
                             <label>Descripción</label>
                             <input class="descripcion" name="descripcion" type="text" value="<?= $descripcion ?>">
                             <div class="botonesEdicionPresentacion">
-                                <button class="botonCrear" name="btnNuevaDiapositiva" value="<?= $id ?>">Nueva Diapositiva</button>
+                                <button class="botonCrear" name="btnNuevaDiapositiva" value="<?= $id ?>">Nueva
+                                    Diapositiva</button>
                                 <button class="botonCrear">Cambiar Estilo</button>
                             </div>
+
                             <div class="vistaCliente">
-                                <input type="checkbox" id="vista_cliente" name="vista_cliente" value="<?= $vista_cliente ?>" <?php if($vista_cliente === 1) echo 'checked';?>>
+                                <input type="checkbox" id="vista_cliente" name="vista_cliente"
+                                    value="<?= $vista_cliente ?>" <?php if ($vista_cliente === 1)
+                                          echo 'checked'; ?>>
                                 <label for="vista_cliente">Compartir presentación</label>
                             </div>
                             <input type="hidden" name="id" value="<?= $id ?>">
@@ -107,17 +116,21 @@ function returnDiapo($connexion, $id)
                     </div>
                 </div>
                 <div class="contenedorDiapositivas">
-                    <?php if (count($diapositivas) > 0) : ?>
-                        <?php foreach ($diapositivas as $diapositiva) : ?>
-                            <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>">
-                                <div class="tituloDiapo"><span><?= $diapositiva['titulo'] ?></span></div>
+                    <?php if (count($diapositivas) > 0): ?>
+                        <?php foreach ($diapositivas as $diapositiva): ?>
+                            <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>" data-text="<?= ($diapositiva['contenido'] !== null) ? $diapositiva['contenido'] : 'no hay contenido' ?>">
+                                <div class="tituloDiapo"><span>
+                                        <?= $diapositiva['titulo'] ?>
+                                    </span></div>
                                 <div class="opciones">
-                                    <button name="btnDelDiapositiva" value="<?= $diapositiva['id'] ?>" class="material-symbols-outlined">delete</button>
-                                    <button class="vDiapo material-symbols-outlined" diapo="<?= htmlspecialchars(json_encode(returnDiapo($conexion, $diapositiva['id']))) ?>">visibility</button>
+                                    <button name="btnDelDiapositiva" value="<?= $diapositiva['id'] ?>"
+                                        class="material-symbols-outlined">delete</button>
+                                    <button class="vDiapo material-symbols-outlined"
+                                        diapo="<?= htmlspecialchars(json_encode(returnDiapo($conexion, $diapositiva['id']))) ?>">visibility</button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="mensajeCeroDiapositivas">Aún no hay diapositivas</div>
                     <?php endif; ?>
                 </div>
@@ -136,11 +149,13 @@ function returnDiapo($connexion, $id)
             </div>
         </div>
     </div>
-    <?php if ($mostrarFeedback != null) : ?>
+    <?php if ($mostrarFeedback != null): ?>
         <div class="fondoModalFeedBackEliminarDiapositiva">
             <div class="modalFeedBackEliminarDiapositiva">
                 <div class="cabeceraModal"><span>Confirmación</span></div>
-                <div class="mensajeModal"><span><?= $mostrarFeedback ?></span></div>
+                <div class="mensajeModal"><span>
+                        <?= $mostrarFeedback ?>
+                    </span></div>
                 <div class="aceptarCancelar">
                     <button class="botonCrear" name="btnCerrar">Cerrar</button>
                 </div>
