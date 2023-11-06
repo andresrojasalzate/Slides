@@ -110,7 +110,7 @@ if (isset($_POST['titulo'])) {
                         </div>
                         <div>
                             <input class="test" type="radio" id="test" name="tipoDiapo" value="test" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'test') ? 'checked' : ''; ?>>
-                            <label for="tipoImg">Prueba</label>
+                            <label for="tipoImg">Tipo Test</label>
                         </div>
                     </fieldset>
                     <div>

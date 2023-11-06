@@ -123,6 +123,9 @@ body{
     font-weight: bold;
     font-size: 18px;
     padding: 1%;
+}
+
+.animacion{
     -webkit-animation: pulsate-bck 0.5s ease-in-out infinite both;
 	animation: pulsate-bck 0.5s ease-in-out infinite both;
 }
