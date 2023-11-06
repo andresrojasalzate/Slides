@@ -50,6 +50,7 @@ class Respuesta{
     }
 
 
+
     public static function insertRespuesta(PDO $pdo, Respuesta $respuesta){
         try{
             $sql = "INSERT INTO respuestas (respuesta, correcta, id_diapositiva) VALUES (:respuesta, :correcta, :id_diapositiva)";
