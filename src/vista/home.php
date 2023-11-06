@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
                 <div class="botonNuevaPresentacion">
                     <form action="crearPresentacion.php">
-                        <button class="botonCrear" type="submit">Nueva Presentación</button>
+                        <button class="botonCrear animacion" type="submit">Nueva Presentación</button>
                     </form>
                 </div>
             </div>

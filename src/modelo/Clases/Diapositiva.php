@@ -53,6 +53,25 @@ use PDO, Exception, PDOException;
 		}
     }
 
+    public static function idUltimaDiapositiva(PDO $pdo):int{
+
+        try{
+            $sql = "SELECT MAX(id) FROM diapositivas;";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetch();
+            $maxId = $result[0]; 
+            return $maxId;
+        } catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+
+    }
+
     public static function arrayDiapositivas(PDO $pdo, $presentacionId){
         try {
             $sql = "SELECT id, titulo, contenido, tipoDiapositiva, nDiapositiva, imagen, pregunta, presentaciones_id FROM diapositivas WHERE presentaciones_id = :presentacionId ORDER BY nDiapositiva";
