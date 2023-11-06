@@ -5,13 +5,6 @@ require_once '../modelo/Clases/Respuesta.php';
 
 include '../controllers/vistaClienteController.php';
 
-function recuperarRespuestas($idDiapositivas){
-
-    $bdConexion = ConexionBD::obtenerInstancia();
-    $conexion = $bdConexion->getConnection();
-    $respuestas = Respuesta::recuperarRespuestasDePregunta($conexion, $idDiapositivas);
-}
-
 if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
     $rutaImg = "img/" . $_SESSION['vistaDiapositivas'][$posDiapo]['presentaciones_id'] . "/" . $_SESSION['vistaDiapositivas'][$posDiapo]['imagen'];
 }else{
@@ -20,9 +13,9 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
 
 
 if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
-    echo "hola";
-    $idDiapositivas = $_SESSION['vistaDiapositivas'][$posDiapo]['id'];
-    $respuestas = recuperarRespuestas($idDiapositivas);
+    
+    $contenidoJSON = $_SESSION['vistaDiapositivas'][$posDiapo]['contenido'];
+    $respuestas = json_decode($contenidoJSON, true);
 }
 
 ?>
@@ -83,24 +76,17 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
 
             <?php } ?>
 
-            <?php if ($_SESSION['vistaDiapositivas'][$posDiapo]['tipoDiapositiva'] == 'pregunta') { ?>
-                <?php 
-                    $idDiapositiva = $_SESSION['vistaDiapositivas'][$posDiapo]['id'];
-                    recuperarRespuestas($idDiapositiva); 
-                    
-                ?>
-                <div class="mostrarDiapositiva">
-                    <label for="contenido" id="contenidoLabel">
+            <?php if ($_SESSION['vistaDiapositivas'][$posDiapo]['tipoDiapositiva'] == 'test') { ?>
+                <div class="contenido">
+                    <div class="mostrarDiapositiva">
+                        <label for="contenido" id="contenidoLabel">
+                            <?= $_SESSION['vistaDiapositivas'][$posDiapo]['pregunta']; ?>
+                        </label>
                         <?php foreach ($respuestas as $respuesta): ?>
-                            <?php var_dump($respuestas); ?>
-
-                            <li>
-                            <!-- Muestra el contenido de cada respuesta -->
-                                Respuesta: <?php echo $respuesta->getRespuesta(); ?><br>
-                                Correcta: <?php echo $respuesta->getCorrecta() ? 'Sí' : 'No'; ?>
-                            </li>
-                        <?php endforeach; ?>
-                    </label>
+                            <input type="radio" name="respuesta" value="<?= $respuesta; ?>">
+                            <label for="<?= $respuesta; ?>"><?= $respuesta; ?></label><br>
+                        <?php endforeach; ?>    
+                    </div>
                 </div>
             <?php } ?>
         </div>
