@@ -52,6 +52,9 @@ if (isset($_POST['titulo'])) {
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen'];
+    $pregunta = $_POST['pregunta'];
+    $opcionesRespuestas = $_POST['opcionesRespuestas'];
+    $respuestaCorrecta = $_POST['$respuestaCorrecta'];
 } else {
     $titulo = '';
 }
@@ -60,7 +63,7 @@ if (isset($_POST['titulo'])) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -105,6 +108,10 @@ if (isset($_POST['titulo'])) {
                             <input class="imgDiapo" type="radio" id="tipoImg" name="tipoDiapo" value="imagen" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'imagen') ? 'checked' : ''; ?>>
                             <label for="tipoImg">Titulo e Imagen</label>
                         </div>
+                        <div>
+                            <input class="test" type="radio" id="test" name="tipoDiapo" value="test" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'test') ? 'checked' : ''; ?>>
+                            <label for="tipoImg">Prueba</label>
+                        </div>
                     </fieldset>
                     <div>
                         <div class="divFormColumn">
@@ -138,6 +145,21 @@ if (isset($_POST['titulo'])) {
                                 <textarea class="inputCont textAreaImg" id="contenidoDiapoImg" name="contenidoDiapoImg"
                                     placeholder="Empieza aqui..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
                             </div>
+                        </div>
+                        <div class="respuestaOculta">
+                            <label for="pregunta">Pregunta</label>
+                            <div id="errDescripcion" class="errores"></div>
+                            <input class="pregunta" type="text" id="pregunta" name="pregunta"
+                                placeholder="¿Cual será tu pregunta?" required
+                                value="<?php echo empty($pregunta) ? '' : htmlspecialchars($pregunta); ?>">
+                            <label for="opcionesRespuestas">Posibles respuestas</label>
+                            <textarea class="textarea" id="contenidoDiapo" name="contenidoDiapo"
+                                placeholder="Ingresa aca las posibles respuestas..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
+                            <label for="respuestaCorrecta">Respuesta Correcta</label>
+                            <div id="errDescripcion" class="errores"></div>
+                            <input class="respuesta" type="text" id="respuestaCorrecta" name="respuestaCorrecta"
+                                placeholder="Ingresa la respuesta correcta a esta pregunta" required
+                                value="<?php echo empty($respuestaCorrecta) ? '' : htmlspecialchars($respuestaCorrecta); ?>">
                         </div>
                     </div>
 

@@ -6,15 +6,15 @@ use Exception;
 use PDOException;
 
 class Respuesta{
-    public int $id;
-    public string $respuesta;
-    public bool $correcta;
-    public int $idDiapositiva;
+    protected int $id;
+    protected string $respuesta;
+    //protected bool $correcta;
+    protected int $idDiapositiva;
 
-    public function __construct(string $respuesta, int $idDiapositiva, bool $correcta){
+    public function __construct(string $respuesta, int $idDiapositiva, /*bool $correcta*/){
         $this->respuesta = $respuesta;
         $this->idDiapositiva = $idDiapositiva;
-        $this->correcta = $correcta;
+        //$this->correcta = $correcta;
     }
 
     public function getId(): int{
@@ -28,9 +28,10 @@ class Respuesta{
     public function getRIdDiapositivq(): int{
         return $this->idDiapositiva;
     }
-    public function getCorrecta(): bool{
+
+    /*public function getCorrecta(): bool{
         return $this->correcta;
-    }
+    }*/
 
 
     public function setId(int $id){
@@ -41,23 +42,19 @@ class Respuesta{
         $this->respuesta = $respuesta;
     }
 
-    public function setIdDiapositiva(String $idPresentacion){
-        $this->idPresentacion = $idPresentacion;
-    }
-
-    public function setCorrecta(bool $correceta){
-        $this->correceta = $correceta;
-    }
+    /*public function setCorrecta(bool $correceta){
+        $this->correcta = $correceta;
+    }*/
 
 
 
     public static function insertRespuesta(PDO $pdo, Respuesta $respuesta){
         try{
-            $sql = "INSERT INTO respuestas (respuesta, correcta, id_diapositiva) VALUES (:respuesta, :correcta, :id_diapositiva)";
+            $sql = "INSERT INTO respuestas (respuesta, /*correcta,*/ id_diapositiva) VALUES (:respuesta, /*:correcta,*/ :id_diapositiva)";
             $statement = $pdo->prepare($sql);
-            $statement->bindValue(':respuesta', $presentacion->respuesta);
-            $statement->bindValue(':id_diapositiva', $presentacion->idDiapositiva);
-            $statement->bindValue(':correcta', $presentacion->correcta);
+            $statement->bindValue(':respuesta', $respuesta->respuesta);
+            $statement->bindValue(':id_diapositiva', $respuesta->idDiapositiva);
+            //$statement->bindValue(':correcta', $respuesta->correcta);
             $statement->execute();
         } catch(PDOException $ex){
             echo $ex;
@@ -70,7 +67,7 @@ class Respuesta{
 
     public static function recuperarRespuesta(PDO $pdo, int $id){
         try{
-            $sql = "SELECT id, respuesta, correcta, id_diapositiva FROM respuestas where id = :id;";
+            $sql = "SELECT id, respuesta, /*correcta,*/ id_diapositiva FROM respuestas where id = :id;";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();

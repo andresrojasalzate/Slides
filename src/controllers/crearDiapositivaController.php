@@ -4,14 +4,25 @@ namespace src\controllers;
 use ConexionBD;
 use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\DiapositivaImagen;
+use src\modelo\Clases\DiapositivaPregunta;
 use src\modelo\Clases\DiapositivaTitulo;
 use src\modelo\Clases\DiapositivaTituloContenido;
+use src\modelo\Clases\Respuesta;
 
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Diapositiva.php';
 require_once '../modelo/Clases/DiapositivaTitulo.php';
 require_once '../modelo/Clases/DiapositivaTituloContenido.php';
 require_once '../modelo/Clases/DiapositivaImagen.php';
+require_once '../modelo/Clases/DiapositivaPregunta.php';
+require_once '../modelo/Clases/Respuesta.php';
+
+
+// Función convierte las opciones de respuestas ingresadas por el usuario en un array y despues en JSON
+function preguntasToStringArrayPreguntas($opcionesRespuestas){
+    $arrayOpciones = JSON_encode(explode(",", $opcionesRespuestas));
+    return $arrayOpciones;
+}
 
 
 function procesarFormulario()
@@ -80,11 +91,22 @@ function procesarFormulario()
                 $_SESSION['toast'] = true;
                 header("Location: ../vista/crearDiapositiva.php");
 
-            } else {
+            }elseif ($tipo === 'test'){
+
+                $pregunta = $_POST['pregunta'];
+                $opcionesRespuestas = preguntasToStringArrayPreguntas($descripcion);
+                $respuestaCorrecta = $_POST['respuestaCorrecta'];
+                $diapositivaPregunta = new DiapositivaPregunta($titulo, $tipo, $idUltimaPresentacion, $nDiapositiva, $pregunta, $opcionesRespuestas);
+                $respuesta = new Respuesta($respuestaCorrecta, $idUltimaPresentacion);
+
+                DiapositivaPregunta::insertDiapositivaPregunta($conexion, $diapositivaPregunta);
+                Respuesta::insertRespuesta($conexion, $respuesta);
+
+                $conexion = null;
+                $_SESSION['toast'] = true;
+                header("Location: ../vista/crearDiapositiva.php");
+            }else {
             }
-
-
-
         }
     }
 
