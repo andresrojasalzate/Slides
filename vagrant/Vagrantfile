@@ -36,14 +36,13 @@ echo ">>> Installing Base Requirements"
 	
       CREATE TABLE estilos(id INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(255), css_resource VARCHAR(255), img_resource VARCHAR(255));
 
-      CREATE TABLE presentaciones(id INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(255), descripcion VARCHAR(255), estilo_id INT, FOREIGN KEY (estilo_id) REFERENCES estilos(id), vista_cliente TINYINT(1) DEFAULT 0, nombreURL VARCHAR(255), pin VARCHAR(50));
+      CREATE TABLE presentaciones(id INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(255), descripcion VARCHAR(255), estilo_id INT, pin VARCHAR(50), FOREIGN KEY (estilo_id) REFERENCES estilos(id), vista_cliente TINYINT(1) DEFAULT 0, nombreURL VARCHAR(255));
+      CREATE TABLE presentaciones(id INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(255), descripcion VARCHAR(255), estilo_id INT, pin VARCHAR(50), FOREIGN KEY (estilo_id) REFERENCES estilos(id), vista_cliente TINYINT(1) DEFAULT 0, nombreURL VARCHAR(255));
 
-      CREATE TABLE diapositivas(id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), imagen VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
-      
-      CREATE TABLE preguntas(id INT PRIMARY KEY AUTO_INCREMENT, pregunta VARCHAR(255));
+      CREATE TABLE diapositivas(id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), imagen VARCHAR(255), pregunta VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
 
-      CREATE TABLE respuestas(id INT PRIMARY KEY AUTO_INCREMENT, respuesta VARCHAR(255), correcta TINYINT(1) DEFAULT 0, id_pregunta INT, FOREIGN KEY (id_pregunta) REFERENCES preguntas(id));
-      
+      CREATE TABLE respuestas(id INT PRIMARY KEY AUTO_INCREMENT, respuesta VARCHAR(255), correcta TINYINT(1) DEFAULT 0, id_diapositiva INT, FOREIGN KEY (id_diapositiva) REFERENCES diapositivas(id));
+
       insert into estilos(nombre, css_resource, img_resource) values("estilo1", "estilo1.css", "estilo1.PNG");
       insert into estilos(nombre, css_resource, img_resource) values("estilo1", "estilo2.css", "estilo2.PNG");
       

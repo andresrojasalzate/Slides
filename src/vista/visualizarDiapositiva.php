@@ -44,6 +44,12 @@ if(isset($arrayDiapositivas[$posicion]['imagen'])){
     $rutaImg = "a";
 }
 
+if(isset($arrayDiapositivas[$posicion]['imagen'])){
+    $rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $arrayDiapositivas[$posicion]['imagen'];
+}else{
+    $rutaImg = "a";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -95,14 +101,9 @@ if(isset($arrayDiapositivas[$posicion]['imagen'])){
                 </div>
             <?php } ?>
             <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'imagen') { ?>
-
-                <div class="mostrarDiapositiva">
-                    <label for="contenido" id="contenidoLabel">
-                        <!-- nl2br convierte los /n en <br> -->
-                        <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen">
-                    </label>
-                </div>
-
+                    <div class="cont">
+                        <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen"><div class="contenidoImg"><?php echo nl2br($arrayDiapositivas[$posicion]['contenido']); ?></div>
+                    </div>
             <?php } ?>
             <div class="boton-salir-container">
                 <?php if ($diapoSola == 'home') { ?>

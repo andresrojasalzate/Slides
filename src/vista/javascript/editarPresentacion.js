@@ -164,7 +164,6 @@ esVistaCliente.addEventListener('click',function(e){
     }
 })
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const botones = document.querySelectorAll('.vDiapo');
     
