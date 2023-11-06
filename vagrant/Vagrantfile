@@ -40,7 +40,7 @@ echo ">>> Installing Base Requirements"
 
       CREATE TABLE diapositivas(id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), imagen VARCHAR(255), pregunta VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id));
 
-      CREATE TABLE respuestas(id INT PRIMARY KEY AUTO_INCREMENT, respuesta VARCHAR(255), correcta TINYINT(1) DEFAULT 0, id_presentacion INT, FOREIGN KEY (id_presentacion) REFERENCES presentaciones(id));
+      CREATE TABLE respuestas(id INT PRIMARY KEY AUTO_INCREMENT, respuesta VARCHAR(255), correcta TINYINT(1) DEFAULT 0, id_diapositiva INT, FOREIGN KEY (id_diapositiva) REFERENCES diapositivas(id));
 
       insert into estilos(nombre, css_resource, img_resource) values("estilo1", "estilo1.css", "estilo1.PNG");
       insert into estilos(nombre, css_resource, img_resource) values("estilo1", "estilo2.css", "estilo2.PNG");
