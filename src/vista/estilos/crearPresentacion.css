@@ -9,7 +9,7 @@ html,body{
     min-height: 60px;
     background-color: #4A4063;
     border-radius: 20px;
-    border: 10 px solid white;
+    border: 10px solid white;
     margin-bottom: 10px;
 }
 
@@ -24,7 +24,7 @@ html,body{
     height: 100%;
     background-color: #4A4063;
     border-radius: 20px;
-    border: 10 px solid white;
+    border: 10px solid white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -217,7 +217,7 @@ span{
 .slide-content {
     height: 15em;
     width: 30em;
-    border-width: 3px solid;
+    border-width: 3px;
     border-color: black;
     background: white;
     margin-left: 2em;
