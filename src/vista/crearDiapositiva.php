@@ -150,7 +150,7 @@ if (isset($_POST['titulo'])) {
                             <label for="pregunta">Pregunta</label>
                             <div id="errDescripcion" class="errores"></div>
                             <input class="pregunta" type="text" id="pregunta" name="pregunta"
-                                placeholder="¿Cual será tu pregunta?" required
+                                placeholder="¿Cual será tu pregunta?" 
                                 value="<?php echo empty($pregunta) ? '' : htmlspecialchars($pregunta); ?>">
                             <label for="opcionesRespuestas">Posibles respuestas</label>
                             <textarea class="textarea" id="contenidoDiapo" name="contenidoDiapo"
@@ -158,7 +158,7 @@ if (isset($_POST['titulo'])) {
                             <label for="respuestaCorrecta">Respuesta Correcta</label>
                             <div id="errDescripcion" class="errores"></div>
                             <input class="respuesta" type="text" id="respuestaCorrecta" name="respuestaCorrecta"
-                                placeholder="Ingresa la respuesta correcta a esta pregunta" required
+                                placeholder="Ingresa la respuesta correcta a esta pregunta" 
                                 value="<?php echo empty($respuestaCorrecta) ? '' : htmlspecialchars($respuestaCorrecta); ?>">
                         </div>
                     </div>
