@@ -1,6 +1,7 @@
 const tipoDiapositiva = document.querySelectorAll('input[type="radio"]');
 const divContenido = document.querySelector('.divOculto');
 const divImg = document.querySelector('.imgOculto');
+const respuestaOculta = document.querySelector('.respuestaOculta');
 const formularioDiapositiva = document.getElementById("crearDiapositiva");
 
 tipoDiapositiva.forEach(element => {
@@ -11,10 +12,17 @@ tipoDiapositiva.forEach(element => {
         } else if (element.value === 'imagen') {
             divContenido.style.display = 'none';
             divImg.style.display = 'flex';
+            respuestaOculta.style.display= 'none';
+        }else if (element.value === 'test'){
+            respuestaOculta.style.display= 'flex';
+            divContenido.style.display = 'none';
+            divContenido.style.display = 'none';
+            divImg.style.display = 'none';
         }
         else {
             divImg.style.display = 'none';
             divContenido.style.display = 'none';
+            respuestaOculta.style.display = 'none';
             contenidoDiapo.value = "";
         }
     })

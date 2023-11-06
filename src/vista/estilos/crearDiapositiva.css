@@ -147,6 +147,12 @@ form{
     margin: 20px;
 }
 
+.respuestaOculta{
+    display: none;
+    flex-direction: column;
+    margin: 20px;
+}
+
 .divOculto,.imgOculto{
     display: none;
 }
