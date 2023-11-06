@@ -97,9 +97,8 @@ function procesarFormulario()
                 $opcionesRespuestas = preguntasToStringArrayPreguntas($descripcion);
                 $respuestaCorrecta = $_POST['respuestaCorrecta'];
                 $diapositivaPregunta = new DiapositivaPregunta($titulo, $tipo, $idUltimaPresentacion, $nDiapositiva, $pregunta, $opcionesRespuestas);
-                $respuesta = new Respuesta($respuestaCorrecta, $idUltimaPresentacion);
-
                 DiapositivaPregunta::insertDiapositivaPregunta($conexion, $diapositivaPregunta);
+                $respuesta = new Respuesta($respuestaCorrecta, Diapositiva::idUltimaDiapositiva($conexion));
                 Respuesta::insertRespuesta($conexion, $respuesta);
 
                 $conexion = null;
