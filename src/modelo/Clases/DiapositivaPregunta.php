@@ -7,11 +7,13 @@ use PDOException;
 
 class DiapositivaPregunta extends Diapositiva{
     protected string $pregunta;
+    protected array $respuestas;
 
     public function __construct(string $titulo, string $tipo, int $id_presentacion, int $nDiapositiva, string $pregunta){
 
         parent::__construct($titulo, $tipo, $id_presentacion, $nDiapositiva);
         $this->pregunta = $pregunta;
+        $this->respuestas = [];
     }
 
     public function getPregunta(): string{

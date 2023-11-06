@@ -6,14 +6,14 @@ use Exception;
 use PDOException;
 
 class Respuesta{
-    protected int $id;
-    protected string $respuesta;
-    protected bool $correcta;
-    protected int $idDiapositiva;
+    public int $id;
+    public string $respuesta;
+    public bool $correcta;
+    public int $idDiapositiva;
 
     public function __construct(string $respuesta, int $idDiapositiva, bool $correcta){
         $this->respuesta = $respuesta;
-        $this->id_pregunta = $idDiapositiva;
+        $this->idDiapositiva = $idDiapositiva;
         $this->correcta = $correcta;
     }
 
@@ -76,6 +76,30 @@ class Respuesta{
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $results;
+        }catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
+    public static function recuperarRespuestasDePregunta(PDO $pdo, int $idDiapositiva){
+
+        try{
+            $sql = "SELECT respuesta, correcta, id_diapositiva FROM respuestas where id_diapositiva = :id;";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $idDiapositiva, PDO::PARAM_INT);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            
+            $respuestasArray = array();
+            foreach ($results as $row) {
+                $respuesta = new Respuesta($row['respuesta'], $row['correcta'], $row['id_diapositiva']);
+                $respuestasArray[] = $respuesta;
+            }
+            return $respuestasArray;
         }catch(PDOException $ex){
             echo $ex;
             return false;
