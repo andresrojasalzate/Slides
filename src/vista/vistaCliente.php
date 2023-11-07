@@ -16,6 +16,14 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
     
     $contenidoJSON = $_SESSION['vistaDiapositivas'][$posDiapo]['contenido'];
     $respuestas = json_decode($contenidoJSON, true);
+
+    $idDiapositiva = strval($_SESSION['vistaDiapositivas'][$posDiapo]['id']); 
+    $respuestaSeleccionada = "";
+    if (isset($_COOKIE[$idDiapositiva])) {
+        $respuestaSeleccionada = $_COOKIE[$idDiapositiva];
+       unset($_COOKIE[$idDiapositiva]);
+    }
+
 }
 
 ?>
@@ -78,19 +86,28 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
 
             <?php if ($_SESSION['vistaDiapositivas'][$posDiapo]['tipoDiapositiva'] == 'test') { ?>
                 <div class="contenido">
-                    <div class="mostrarDiapositiva">
-                        <label for="contenido" id="contenidoLabel">
-                            <?= $_SESSION['vistaDiapositivas'][$posDiapo]['pregunta']; ?>
-                        </label>
-                        <?php foreach ($respuestas as $respuesta): ?>
-                            <input type="radio" name="respuesta" value="<?= $respuesta; ?>">
-                            <label for="<?= $respuesta; ?>"><?= $respuesta; ?></label><br>
-                        <?php endforeach; ?>    
+                    <div class="mostrarDiapositivaTest">
+                        <div class= pregunta>
+                            <label for="contenido" id="contenidoLabel">
+                                <?= $_SESSION['vistaDiapositivas'][$posDiapo]['pregunta']; ?>
+                            </label>
+                        </div>             
+                            <?php foreach ($respuestas as $respuesta): ?>
+                                <div class="respuestas"> 
+                                    <?php if($respuesta == $respuestaSeleccionada) : ?>
+                                        <input type="radio" name="<?= $idDiapositiva; ?>" value="<?= $respuesta; ?>" checked>
+                                    <?php else: ?>
+                                        <input type="radio" name="<?= $idDiapositiva; ?>" value="<?= $respuesta; ?>">
+                                    <?php endif; ?>
+                                        <label for="<?= $respuesta; ?>"><?= $respuesta; ?></label><br>
+                                </div> 
+                            <?php endforeach; ?>  
                     </div>
                 </div>
             <?php } ?>
         </div>
     </div>
+    <script src="../vista/javascript/vistaCliente.js"></script>
 </body>
 
 </html>
