@@ -103,7 +103,7 @@ input{
     width: 70%;
     background-color: #C8C6D7;
     border-radius: 10px;
-    align-content: start;
+    align-content: start; 
     margin-right: 30px;
 }
 
@@ -169,6 +169,9 @@ input{
     flex-direction: row;
     justify-content: space-around;
     background-color: #783F8E;
+}
+
+div button{
     margin: 5px;
 }
 
@@ -226,7 +229,7 @@ input{
     display: none;
 }
 
-.presentacionBD:hover::after {
+/* .presentacionBD:hover::after {
     content: attr(data-text);
     display: block;
     background-color: rgba(0, 0, 0, 0.7);
@@ -238,4 +241,4 @@ input{
     padding: 10px;
     border-radius: 5px;
     z-index: 1;
-  }
+  } */

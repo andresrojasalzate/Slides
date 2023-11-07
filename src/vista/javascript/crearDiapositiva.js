@@ -9,13 +9,13 @@ tipoDiapositiva.forEach(element => {
         if (element.value === 'contenido') {
             divImg.style.display = 'none';
             divContenido.style.display = 'flex';
+            respuestaOculta.style.display= 'none';
         } else if (element.value === 'imagen') {
             divContenido.style.display = 'none';
             divImg.style.display = 'flex';
             respuestaOculta.style.display= 'none';
         }else if (element.value === 'test'){
             respuestaOculta.style.display= 'flex';
-            divContenido.style.display = 'none';
             divContenido.style.display = 'none';
             divImg.style.display = 'none';
         }
