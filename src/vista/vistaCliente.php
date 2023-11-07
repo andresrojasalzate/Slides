@@ -1,10 +1,24 @@
 <?php
-include '../controllers/vistaClienteController.php';
+//include '../controllers/vistaClienteController.php';
+session_start();
+
+if (isset($_COOKIE["posicion"])) {
+    $posDiapo = $_COOKIE["posicion"]-1;
+    setcookie("posicion", $posDiapo, time() + 3600, "/vista");
+} else {
+}
 
 if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
     $rutaImg = "img/" . $_SESSION['vistaDiapositivas'][$posDiapo]['presentaciones_id'] . "/" . $_SESSION['vistaDiapositivas'][$posDiapo]['imagen'];
 }else{
     $rutaImg = "a";
+}
+
+if (isset($_POST['sumar'])) {
+    $posDiapo = $posDiapo + 2;
+    setcookie("posicion", $posDiapo, time() + 3600, "/vista");
+} elseif (isset($_POST['restar'])) {
+    setcookie("posicion", $posDiapo, time() + 3600, "/vista");
 }
 ?>
 
@@ -22,6 +36,7 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
     <title>vista cliente</title>
 </head>
+
 
 <body>
     <div class="visualizarDiapositiva">

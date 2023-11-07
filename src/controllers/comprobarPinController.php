@@ -34,7 +34,7 @@ function procesarFormulario()
         exit;
     } else {
         $_SESSION['validado'] = true;
-        header("Location: ../vista/vistaCliente.php?url=$url");
+        header("Location: ../vista/seleccionarDiapoCliente.php?url=$url");
         exit;
     }
 }

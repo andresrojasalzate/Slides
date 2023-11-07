@@ -38,15 +38,15 @@ if (isset($_POST['sumar'])) {
 // Guardar la posición actual en una cookie para recordarla
 setcookie('arrayDiapositivas', json_encode($arrayDiapositivas), time() + 3600);
 
-if(isset($arrayDiapositivas[$posicion]['imagen'])){
+if (isset($arrayDiapositivas[$posicion]['imagen'])) {
     $rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $arrayDiapositivas[$posicion]['imagen'];
-}else{
+} else {
     $rutaImg = "a";
 }
 
-if(isset($arrayDiapositivas[$posicion]['imagen'])){
+if (isset($arrayDiapositivas[$posicion]['imagen'])) {
     $rutaImg = "img/" . $arrayDiapositivas[$posicion]['presentaciones_id'] . "/" . $arrayDiapositivas[$posicion]['imagen'];
-}else{
+} else {
     $rutaImg = "a";
 }
 
@@ -60,7 +60,8 @@ if(isset($arrayDiapositivas[$posicion]['imagen'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/vista/estilos/visualizarDiapositiva.css">
     <link rel="stylesheet" href="/vista/estilos/<?= $estilo; ?>">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
@@ -101,9 +102,32 @@ if(isset($arrayDiapositivas[$posicion]['imagen'])){
                 </div>
             <?php } ?>
             <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'imagen') { ?>
-                    <div class="cont">
-                        <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen"><div class="contenidoImg"><?php echo nl2br($arrayDiapositivas[$posicion]['contenido']); ?></div>
+                <div class="cont">
+                    <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen">
+                    <div class="contenidoImg">
+                        <?php echo nl2br($arrayDiapositivas[$posicion]['contenido']); ?>
                     </div>
+                </div>
+            <?php } ?>
+            <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'test') { ?>
+                <div class="respuestas">
+                    <?php
+                    $contenido = $arrayDiapositivas[$posicion]['contenido'];
+
+                    if (is_string($contenido)) {
+                        $array = json_decode($contenido, true);
+                        if (is_array($array)) {
+                        } else {
+                            $array = explode(",", $contenido);
+                        }
+                    } else {
+                        $array = $contenido;
+                    }
+                    foreach ($array as $arra) {
+                        echo '<div class="opciones"><input type="radio" id="' . $arra . '" name="radio_option" value="' . $arra . '"> <label for="' . $arra . '">' . $arra . ' </label></div> ';
+                    }
+                    ?>
+                </div>
             <?php } ?>
             <div class="boton-salir-container">
                 <?php if ($diapoSola == 'home') { ?>

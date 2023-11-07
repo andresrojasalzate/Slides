@@ -52,10 +52,13 @@ if (isset($_POST['titulo'])) {
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen'];
+    
+}elseif(isset($_POST['pregunta'])){
     $pregunta = $_POST['pregunta'];
     $opcionesRespuestas = $_POST['opcionesRespuestas'];
     $respuestaCorrecta = $_POST['$respuestaCorrecta'];
-} else {
+} 
+else {
     $titulo = '';
 }
 
@@ -153,7 +156,7 @@ if (isset($_POST['titulo'])) {
                                 placeholder="¿Cual será tu pregunta?" 
                                 value="<?php echo empty($pregunta) ? '' : htmlspecialchars($pregunta); ?>">
                             <label for="opcionesRespuestas">Posibles respuestas</label>
-                            <textarea class="textarea" id="contenidoDiapo" name="contenidoDiapo"
+                            <textarea class="textarea" id="contenidoDiapoTest" name="contenidoDiapoTest"
                                 placeholder="Ingresa aca las posibles respuestas..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
                             <label for="respuestaCorrecta">Respuesta Correcta</label>
                             <div id="errDescripcion" class="errores"></div>

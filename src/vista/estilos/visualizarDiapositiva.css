@@ -159,3 +159,17 @@ label {
     align-items: center;
     margin-bottom: 100px;
 }
+
+.respuestas {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+}
+
+.opciones{
+    display: flex;
+    padding: 20px;
+}
+
