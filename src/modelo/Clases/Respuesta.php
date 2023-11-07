@@ -82,6 +82,30 @@ class Respuesta{
 		}
     }
 
+    public static function recuperarRespuestasDePregunta(PDO $pdo, int $idDiapositiva){
+
+        try{
+            $sql = "SELECT respuesta, correcta, id_diapositiva FROM respuestas where id_diapositiva = :id;";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $idDiapositiva, PDO::PARAM_INT);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            
+            $respuestasArray = array();
+            foreach ($results as $row) {
+                $respuesta = new Respuesta($row['respuesta'], $row['correcta'], $row['id_diapositiva']);
+                $respuestasArray[] = $respuesta;
+            }
+            return $respuestasArray;
+        }catch(PDOException $ex){
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+			echo $ex;
+            return false;
+		}
+    }
+
 
 
 }

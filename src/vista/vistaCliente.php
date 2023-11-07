@@ -1,4 +1,8 @@
 <?php
+use src\modelo\Clases\Respuesta;
+
+require_once '../modelo/Clases/Respuesta.php';
+
 include '../controllers/vistaClienteController.php';
 
 if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
@@ -6,6 +10,22 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
 }else{
     $rutaImg = "a";
 }
+
+
+if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
+    
+    $contenidoJSON = $_SESSION['vistaDiapositivas'][$posDiapo]['contenido'];
+    $respuestas = json_decode($contenidoJSON, true);
+
+    $idDiapositiva = strval($_SESSION['vistaDiapositivas'][$posDiapo]['id']); 
+    $respuestaSeleccionada = "";
+    if (isset($_COOKIE[$idDiapositiva])) {
+        $respuestaSeleccionada = $_COOKIE[$idDiapositiva];
+       unset($_COOKIE[$idDiapositiva]);
+    }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -63,8 +83,31 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
                 </div>
 
             <?php } ?>
+
+            <?php if ($_SESSION['vistaDiapositivas'][$posDiapo]['tipoDiapositiva'] == 'test') { ?>
+                <div class="contenido">
+                    <div class="mostrarDiapositivaTest">
+                        <div class= pregunta>
+                            <label for="contenido" id="contenidoLabel">
+                                <?= $_SESSION['vistaDiapositivas'][$posDiapo]['pregunta']; ?>
+                            </label>
+                        </div>             
+                            <?php foreach ($respuestas as $respuesta): ?>
+                                <div class="respuestas"> 
+                                    <?php if($respuesta == $respuestaSeleccionada) : ?>
+                                        <input type="radio" name="<?= $idDiapositiva; ?>" value="<?= $respuesta; ?>" checked>
+                                    <?php else: ?>
+                                        <input type="radio" name="<?= $idDiapositiva; ?>" value="<?= $respuesta; ?>">
+                                    <?php endif; ?>
+                                        <label for="<?= $respuesta; ?>"><?= $respuesta; ?></label><br>
+                                </div> 
+                            <?php endforeach; ?>  
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
+    <script src="../vista/javascript/vistaCliente.js"></script>
 </body>
 
 </html>

@@ -43,7 +43,7 @@ body {
     min-height: 60px;
     background-color: #4A4063;
     border-radius: 20px;
-    border: 10 px solid white;
+    border: 10px solid white;
     margin-bottom: 10px;
 }
 
@@ -57,7 +57,7 @@ body {
     height: 100vh;
     background-color: #4A4063;
     border-radius: 20px;
-    border: 10 px solid white;
+    border: 10px solid white;
     display: flex;
     flex-direction: column;
     align-items: center;
