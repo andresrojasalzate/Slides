@@ -8,6 +8,7 @@ tipoDiapositiva.forEach(element => {
     element.addEventListener('click', function () {
         if (element.value === 'contenido') {
             divImg.style.display = 'none';
+            respuestaOculta.style.display = 'none';
             divContenido.style.display = 'flex';
         } else if (element.value === 'imagen') {
             divContenido.style.display = 'none';
@@ -15,7 +16,6 @@ tipoDiapositiva.forEach(element => {
             respuestaOculta.style.display= 'none';
         }else if (element.value === 'test'){
             respuestaOculta.style.display= 'flex';
-            divContenido.style.display = 'none';
             divContenido.style.display = 'none';
             divImg.style.display = 'none';
         }
@@ -104,6 +104,7 @@ const verDiapositiva = () => {
     const tipoDiapo = document.querySelector('input[type="radio"]:checked').value;
     const presentaciones_id = document.getElementById("presentaciones_id").value;
     const contenidoDiapoImg = document.getElementById("contenidoDiapoImg").value;
+    const contenidoDiapoTest = document.getElementById("contenidoDiapoTest").value;
 
     if (tipoDiapo === 'contenido') {
         diapo = [
@@ -127,7 +128,7 @@ const verDiapositiva = () => {
                 "nDiapositiva": 1
             }
         ];
-    } else {
+    } else if(tipoDiapo == 'imagen') {
         diapo = [
             {
                 "titulo": tituloDiapo,
@@ -138,6 +139,18 @@ const verDiapositiva = () => {
                 "nDiapositiva": 1
             }
         ];
+    }else if(tipoDiapo == 'test'){
+        diapo = [
+            {
+                "titulo": tituloDiapo,
+                "contenido": contenidoDiapoTest,
+                "tipoDiapositiva": tipoDiapo,
+                "presentaciones_id": presentaciones_id,
+                "imagen": "",
+                "nDiapositiva": 1
+            }
+        ];
+
     }
 
     document.cookie = "1diapo=" + 'crearDiapo';

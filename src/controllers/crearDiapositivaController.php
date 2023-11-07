@@ -19,7 +19,8 @@ require_once '../modelo/Clases/Respuesta.php';
 
 
 // Función convierte las opciones de respuestas ingresadas por el usuario en un array y despues en JSON
-function preguntasToStringArrayPreguntas($opcionesRespuestas){
+function preguntasToStringArrayPreguntas($opcionesRespuestas)
+{
     $arrayOpciones = JSON_encode(explode(",", $opcionesRespuestas));
     return $arrayOpciones;
 }
@@ -55,11 +56,8 @@ function procesarFormulario()
                 DiapositivaTituloContenido::insertDiapositivaTituloYContenido($conexion, $diapositiva);
                 $conexion = null;
                 $_SESSION['toast'] = true;
-                
                 header("Location: ../vista/crearDiapositiva.php");
-            }
-
-            elseif ($tipo === 'imagen') {
+            } elseif ($tipo === 'imagen') {
                 $descripcion = $_POST['contenidoDiapoImg'];
                 $nombreImagen = "a.png";
                 $nombreImagen = str_replace(' ', '_', $nombreImagen);
@@ -75,8 +73,8 @@ function procesarFormulario()
                     $url_target = str_replace('\\', '/', $url_insert) . '/' . $cont . $nombreImagen;
                     $cont++;
                 }
-                if($cont>0){
-                    $nombreImagen = $cont-1 . $nombreImagen;
+                if ($cont > 0) {
+                    $nombreImagen = $cont - 1 . $nombreImagen;
                 }
                 if (move_uploaded_file($url_temp, $url_target)) {
 
@@ -91,8 +89,8 @@ function procesarFormulario()
                 $_SESSION['toast'] = true;
                 header("Location: ../vista/crearDiapositiva.php");
 
-            }elseif ($tipo === 'test'){
-
+            } elseif ($tipo === 'test') {
+                $descripcion = $_POST['contenidoDiapoTest'];
                 $pregunta = $_POST['pregunta'];
                 $opcionesRespuestas = preguntasToStringArrayPreguntas($descripcion);
                 $respuestaCorrecta = $_POST['respuestaCorrecta'];
@@ -104,7 +102,7 @@ function procesarFormulario()
                 $conexion = null;
                 $_SESSION['toast'] = true;
                 header("Location: ../vista/crearDiapositiva.php");
-            }else {
+            } else {
             }
         }
     }
