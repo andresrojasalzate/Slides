@@ -10,6 +10,7 @@ session_start();
 function procesarFormulario()
 {
     $url = $_SESSION['url'];
+    unset($_SESSION['url']);
     $bdConexion = ConexionBD::obtenerInstancia();
     $conexion = $bdConexion->getConnection();
     $idPres = Presentacion::devolverPresentacionByURL($conexion, $url);
