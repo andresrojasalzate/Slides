@@ -243,3 +243,12 @@ button{
   'GRAD' 0,
   'opsz' 24
 }
+
+.tituloDiapo{
+    background-color:white;
+    padding: 3px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
