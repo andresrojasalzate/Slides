@@ -158,16 +158,17 @@ label {
 
 .imagen {
     max-width: 1400px;
-    max-height: 450px;
+    max-height: 350px;
 }
 
 .cont{
     display: flex;
     justify-content: space-between;
-    width: 85%;
-    height: 62.5%;
     align-items: center;
-    margin-bottom: 100px;
+    width: 95%;
+    height: 50%;
+    display: flex;
+    align-items: center;
 }
 .pregunta{
     width: 100%;

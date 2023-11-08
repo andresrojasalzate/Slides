@@ -15,7 +15,6 @@ $mostrarFeedback = null;
 $presentacion = null;
 
 function redireccionPaginaNoEncontrada(){
-    //header('Location: ../vista/404.php');
     unset($_SESSION['vistaDiapositivas']);
     unset($_SESSION['estilo']);
     unset($_SESSION['posicion']);

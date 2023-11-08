@@ -29,7 +29,9 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
     <div class="home">
         <div class="presentaciones">
             <div class="tituloContentPresentaciones">
-                <span><?php echo $pres[0]['nombre']; ?></span>
+                <span>
+                    <?php echo $pres[0]['nombre']; ?>
+                </span>
             </div>
             <div class="contentPresentaciones">
                 <div class="mostrarPresentaciones">
@@ -41,12 +43,15 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
                                         <?= $diapositiva['titulo'] ?>
                                     </span></div>
                                 <div class="tituloDiapo"><span>
-                                        <?= substr($diapositiva['contenido'], 0, 10).'...' ?>
+                                        <?= ($diapositiva['contenido'] !== null) ? substr($diapositiva['contenido'], 0, 10) . '...' : 'sin contenido' ?>
                                     </span></div>
                                 <div class="opciones">
-                                <div class="tituloDiapo"><span><?= $diapositiva['tipoDiapositiva'] ?></span></div>
-                                    <button class="vDiapo material-symbols-outlined" nDiapo="<?= $diapositiva['nDiapositiva'] ?>">visibility</button>
-                                    
+                                    <div class="tituloDiapo"><span>
+                                            <?= $diapositiva['tipoDiapositiva'] ?>
+                                        </span></div>
+                                    <button class="vDiapo material-symbols-outlined"
+                                        nDiapo="<?= $diapositiva['nDiapositiva'] ?>">visibility</button>
+
                                 </div>
                             </div>
                         <?php endforeach; ?>

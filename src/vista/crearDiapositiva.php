@@ -52,13 +52,9 @@ if (isset($_POST['titulo'])) {
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen'];
-    
-}elseif(isset($_POST['pregunta'])){
     $pregunta = $_POST['pregunta'];
-    $opcionesRespuestas = $_POST['opcionesRespuestas'];
-    $respuestaCorrecta = $_POST['$respuestaCorrecta'];
-} 
-else {
+    $respuestaCorrecta = $_POST['respuestaCorrecta'];
+}else {
     $titulo = '';
 }
 
@@ -113,7 +109,7 @@ else {
                         </div>
                         <div>
                             <input class="test" type="radio" id="test" name="tipoDiapo" value="test" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'test') ? 'checked' : ''; ?>>
-                            <label for="tipoImg">Tipo Test</label>
+                            <label for="test">Tipo Test</label>
                         </div>
                     </fieldset>
                     <div>
