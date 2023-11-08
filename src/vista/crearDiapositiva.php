@@ -52,9 +52,12 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen'];
+    
+}elseif(isset($_POST['pregunta'])){
     $pregunta = $_POST['pregunta'];
     $respuestaCorrecta = $_POST['$respuestaCorrecta'];
-} else {
+} 
+else {
     $titulo = '';
 }*/
 
@@ -151,8 +154,8 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
                             <input class="pregunta" type="text" id="pregunta" name="pregunta"
                                 placeholder="¿Cual será tu pregunta?" 
                                 value="<?php echo empty($pregunta) ? '' : htmlspecialchars($pregunta); ?>">
-                            <label for="contenidoDiapo">Posibles respuestas</label>
-                            <textarea class="textarea" id="contenidoDiapo" name="contenidoDiapo"
+                            <label for="opcionesRespuestas">Posibles respuestas</label>
+                            <textarea class="textarea" id="contenidoDiapoTest" name="contenidoDiapoTest"
                                 placeholder="Ingresa aca las posibles respuestas..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
                             <label for="respuestaCorrecta">Respuesta Correcta</label>
                             <div id="errDescripcion" class="errores"></div>
