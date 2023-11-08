@@ -118,13 +118,13 @@ function returnDiapo($connexion, $id)
                 <div class="contenedorDiapositivas">
                     <?php if (count($diapositivas) > 0): ?>
                         <?php foreach ($diapositivas as $diapositiva): ?>
-                            <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>" data-text="<?= ($diapositiva['contenido'] !== null) ? $diapositiva['contenido'] : 'no hay contenido' ?>">
+                            <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>">
                                 <div class="tituloDiapo"><span>
                                         <?= $diapositiva['titulo'] ?>
                                     </span></div>
                                 <div class="opciones">
                                     <button name="btnDelDiapositiva" value="<?= $diapositiva['id'] ?>"
-                                        class="material-symbols-outlined">delete</button>
+                                        class="material-symbols-outlined ">delete</button>
                                     <button class="vDiapo material-symbols-outlined"
                                         diapo="<?= htmlspecialchars(json_encode(returnDiapo($conexion, $diapositiva['id']))) ?>">visibility</button>
                                 </div>

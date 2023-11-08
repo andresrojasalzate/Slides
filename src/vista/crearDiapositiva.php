@@ -47,7 +47,7 @@ setcookie("idEstilo", $estilo, time() + 3600, "/");
 
 setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
 
-if (isset($_POST['titulo'])) {
+/*if (isset($_POST['titulo'])) {
     $titulo = $_POST['titulo'];
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
@@ -55,12 +55,11 @@ if (isset($_POST['titulo'])) {
     
 }elseif(isset($_POST['pregunta'])){
     $pregunta = $_POST['pregunta'];
-    $opcionesRespuestas = $_POST['opcionesRespuestas'];
     $respuestaCorrecta = $_POST['$respuestaCorrecta'];
 } 
 else {
     $titulo = '';
-}
+}*/
 
 ?>
 
@@ -113,7 +112,7 @@ else {
                         </div>
                         <div>
                             <input class="test" type="radio" id="test" name="tipoDiapo" value="test" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'test') ? 'checked' : ''; ?>>
-                            <label for="tipoImg">Tipo Test</label>
+                            <label for="test">Tipo Test</label>
                         </div>
                     </fieldset>
                     <div>
