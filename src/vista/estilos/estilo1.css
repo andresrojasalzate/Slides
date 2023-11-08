@@ -24,8 +24,14 @@
 
 .titulo span{
     font-weight: bold;
-    font-size: 48px;
+    font-size: 35px;
     
+}
+
+form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .contenido{
@@ -67,5 +73,5 @@
     margin: 10px;
     color:#4A4063;
     font-weight: bold;
-    font-size: 21px;
+    font-size: 20px;
 }

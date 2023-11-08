@@ -109,7 +109,7 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
                         </div>
                         <div>
                             <input class="test" type="radio" id="test" name="tipoDiapo" value="test" <?php echo (isset($tipoDiapo) && $tipoDiapo === 'test') ? 'checked' : ''; ?>>
-                            <label for="tipoImg">Tipo Test</label>
+                            <label for="test">Tipo Test</label>
                         </div>
                     </fieldset>
                     <div>
@@ -151,7 +151,7 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
                             <input class="pregunta" type="text" id="pregunta" name="pregunta"
                                 placeholder="¿Cual será tu pregunta?" 
                                 value="<?php echo empty($pregunta) ? '' : htmlspecialchars($pregunta); ?>">
-                            <label for="opcionesRespuestas">Posibles respuestas</label>
+                            <label for="contenidoDiapo">Posibles respuestas</label>
                             <textarea class="textarea" id="contenidoDiapo" name="contenidoDiapo"
                                 placeholder="Ingresa aca las posibles respuestas..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
                             <label for="respuestaCorrecta">Respuesta Correcta</label>

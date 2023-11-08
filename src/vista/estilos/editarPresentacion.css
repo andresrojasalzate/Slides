@@ -20,6 +20,9 @@ body{
 }
 
 .tituloEditarPresentaciones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #C8C6D7;
     width: 95%;
     height: 5%;
@@ -29,7 +32,7 @@ body{
     padding: 10px 0px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 35px;
 }
 
 .edicion{
@@ -63,6 +66,7 @@ form{
 }
 
 label{
+    font-size: 24px;
     padding-top: 15px;
 }
 
@@ -144,7 +148,7 @@ input{
     margin: 10px;
     color:#4A4063;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .botonCrear:hover{
@@ -162,6 +166,7 @@ input{
     background-color: #783F8E;
     border-radius: 5px;
     padding: 0.5%;
+    box-shadow: 11px 12px 6px #4A4063;
 }
 
 .opciones{
