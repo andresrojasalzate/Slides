@@ -264,6 +264,19 @@ button {
     background-color: #000;
     color: #fff;
     text-align: center;
+}
+
+.tool_container {
+    position: relative;
+    display: inline-block;
+}
+
+.tool_text {
+    visibility: hidden;
+    width: auto;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
     border-radius: 6px;
     padding: 5px;
     position: absolute;

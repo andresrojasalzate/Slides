@@ -52,14 +52,7 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen'];
-    
-}elseif(isset($_POST['pregunta'])){
-    $pregunta = $_POST['pregunta'];
-    $respuestaCorrecta = $_POST['$respuestaCorrecta'];
-} 
-else {
-    $titulo = '';
-}*/
+}
 
 ?>
 

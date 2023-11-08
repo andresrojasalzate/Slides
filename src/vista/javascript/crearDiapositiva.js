@@ -33,12 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const contDiapo = document.querySelector('.contDiapo');
     const imgDiapo = document.querySelector('.imgDiapo');
+    const testDiapo = document.querySelector('.test');
 
     if (contDiapo && contDiapo.checked) {
         divContenido.style.display = 'flex';
     }
     if (imgDiapo && imgDiapo.checked) {
         divImg.style.display = 'flex';
+    }
+    if(testDiapo && testDiapo.checked) {
+        respuestaOculta.style.display = 'flex';
     }
 
 });
@@ -106,6 +110,8 @@ const verDiapositiva = () => {
     const presentaciones_id = document.getElementById("presentaciones_id").value;
     const contenidoDiapoImg = document.getElementById("contenidoDiapoImg").value;
     const contenidoDiapoTest = document.getElementById("contenidoDiapoTest").value;
+    const respuestaCorrecta = document.getElementById("respuestaCorrecta").value;
+    const pregunta = document.getElementById("pregunta").value;
 
     if (tipoDiapo === 'contenido') {
         diapo = [
@@ -115,7 +121,9 @@ const verDiapositiva = () => {
                 "tipoDiapositiva": tipoDiapo,
                 "presentaciones_id": presentaciones_id,
                 "imagen": "",
-                "nDiapositiva": 1
+                "nDiapositiva": 1,
+                "respuestaCorrecta": "",
+                "pregunta": ""
             }
         ];
     } else if (tipoDiapo == 'titulo') {
@@ -126,7 +134,9 @@ const verDiapositiva = () => {
                 "tipoDiapositiva": tipoDiapo,
                 "presentaciones_id": presentaciones_id,
                 "imagen": "",
-                "nDiapositiva": 1
+                "nDiapositiva": 1,
+                "respuestaCorrecta": "",
+                "pregunta": ""
             }
         ];
     } else if(tipoDiapo == 'imagen') {
@@ -137,7 +147,9 @@ const verDiapositiva = () => {
                 "tipoDiapositiva": tipoDiapo,
                 "presentaciones_id": presentaciones_id,
                 "imagen": "",
-                "nDiapositiva": 1
+                "nDiapositiva": 1,
+                "respuestaCorrecta": "",
+                "pregunta": ""
             }
         ];
     }else if(tipoDiapo == 'test'){
@@ -148,12 +160,12 @@ const verDiapositiva = () => {
                 "tipoDiapositiva": tipoDiapo,
                 "presentaciones_id": presentaciones_id,
                 "imagen": "",
-                "nDiapositiva": 1
+                "nDiapositiva": 1,
+                "respuestaCorrecta": respuestaCorrecta,
+                "pregunta": pregunta
             }
         ];
-
     }
-
     document.cookie = "1diapo=" + 'crearDiapo';
     document.cookie = "arrayDiapositivas=" + JSON.stringify(diapo);
     window.location.href = "visualizarDiapositiva.php";
