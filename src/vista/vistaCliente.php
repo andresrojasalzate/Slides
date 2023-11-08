@@ -11,6 +11,7 @@ use src\modelo\Clases\Respuesta;
 
 require_once '../modelo/Clases/Respuesta.php';
 
+include '../controllers/vistaClienteController.php';
 
 if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
     $rutaImg = "img/" . $_SESSION['vistaDiapositivas'][$posDiapo]['presentaciones_id'] . "/" . $_SESSION['vistaDiapositivas'][$posDiapo]['imagen'];
