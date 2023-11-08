@@ -55,6 +55,7 @@ if (isset($_POST['titulo'])) {
     $respuestaCorrecta = $_POST['respuestaCorrecta'];
     $pregunta = $_POST['pregunta'];
 
+
 }
 
 ?>
