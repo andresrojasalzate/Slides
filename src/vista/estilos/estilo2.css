@@ -31,9 +31,15 @@ html, body{
 
 .titulo  span{
     font-weight: bold;
-    font-size: 48px;
+    font-size: 35px;
     color: #FF7EA8;
     
+}
+
+form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .contenido{
@@ -77,5 +83,5 @@ html, body{
     margin: 10px;
     color:#FFFF;
     font-weight: bold;
-    font-size: 21px;
+    font-size: 20px;
 }

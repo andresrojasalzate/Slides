@@ -12,6 +12,7 @@ const formulario = document.querySelector('form');
 const esVistaCliente = document.querySelector('#vista_cliente');
 const spans = document.querySelectorAll('span');
 const buttons = document.querySelectorAll('button');
+let elementActual;
 let ordenNuevoDiapositivas = null;
 let ordenOriginalDiapositivas = null;
 
@@ -98,7 +99,6 @@ crearElemento(ordenOriginalDiapositivas, "ordenOriginalDiapositivas");
 
 
 const dragStart = (e) => {
-    //console.log('dragstart');
     // Transferim l'id de l'element que arroseguem:
     e.dataTransfer.setData('text', e.target.id);
     e.dropEffect = 'linkMove';
@@ -107,12 +107,12 @@ const dragStart = (e) => {
 }
 
 const dragEnd = (e) => {
-    //console.log('dragend');
     e.target.classList.remove('invisible');
 }
 
 diapositivas.forEach(diapositiva => {
     diapositiva.addEventListener('dragstart', dragStart);
+    diapositiva.addEventListener('dragend',dragEnd);
 });
 
 
@@ -123,58 +123,44 @@ const dragOver = (e) => {
 
 const drop = (e) => {
     e.preventDefault();
-    //console.log('drop');
     // Obtenim l'id de l'element arrossegat:
-    const idDiapositiva = e.dataTransfer.getData("text");
-    const nuevaUbicacion = document.getElementById(idDiapositiva);
-    e.target.appendChild(document.getElementById(idDiapositiva));
-    nuevaUbicacion.classList.remove('invisible');
-    nuevaUbicacion.opacity = '';
-    const nuevoArray = document.querySelectorAll('.presentacionBD');
-    //console.log(nuevoArray);
-    ordenNuevoDiapositivas = idsDiapositivas(nuevoArray);
-    crearElemento(ordenNuevoDiapositivas, "ordenNuevoDiapositivas");
+    if (e.target.className === "contenedorDiapositivas") {
+        const idDiapositiva = e.dataTransfer.getData("text");
+        const nuevaUbicacion = document.getElementById(idDiapositiva);
+        e.target.appendChild(document.getElementById(idDiapositiva));
+        nuevaUbicacion.classList.remove('invisible');
+        nuevaUbicacion.opacity = '';
+        const nuevoArray = document.querySelectorAll('.presentacionBD');
+        ordenNuevoDiapositivas = idsDiapositivas(nuevoArray);
+        crearElemento(ordenNuevoDiapositivas, "ordenNuevoDiapositivas");
+    }
+
 };
 
 contenedorDiapositivas.addEventListener('dragover', dragOver);
 contenedorDiapositivas.addEventListener('drop', drop);
 
 
-diapositivas.forEach(diapositiva => {
-    diapositiva.addEventListener('dragover', dragOver);
-    diapositiva.addEventListener('drop', drop);
-});
-
-spans.forEach(span => {
-    span.addEventListener('dragover', dragOver);
-    span.addEventListener('drop', drop);
-});
-
-buttons.forEach(button => {
-    button.addEventListener('dragover', dragOver);
-    button.addEventListener('drop', drop);
-});
-
 //Cambiar el valor del checkbox para habilitar o deshabilitar la vista cliente
-esVistaCliente.addEventListener('click',function(e){
-    if(!esVistaCliente.checked){
+esVistaCliente.addEventListener('click', function (e) {
+    if (!esVistaCliente.checked) {
         esVistaCliente.value = 0;
-    }else{
+    } else {
         esVistaCliente.value = 1;
     }
 })
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const botones = document.querySelectorAll('.vDiapo');
-    
-    botones.forEach(function(boton) {
-        boton.addEventListener('click', function() {
+
+    botones.forEach(function (boton) {
+        boton.addEventListener('click', function () {
             let diapos = boton.getAttribute('diapo');
-                //document.cookie = "idDiapo=" + diapos;
-                //window.location.href = "visualizarDiapositiva.php";
-                //console.error('El valor de diapos es null');
-                let a;
-                let diaposObj = JSON.parse(diapos);
+            //document.cookie = "idDiapo=" + diapos;
+            //window.location.href = "visualizarDiapositiva.php";
+            //console.error('El valor de diapos es null');
+            let a;
+            let diaposObj = JSON.parse(diapos);
 
             if (diaposObj.tipoDiapositiva === 'contenido') {
                 a = [
@@ -195,11 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 ];
             }
-                console.log(a);
-                document.cookie = "1diapo=" + 'editarPres';
-                document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
-                window.location.href = "visualizarDiapositiva.php";
-            
+            console.log(a);
+            document.cookie = "1diapo=" + 'editarPres';
+            document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
+            window.location.href = "visualizarDiapositiva.php";
+
         });
     });
 });

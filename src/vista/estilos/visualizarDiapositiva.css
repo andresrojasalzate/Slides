@@ -105,7 +105,7 @@ span {
 }
 
 label {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 /*.btn{
@@ -148,7 +148,7 @@ label {
     margin: 10px 0px 0px 10px;
     color: #4A4063;
     font-weight: bold;
-    font-size: 21px;
+    font-size: 20px;
     width: fit-content;
 }
 
@@ -168,16 +168,17 @@ label {
 
 .imagen {
     max-width: 1400px;
-    max-height: 450px;
+    max-height: 350px;
 }
 
 .cont{
     display: flex;
     justify-content: space-between;
-    width: 85%;
-    height: 62.5%;
     align-items: center;
-    margin-bottom: 100px;
+    width: 95%;
+    height: 50%;
+    display: flex;
+    align-items: center;
 }
 
 .pregunta{
