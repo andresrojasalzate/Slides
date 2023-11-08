@@ -1,5 +1,4 @@
 <?php
-//include '../controllers/vistaClienteController.php';
 
 session_start();
 

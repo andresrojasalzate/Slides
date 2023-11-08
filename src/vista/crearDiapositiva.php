@@ -52,10 +52,6 @@ if (isset($_POST['titulo'])) {
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen'];
-    $pregunta = $_POST['pregunta'];
-    $respuestaCorrecta = $_POST['respuestaCorrecta'];
-}else {
-    $titulo = '';
 }
 
 ?>

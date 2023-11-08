@@ -29,9 +29,7 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
     <div class="home">
         <div class="presentaciones">
             <div class="tituloContentPresentaciones">
-                <span>
-                    <?php echo $pres[0]['nombre']; ?>
-                </span>
+                <span><?php echo $pres[0]['nombre']; ?></span>
             </div>
             <div class="contentPresentaciones">
                 <div class="mostrarPresentaciones">
