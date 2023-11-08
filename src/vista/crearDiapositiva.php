@@ -66,7 +66,6 @@ setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
     <link rel="stylesheet" href="estilos/crearDiapositiva.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
     <title>Crear Diapositiva</title>
-    <title>Crear Diapositiva</title>
 </head>
 
 <body>
