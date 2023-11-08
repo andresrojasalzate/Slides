@@ -52,6 +52,9 @@ if (isset($_POST['titulo'])) {
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen'];
+    $respuestaCorrecta = $_POST['respuestaCorrecta'];
+    $pregunta = $_POST['pregunta'];
+
 }
 
 ?>
@@ -65,7 +68,6 @@ if (isset($_POST['titulo'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/crearDiapositiva.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
-    <title>Crear Diapositiva</title>
     <title>Crear Diapositiva</title>
 </head>
 
