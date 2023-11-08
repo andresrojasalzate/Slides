@@ -10,6 +10,7 @@ tipoDiapositiva.forEach(element => {
             divImg.style.display = 'none';
             respuestaOculta.style.display = 'none';
             divContenido.style.display = 'flex';
+            respuestaOculta.style.display= 'none';
         } else if (element.value === 'imagen') {
             divContenido.style.display = 'none';
             divImg.style.display = 'flex';

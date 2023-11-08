@@ -102,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnSharePresentacion"])) {
         $mostrarFeedback = Presentacion::compartirPresentacion($conexion,$_POST['btnSharePresentacion']);
+        $presentaciones = Presentacion::devolverPresentaciones($conexion);
     }
 }
 
@@ -137,13 +138,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <div class="titulo"><span><?= $presentacion['nombre'] ?></span></div>
                                 <div class="nroDiapositivas"><span>Diapositivas:<?= $presentacion['nroDiapositivas']; ?></span></div>
                                 <div class="opciones">
-                                    <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">edit</button>
-                                    <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined">delete</button>
+                                    <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined tool_container"><span class="tool_text">Editar Presentación</span> edit</button>
+                                    <button name="btnDelPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined tool_container"><span class="tool_text">Eliminar Presentación</span> delete</button>
                                     <form action="home.php" method="POST">
-                                        <button name="btnSharePresentacion" class="material-symbols-outlined" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" <?php if($presentacion['vista_cliente']===1) echo 'disabled'?>>share</button>
+                                        <button name="btnSharePresentacion" class="material-symbols-outlined tool_container" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" <?php if($presentacion['vista_cliente']===1) echo 'disabled'?>><span class="tool_text">Compartir Presentación</span> share</button>
                                     </form>
-                                    <button class="vDiapo material-symbols-outlined" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>">visibility</button>
-                                    <button class="nDiapo material-symbols-outlined" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span>library_add</span></button>
+                                    <button class="vDiapo material-symbols-outlined tool_container" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>"><span class="tool_text">Ver Presentación</span> visibility</button>
+                                    <button class="nDiapo material-symbols-outlined tool_container" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="tool_text">Agregar Diapositiva</span><span>library_add</span></button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
