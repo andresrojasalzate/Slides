@@ -50,6 +50,16 @@ if (isset($arrayDiapositivas[$posicion]['imagen'])) {
     $rutaImg = "a";
 }
 
+if (isset($arrayDiapositivas[$posicion]['pregunta'])) {
+    $contenidoJSON = $arrayDiapositivas[$posicion]['contenido'];
+    $respuestas = json_decode($contenidoJSON, true);
+
+    if ($respuestas === null && json_last_error() !== JSON_ERROR_NONE) {
+        $respuestas = explode(",", $contenidoJSON);
+    }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -110,25 +120,27 @@ if (isset($arrayDiapositivas[$posicion]['imagen'])) {
                 </div>
             <?php } ?>
             <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'test') { ?>
-                <div class="respuestas">
-                    <?php
-                    $contenido = $arrayDiapositivas[$posicion]['contenido'];
-
-                    if (is_string($contenido)) {
-                        $array = json_decode($contenido, true);
-                        if (is_array($array)) {
-                        } else {
-                            $array = explode(",", $contenido);
-                        }
-                    } else {
-                        $array = $contenido;
-                    }
-                    foreach ($array as $arra) {
-                        echo '<div class="opciones"><input type="radio" id="' . $arra . '" name="radio_option" value="' . $arra . '"> <label for="' . $arra . '">' . $arra . ' </label></div> ';
-                    }
-                    ?>
+                <div class="contenido">
+                    <div class="mostrarDiapositivaTest">
+                        <div class= pregunta>
+                            <label for="contenido" id="contenidoLabel">
+                                <?= $arrayDiapositivas[$posicion]['pregunta']; ?>
+                            </label>
+                        </div>             
+                            <?php foreach ($respuestas as $respuesta): ?>
+                                <div class="respuestas"> 
+                                    
+                                        <input type="radio" name="<?= $idDiapositiva; ?>" value="<?= $respuesta; ?>">
+                              
+                                        <label for="<?= $respuesta; ?>"><?= $respuesta; ?></label><br>
+                                </div> 
+                            <?php endforeach; ?>  
+                    </div>
                 </div>
             <?php } ?>
+
+
+
             <div class="boton-salir-container">
                 <?php if ($diapoSola == 'home') { ?>
                     <form action="home.php">
@@ -144,6 +156,10 @@ if (isset($arrayDiapositivas[$posicion]['imagen'])) {
                             value=<?= htmlspecialchars($arrayDiapositivas[$posicion]['tipoDiapositiva']); ?>>
                         <input type="hidden" name="imagen"
                             value=<?= htmlspecialchars($arrayDiapositivas[$posicion]['imagen']); ?>>
+                            <input type="hidden" name="respuestaCorrecta"
+                            value=<?= htmlspecialchars($arrayDiapositivas[$posicion]['respuestaCorrecta']); ?>>
+                            <input type="hidden" name="pregunta"
+                            value=<?= htmlspecialchars($arrayDiapositivas[$posicion]['pregunta']); ?>>
                         <button class="btnSalir">Salir</button>
                     </form>
                 <?php } elseif ($diapoSola == 'editarPres') { ?>
