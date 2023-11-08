@@ -47,15 +47,13 @@ setcookie("idEstilo", $estilo, time() + 3600, "/");
 
 setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
 
-/*if (isset($_POST['titulo'])) {
+if (isset($_POST['titulo'])) {
     $titulo = $_POST['titulo'];
     $contenido = $_POST['contenido'];
     $tipoDiapo = $_POST['tipoDiapo'];
     $imagen = $_POST['imagen'];
     $respuestaCorrecta = $_POST['respuestaCorrecta'];
     $pregunta = $_POST['pregunta'];
-
-
 }
 
 ?>
