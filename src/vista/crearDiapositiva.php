@@ -151,6 +151,7 @@ if (isset($_POST['titulo'])) {
                             <label for="opcionesRespuestas">Posibles respuestas</label>
                             <textarea class="textarea" id="contenidoDiapoTest" name="contenidoDiapoTest"
                                 placeholder="Ingresa aca las posibles respuestas..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
+                            <span class="alerta">*Ingrese las opciones separadas por comas (,)</span>
                             <label for="respuestaCorrecta">Respuesta Correcta</label>
                             <div id="errDescripcion" class="errores"></div>
                             <input class="respuesta" type="text" id="respuestaCorrecta" name="respuestaCorrecta"
