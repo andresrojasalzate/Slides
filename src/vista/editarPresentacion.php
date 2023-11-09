@@ -32,11 +32,11 @@ $vista_cliente = $resultado[0]['vista_cliente'];
 $mostrarFeedback = null;
 $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 
-//Funcion para eliminar presentaciones
+//Funcion para eliminar diapositivas
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $diapo = returnDiapo($conexion, $_POST["btnAceptar"])["nDiapositiva"];
-        Diapositiva::restar1nDiapos($conexion, $id, $_POST["btnAceptar"]);
+        Diapositiva::restar1nDiapos($conexion, $id, $diapo, Diapositiva::getTipo($conexion, $_POST["btnAceptar"])["tipoDiapositiva"]);
         $nombre = DiapositivaImagen::getNombreImagen($conexion, $_POST["btnAceptar"]);
         $rutaImagen = dirname(__FILE__) . '/img/' . $idUltimaPresentacion . '/' . $nombre;
         if (file_exists($rutaImagen)) {

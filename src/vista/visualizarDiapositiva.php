@@ -1,13 +1,16 @@
 <?php
 
-use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\Estilo;
+use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\Presentacion;
+use src\modelo\Clases\DiapositivaPregunta;
 
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Presentacion.php';
 require_once '../modelo/Clases/Diapositiva.php';
 require_once '../modelo/Clases/Estilo.php';
+require_once '../modelo/Clases/DiapositivaPregunta.php';
+
 
 
 if (isset($_COOKIE['arrayDiapositivas'])) {
@@ -22,7 +25,6 @@ $conexion = $bdConexion->getConnection();
 if (isset($_COOKIE['idEstilo'])) {
     $estilo = $_COOKIE['idEstilo'];
 }else{}
-
 $estilo = Presentacion::estiloPresentacion($conexion, $arrayDiapositivas[0]['presentaciones_id']);
 
 if (isset($_COOKIE['1diapo'])) {
@@ -145,6 +147,33 @@ if($estilo == 1){
                                         <label for="<?= $respuesta; ?>"><?= $respuesta; ?></label><br>
                                 </div> 
                             <?php endforeach; ?>  
+                    </div>
+                </div>
+            <?php } ?>
+            <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'respuesta') { ?>
+                <div class="contenido">
+                    <div class="mostrarDiapositivaTest">
+                        <div class= "pregunta">
+                            <label for="contenido" id="contenidoLabel">
+                                <?= $respuestas = DiapositivaPregunta::devolverPregunta($conexion, $arrayDiapositivas[$posicion]['diapositivaPreg_id']);?>
+                            </label>
+                        </div>
+                        <div class="respuestas">
+                            <div class="resp">
+                                <label> Possibles respuestas:
+                                    <?php
+                                    $respuestas = DiapositivaPregunta::devolverPreguntas($conexion, $arrayDiapositivas[$posicion]['diapositivaPreg_id']);
+                                    foreach ($respuestas as $respuesta) {
+                                        echo "<li>" . htmlspecialchars($respuesta) . "</li>";
+                                    }
+                                    ?>
+                            </div>
+                            <div class="resp">
+                                <label > Respuesta corecta:
+                                    <?php echo $arrayDiapositivas[$posicion]['contenido'] ?>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php } ?>
