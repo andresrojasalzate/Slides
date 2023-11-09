@@ -1,20 +1,17 @@
 html,body{
     font-family: 'Roboto', sans-serif;
     color: #4A4063;
-    height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0.5%;
 }
 
 .cabecera{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     background-color: #4A4063;
     border-radius: 20px;
     border: 10px solid white;
-    margin-bottom: 10px;
 }
 
 .crearDiapositiva{
@@ -25,6 +22,7 @@ html,body{
 
 
 .fondoLila{
+    overflow: overlay;
     width: 100%;
     background-color: #4A4063;
     border-radius: 20px;
@@ -68,12 +66,11 @@ form{
 }
 
 .contentCrearDiapositivas{
+    min-height: 493px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     background-color: #DFDDF0;
     width: 95%;
-    height: 100%;
     border-radius: 10px;
     margin: 0 15px 30px 15px;
 }
