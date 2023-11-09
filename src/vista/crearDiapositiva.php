@@ -91,7 +91,7 @@ if (isset($_POST['titulo'])) {
                     <fieldset class="divFormRow">
                         <legend class="subtitulos">Tipo de diapositiva</legend>
                         <div>
-                            <input type="hidden" id="presentaciones_id" value="<?php $idUltimaPresentacion ?>">
+                            <input type="hidden" id="presentaciones_id" value="<?= $idUltimaPresentacion ?>"">
                             <input type="radio" id="tipoTitulo" name="tipoDiapo" value="titulo" <?php echo (!isset($tipoDiapo) || $tipoDiapo === 'titulo') ? 'checked' : ''; ?>>
                             <label for="tipoTitulo">Titulo</label><br>
                         </div>

@@ -255,4 +255,21 @@ class Presentacion{
 		}
     }
 
+    public static function estiloPresentacion(PDO $pdo, $id){
+        try{
+            $sql = "SELECT estilo_id FROM presentaciones WHERE id = :id";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchColumn(); 
+            return $result;
+        } catch(PDOException $ex){
+            echo $ex;
+           
+        } catch (Exception $ex) {
+			echo $ex;
+            
+		}
+    }
+
 }
