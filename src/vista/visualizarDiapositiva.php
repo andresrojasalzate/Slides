@@ -22,7 +22,6 @@ $conexion = $bdConexion->getConnection();
 if (isset($_COOKIE['idEstilo'])) {
     $estilo = $_COOKIE['idEstilo'];
 }else{}
-
 $estilo = Presentacion::estiloPresentacion($conexion, $arrayDiapositivas[0]['presentaciones_id']);
 
 if (isset($_COOKIE['1diapo'])) {
@@ -140,10 +139,8 @@ if($estilo == 1){
                             </label>
                         </div>             
                             <?php foreach ($respuestas as $respuesta): ?>
-                                <div class="respuestas"> 
-                                    
+                                <div class="respuestas">
                                         <input type="radio" value="<?= $respuesta; ?>">
-                              
                                         <label for="<?= $respuesta; ?>"><?= $respuesta; ?></label><br>
                                 </div> 
                             <?php endforeach; ?>  
