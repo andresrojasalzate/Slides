@@ -76,6 +76,7 @@ form{
 }
 
 .botonCrear{
+    height: 50px;
     background-color: #4A4063;
     border-radius: 10px;
     border-color: #C8C6D7;
@@ -93,13 +94,13 @@ form{
 }
 
 .botonSalir{
+    height: 47px;
     background-color: #f52f2f;
     border-radius: 10px;
     border-color: #4A4063;
     border-style: solid;
     border-width: 3px;
     padding: 0.7% 2%;
-    margin: 10px 0px 0px 10px;
     color:#4A4063;
     font-weight: bold;
     font-size: 20px;    
@@ -216,6 +217,7 @@ textarea{
 }
 
 .botonVer{
+    height: 50px;
     background-color: #4A4063;
     border-radius: 10px;
     border-color: #C8C6D7;
