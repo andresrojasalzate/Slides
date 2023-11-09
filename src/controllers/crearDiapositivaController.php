@@ -6,6 +6,7 @@ use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\DiapositivaImagen;
 use src\modelo\Clases\DiapositivaPregunta;
 use src\modelo\Clases\DiapositivaRespuesta;
+use src\modelo\Clases\DiapositivaRespuesta;
 use src\modelo\Clases\DiapositivaTitulo;
 use src\modelo\Clases\DiapositivaTituloContenido;
 use src\modelo\Clases\Respuesta;
@@ -16,6 +17,7 @@ require_once '../modelo/Clases/DiapositivaTitulo.php';
 require_once '../modelo/Clases/DiapositivaTituloContenido.php';
 require_once '../modelo/Clases/DiapositivaImagen.php';
 require_once '../modelo/Clases/DiapositivaPregunta.php';
+require_once '../modelo/Clases/DiapositivaRespuesta.php';
 require_once '../modelo/Clases/DiapositivaRespuesta.php';
 
 

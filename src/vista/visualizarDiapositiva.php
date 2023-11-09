@@ -140,10 +140,8 @@ if($estilo == 1){
                             </label>
                         </div>             
                             <?php foreach ($respuestas as $respuesta): ?>
-                                <div class="respuestas"> 
-                                    
+                                <div class="respuestas">
                                         <input type="radio" value="<?= $respuesta; ?>">
-                              
                                         <label for="<?= $respuesta; ?>"><?= $respuesta; ?></label><br>
                                 </div> 
                             <?php endforeach; ?>  
