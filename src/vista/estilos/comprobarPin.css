@@ -46,7 +46,7 @@ html,body{
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 35px;
-    color: black;
+    color: #4A4063;
 }
 
 .contentFormulario {
@@ -103,14 +103,14 @@ html,body{
 }
 
 label {
-    color: black;
+    color: #4A4063;
     font-weight: bold;
     font-size: 24px;
     text-align: center;
 }
 
 input {
-
+    text-align: center;
     border-radius: 10px;
     border-width: 3px;
     border-color: #4A4063;

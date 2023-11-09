@@ -213,8 +213,7 @@ button {
     left: 0;
 }
 
-.modalEliminarPresentacion,
-.modalFeedBackEliminarPresentacion {
+.modalEliminarPresentacion, .modalFeedBackEliminarPresentacion {
     position: fixed;
     background-color: #C8C6D7;
     border: 3px solid #783F8E;
@@ -258,7 +257,7 @@ button {
 
 .tituloDiapo{
     background-color: #fff;
-    padding: 3px;
+    padding: 3px 10px;
     margin: 5px;
     border-radius: 5px;
     text-align: center;
