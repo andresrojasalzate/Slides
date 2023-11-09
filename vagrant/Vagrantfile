@@ -38,9 +38,7 @@ echo ">>> Installing Base Requirements"
 
       CREATE TABLE presentaciones(id INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(255), descripcion VARCHAR(255), estilo_id INT, pin VARCHAR(50), FOREIGN KEY (estilo_id) REFERENCES estilos(id), vista_cliente TINYINT(1) DEFAULT 0, nombreURL VARCHAR(255));
 
-      CREATE TABLE diapositivas(id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), imagen VARCHAR(255), pregunta VARCHAR(255), presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id) on delete cascade);
-
-      CREATE TABLE respuestas(id INT PRIMARY KEY AUTO_INCREMENT, respuesta VARCHAR(255), id_diapositiva INT, FOREIGN KEY (id_diapositiva) REFERENCES diapositivas(id) on delete cascade);
+      CREATE TABLE diapositivas(id INT PRIMARY KEY AUTO_INCREMENT, nDiapositiva INT, titulo VARCHAR(255), contenido VARCHAR(255), tipoDiapositiva VARCHAR(255), imagen VARCHAR(255), pregunta VARCHAR(255), diapositivaPreg_id INT ,presentaciones_id INT, FOREIGN KEY (presentaciones_id) REFERENCES presentaciones(id) on delete cascade);
 
       insert into estilos(nombre, css_resource, img_resource) values("estilo1", "estilo1.css", "estilo1.PNG");
       insert into estilos(nombre, css_resource, img_resource) values("estilo2", "estilo2.css", "estilo2.PNG");
