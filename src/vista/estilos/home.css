@@ -254,10 +254,23 @@ button {
 }
 
 .tituloDiapo{
-    background-color:white;
+    background-color: #fff;
     padding: 3px;
     margin: 5px;
     border-radius: 5px;
+    text-align: center;
+}
+
+.tool_container {
+    position: relative;
+    display: inline-block;
+}
+
+.tool_text {
+    visibility: hidden;
+    width: auto;
+    background-color: #000;
+    color: #fff;
     text-align: center;
 }
 
