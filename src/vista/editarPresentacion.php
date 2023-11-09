@@ -3,10 +3,12 @@
 use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\DiapositivaImagen;
 use src\modelo\Clases\Presentacion;
+use src\modelo\Clases\Estilo;
 
 session_start();
 
 require_once '../modelo/Clases/Presentacion.php';
+require_once '../modelo/Clases/Estilo.php';
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Diapositiva.php';
 require_once '../modelo/Clases/DiapositivaImagen.php';
