@@ -35,6 +35,7 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
                 <div class="mostrarPresentaciones">
                     <?php if (count($diapositivas) > 0): ?>
                         <?php foreach ($diapositivas as $diapositiva): ?>
+                            <?php if($diapositiva['tipoDiapositiva'] !== 'respuesta'){ ?>
                             <div class="presentacionBD" draggable="true" id="<?= $diapositiva['id'] ?>"
                                 data-text="<?= ($diapositiva['contenido'] !== null) ? $diapositiva['contenido'] : 'no hay contenido' ?>">
                                 <div class="tituloDiapo"><span>
@@ -52,6 +53,7 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
 
                                 </div>
                             </div>
+                            <?php } ?>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="mensajeCeroDiapositivas">Aún no hay diapositivas</div>

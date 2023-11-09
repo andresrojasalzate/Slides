@@ -53,13 +53,3 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){
     }
 }
 
-
-if($_SERVER['REQUEST_METHOD'] === "POST"){
-    if (isset($_POST['sumar'])) {
-        $_SESSION['posicion'] = ($_SESSION['posicion'] + 1) % count($_SESSION['vistaDiapositivas'] );
-        $posDiapo = $_SESSION['posicion'];
-    } elseif (isset($_POST['restar'])) {
-        $_SESSION['posicion'] = ($_SESSION['posicion'] - 1 + count($_SESSION['vistaDiapositivas'] )) % count($_SESSION['vistaDiapositivas'] );
-        $posDiapo = $_SESSION['posicion'];
-    }
-}
