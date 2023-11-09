@@ -44,9 +44,9 @@ form{
 
 .contenido{
     width: 95%;
-    height: 70%;
-    background: #FFFF;
-    border-radius: 20px;
+    height: 50%;
+    background: #FFFFFF;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
