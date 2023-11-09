@@ -39,7 +39,7 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
     }
 
 }
-
+var_dump($_SESSION['estilo'][0]['css_resource']);
 ?>
 
 <!DOCTYPE html>

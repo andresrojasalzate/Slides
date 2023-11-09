@@ -98,11 +98,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-//Eliminar las presentaciones
+//Compartir las presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnSharePresentacion"])) {
         $mostrarFeedback = Presentacion::compartirPresentacion($conexion,$_POST['btnSharePresentacion']);
         $presentaciones = Presentacion::devolverPresentaciones($conexion);
+        
     }
 }
 
