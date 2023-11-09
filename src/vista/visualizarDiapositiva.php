@@ -16,9 +16,14 @@ if (isset($_COOKIE['arrayDiapositivas'])) {
 } else {
 }
 
+$bdConexion = ConexionBD::obtenerInstancia();
+$conexion = $bdConexion->getConnection();
+
 if (isset($_COOKIE['idEstilo'])) {
     $estilo = $_COOKIE['idEstilo'];
-}
+}else{}
+$estilo = Presentacion::estiloPresentacion($conexion, $arrayDiapositivas[0]['presentaciones_id']);
+
 if (isset($_COOKIE['1diapo'])) {
     $diapoSola = $_COOKIE['1diapo'];
 } else {
@@ -58,6 +63,12 @@ if (isset($arrayDiapositivas[$posicion]['pregunta'])) {
         $respuestas = explode(",", $contenidoJSON);
     }
 
+}
+
+if($estilo == 1){
+    $estilo = "estilo1.css";
+}else if($estilo == 2){
+    $estilo = "estilo2.css";
 }
 
 ?>
