@@ -7,7 +7,7 @@ if (isset($_COOKIE["posicion"])) {
 }
 use src\modelo\Clases\Respuesta;
 
-require_once '../modelo/Clases/Respuesta.php';
+require_once '../modelo/Clases/DiapositivaRespuesta.php';
 
 include '../controllers/vistaClienteController.php';
 

@@ -5,6 +5,7 @@ use ConexionBD;
 use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\DiapositivaImagen;
 use src\modelo\Clases\DiapositivaPregunta;
+use src\modelo\Clases\DiapositivaRespuesta;
 use src\modelo\Clases\DiapositivaTitulo;
 use src\modelo\Clases\DiapositivaTituloContenido;
 use src\modelo\Clases\Respuesta;
@@ -15,7 +16,7 @@ require_once '../modelo/Clases/DiapositivaTitulo.php';
 require_once '../modelo/Clases/DiapositivaTituloContenido.php';
 require_once '../modelo/Clases/DiapositivaImagen.php';
 require_once '../modelo/Clases/DiapositivaPregunta.php';
-require_once '../modelo/Clases/Respuesta.php';
+require_once '../modelo/Clases/DiapositivaRespuesta.php';
 
 
 // Función convierte las opciones de respuestas ingresadas por el usuario en un array y despues en JSON
@@ -96,8 +97,9 @@ function procesarFormulario()
                 $respuestaCorrecta = $_POST['respuestaCorrecta'];
                 $diapositivaPregunta = new DiapositivaPregunta($titulo, $tipo, $idUltimaPresentacion, $nDiapositiva, $pregunta, $opcionesRespuestas);
                 DiapositivaPregunta::insertDiapositivaPregunta($conexion, $diapositivaPregunta);
-                $respuesta = new Respuesta($respuestaCorrecta, Diapositiva::idUltimaDiapositiva($conexion));
-                Respuesta::insertRespuesta($conexion, $respuesta);
+                $diapoPreg_id = Diapositiva::idUltimaDiapositiva($conexion);
+                $respuesta = new DiapositivaRespuesta($titulo,'respuesta',$idUltimaPresentacion,$nDiapositiva,$diapoPreg_id, $respuestaCorrecta);
+                DiapositivaRespuesta::insertDiapositivaRespuesta($conexion, $respuesta);
 
                 $conexion = null;
                 $_SESSION['toast'] = true;
