@@ -22,7 +22,7 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
-    <title>Home</title>
+    <title><?=$pres[0]['nombre']?></title>
 </head>
 
 <body>

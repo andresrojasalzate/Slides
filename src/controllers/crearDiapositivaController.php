@@ -17,6 +17,7 @@ require_once '../modelo/Clases/DiapositivaTituloContenido.php';
 require_once '../modelo/Clases/DiapositivaImagen.php';
 require_once '../modelo/Clases/DiapositivaPregunta.php';
 require_once '../modelo/Clases/DiapositivaRespuesta.php';
+require_once '../modelo/Clases/DiapositivaRespuesta.php';
 
 
 // Función convierte las opciones de respuestas ingresadas por el usuario en un array y despues en JSON
@@ -98,7 +99,7 @@ function procesarFormulario()
                 $diapositivaPregunta = new DiapositivaPregunta($titulo, $tipo, $idUltimaPresentacion, $nDiapositiva, $pregunta, $opcionesRespuestas);
                 DiapositivaPregunta::insertDiapositivaPregunta($conexion, $diapositivaPregunta);
                 $diapoPreg_id = Diapositiva::idUltimaDiapositiva($conexion);
-                $respuesta = new DiapositivaRespuesta($titulo,'respuesta',$idUltimaPresentacion,$nDiapositiva,$diapoPreg_id, $respuestaCorrecta);
+                $respuesta = new DiapositivaRespuesta('Rta:'.$titulo,'respuesta',$idUltimaPresentacion,$nDiapositiva,$diapoPreg_id, $respuestaCorrecta);
                 DiapositivaRespuesta::insertDiapositivaRespuesta($conexion, $respuesta);
 
                 $conexion = null;
