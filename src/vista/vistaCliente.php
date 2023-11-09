@@ -36,6 +36,7 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
     }
 
 }
+
 ?>
 
 <!DOCTYPE html>
