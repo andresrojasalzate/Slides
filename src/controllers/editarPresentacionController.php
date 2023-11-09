@@ -35,7 +35,6 @@ function esVistaClienteVacio()
         return 0;
     } else {
         return $_POST['vista_cliente'];
-        return $_POST['vista_cliente'];
     }
 }
 
