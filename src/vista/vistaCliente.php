@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (isset($_COOKIE["posicion"])) {
     $posDiapo = $_COOKIE["posicion"]-1;
     setcookie("posicion", $posDiapo, time() + 3600, "/vista");
@@ -8,8 +8,6 @@ if (isset($_COOKIE["posicion"])) {
 use src\modelo\Clases\Respuesta;
 
 require_once '../modelo/Clases/DiapositivaRespuesta.php';
-
-include '../controllers/vistaClienteController.php';
 
 if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])){
     $rutaImg = "img/" . $_SESSION['vistaDiapositivas'][$posDiapo]['presentaciones_id'] . "/" . $_SESSION['vistaDiapositivas'][$posDiapo]['imagen'];
@@ -38,7 +36,7 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
     }
 
 }
-echo $posDiapo;
+
 ?>
 
 <!DOCTYPE html>
