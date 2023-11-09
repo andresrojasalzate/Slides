@@ -79,7 +79,7 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])) {
                     <div class="dreta">
                         <?php if ($_SESSION['vistaDiapositivas'][$posDiapo]['nDiapositiva'] !== count($_SESSION['vistaDiapositivas'])): ?>
                             <input class="btn" type="submit" name="sumar" value=">">
-                        <?php endif; ?>
+                        <?php endif;?>
                     </div>
                 </form>
             </div>
