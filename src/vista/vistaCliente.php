@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if (isset($_COOKIE["posicion"])) {
     $posDiapo = $_COOKIE["posicion"]-1;
     setcookie("posicion", $posDiapo, time() + 3600, "/vista");
@@ -40,7 +38,7 @@ if(isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])){
     }
 
 }
-
+echo $posDiapo;
 ?>
 
 <!DOCTYPE html>

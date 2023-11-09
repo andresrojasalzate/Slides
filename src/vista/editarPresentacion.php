@@ -29,12 +29,6 @@ $nombrePresentacion = $resultado[0]['nombre'];
 $descripcion = $resultado[0]['descripcion'];
 $id = $resultado[0]['id'];
 $vista_cliente = $resultado[0]['vista_cliente'];
-$idEstilo = $resultado[0]['estilo_id'];
-$estilos = Estilo::getEstilo($conexion,$idEstilo);
-foreach ($estilos as $fila) {
-    $cssResource = $fila['css_resource'];
-    
-}
 $mostrarFeedback = null;
 $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 
@@ -66,7 +60,6 @@ if (isset($_SESSION['confirmacion'])) {
 }
 
 setcookie("id_ultima_presentacion", $idUltimaPresentacion, time() + 3600, "/");
-setcookie("idEstilo", $cssResource, time() + 3600, "/");
 
 function returnDiapo($connexion, $id)
 {
