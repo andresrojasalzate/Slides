@@ -2,7 +2,6 @@
 use src\modelo\Clases\DiapositivaPregunta;
 
 session_start();
-
 if (isset($_COOKIE["posicion"])) {
     $posDiapo = $_COOKIE["posicion"] - 1;
     setcookie("posicion", $posDiapo, time() + 3600, "/vista");

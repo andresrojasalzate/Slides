@@ -164,6 +164,7 @@ input[type="text"], .textarea{
     width: 75%;
     text-align: center;
     margin:auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 .textAreaImg{
@@ -307,4 +308,11 @@ textarea{
 .img{
     width: 100%;
     text-align: center;
+}
+
+.alerta{
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    margin-top: 6px;
 }
