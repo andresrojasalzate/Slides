@@ -159,31 +159,65 @@ document.addEventListener('DOMContentLoaded', function () {
             //document.cookie = "idDiapo=" + diapos;
             //window.location.href = "visualizarDiapositiva.php";
             //console.error('El valor de diapos es null');
-            let a;
+            let diapo;
             let diaposObj = JSON.parse(diapos);
 
             if (diaposObj.tipoDiapositiva === 'contenido') {
-                a = [
+                diapo = [
                     {
                         "titulo": diaposObj.titulo,
                         "contenido": diaposObj.contenido,
                         "tipoDiapositiva": diaposObj.tipoDiapositiva,
-                        "nDiapositiva": 1
+                        "presentaciones_id": diaposObj.presentaciones_id,
+                        "imagen": "",
+                        "nDiapositiva": 1,
+                        "respuestaCorrecta": "",
+                        "pregunta": ""
                     }
                 ];
-            } else {
-                a = [
+            } else if (diaposObj.tipoDiapositiva == 'titulo') {
+                diapo = [
+                    {
+                        "titulo": diaposObj.titulo,
+                        "contenido": "",
+                        "tipoDiapositiva": diaposObj.tipoDiapositiva,
+                        "presentaciones_id": diaposObj.presentaciones_id,
+                        "imagen": "",
+                        "nDiapositiva": 1,
+                        "respuestaCorrecta": "",
+                        "pregunta": ""
+                    }
+                ];
+            } else if(diaposObj.tipoDiapositiva == 'imagen') {
+                diapo = [
                     {
                         "titulo": diaposObj.titulo,
                         "contenido": diaposObj.contenido,
                         "tipoDiapositiva": diaposObj.tipoDiapositiva,
-                        "nDiapositiva": 1
+                        "presentaciones_id": diaposObj.presentaciones_id,
+                        "imagen": "",
+                        "nDiapositiva": 1,
+                        "respuestaCorrecta": "",
+                        "pregunta": ""
+                    }
+                ];
+            }else if(diaposObj.tipoDiapositiva == 'test'){
+                diapo = [
+                    {
+                        "titulo": diaposObj.titulo,
+                        "contenido": diaposObj.contenido,
+                        "tipoDiapositiva": diaposObj.tipoDiapositiva,
+                        "presentaciones_id": diaposObj.presentaciones_id,
+                        "imagen": "",
+                        "nDiapositiva": 1,
+                        "respuestaCorrecta": diaposObj.respuestaCorrecta,
+                        "pregunta": diaposObj.pregunta
                     }
                 ];
             }
-            console.log(a);
+        
             document.cookie = "1diapo=" + 'editarPres';
-            document.cookie = "arrayDiapositivas=" + JSON.stringify(a);
+            document.cookie = "arrayDiapositivas=" + JSON.stringify(diapo);
             window.location.href = "visualizarDiapositiva.php";
 
         });
