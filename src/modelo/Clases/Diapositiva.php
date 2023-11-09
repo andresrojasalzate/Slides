@@ -91,7 +91,10 @@ use PDO, Exception, PDOException;
 
     public static function eliminarDiapositiva(PDO $pdo, $id){
         try {
-            $sql = "DELETE FROM diapositivas WHERE id = :id";
+            $sql = "START TRANSACTION;
+                DELETE FROM diapositivas WHERE diapositivaPreg_id = :id;
+                DELETE FROM diapositivas WHERE id = :id;
+                COMMIT;";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();

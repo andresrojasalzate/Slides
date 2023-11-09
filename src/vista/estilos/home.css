@@ -244,8 +244,11 @@ button {
     margin: 10px;
 }
 
-.material-symbols-outlined {
+.material-symbols-outlined{
     height: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
     font-variation-settings:
         'FILL' 0,
         'wght' 400,

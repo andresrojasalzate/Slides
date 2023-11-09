@@ -98,7 +98,7 @@ function procesarFormulario()
                 $diapositivaPregunta = new DiapositivaPregunta($titulo, $tipo, $idUltimaPresentacion, $nDiapositiva, $pregunta, $opcionesRespuestas);
                 DiapositivaPregunta::insertDiapositivaPregunta($conexion, $diapositivaPregunta);
                 $diapoPreg_id = Diapositiva::idUltimaDiapositiva($conexion);
-                $respuesta = new DiapositivaRespuesta($titulo,'respuesta',$idUltimaPresentacion,$nDiapositiva,$diapoPreg_id, $respuestaCorrecta);
+                $respuesta = new DiapositivaRespuesta('Rta:'.$titulo,'respuesta',$idUltimaPresentacion,$nDiapositiva,$diapoPreg_id, $respuestaCorrecta);
                 DiapositivaRespuesta::insertDiapositivaRespuesta($conexion, $respuesta);
 
                 $conexion = null;
