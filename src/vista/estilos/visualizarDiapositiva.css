@@ -194,3 +194,10 @@ label {
     flex-direction: row;
     margin-top: 2%;
 }
+
+
+.resp{
+    width: 100%;
+    text-align: center;
+    margin: 0% 10%;
+}
