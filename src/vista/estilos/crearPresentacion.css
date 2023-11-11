@@ -106,7 +106,7 @@ html,body{
 }
 
 input{
-
+    text-align: center;
     border-radius: 10px;
     border-width: 3px;
     border-color: #4A4063;
@@ -152,6 +152,7 @@ textarea::placeholder {
 }
 
 .errores>p {
+    font-size: 16px;
     color: red;
 }
 

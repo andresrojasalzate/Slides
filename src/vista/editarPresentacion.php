@@ -130,8 +130,6 @@ function returnDiapo($connexion, $id)
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                    <?php else : ?>
-                        <div class="mensajeCeroDiapositivas">Aún no hay diapositivas</div>
                     <?php endif; ?>
                 </div>
             </div>
