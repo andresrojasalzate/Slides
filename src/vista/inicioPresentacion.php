@@ -53,8 +53,6 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
                                 </div>
                             <?php } ?>
                         <?php endforeach; ?>
-                    <?php else : ?>
-                        <div class="mensajeCeroDiapositivas">Aún no hay diapositivas</div>
                     <?php endif; ?>
                 </div>
             </div>

@@ -263,14 +263,6 @@ button {
     text-align: center;
 }
 
-.mostrarTipoDiapo{
-    background-color: #fff;
-    padding: 3px 10px;
-    margin: 5px;
-    border-radius: 5px;
-    text-align: center;
-}
-
 .tool_container {
     position: relative;
     display: inline-block;
@@ -300,7 +292,6 @@ button {
     position: absolute;
     z-index: 1;
     top: 130%;
-    /* Posiciona el tooltip bajo del elemento */
     left: 100%;
     transform: translateX(-50%);
     opacity: 0;
