@@ -263,6 +263,14 @@ button {
     text-align: center;
 }
 
+.mostrarTipoDiapo{
+    background-color: #fff;
+    padding: 3px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
 .tool_container {
     position: relative;
     display: inline-block;
