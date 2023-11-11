@@ -72,7 +72,7 @@ label{
 
 input{
     margin-top: 5px;
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: 10px;
     border: none;
     height: auto;
@@ -109,18 +109,6 @@ input{
     border-radius: 10px;
     align-content: start; 
     margin-right: 30px;
-}
-
-.mensajeCeroDiapositivas{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 70%;
-    background-color: #C8C6D7;
-    border-radius: 10px;
-    align-content: center;
-    margin-right: 30px;
-    justify-content: center;
 }
 
 .mostrarPresentaciones{

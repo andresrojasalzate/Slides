@@ -300,7 +300,6 @@ button {
     position: absolute;
     z-index: 1;
     top: 130%;
-    /* Posiciona el tooltip bajo del elemento */
     left: 100%;
     transform: translateX(-50%);
     opacity: 0;
