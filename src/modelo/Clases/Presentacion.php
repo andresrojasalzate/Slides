@@ -200,15 +200,15 @@ class Presentacion{
 		}
     }
 
-    public static function actualizarPresentacion(PDO $pdo, int $id, string $titulo, string $descripcion, int $vistaCliente){
+    public static function actualizarPresentacion(PDO $pdo, int $id, string $titulo, string $descripcion, int $vistaCliente, int $idEstilo){
         try{
-            $sql = "UPDATE presentaciones SET nombre = :titulo, descripcion = :descripcion, vista_cliente = :vista_cliente WHERE id = :id";
+            $sql = "UPDATE presentaciones SET nombre = :titulo, descripcion = :descripcion, vista_cliente = :vista_cliente, estilo_id = :estilo_id WHERE id = :id";
             $statement = $pdo->prepare($sql);
             $statement->bindParam(':titulo', $titulo, PDO::PARAM_STR);
             $statement->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->bindParam(':vista_cliente', $vistaCliente, PDO::PARAM_INT);
-            $statement->bindParam(':vista_cliente', $vistaCliente, PDO::PARAM_INT);
+            $statement->bindParam(':estilo_id', $idEstilo, PDO::PARAM_INT);
             $statement->execute();
             $result = "¡Presentación actualizada!";
             return $result;

@@ -32,6 +32,15 @@ $vista_cliente = $resultado[0]['vista_cliente'];
 $mostrarFeedback = null;
 $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 
+$_SESSION['idEstilo'] = $resultado[0]['estilo_id'];
+
+if(isset($_SESSION['nuevoEstilo'])){
+    $nuevoEstilo = $_SESSION['nuevoEstilo'];
+    unset($_SESSION['nuevoEstilo']);
+}else{
+    $nuevoEstilo = $_SESSION['idEstilo'];
+}
+
 //Funcion para eliminar presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
@@ -66,8 +75,6 @@ function returnDiapo($connexion, $id)
     $diapo = Diapositiva::getDiapo($connexion, $id);
     return $diapo;
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +109,7 @@ function returnDiapo($connexion, $id)
                             <div class="botonesEdicionPresentacion">
                                 <button class="botonCrear" name="btnNuevaDiapositiva" value="<?= $id ?>">Nueva
                                     Diapositiva</button>
-                                <button class="botonCrear">Cambiar Estilo</button>
+                                    <button id="cambiarEstilo" class="botonCrear">Cambiar Estilo</button>
                             </div>
 
                             <div class="vistaCliente">
@@ -112,6 +119,7 @@ function returnDiapo($connexion, $id)
                                 <label for="vista_cliente">Compartir presentación</label>
                             </div>
                             <input type="hidden" name="id" value="<?= $id ?>">
+                            <input type="hidden" name="idEstilo" value="<?= $nuevoEstilo ?>">
                             <button class="botonCrear" type="submit">Guardar Cambios</button>
                             <button class="botonCrear" name="btnVolver">Volver</button>
                         </form>

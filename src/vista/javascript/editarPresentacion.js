@@ -12,6 +12,7 @@ const formulario = document.querySelector('form');
 const esVistaCliente = document.querySelector('#vista_cliente');
 const spans = document.querySelectorAll('span');
 const buttons = document.querySelectorAll('button');
+const buttonCambiarEstilo = document.getElementById("cambiarEstilo");
 let elementActual;
 let ordenNuevoDiapositivas = null;
 let ordenOriginalDiapositivas = null;
@@ -33,7 +34,12 @@ btnVolver.addEventListener("click", function (e) {
 btnNuevaDiapositiva.addEventListener("click", function (e) {
     e.preventDefault();
     window.location.href = "crearDiapositiva.php";
-})
+});
+
+buttonCambiarEstilo.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.location.href = "cambiarEstiloPresentacion.php";
+});
 
 //evento que inica el proceso de eliminación según la diapositiva seleccionada
 contenedorDiapositivas.addEventListener('click', function (e) {
@@ -223,3 +229,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
