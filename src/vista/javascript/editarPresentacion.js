@@ -220,6 +220,20 @@ document.addEventListener('DOMContentLoaded', function () {
                         "pregunta": diaposObj.pregunta
                     }
                 ];
+            }else if(diaposObj.tipoDiapositiva == 'respuesta'){
+                diapo = [
+                    {
+                        "titulo": diaposObj.titulo,
+                        "contenido": diaposObj.contenido,
+                        "tipoDiapositiva": diaposObj.tipoDiapositiva,
+                        "presentaciones_id": diaposObj.presentaciones_id,
+                        "imagen": "",
+                        "nDiapositiva": 1,
+                        "respuestaCorrecta": diaposObj.respuestaCorrecta,
+                        "pregunta": "",
+                        "diapositivaPreg_id": diaposObj.diapositivaPreg_id
+                    }
+                    ]
             }
         
             document.cookie = "1diapo=" + 'editarPres';

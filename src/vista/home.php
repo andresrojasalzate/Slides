@@ -144,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <form action="home.php" method="POST">
                                         <button name="btnSharePresentacion" class="material-symbols-outlined tool_container" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" <?php if($presentacion['vista_cliente']===1) echo 'disabled'?>><span class="tool_text">Compartir Presentación</span> share</button>
                                     </form>
-                                    <button class="vDiapo material-symbols-outlined tool_container" data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>"><span class="tool_text">Ver Presentación</span> visibility</button>
+                                    <button class="vDiapo material-symbols-outlined tool_container" <?php if($presentacion['nroDiapositivas'] <=0) echo 'disabled'?> data-position="<?= htmlspecialchars(json_encode(arrayDiapos($posicion, $presentaciones))) ?>" estilo="<?= devolverEstilo($posicion, $presentaciones)?>"><span class="tool_text">Ver Presentación</span> visibility</button>
                                     <button class="nDiapo material-symbols-outlined tool_container" data-id="<?= $presentacion['id'] ?>" data-position="<?= buscarElementoEnArray($posicion, $presentaciones) ?>"><span class="tool_text">Agregar Diapositiva</span><span>library_add</span></button>
                                 </div>
                             </div>

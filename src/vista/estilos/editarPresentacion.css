@@ -72,7 +72,7 @@ label{
 
 input{
     margin-top: 5px;
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: 10px;
     border: none;
     height: auto;
@@ -109,18 +109,6 @@ input{
     border-radius: 10px;
     align-content: start; 
     margin-right: 30px;
-}
-
-.mensajeCeroDiapositivas{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 70%;
-    background-color: #C8C6D7;
-    border-radius: 10px;
-    align-content: center;
-    margin-right: 30px;
-    justify-content: center;
 }
 
 .mostrarPresentaciones{
@@ -234,16 +222,13 @@ div button{
     display: none;
 }
 
-/* .presentacionBD:hover::after {
-    content: attr(data-text);
-    display: block;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
+.material-symbols-outlined{
+    border: none;
     border-radius: 5px;
-    z-index: 1;
-  } */
+    padding: 5px;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}

@@ -54,4 +54,47 @@ class DiapositivaPregunta extends Diapositiva{
         }
 
     }
+
+    public static function devolverPreguntas($pdo, $id) {
+        $sql = "SELECT contenido FROM diapositivas WHERE id = :id";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        
+        $resultado = $statement->fetch();
+        
+        if ($resultado !== false) {
+            $contenido = $resultado['contenido'];
+            $contenidoArray = json_decode($contenido, true);
+            return $contenidoArray;
+        } else {
+            return array();
+        }
+    }
+
+    public static function devolverIdPregunta($pdo, $id) {
+        $sql = "SELECT id FROM diapositivas WHERE id = :id";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        
+        $resultado = $statement->fetch();
+        
+        if ($resultado !== false) {
+            $contenido = $resultado['contenido'];
+            $contenidoArray = json_decode($contenido, true);
+            return $contenidoArray;
+        } else {
+            return array();
+        }
+    }
+
+    public static function devolverPregunta($pdo, $id){
+        $sql = "SELECT pregunta FROM diapositivas WHERE id = :id";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        
+        return $statement->fetchColumn();
+    }
 }

@@ -10,7 +10,7 @@ session_start();
 function procesarFormulario()
 {
     $url = $_SESSION['url'];
-    unset($_SESSION['url']);
+    //unset($_SESSION['url']);
     $bdConexion = ConexionBD::obtenerInstancia();
     $conexion = $bdConexion->getConnection();
     $idPres = Presentacion::devolverPresentacionByURL($conexion, $url);
@@ -35,7 +35,8 @@ function procesarFormulario()
         exit;
     } else {
         $_SESSION['validado'] = true;
-        header("Location: ../vista/seleccionarDiapoCliente.php?url=$url");
+        header("Location: ../vista/inicioPresentacion.php?url=$url");
+        unset($_SESSION['url']);
         exit;
     }
 }
