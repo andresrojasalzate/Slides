@@ -59,12 +59,12 @@ function reordenarDiapositivas($ordenOriginal, $nuevoOrden)
 }
 
 // funcion que modifica el titulo y descripcion de la presentación
-function editarPresentacion($id, $titulo, $descripcion, $vistaCliente)
+function editarPresentacion($id, $titulo, $descripcion, $vistaCliente, $idEstilo)
 {
 
     $bdConexion = ConexionBD::obtenerInstancia();
     $conexion = $bdConexion->getConnection();
-    $respuesta = Presentacion::actualizarPresentacion($conexion, $id, $titulo, $descripcion, $vistaCliente);
+    $respuesta = Presentacion::actualizarPresentacion($conexion, $id, $titulo, $descripcion, $vistaCliente, $idEstilo);
     $conexion = null;
     return $respuesta;
 }
@@ -78,13 +78,14 @@ function procesarFormulario()
         $id = $_POST['id'];
         $titulo = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
+        $idEstilo = intval($_POST['idEstilo']);
         $ordenOriginal = $_POST['ordenOriginalDiapositivas'];
         $nuevoOrden = esNuevoOrdenVacio();
         $vistaCliente = esVistaClienteVacio();
         $nuevoOrden = esNuevoOrdenVacio();
         $vistaCliente = esVistaClienteVacio();
         $errores = [];
-        var_dump($vistaCliente);
+        
         if (empty($titulo)) {
             $errores['titulo'] = "El campo \"Titulo\" no puede estar vacío";
         }
@@ -93,6 +94,10 @@ function procesarFormulario()
         }
         if (strlen($descripcion) > 255) {
             $errores['descripcion'] = "El campo \"Descripción\"  no puede tener más de 255 caracteres";
+        }
+
+        if((!is_numeric($idEstilo))){
+            $errores['estilo'] = "Ha habido un error al seleccionar el estilo. Vuelva a intentarlo";
         }
 
         if (count($errores) > 0) {
@@ -105,7 +110,7 @@ function procesarFormulario()
             //header("Location: ../vista/crearPresentacion.php");
 
         } else {
-            $_SESSION['confirmacion'] = editarPresentacion($id, $titulo, $descripcion, $vistaCliente);
+            $_SESSION['confirmacion'] = editarPresentacion($id, $titulo, $descripcion, $vistaCliente, $idEstilo);
             reordenarDiapositivas($ordenOriginal, $nuevoOrden);
 
         }  reordenarDiapositivas($ordenOriginal, $nuevoOrden);
