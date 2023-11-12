@@ -14,8 +14,6 @@ const cookieExiste = (nombreCookie) =>{
     return false;
 }
 
-
-
 radioButtons.forEach(radioButton => {
     radioButton.addEventListener('change', function() {
         respuesta = radioButton.getAttribute("value");
