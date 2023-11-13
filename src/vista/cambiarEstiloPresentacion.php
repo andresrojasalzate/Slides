@@ -25,46 +25,46 @@ if (isset($_SESSION['errores'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos/cambiarEstiloPresentacion.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="crearPresentacion">
-        <div class="contenido">
-            <div class="tituloCrearPresentacion">
-                <span>Cambiar Estilo</span>
-            </div>
-            <div class="contentFormulario">
-                <div class="mostrarFormulario">
-                    <form action="../controllers/cambiarEstiloController.php" method="post">
-                        <label>Escoge el nuevo estilo</label>
-                        <div id="errEstilo" class="errores">
-                        <?php if (isset($errores["estilo"])): ?>
-                            <p><?= $errores["estilo"]; ?></p>      
-                        <?php endif; ?>
-                    </div>
-                        <div class="slider">
-                            <button type="button" id="anterior" class="botones-estilos"><div class="Triangulo"></div></button>
-                            <ul>
-                                <?php foreach ($estilos as $estilo): ?>
-                                    <li data="<?= $estilo['id']; ?>">
-                                        <img src="img/estilosDipositivas/<?=$estilo["img_resource"]; ?>" alt="">
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                            <button type="button" id="siguiente" class="botones-estilos"></button>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="estilos/cambiarEstiloPresentacion.css">
+        <title>Cambiar Estilo Presentación</title>
+    </head>
+    <body>
+        <div class="crearPresentacion">
+            <div class="contenido">
+                <div class="tituloCrearPresentacion">
+                    <span>Cambiar Estilo</span>
+                </div>
+                <div class="contentFormulario">
+                    <div class="mostrarFormulario">
+                        <form action="../controllers/cambiarEstiloController.php" method="post">
+                            <label>Escoge el nuevo estilo</label>
+                            <div id="errEstilo" class="errores">
+                            <?php if (isset($errores["estilo"])): ?>
+                                <p><?= $errores["estilo"]; ?></p>      
+                            <?php endif; ?>
                         </div>
-                        <input type="hidden" id="id_estilo" name="id_estilo">
-                        <button type="submit" class="botonCrear">Seleccionar Estilo</button>
-                    </form>
-                    <script src="javascript/cambiarEstiloPresentacion.js"></script>
+                        <div class="slider">
+                        <button type="button" id="anterior" class="botones-estilos"></button>
+                        <ul>
+                            <?php foreach ($estilos as $estilo): ?>
+                                <li value="<?= $estilo['id']; ?>">
+                                    <img src="img/estilosDipositivas/<?=$estilo["img_resource"]; ?>" alt="">
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <button type="button" id="siguiente" class="botones-estilos"></button>
+                    </div>
+                            <input type="hidden" id="id_estilo" name="id_estilo">
+                            <button type="submit" class="botonCrear">Seleccionar Estilo</button>
+                        </form>
+                        <script src="javascript/cambiarEstiloPresentacion.js"></script>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
