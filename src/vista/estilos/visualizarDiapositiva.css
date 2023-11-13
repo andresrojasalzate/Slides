@@ -2,7 +2,7 @@ html,
 body {
     font-family: 'Roboto', sans-serif;
     /*color: #4A4063;*/
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -25,9 +25,10 @@ body {
 
 
 .visualizarDiapositiva {
+    overflow: overlay;
     display: flex;
     width: 99%;
-    height: 99%;
+    min-height: 99%;
     align-self: center;
 }
 
@@ -81,6 +82,11 @@ body {
     margin: 5px;
     width: 100%;
     flex-direction: column;
+    
+}
+
+.mostrarDiapositivaTestRespuestas{
+    filter: blur(8px);
 }
 
 .mostrarDiapositivaTest {
