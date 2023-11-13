@@ -2,7 +2,8 @@ const slider = document.querySelector(".slider");
 const slides = document.querySelectorAll(".slider li");
 const inputIDEstilo = document.getElementById("id_estilo");
 let currentSlide = 0;
-let estiloId = slides[currentSlide].getAttribute("data");
+
+let estiloId = slides[currentSlide].getAttribute("value");
 inputIDEstilo.value = estiloId;
 
 const mostrarSlide = (slideIndex) => {
@@ -10,7 +11,7 @@ const mostrarSlide = (slideIndex) => {
     currentSlide = (slideIndex + slides.length) % slides.length;
     slides[currentSlide].style.display = "block";
 
-    let estiloId = slides[currentSlide].getAttribute("data");
+    let estiloId = slides[currentSlide].getAttribute("value");
     inputIDEstilo.value = estiloId;
 
 }
