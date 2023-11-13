@@ -45,7 +45,7 @@ if(isset($_SESSION['nuevoEstilo'])){
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnAceptar"])) {
         $diapo = returnDiapo($conexion, $_POST["btnAceptar"])["nDiapositiva"];
-        Diapositiva::restar1nDiapos($conexion, $id, $diapo, Diapositiva::getTipo($conexion, $_POST["btnAceptar"])["tipoDiapositiva"]);
+        //Diapositiva::restar1nDiapos($conexion, $id, $diapo, Diapositiva::getTipo($conexion, $_POST["btnAceptar"])["tipoDiapositiva"]);
         $nombre = DiapositivaImagen::getNombreImagen($conexion, $_POST["btnAceptar"]);
         $rutaImagen = dirname(__FILE__) . '/img/' . $idUltimaPresentacion . '/' . $nombre;
         if (file_exists($rutaImagen)) {
@@ -58,6 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         $mostrarFeedback = Diapositiva::eliminarDiapositiva($conexion, $_POST["btnAceptar"]);
         $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
+        Diapositiva::reordenarDiapos($conexion, $diapositivas);
+
     }
 }
 
