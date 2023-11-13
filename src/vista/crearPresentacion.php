@@ -29,7 +29,7 @@ setcookie("nDiapo", "home", time() + 3600, "/");
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -64,7 +64,7 @@ setcookie("nDiapo", "home", time() + 3600, "/");
                             <p><?= $errores["descripcion"]; ?></p>     
                         <?php endif; ?>
                     </div>
-                    <textarea id="descripcion" name="descripcion" placeholder="¿De que será tu presentacion?" value="<?= $descripcion; ?>"></textarea><br>
+                    <textarea id="descripcion" name="descripcion" placeholder="¿De que será tu presentacion?"><?= $descripcion; ?></textarea><br>
                     <label>PIN</label><br>
                     <div id="errPin" class="errores">
                         <?php if (isset($errores["pin"])): ?>
@@ -74,17 +74,17 @@ setcookie("nDiapo", "home", time() + 3600, "/");
                     <input type="password" id="pin" name="pin" placeholder="PIN"><br>
                     <label>Repetir PIN</label><br>
                     <input type="password" id="rep_pin" name="rep_pin" placeholder="Repite el PIN"><br>
-                    <label for="estilo">Estilo</label>
+                    <label>Estilo</label>
                     <div id="errEstilo" class="errores">
                         <?php if (isset($errores["estilo"])): ?>
                             <p><?= $errores["estilo"]; ?></p>      
                         <?php endif; ?>
                     </div>
                     <div class="slider">
-                        <button type="button" id="anterior" class="botones-estilos"><div class="Triangulo"></div></button>
+                        <button type="button" id="anterior" class="botones-estilos"></button>
                         <ul>
                             <?php foreach ($estilos as $estilo): ?>
-                                <li data="<?= $estilo['id']; ?>">
+                                <li value="<?= $estilo['id']; ?>">
                                     <img src="img/estilosDipositivas/<?=$estilo["img_resource"]; ?>" alt="">
                                 </li>
                             <?php endforeach; ?>
@@ -100,5 +100,4 @@ setcookie("nDiapo", "home", time() + 3600, "/");
     </div>
     <script src="javascript/crearPresentacion.js"></script>
 </body>
-
 </html>
