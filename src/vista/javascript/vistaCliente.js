@@ -1,5 +1,7 @@
 const radioButtons = document.querySelectorAll('input[type="radio"]');
-const idDiapo = radioButtons[0].getAttribute("name").toString();
+//const idDiapo = radioButtons[0].getAttribute("name").toString();
+const idDiapo = document.getElementById("titulo").getAttribute("name");
+const divRespuestas = document.getElementById("divRespuestas");
 
 const cookieExiste = (nombreCookie) =>{
     let nombre = nombreCookie + "=";
@@ -28,5 +30,15 @@ document.addEventListener('DOMContentLoaded', function () {
         radioButtons.forEach(radioButton => {
         radioButton.disabled = true; 
     }); 
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    let resultado = cookieExiste(idDiapo-1);
+    if(resultado) {
+        console.log("aaaa");
+        divRespuestas.classList.remove("mostrarDiapositivaTestRespuestas");
+    }else{
     }
 });

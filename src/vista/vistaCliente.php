@@ -16,12 +16,6 @@ require_once '../config/ConexionBD.php';
 $bdConexion = ConexionBD::obtenerInstancia();
 $conexion = $bdConexion->getConnection();
 
-if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])) {
-    $rutaImg = "img/" . $_SESSION['vistaDiapositivas'][$posDiapo]['presentaciones_id'] . "/" . $_SESSION['vistaDiapositivas'][$posDiapo]['imagen'];
-} else {
-    $rutaImg = "a";
-}
-
 if (isset($_POST['sumar'])) {
     $posDiapo = $posDiapo + 2;
     setcookie("posicion", $posDiapo, time() + 3600, "/vista");
@@ -42,6 +36,12 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])) {
         unset($_COOKIE[$idDiapositiva]);
     }
 
+}
+
+if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])) {
+    $rutaImg = "img/" . $_SESSION['vistaDiapositivas'][$posDiapo]['presentaciones_id'] . "/" . $_SESSION['vistaDiapositivas'][$posDiapo]['imagen'];
+} else {
+    $rutaImg = "a";
 }
 ?>
 
@@ -72,7 +72,7 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])) {
                             <input class="btn" type="submit" name="restar" value="<">
                         <?php endif; ?>
                     </div>
-                    <span>
+                    <span name="<?= ($_SESSION['vistaDiapositivas'][$posDiapo]['id']) ?>" id="titulo">
                         <?= $_SESSION['vistaDiapositivas'][$posDiapo]['titulo']; ?>
                     </span>
                     <input type="hidden" name="posicion" value="<?php echo $posDiapo; ?>">
@@ -94,11 +94,11 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])) {
             <?php endif; ?>
             <?php if ($_SESSION['vistaDiapositivas'][$posDiapo]['tipoDiapositiva'] == 'imagen') { ?>
 
-                <div class="mostrarDiapositiva">
-                    <label for="contenido" id="contenidoLabel">
-                        <!-- nl2br convierte los /n en <br> -->
-                        <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen">
-                    </label>
+                <div class="cont">
+                    <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen">
+                    <div class="contenidoImg">
+                    <?php echo nl2br($_SESSION['vistaDiapositivas'][$posDiapo]['contenido']); ?>
+                    </div>
                 </div>
 
             <?php } ?>
@@ -114,9 +114,9 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])) {
                         <?php foreach ($respuestas as $respuesta): ?>
                             <div class="respuestas">
                                 <?php if ($respuesta == $respuestaSeleccionada): ?>
-                                    <input type="radio" name="<?= $idDiapositiva; ?>" value="<?= $respuesta; ?>" checked>
+                                    <input type="radio" value="<?= $respuesta; ?>" checked>
                                 <?php else: ?>
-                                    <input type="radio" name="<?= $idDiapositiva; ?>" value="<?= $respuesta; ?>">
+                                    <input type="radio" value="<?= $respuesta; ?>">
                                 <?php endif; ?>
                                 <label for="<?= $respuesta; ?>">
                                     <?= $respuesta; ?>
@@ -134,7 +134,7 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])) {
                                 <?= $respuestas = DiapositivaPregunta::devolverPregunta($conexion, $_SESSION['vistaDiapositivas'][$posDiapo]['diapositivaPreg_id']);?>
                             </label>
                         </div>
-                        <div class="respuestas">
+                        <div class="respuestas mostrarDiapositivaTestRespuestas" id="divRespuestas">
                             <div class="resp">
                                 <label> Possibles respuestas:
                                     <?php
