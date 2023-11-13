@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         $mostrarFeedback = Diapositiva::eliminarDiapositiva($conexion, $_POST["btnAceptar"]);
         $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
-        Diapositiva::reordenarDiapos($conexion,$diapositivas);
+        Diapositiva::reordenarDiapos($conexion, $diapositivas);
 
     }
 }
