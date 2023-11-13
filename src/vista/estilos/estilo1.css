@@ -1,7 +1,6 @@
 
 
 .contenedor{
-    height:100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -11,7 +10,8 @@
 }
 
 .titulo{
-    height: 13%;
+    height: fit-content;
+    padding: 1%;
     width: 95%;
     margin-top: 4%;
     border-radius: 10px;
@@ -36,7 +36,7 @@ form{
 
 .contenido{
     width: 95%;
-    height: 50%;
+    /*height: 50%;*/
     background: #C8c6D7;
     border-radius: 10px;
     display: flex;

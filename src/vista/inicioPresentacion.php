@@ -25,7 +25,6 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
     <title><?= $pres[0]['nombre'] ?></title>
-    <title><?= $pres[0]['nombre'] ?></title>
 </head>
 
 <body>
@@ -43,19 +42,7 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
                                     <div class="tituloDiapo"><span>
                                             <?= $diapositiva['titulo'] ?>
                                         </span></div>
-                    <?php if (count($diapositivas) > 0) : ?>
-                        <?php foreach ($diapositivas as $diapositiva) : ?>
-                            <?php if ($diapositiva['tipoDiapositiva'] !== 'respuesta') { ?>
-                                <div class="presentacionBD" id="<?= $diapositiva['id'] ?>" data-text="<?= ($diapositiva['contenido'] !== null) ? $diapositiva['contenido'] : 'no hay contenido' ?>">
                                     <div class="tituloDiapo"><span>
-                                            <?= $diapositiva['titulo'] ?>
-                                        </span></div>
-                                    <div class="tituloDiapo"><span>
-                                            <?php if ($diapositiva['tipoDiapositiva'] === "test") :
-                                                echo substr(implode(",", json_decode($diapositiva['contenido'])), 0, 10) . ' ...' ?>
-                                            <?php else : ?>
-                                                <?= ($diapositiva['contenido'] !== null) ? substr($diapositiva['contenido'], 0, 10) . '...' : 'sin contenido' ?>
-                                            <?php endif; ?>
                                             <?php if ($diapositiva['tipoDiapositiva'] === "test") :
                                                 echo substr(implode(",", json_decode($diapositiva['contenido'])), 0, 10) . ' ...' ?>
                                             <?php else : ?>
@@ -66,11 +53,7 @@ $pres = Presentacion::devolverPresentacion($conexion, $idPres['id']);
                                         <button class="vDiapo material-symbols-outlined" nDiapo="<?= $diapositiva['nDiapositiva'] ?>">visibility</button>
                                     </div>
                                 </div>
-                                    <div class="opciones">
-                                        <button class="vDiapo material-symbols-outlined" nDiapo="<?= $diapositiva['nDiapositiva'] ?>">visibility</button>
-                                    </div>
-                                </div>
-                            <?php } ?>
+                            <?php }; ?>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>

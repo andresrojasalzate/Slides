@@ -158,7 +158,7 @@ if($estilo == 1){
                                 <?= $respuestas = DiapositivaPregunta::devolverPregunta($conexion, $arrayDiapositivas[$posicion]['diapositivaPreg_id']);?>
                             </label>
                         </div>
-                        <div class="respuestas">
+                        <div class="respuestas" id="divRespuestas">
                             <div class="resp">
                                 <label> Possibles respuestas:
                                     <?php
