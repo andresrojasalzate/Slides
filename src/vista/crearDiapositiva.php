@@ -112,10 +112,10 @@ if (isset($_POST['titulo'])) {
                     <div>
                         <div class="divFormColumn">
                             <label for="tituloDiapo">Titulo</label>
-                            <div id="errNombre" class="errores">
+                            <div class="errNombre" class="errores">
 
                             </div>
-                            <div id="errNombre" class="errores">
+                            <div class="errNombre" class="errores">
 
                             </div>
                             <input class="titulo" type="text" id="tituloDiapo" name="tituloDiapo"

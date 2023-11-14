@@ -54,6 +54,7 @@ function buscarIdEstilo($posicion, $miArray)
         return "La posición especificada no existe en el array";
     }
 }
+
 function recargar(){
     header("Location: /vista/home.php");
 }
@@ -70,6 +71,15 @@ function devolverEstilo($posicion, $miArray){
         
     }
     return $cssResource;
+}
+
+function acortarTituloPresentacion($titulo){
+
+    if(strlen($titulo) > 20 ){
+        return substr($titulo, 0, 20) . '...';
+    } else{
+        return $titulo;
+    }
 }
 
 if (isset($_COOKIE["id_ultima_presentacion"])) {
@@ -136,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php if (count($presentaciones) > 0): ?>
                         <?php foreach ($presentaciones as $posicion => $presentacion): ?>
                             <div class="<?php echo ($presentacion['vista_cliente']===1) ? 'presentacionBDCompartida' : 'presentacionBD';?>">
-                                <div class="titulo"><span><?= $presentacion['nombre'] ?></span></div>
+                                <div class="titulo"><span><?= acortarTituloPresentacion($presentacion['nombre'])?></span></div>
                                 <div class="nroDiapositivas"><span>Diapositivas:<?= $presentacion['nroDiapositivas']; ?></span></div>
                                 <div class="opciones">
                                     <button name="btnEditPresentacion" value="<?= buscarElementoEnArray($posicion, $presentaciones) ?>" class="material-symbols-outlined tool_container"><span class="tool_text">Editar Presentación</span> edit</button>
