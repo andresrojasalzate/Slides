@@ -21,11 +21,16 @@
     align-items: center;
 }
 
+
+
 .titulo  span{
     font-weight: bold;
     font-size: 35px;
     color: #FF7EA8;
     
+}
+.rosa{
+    color: #FF7EA8;
 }
 
 form{
@@ -35,17 +40,18 @@ form{
 }
 
 .contenido{
-    width: 95%;
+    width: 80%;
     background: #FFFFFF;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    word-break: break-all;
+    padding: 10px 30px;
 }
 
 .contenidoImg{
     width: 95%;
-    height: 80%;
     background: #FFFF;
     border-radius: 20px;
     display: flex;
@@ -54,6 +60,8 @@ form{
     align-content: center;
     justify-content: center;
     margin-left: 30px;
+    word-break: break-all;
+    padding: 10px 30px;
 }
 
 .contenido label{

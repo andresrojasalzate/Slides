@@ -53,8 +53,10 @@ const mostrarErrores = (errores) =>{
         if (clave === "titulo") {
 
             contenedorError = document.getElementById("errNombre");
-        } else {
+        } else if(clave === "descripcion") {
             contenedorError = document.getElementById("errDescripcion");
+        }else if(clave === "descripcionImg") {
+            contenedorError = document.getElementById("errDescripcionImg");
         }
 
         contenedorError.removeChild(contenedorError.firstChild);
@@ -71,6 +73,7 @@ formularioDiapositiva.addEventListener('submit', function (e) {
 
     let titulo = document.getElementById("tituloDiapo").value;
     let descripcion = document.getElementById("contenidoDiapo").value;
+    let descripcionImg = document.getElementById("contenidoDiapoImg").value;
     let errores = {}
 
     if (titulo === "") {
@@ -84,11 +87,29 @@ formularioDiapositiva.addEventListener('submit', function (e) {
 
     }
 
+    if(titulo.includes(';')){
+        errores["titulo"] = "El campo \"Titulo\" no puede contener ;";
+    }
+
 
     if (descripcion.length > 255) {
 
         errores["descripcion"] = "El campo \"Descripción\"  no puede tener más de 255 caracteres";
 
+    }
+
+    if(descripcion.includes(';')){
+        errores["descripcion"] = "El campo \"Descripción\" no puede contener ;";
+    }
+
+    if (descripcionImg.length > 255) {
+
+        errores["descripcionImg"] = "El campo \"Descripción\"  no puede tener más de 255 caracteres";
+
+    }
+
+    if(descripcionImg.includes(';')){
+        errores["descripcionImg"] = "El campo \"Descripción\" no puede contener ;";
     }
 
     if (Object.keys(errores).length > 0) {
