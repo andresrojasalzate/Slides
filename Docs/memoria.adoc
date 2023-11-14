@@ -10,6 +10,12 @@
 El objetivo es tener una aplicación web capaz de crear presentaciones con diapositivas. Va dirigida sobre todo a estudiantes y profesores.
 Resolvería la necesidad de los alumnos y/o profesores a la hora de hacer presentaciones o apuntes de una forma más rapida, dinámica, intuitiva y entretenida, ahorrandole al usuario tiempo y esfuerzo y asi mismo haciendo su trabajo mas eficiente.
 
+= Recogida de requisitos
+== Requisitos funcionales
+
+== Requisitos no funcionales
+
+
 
 = Sprint 1
 
