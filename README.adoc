@@ -39,6 +39,6 @@ Per poder fer servir el projecte en la màquina virtual hem de seguir els següe
 
 -> sudo ip addr add 192.168.50.166/24 dev enp3s0
 
--> sudo ip link set enps30 up
+-> sudo ip link set enp3s0 up
 
 -> Només hem de canviar en el fitxer /var/www/html/config/config.php i canviar la ip de la base de dades a la 127.0.0.1 per a ser el localhost.
