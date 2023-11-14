@@ -182,7 +182,6 @@ label {
     justify-content: space-between;
     align-items: center;
     width: 95%;
-    height: 50%;
     display: flex;
     align-items: center;
 }
@@ -195,15 +194,31 @@ label {
     margin-bottom: 1%;
 }
 
+.titulo2{
+    word-break: break-all;
+
+}
+
 .respuestas{
     display: flex;
     flex-direction: row;
     margin-top: 2%;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.respuestaUsuario{
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    word-break: break-all;
+    padding: 10px 30px;
 }
 
 
 .resp{
     width: 100%;
     text-align: center;
-    margin: 0% 10%;
+    margin: 0% 3%;
 }

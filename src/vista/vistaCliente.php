@@ -23,7 +23,6 @@ if (isset($_POST['sumar'])) {
     setcookie("posicion", $posDiapo, time() + 3600, "/vista");
 }
 
-
 if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['pregunta'])) {
 
     $contenidoJSON = $_SESSION['vistaDiapositivas'][$posDiapo]['contenido'];
@@ -42,6 +41,14 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])) {
     $rutaImg = "img/" . $_SESSION['vistaDiapositivas'][$posDiapo]['presentaciones_id'] . "/" . $_SESSION['vistaDiapositivas'][$posDiapo]['imagen'];
 } else {
     $rutaImg = "a";
+}
+
+$valorSesion = isset($_SESSION['vistaDiapositivas'][$posDiapo]['id']) ? ($_SESSION['vistaDiapositivas'][$posDiapo]['id'] - 1) : null;
+
+if (isset($_COOKIE[$valorSesion])) {
+    $respuestaUsuario = ($_COOKIE[$valorSesion]);
+} else {
+    $respuestaUsuario = '';
 }
 ?>
 
@@ -96,9 +103,11 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])) {
 
                 <div class="cont">
                     <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen">
+                    <?php if(nl2br($_SESSION['vistaDiapositivas'][$posDiapo]['contenido']) != ""){ ?>
                     <div class="contenidoImg">
-                    <?php echo nl2br($_SESSION['vistaDiapositivas'][$posDiapo]['contenido']); ?>
+                        <?php echo nl2br($_SESSION['vistaDiapositivas'][$posDiapo]['contenido']); ?>
                     </div>
+                    <?php } ?>
                 </div>
 
             <?php } ?>
@@ -136,7 +145,7 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])) {
                         </div>
                         <div class="respuestas mostrarDiapositivaTestRespuestas" id="divRespuestas">
                             <div class="resp">
-                                <label> Possibles respuestas:
+                                <label> Posibles respuestas:
                                     <?php
                                     $respuestas = DiapositivaPregunta::devolverPreguntas($conexion, $_SESSION['vistaDiapositivas'][$posDiapo]['diapositivaPreg_id']);
                                     foreach ($respuestas as $respuesta) {
@@ -145,10 +154,13 @@ if (isset($_SESSION['vistaDiapositivas'][$posDiapo]['imagen'])) {
                                     ?>
                             </div>
                             <div class="resp">
-                                <label > Respuesta corecta:
+                                <label > Respuesta correcta:
                                     <?php echo $_SESSION['vistaDiapositivas'][$posDiapo]['contenido']; ?>
                                 </label>
                             </div>
+                        </div>
+                        <div class="respuestaUsuario">
+                            <label>Respuesta del usuario: <?php echo $respuestaUsuario; ?></label>
                         </div>
                     </div>
                 </div>

@@ -25,6 +25,11 @@ $conexion = $bdConexion->getConnection();
 if (isset($_COOKIE['idEstilo'])) {
     $estilo = $_COOKIE['idEstilo'];
 }else{}
+
+if($arrayDiapositivas == null){
+    echo'A ocurrido un error al previsualizar esta diapositiva, no pongas caracteres especiales';
+    die();
+}
 $estilo = Presentacion::estiloPresentacion($conexion, $arrayDiapositivas[0]['presentaciones_id']);
 
 if (isset($_COOKIE['1diapo'])) {
@@ -102,9 +107,11 @@ if($estilo == 1){
                             <input class="btn" type="submit" name="restar" value="<">
                         <?php } ?>
                     </div>
+                    <div class="titulo2">
                     <span>
                         <?php echo $arrayDiapositivas[$posicion]['titulo']; ?>
                     </span>
+                        </div>
                     <input type="hidden" name="posicion" value="<?php echo $posicion; ?>">
                     <div class="dreta">
                         <?php if ($arrayDiapositivas[$posicion]['nDiapositiva'] !== count($arrayDiapositivas)) { ?>
@@ -128,9 +135,13 @@ if($estilo == 1){
             <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'imagen') { ?>
                 <div class="cont">
                     <img src="<?php echo $rutaImg ?>" alt="Imagen" class="imagen">
+                    <?php if(nl2br($arrayDiapositivas[$posicion]['contenido']) != ""){ ?>
                     <div class="contenidoImg">
-                        <?php echo nl2br($arrayDiapositivas[$posicion]['contenido']); ?>
+                        <label for="contenido" id="contenidoLabel" class="rosa">
+                            <?php echo nl2br($arrayDiapositivas[$posicion]['contenido']); ?>
+                        </label>
                     </div>
+                    <?php } ?>
                 </div>
             <?php } ?>
             <?php if ($arrayDiapositivas[$posicion]['tipoDiapositiva'] == 'test') { ?>
