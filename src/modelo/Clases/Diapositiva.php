@@ -207,4 +207,36 @@ use PDO, Exception, PDOException;
             return false;
 		}
     }
+
+    public static function reordenarDiapos($pdo, $arrayDiapos) {
+        try {
+            $pdo->beginTransaction();  
+    
+            for ($n = 0; $n < count($arrayDiapos); $n++) {
+                $sql = "UPDATE diapositivas SET nDiapositiva = :pos WHERE id = :id;";
+                $statement = $pdo->prepare($sql);
+                $statement->bindValue(':pos', $n + 1, PDO::PARAM_INT);
+                $statement->bindValue(':id', $arrayDiapos[$n]['id'], PDO::PARAM_INT);
+                $statement->execute();
+            }
+    
+            $pdo->commit();  
+    
+            $statement = $pdo->query("SELECT * FROM diapositivas");
+            $diapos = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $diapos;
+        } catch (PDOException $ex) {
+            $pdo->rollBack();  
+            echo $ex;
+            return false;
+        } catch (Exception $ex) {
+            $pdo->rollBack();  
+            echo $ex;
+            return false;
+        }
+    }
+   
+    
 }
+

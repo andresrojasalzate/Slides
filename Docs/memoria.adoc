@@ -10,6 +10,41 @@
 El objetivo es tener una aplicación web capaz de crear presentaciones con diapositivas. Va dirigida sobre todo a estudiantes y profesores.
 Resolvería la necesidad de los alumnos y/o profesores a la hora de hacer presentaciones o apuntes de una forma más rapida, dinámica, intuitiva y entretenida, ahorrandole al usuario tiempo y esfuerzo y asi mismo haciendo su trabajo mas eficiente.
 
+= Recogida de requisitos
+
+== Requisitos funcionales
+
+* Se pueden crear presentaciones, a las cuales se les puede asignar un título, una descripción, un PIN y un estilo.
+
+* Se pueden crear diapositivas para las presentaciones, habiendo cuatro tipos de diapositivas:
+    ** Diapositiva de tipo Título.
+    ** Diapositiva de tipo Título con contenido.
+    ** Diapositiva de tipo Título con contenido e imagen.
+    ** Diapositiva de tipo Pregunta con múltiple respuesta.
+
+* La diapositiva de tipo Pregunta con múltiple respuesta tendrá una segunda diapositiva asociada donde se mostrará la respuesta correcta y esta diapositiva solo será visible si se ha respondido a la diapositiva pregunta a la que está asociada.  
+
+* Habrá una pantalla principal donde se mostrarán todos las presentaciones creadas.
+
+* Las presentaciones creadas se podrán editar. Se podrá editar el título y la descripción de la presentación, crear nuevas diapositivas, eliminar diapositivas ya existentes y cambiar el estilo de la presentación.
+
+* Se podrá eliminar presentaciones creadas desde la pantalla principal.
+ 
+* Se podrá hacer una vista previa de la presentación desde la pantalla de crear o editar presentación.
+
+* Se podrá hacer una vista previa de una diapositiva desde la pantalla, crear o editar presentación.
+
+* Las presentaciones se podrán publicar. Esta opción estará disponible en la pantalla principal y en la pantalla editar presentación. Esta acción hará que las presentaciones publicadas se diferencien de las no publicadas en la pantalla principal. 
+
+* Al publicar una presentación se genera un URL que se utilizará para acceder a una vista cliente de la presentación. Si la presentación tiene un PIN definido, se pedirá al usuario que lo introduzca para poder ver la presentación.
+
+== Requisitos no funcionales
+
+* Utilizar MySQL como sistema de gestión de base de datos.
+* Utilizar HTML5 y CSS3 para crear la vista de las pantallas.
+* Lenguaje de progrmación de la parte cliente JavaScript vainilla.
+* Lenguaje de programación de la parte servidor PHP vainilla.
+* Acceso a base de datos con PHP mediante PDO. 
 
 = Sprint 1
 

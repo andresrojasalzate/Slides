@@ -53,6 +53,8 @@ function reordenarDiapositivas($ordenOriginal, $nuevoOrden)
             for ($i = 0; $i < count($arrayNuevoOrden); $i++) {
                 Diapositiva::reordenarDiapositivas($conexion, $arrayNuevoOrden[$i], (array_search($arrayNuevoOrden[$i], $arrayNuevoOrden) + 1));
             }
+            //Diapositiva::reordenarDiapos($conexion, $arrayNuevoOrden);
+
             $conexion = null;
         }
     }
