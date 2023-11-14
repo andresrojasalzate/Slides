@@ -91,7 +91,7 @@ if (isset($_POST['titulo'])) {
                     <fieldset class="divFormRow">
                         <legend class="subtitulos">Tipo de diapositiva</legend>
                         <div>
-                            <input type="hidden" id="presentaciones_id" value="<?= $idUltimaPresentacion ?>"">
+                            <input type="hidden" id="presentaciones_id" value="<?= $idUltimaPresentacion ?>">
                             <input type="radio" id="tipoTitulo" name="tipoDiapo" value="titulo" <?php echo (!isset($tipoDiapo) || $tipoDiapo === 'titulo') ? 'checked' : ''; ?>>
                             <label for="tipoTitulo">Titulo</label><br>
                         </div>
@@ -124,15 +124,19 @@ if (isset($_POST['titulo'])) {
                         </div>
                         <div class="divOculto divFormColumn">
                             <label for="contenidoDiapo">Contenido</label>
-                            <div id="errDescripcion" class="errores"></div>
+                            <div id="errDescripcion" class="errores">
+
+                            </div>
                             <textarea class="inputCont text textarea" id="contenidoDiapo" name="contenidoDiapo"
                                 placeholder="Empieza aqui..."><?php echo (isset($contenido) && !empty($contenido)) ? htmlspecialchars($contenido) : ''; ?></textarea>
                         </div>
                         <div class="imgOculto divFormColumn">
                             <div class="divFrom">
-                                <label for="contenidoDiapo">Imagen</label> <label for="contenidoDiapo">Contenido</label>
+                                <label for="contenidoDiapo">Imagen</label><label for="contenidoDiapo">Contenido</label>
                             </div>
-                            <div id="errDescripcion" class="errores"></div>
+                            <div id="errDescripcionImg" class="errores">
+
+                            </div>
                             <div class="divFrom2">
                                 <div class="imgcss">
                                     <input class="img" id="fileTest" name="imagen" id="imagen" type="file"

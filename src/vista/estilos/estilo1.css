@@ -33,18 +33,19 @@ form{
 }
 
 .contenido{
-    width: 95%;
+    width: 80%;
     /*height: 50%;*/
     background: #C8c6D7;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    word-break: break-all;
+    padding: 10px 30px;
 }
 
 .contenidoImg{
     width: 95%;
-    height: 80%;
     background: #C8c6D7;
     border-radius: 20px;
     display: flex;
@@ -53,6 +54,8 @@ form{
     align-content: center;
     justify-content: center;
     margin-left: 30px;
+    word-break: break-all;
+    padding: 10px 30px;
 }
 
 .contenido label{
