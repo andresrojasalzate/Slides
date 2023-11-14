@@ -5,12 +5,15 @@
 * Guiu Puigantell.
 * Diego Amador.
 
+
 === Objetivo de la aplicación:
 
 El objetivo principal de nuestra aplicación web es brindar una nueva herramienta digital, potente, versatil e intuitiva para crear presentaciones y diapositivas de diferentes tipos, premitiendo transmitir y evaluar el conocimiento conforme se va impartiendo. La aplicación está dirigida para todas las personas, en especial a estudiantes y profesores de diferentes grados academicos, no se necesitan conocimientos especializados o dedicados para el manejo y uso de nuestra aplicación.
 La función base de nuestra aplicación es resolver la necesidad de los alumnos y/o profesores a la hora de realizar sus presentaciones o apuntes de una forma más rapida, dinámica, intuitiva y entretenida, ahorrandoles tiempo, esfuerzo y asi mismo haciendo su trabajo mas eficiente.
 
+
 = Recogida de requisitos
+
 
 == Requisitos funcionales
 
@@ -50,9 +53,8 @@ La función base de nuestra aplicación es resolver la necesidad de los alumnos 
 * Lenguaje de programación de la parte servidor PHP vainilla.
 * Acceso a base de datos con PHP mediante PDO. 
 
-= Sprint 1
 
-== Guia de estilos de la aplicación.
+= Guia de estilos de la aplicación.
 
 .Consejo:
 [TIP]
@@ -98,11 +100,11 @@ Para ver los detalles de los Sketching y Mockups, puede dirigirse al siguiente e
 Puede encontrar la información del flujo de la aplicación en el siguiente enlace https://www.figma.com/file/Q052khG2YlsnMfOP3QerrB/Slides-Grupo-%236?type=design&node-id=0-1&mode=design&t=Hep37TzuexxctwVn-0[Flujo de la aplicación]
 ====
 
-== Tareas realizadas.
+= Tareas realizadas.
 
-=== Semana uno.
+== Semana uno.
 
-==== Diego:
+=== Diego:
 - [*] Revisión de la configuración del GIT.
 - [*] Estructura base de datos.
 - [*] configuración del figma.
@@ -112,7 +114,7 @@ Puede encontrar la información del flujo de la aplicación en el siguiente enla
 - [*] Definir guía de estilos de la aplicación.
 - [*] Creación y actualización de la memoria.
 
-==== Andrés:
+=== Andrés:
 - [*] Estructura base de datos.
 - [*] Sigleton para hacer conexión con base de datos.
 - [*] HTML página creación de presentaciones.
@@ -120,7 +122,7 @@ Puede encontrar la información del flujo de la aplicación en el siguiente enla
 - [*] Validación de datos de creación de presentaciones en JavaScript.
 - [*] Validación de datos de creación de presentaciones en PHP.
 
-==== Guiu:
+=== Guiu:
 - [*] Estructura base de datos.
 - [*] Vagrant file para crear el servidor y la base de datos.
 - [*] HTML página creación de diapositivas.
@@ -129,9 +131,11 @@ Puede encontrar la información del flujo de la aplicación en el siguiente enla
 - [*] Php Controlador pantalla crear diapositivas.
 - [*] Inserts a la base de datos.
 
-=== Semana dos.
 
-==== Diego:
+
+== Semana dos.
+
+=== Diego:
 - [*] Dar funcionalidad al botón eliminar presentación.
 - [*] Confirmación de la eliminación (modal con botones aceptar y cancelar).
 - [*] Pop up - modal, informando el estado de la eliminación (feedBack).
@@ -144,7 +148,7 @@ Puede encontrar la información del flujo de la aplicación en el siguiente enla
 - [*] Reordenar diapositivas (drag & drop).
 - [*] Modificar estilo de las presentaciones.
 
-==== Andrés:
+=== Andrés:
 - [*] Funcionalidad "Cambiar Estilo" pantalla Editar Presentación.
 - [*] paddin botones aceptar eliminar presentación.
 - [*] Creación tabla "estilos" en base de datos.
@@ -152,18 +156,17 @@ Puede encontrar la información del flujo de la aplicación en el siguiente enla
 - [*] Creación de hojas de estilos 1 y 2.
 - [*] Refactor pagina crear presentacion con la opción de los estilos para las presentaciones a crear.
 
-==== Guiu:
+=== Guiu:
 - [*] Vista previa de una diapositiva.
 - [*] Agrandar mostrar diapositiva.
 - [*] Vista previa de una presentación.
 - [*] Despliegue de la aplicación en el servidor. 
-- [*] 
-- [*] 
-- [*] 
 
-=== Semana tres.
 
-==== Diego:
+
+== Semana tres.
+
+=== Diego:
 - [*] Crear pagina vista cliente.
 - [*] Crear controlador pantalla vista cliente.
 - [*] Crear pantalla 404.
@@ -172,68 +175,80 @@ Puede encontrar la información del flujo de la aplicación en el siguiente enla
 - [*] Dar estilo a presentaciones compartidas para diferenciar.
 - [*] Funcion JS que cambia el valor de las presentaciones compartidas.
 
-==== Andrés:
+=== Andrés:
 - [*] Crear funcionalidad del pin.
 - [*] Crear pagina de validacion del pin.
 - [*] Crear controlador de la pagina comprobar pin.
 - [*] Actualización memoria con requisitos funcionales y no funcionales.
 
-==== Guiu:
+=== Guiu:
 - [*] Diapositivas tipo imagen en la vista cliente.
 - [*] Vista cliente ver contenido imagen.
 - [*] Estilo crear diapositiva crezca dependiendo del contenido
 - [*] Requerimiento 14 Diapositivas con imagen.
 
-=== Semana cuatro.
 
-==== Diego:
+
+== Semana cuatro.
+
+=== Diego:
 - [*] Cambiar contenido que muestra las preguntas en la pantalla inicioPresentación
 - [*] Pantalla crear Diapositivas con preguntas de selección simple.
 - [*] Pantalla editar presentación - Diapositivas con preguntas de selección simple resueltas.
 - [*] Actualización memoria líneas futuras.
 
-==== Andrés:
+=== Andrés:
 - [*] Bloquear respuestas una vez contestada
 - [*] Visualización de las diapositivas con pregunta de selección simple en la vista cliente.
 - [*] Actualización memoria conlusiones.
 
-==== Guiu:
+=== Guiu:
 - [*] Poner nuevos numeros a las diapositivas despues de borrar un tipo test en editar presentación.
 - [*] Previsualización de las Diapositivas con pregunta de selección simple.
 - [*] Ocultar respuesta sí no se contesta.
 - [*] La vista cliente permite mostrar las miniaturas de todas las diapositivas de la presentación.
 
-== Líneas futuras
+
+
+= Líneas futuras
 
 Durante la realización de la aplicación, el equipo de desarrollo, identificó varias mejoras a nivel de codigo y diseño que podrán ser aplicadas en las proximas versiones.
 
-=== General:
+== General:
 * Diseño de los titulos y labels de la aplicación.
 * Generación de objetos a partir de la información extraida desde la base de datos para el manejo interno de los controladores y la vista.
 * Estructuración integral del patrón de diseño Modelo-Vista-Controlador.
 * Limitar al minimo el uso de variables de sesión y cookies.
 
-=== Pantalla Home:
+
+
+== Pantalla Home:
 * Tool tip que muestre la descripción de cada presentación al ubicar el ratón sobre estas.
 * Mostrar y/o copiar la URL generada al compartir la aplicación.
 
-=== Pantalla Crear presentación:
+
+
+== Pantalla Crear presentación:
 * Ajustar el tamaño de las flechas de desplazamientos de los estilos de las presentaciones.
 
-=== Pantalla Editar Presentación:
+
+
+== Pantalla Editar Presentación:
 * Tooltips para los botones de las diapositivas.
 * Tooltips para mostrar un breve resumen del contenido o el tipo de diapositiva al unicar el ratón sombre estas.
 * Relación grafica y más intuitiva entre las diapositivas tipo pregunta y su respectiva respuesta.
 * Desplazar y reordenar las diapositivas sin importar su ubicación.
 
-=== Comprobar PIN:
+
+
+== Comprobar PIN:
 * Implementar un limite de intentos para la inserción y validacion del pin.
 
-== Conclusiones.
+= Conclusiones.
 
 * 
 
-== Bibliografía y recursos de consulta.
+= Bibliografía y recursos de consulta.
  
 *
 
