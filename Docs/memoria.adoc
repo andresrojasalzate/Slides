@@ -15,7 +15,11 @@ Resolvería la necesidad de los alumnos y/o profesores a la hora de hacer presen
 
 == Requisitos no funcionales
 
-
+* Utilizar MySQL como sistema de gestión de base de datos.
+* Utilizar HTML5 y CSS3 para crear la vista de las pantallas.
+* Lenguaje de progrmación de la parte cliente JavaScript vainilla.
+* Lenguaje de programación de la parte servidor PHP vainilla.
+* Acceso a base de datos con PHP mediante PDO. 
 
 = Sprint 1
 
