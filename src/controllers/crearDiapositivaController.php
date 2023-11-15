@@ -1,6 +1,6 @@
 <?php
-namespace src\controllers;
 
+// Importar la clase de conexión a la base de datos
 use ConexionBD;
 use src\modelo\Clases\Diapositiva;
 use src\modelo\Clases\DiapositivaImagen;
@@ -10,6 +10,7 @@ use src\modelo\Clases\DiapositivaTitulo;
 use src\modelo\Clases\DiapositivaTituloContenido;
 use src\modelo\Clases\Respuesta;
 
+// Requerir archivos necesarios
 require_once '../config/ConexionBD.php';
 require_once '../modelo/Clases/Diapositiva.php';
 require_once '../modelo/Clases/DiapositivaTitulo.php';
@@ -17,39 +18,51 @@ require_once '../modelo/Clases/DiapositivaTituloContenido.php';
 require_once '../modelo/Clases/DiapositivaImagen.php';
 require_once '../modelo/Clases/DiapositivaPregunta.php';
 require_once '../modelo/Clases/DiapositivaRespuesta.php';
-require_once '../modelo/Clases/DiapositivaRespuesta.php';
 
-
-// Función convierte las opciones de respuestas ingresadas por el usuario en un array y despues en JSON
+// Función que convierte las opciones de respuestas ingresadas por el usuario en un array y luego en JSON
 function preguntasToStringArrayPreguntas($opcionesRespuestas)
 {
     $arrayOpciones = JSON_encode(explode(",", $opcionesRespuestas));
     return $arrayOpciones;
 }
 
-
+// Función principal que procesa el formulario
 function procesarFormulario()
 {
+    // Iniciar sesión
     session_start();
+
+    // Verificar si la solicitud es de tipo POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+        // Obtener datos del formulario
         $titulo = $_POST['tituloDiapo'];
         $descripcion = $_POST['contenidoDiapo'];
         $tipo = $_POST['tipoDiapo'];
 
+        // Obtener el ID de la última presentación almacenada en la sesión
         $idUltimaPresentacion = $_SESSION["id_ultima_presentacion"];
-        if (empty($titulo)) {
 
+        // Verificar si el título está vacío
+        if (empty($titulo)) {
+            // Puedes agregar acciones específicas si el título está vacío
         } else {
+            // Obtener la instancia de la conexión a la base de datos
             $bdConexion = ConexionBD::obtenerInstancia();
             $conexion = $bdConexion->getConnection();
+
+            // Calcular el número de diapositiva
             $nDiapositiva = Diapositiva::nDiapositivas($conexion, $idUltimaPresentacion) + 1;
+
+            // Procesar según el tipo de diapositiva seleccionado
             if ($tipo === 'titulo') {
                 $diapositiva = new DiapositivaTitulo($titulo, "titulo", $idUltimaPresentacion, $nDiapositiva);
 
+                // Insertar la diapositiva en la base de datos
                 DiapositivaTitulo::insertDiapositivaTitulo($conexion, $diapositiva);
                 $conexion = null;
 
+                // Establecer una bandera de mensaje de éxito y redirigir
                 $_SESSION['toast'] = true;
                 header("Location: ../vista/crearDiapositiva.php");
 
@@ -60,6 +73,7 @@ function procesarFormulario()
                 $_SESSION['toast'] = true;
                 header("Location: ../vista/crearDiapositiva.php");
             } elseif ($tipo === 'imagen') {
+                // Procesar diapositiva de imagen
                 $descripcion = $_POST['contenidoDiapoImg'];
                 $nombreImagen = "a.png";
                 $nombreImagen = str_replace(' ', '_', $nombreImagen);
@@ -78,11 +92,7 @@ function procesarFormulario()
                 if ($cont > 0) {
                     $nombreImagen = $cont - 1 . $nombreImagen;
                 }
-                if (move_uploaded_file($url_temp, $url_target)) {
-
-                } else {
-                }
-
+                if (move_uploaded_file($url_temp, $url_target)){} else {}
 
                 $diapositiva = new DiapositivaImagen($titulo, 'imagen', $idUltimaPresentacion, $nDiapositiva, $nombreImagen, $descripcion);
 
@@ -92,6 +102,7 @@ function procesarFormulario()
                 header("Location: ../vista/crearDiapositiva.php");
 
             } elseif ($tipo === 'test') {
+                // Procesar diapositiva de test
                 $descripcion = $_POST['contenidoDiapoTest'];
                 $pregunta = $_POST['pregunta'];
                 $opcionesRespuestas = preguntasToStringArrayPreguntas($descripcion);
@@ -109,8 +120,7 @@ function procesarFormulario()
             }
         }
     }
-
-
 }
 
+// Llamar a la función para procesar el formulario
 procesarFormulario();
