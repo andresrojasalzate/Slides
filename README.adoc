@@ -35,4 +35,6 @@ error_reporting = E_ALL
 
 
 === Configuració del projecte
-Per poder fer servir el projecte en la màquina virtual només hem de crear l'usuari i la base de dades com tenim en el vagrant i cambair la ip de la base de dades a la 127.0.0.1 per a ser el localhost.
+Per poder fer servir el projecte en la màquina virtual hem de seguir els següents pasos:
+
+-> Només hem de canviar en el fitxer /var/www/html/config/config.php i canviar la ip de la base de dades a la 127.0.0.1 per a ser el localhost.
