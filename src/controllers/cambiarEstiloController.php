@@ -1,5 +1,22 @@
 <?php
+use ConexionBD;
+use src\modelo\Clases\Presentacion;
+
+require_once '../modelo/Clases/Presentacion.php';
+require_once '../config/ConexionBD.php';
+
 session_start();
+
+function cambiarEstilo($estilo){
+
+    $idPresentacion = $_SESSION['idPresentacion'];
+    unset($_SESSION['idPresentacion']);
+    $bdConexion = ConexionBD::obtenerInstancia();
+    $conexion = $bdConexion->getConnection();
+
+    Presentacion::cambiarEstiloPresentacion($conexion, $estilo, $idPresentacion);
+}
+
  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estiloId = $_POST['id_estilo'];
     $errores = [];
@@ -12,9 +29,9 @@ session_start();
         $_SESSION['errores'] = $errores;
         header("Location: ../vista/cambiarEstiloPresentacion.php");
         exit;
-    }else{
+    } else{
         unset($_SESSION['idEstilo']);
-        $_SESSION['nuevoEstilo'] = $estiloId; 
+        cambiarEstilo($estiloId);
         header("Location: ../vista/editarPresentacion.php");
         exit;
     }

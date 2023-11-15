@@ -33,13 +33,7 @@ $mostrarFeedback = null;
 $diapositivas = Diapositiva::arrayDiapositivas($conexion, $id);
 
 $_SESSION['idEstilo'] = $resultado[0]['estilo_id'];
-
-if(isset($_SESSION['nuevoEstilo'])){
-    $nuevoEstilo = $_SESSION['nuevoEstilo'];
-    unset($_SESSION['nuevoEstilo']);
-}else{
-    $nuevoEstilo = $_SESSION['idEstilo'];
-}
+$_SESSION['idPresentacion'] = $id;
 
 //Funcion para eliminar presentaciones
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -119,7 +113,6 @@ function returnDiapo($connexion, $id)
                                 <label for="vista_cliente">Compartir presentación</label>
                             </div>
                             <input type="hidden" name="id" value="<?= $id ?>">
-                            <input type="hidden" name="idEstilo" value="<?= $nuevoEstilo ?>">
                             <button class="botonCrear" type="submit">Guardar Cambios</button>
                             <button class="botonCrear" name="btnVolver">Volver</button>
                         </form>

@@ -61,12 +61,12 @@ function reordenarDiapositivas($ordenOriginal, $nuevoOrden)
 }
 
 // funcion que modifica el titulo y descripcion de la presentación
-function editarPresentacion($id, $titulo, $descripcion, $vistaCliente, $idEstilo)
+function editarPresentacion($id, $titulo, $descripcion, $vistaCliente)
 {
 
     $bdConexion = ConexionBD::obtenerInstancia();
     $conexion = $bdConexion->getConnection();
-    $respuesta = Presentacion::actualizarPresentacion($conexion, $id, $titulo, $descripcion, $vistaCliente, $idEstilo);
+    $respuesta = Presentacion::actualizarPresentacion($conexion, $id, $titulo, $descripcion, $vistaCliente);
     $conexion = null;
     return $respuesta;
 }
@@ -80,7 +80,6 @@ function procesarFormulario()
         $id = $_POST['id'];
         $titulo = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
-        $idEstilo = intval($_POST['idEstilo']);
         $ordenOriginal = $_POST['ordenOriginalDiapositivas'];
         $nuevoOrden = esNuevoOrdenVacio();
         $vistaCliente = esVistaClienteVacio();
@@ -98,21 +97,12 @@ function procesarFormulario()
             $errores['descripcion'] = "El campo \"Descripción\"  no puede tener más de 255 caracteres";
         }
 
-        if((!is_numeric($idEstilo))){
-            $errores['estilo'] = "Ha habido un error al seleccionar el estilo. Vuelva a intentarlo";
-        }
-
         if (count($errores) > 0) {
 
             $_SESSION['errores'] = $errores;
-            $_SESSION['titulo'] = $titulo;
-            $_SESSION['descripcion'] = $descripcion;
-
-
-            //header("Location: ../vista/crearPresentacion.php");
 
         } else {
-            $_SESSION['confirmacion'] = editarPresentacion($id, $titulo, $descripcion, $vistaCliente, $idEstilo);
+            $_SESSION['confirmacion'] = editarPresentacion($id, $titulo, $descripcion, $vistaCliente);
             reordenarDiapositivas($ordenOriginal, $nuevoOrden);
 
         }  reordenarDiapositivas($ordenOriginal, $nuevoOrden);
