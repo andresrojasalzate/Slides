@@ -1,0 +1,17 @@
+body{
+    background-color: #C8C6D7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.paginaNoEncontrada{
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #4A4063;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
