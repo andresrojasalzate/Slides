@@ -246,7 +246,7 @@ Durante la realización de la aplicación, el equipo de desarrollo, identificó 
 
 = Conclusiones.
 
-* 
+* Con la realización de este proyecto hemos aprendido a utilizar lenguajes como JavaScript para la gestión de eventos y la interacción con el usuario, PHP para gestionar la información recibida por formulario y la conexión con la base de datos en MySQL. También hemos prendido a crear pantallas dinámicas. Además de obtener una experiencia cercana a lo que sería un ambiente laboral, con el trabajo en equipo, la organización de las tareas mediante Trello y la gestión del código mediante GitLab.  
 
 = Bibliografía y recursos de consulta.
  
