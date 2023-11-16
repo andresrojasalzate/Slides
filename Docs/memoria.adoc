@@ -217,6 +217,7 @@ La aplicación es fácil de usar, simplemente hay que tener en cuenta estos caso
 -> No utilices caracteres especiales como ; porque daría error al mostrar las diapositivas.
 
 -> Para ver una presentación publicada tienes que usar esta url:
+
 	IPDelServidor/vista/inicioPrsentacion.php?url={1}_{2}
 	{1} = nombre de la presentación.
 	{2} = número de caracteres de la presentación
