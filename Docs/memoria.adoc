@@ -209,6 +209,21 @@ Puede encontrar la información del flujo de la aplicación en el siguiente enla
 - [*] La vista cliente permite mostrar las miniaturas de todas las diapositivas de la presentación.
 
 
+= Maual de usuario
+La aplicación es fácil de usar, simplemente hay que tener en cuenta estos casos:
+
+-> No se puede previsualizar una diapositiva con imagen, ya que no cargara la imagen.
+
+-> No utilices caracteres especiales como ; porque daría error al mostrar las diapositivas.
+
+-> Para ver una presentación publicada tienes que usar esta url:
+	IPDelServidor/vista/inicioPrsentacion.php?url={1}_{2}
+	{1} = nombre de la presentación.
+	{2} = número de caracteres de la presentación
+
+	p.e. localhost/vista/inicioPresentacion.php?url=presentacion_12
+
+
 
 = Líneas futuras
 
