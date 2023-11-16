@@ -1,3 +1,8 @@
+
+= Memoria grupo 6
+
+=======
+
 = Introducción
 
 === Integrantes:
@@ -207,6 +212,80 @@ Puede encontrar la información del flujo de la aplicación en el siguiente enla
 - [*] Previsualización de las Diapositivas con pregunta de selección simple.
 - [*] Ocultar respuesta sí no se contesta.
 - [*] La vista cliente permite mostrar las miniaturas de todas las diapositivas de la presentación.
+
+= Maual de instalación
+
+== Instalacion de VirtualBox y Vagrant
+ 
+Primero descargamos la versión más reciente de VirtualBox. +
+====
+https://www.virtualbox.org/wiki/Downloads[Enlace para descargar VirtualBox].
+
+Una vez instalado instalado VirtualBox, descargamos Vagrant. +
+https://developer.hashicorp.com/vagrant/install?product_intent=vagrant[Enlace para descargar Vagrant].
+====
+
+== Instalacion de PHP.
+
+Descargamos PHP, la versión 8.2 Non Thread Safe. +
+
+====
+https://windows.php.net/download#php-8.2[Enlace para descargar PHP].
+====
+
+Una vez descargado descomprimimos el ZIP, en la carpeta resultante buscamos el archivo llamado "php.ini-development" y le cambiamos el nombre a "php.ini". +
+
+Abrimos el archivo "php.ini" y buscamos la línea "extension=pdo_mysql" y la descomentamos. 
+
+== Instalacion de Git.
+Descargamos Git. +
+====
+https://git-scm.com/download/win[Enlace para descargar Git].
+====
+
+== Descargar el proyecto.
+Abrimos un Símbolo de sistema y escribimos el siguiente comando:
+
+    git clone https://git.copernic.cat/gpuigantell/grupo6rojaspuigantellamador.git
+
+Esto creara una carpeta con el proyecto.
+
+== Ejección de la aplicación.
+
+Abrimos un Símbolo de sistema y dentro de la carpeta del proyecto accedemos a la carpeta "vagrant". Ejecutamos el siguiente comando: 
+    
+    vagrant init
+
+A continuación ejecutamos el siguienete comando:
+
+    vagrant up
+
+Una vez hecho esto abriremos otro Símbolo de sistema y dentro de la carpeta del proyecto accedemos a la carpeta "src".  Ejecutamos el siguiente comando:
+
+    php -S localhost:[Puerto]
+
+Ejemplo de comando completo:
+
+   php -S localhost:80
+
+Ahora podremos abrir nuestro navegador y poner "localhost" en la barra de busqueda y acceder a la aplicación. 
+
+= Maual de usuario
+La aplicación es fácil de usar, simplemente hay que tener en cuenta estos casos:
+
+-> No se puede previsualizar una diapositiva con imagen, ya que no cargara la imagen.
+
+-> No utilices caracteres especiales como ; porque daría error al mostrar las diapositivas.
+
+-> Para ver una presentación publicada tienes que usar esta url:
+
+	IPDelServidor/vista/inicioPrsentacion.php?url={1}_{2}
+	{1} = nombre de la presentación.
+	{2} = número de caracteres de la presentación
+
+	p.e. localhost/vista/inicioPresentacion.php?url=presentacion_12
+
+=======
 
 
 
