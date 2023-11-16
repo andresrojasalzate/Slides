@@ -1,4 +1,7 @@
+
 = Memoria grupo 6
+
+=======
 
 = Introducción
 
@@ -281,6 +284,8 @@ La aplicación es fácil de usar, simplemente hay que tener en cuenta estos caso
 	{2} = número de caracteres de la presentación
 
 	p.e. localhost/vista/inicioPresentacion.php?url=presentacion_12
+
+=======
 
 
 
